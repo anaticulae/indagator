@@ -7,14 +7,25 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import os
+from detector.parser import textblock_token
 
-# public title configuration
-from detector.feature.titlepage import RAWMAKER_CONFIGURATION
+TOKEN = """Hello
+My Name is Token
 
-__version__ = '0.0.0'
 
-ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+DoubleSpace
 
-PROCESS = 'detector'
-PACKAGE = 'detector'
+Single Space"""
+
+
+def test_parser_textblock_token():
+    splitted = textblock_token(TOKEN)
+    assert len(splitted) == 3, str(splitted)
+
+    first = 'Hello\nMy Name is Token'
+    second = 'DoubleSpace'
+    third = 'Single Space'
+
+    assert splitted[0] == first, str(splitted[0])
+    assert splitted[1] == second, str(splitted[1])
+    assert splitted[2] == third, str(splitted[2])

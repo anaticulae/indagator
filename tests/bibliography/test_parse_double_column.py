@@ -7,6 +7,21 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-hey==2.9.0
-iamraw==1.25.7
-utila==1.23.1
+import serializeraw
+import utila
+
+import detector.bibliography.column
+import tests.resources
+
+
+def test_parse_bibliography_bachelor63_page59():
+    """Latex double column. Left side with [Hem10] pattern"""
+    pages = (59)
+    navigators = serializeraw.create_pagetextnavigators_frompath(
+        tests.resources.BACHELOR63,
+        # fill_empty=False,
+        pages=pages,
+    )
+    parsed = detector.bibliography.column.extracts(navigators)
+    parsed = utila.flatten(parsed)
+    assert len(parsed) == 12, str(parsed)
