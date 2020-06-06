@@ -58,7 +58,8 @@ ONELINE = detector.feature.titlepage.RAWMAKER_CONFIGURATION
 # scheduler gets hungry in the end and runs with low cpu load.
 # NOTE: This schedule is orderd by the required runtime on my computer.
 PACKAGE = [
-    (tests.resources.MASTER116_PDF, tests.resources.MASTER116, '0:10,97,98,99,100'),
+    (tests.resources.MASTER116_PDF, tests.resources.MASTER116,
+     '0:10,97,98,99,100'),
     (tests.resources.MASTER98_PDF, tests.resources.MASTER98, '0:5'),
     (tests.resources.BACHELOR90_PDF, tests.resources.BACHELOR90, '0:5,84:90'),
     (tests.resources.BACHELOR56_PDF, tests.resources.BACHELOR56, '47:55'),
