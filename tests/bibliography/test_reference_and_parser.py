@@ -121,6 +121,11 @@ Trim, John; North, Brian; Coste, Daniel (2001): Gemeinsamer Europäischer
 Referenzrahmen für Sprachen: lernen, lehren, beurteilen.
 http://student.unifr.ch/pluriling/assets/files/Referenzrahmen2001.pdf
 Berlin; München: Langenscheidt KG.
+
+Stratenschulte, Eckart D. (2014): Gründung der Europäischen
+Gemeinschaften.
+http://www.bpb.de/internationales/europa/europaeische-union/42989/europaeischegemeinschaften?p=all
+(27.05.2018).
 """.split('\n\n')
 
 
@@ -132,6 +137,14 @@ Berlin; München: Langenscheidt KG.
         'http://student.unifr.ch/pluriling/assets/files/Referenzrahmen2001.pdf',
         None,
         id='trim',
+    ),
+    pytest.param(
+        LONGTEXT_LINK[1],
+        [['Stratenschulte', 'Eckart D.']],
+        2014,
+        'http://www.bpb.de/internationales/europa/europaeische-union/42989/europaeischegemeinschaften?p=all',
+        (2018, 5, 27),
+        id='stratenschulte',
     ),
 ])
 def test_parse_freeand_with_link(text, authors, year, hyperlink, accessed):  # pylint:disable=W0613

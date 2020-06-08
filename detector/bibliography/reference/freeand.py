@@ -36,6 +36,7 @@ Failures
 import re
 
 import iamraw
+import utila
 
 import detector.bibliography.reference as dbr
 import detector.bibliography.reference.authors as dbra
@@ -74,8 +75,6 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
     if page:
         rest = rest.replace(page[0], '')
 
-    hyperlink = dbr.link(rest)
-
     result = iamraw.BibliographyReference(
         authors=authors,
         number=number,
@@ -83,11 +82,20 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
         year=year,
         raw=content,
     )
-    if hyperlink:
-        result.__dict__['hyperlink'] = hyperlink[0]
+
     # TODO: ADD YEAREND after upgrading
     if page:
         result.page = page[1][0]
         if len(page[1]) == 2:
             result.pageend = page[1][1]
+
+    hyperlink = dbr.link(rest)
+    if hyperlink:
+        result.__dict__['hyperlink'] = hyperlink[0]
+    if len(hyperlink) > 1:
+        utila.error(f'more than one link parsed: {content}')
+
+    accessed = dbr.accessed(rest)
+    if accessed:
+        result.__dict__['accessed'] = accessed[1]
     return result

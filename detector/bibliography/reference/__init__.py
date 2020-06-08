@@ -86,10 +86,33 @@ def link(raw: str):
     """
     raw = raw.replace('\n', '')
     pattern = r"""
-    (http|https)[:]//[\w\d\./]+
+    (http|https|www)[:]//[\w\d\./\-\?\=]+
     """
     result = []
     for item in re.finditer(pattern, raw, flags=re.VERBOSE):
         matched = utila.extract_match(item)
         result.append(matched)
     return result
+
+
+def accessed(raw: str):
+    """\
+    >>> accessed('europaeischegemeinschaften?p=all (27.05.2018).')
+    ('(27.05.2018)', (2018, 5, 27))
+    """
+    pattern = [
+        r'\((?P<year>\d{4})\.(?P<month>\d{1,2})\.(?P<day>\d{1,2})\)',
+        r'\((?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{4})\)',
+    ]
+    for item in pattern:
+        matched = re.search(item, raw)
+        if not matched:
+            continue
+        raw = utila.extract_match(matched)
+        date = (
+            int(matched['year']),
+            int(matched['month']),
+            int(matched['day']),
+        )
+        return (raw, date)
+    return None
