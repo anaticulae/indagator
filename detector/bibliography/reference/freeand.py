@@ -74,6 +74,8 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
     if page:
         rest = rest.replace(page[0], '')
 
+    hyperlink = dbr.link(rest)
+
     result = iamraw.BibliographyReference(
         authors=authors,
         number=number,
@@ -81,6 +83,8 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
         year=year,
         raw=content,
     )
+    if hyperlink:
+        result.__dict__['hyperlink'] = hyperlink[0]
     # TODO: ADD YEAREND after upgrading
     if page:
         result.page = page[1][0]

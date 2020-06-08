@@ -77,3 +77,19 @@ def years(raw: str):
         return None
     raw = utila.extract_match(matched)
     return (raw, int(raw))
+
+
+def link(raw: str):
+    r"""\
+    >>> link('Before: http://student.unifr.ch/\nReferenzrahmen2001.pdf after.')[0]
+    'http://student.unifr.ch/Referenzrahmen2001.pdf'
+    """
+    raw = raw.replace('\n', '')
+    pattern = r"""
+    (http|https)[:]//[\w\d\./]+
+    """
+    result = []
+    for item in re.finditer(pattern, raw, flags=re.VERBOSE):
+        matched = utila.extract_match(item)
+        result.append(matched)
+    return result

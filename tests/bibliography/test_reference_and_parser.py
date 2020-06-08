@@ -114,3 +114,31 @@ def test_parse_freeand_long(text, title, authors, pages, year, publisher):  # py
         assert extracted.year == year
     if authors:
         assert extracted.authors == authors
+
+
+LONGTEXT_LINK = """\
+Trim, John; North, Brian; Coste, Daniel (2001): Gemeinsamer Europäischer
+Referenzrahmen für Sprachen: lernen, lehren, beurteilen.
+http://student.unifr.ch/pluriling/assets/files/Referenzrahmen2001.pdf
+Berlin; München: Langenscheidt KG.
+""".split('\n\n')
+
+
+@pytest.mark.parametrize('text, authors, year, hyperlink, accessed', [
+    pytest.param(
+        LONGTEXT_LINK[0],
+        None,
+        2001,
+        'http://student.unifr.ch/pluriling/assets/files/Referenzrahmen2001.pdf',
+        None,
+        id='trim',
+    ),
+])
+def test_parse_freeand_with_link(text, authors, year, hyperlink, accessed):  # pylint:disable=W0613
+    extracted = freeand.parse_longtext(text)
+    if year is not None:
+        assert extracted.year == year
+    if hyperlink:
+        assert extracted.hyperlink == hyperlink
+    if accessed:
+        assert extracted.accessed == accessed
