@@ -54,11 +54,14 @@ def parses(content: str) -> iamraw.BibliographyReferences:
             page, pageend = int(item['pagestart']), int(item['pageend'])
         number = item['number'] if item['number'] else None
 
+        techref = item['author'] + item['year'] + (number if number else '')
+        year = int(item['year'])
+
         reference = iamraw.BibliographyReference(
             page=page,
             pageend=pageend,
-            reference=item['author'],
-            year=item['year'],
+            reference=techref,
+            year=year,
             number=number,
             raw=raw,
         )

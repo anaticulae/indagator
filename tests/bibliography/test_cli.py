@@ -31,12 +31,16 @@ def bachelor90(flat):
     assert references == expected
 
 
+def master89(flat):
+    pass
+
+
 # yapf:disable
 @pytest.mark.parametrize('source, pages, expected, validate', [
     pytest.param(tests.resources.BACHELOR56, '49:53', 32, None, id='bachelor56'),
     pytest.param(tests.resources.BACHELOR63, '59', 12, None, id='bachelor63'),
     pytest.param(tests.resources.MASTER116, '97,98,99,100', 46, None, id='master116'),
-    pytest.param(tests.resources.MASTER89, '70:81', 149, None, id='master89'),
+    pytest.param(tests.resources.MASTER89, '70:81', 149, master89, id='master89'),
     pytest.param(tests.resources.BACHELOR90, '84:89', 52, bachelor90, id='bachelor90'),
 ])
 # yapf:enable
