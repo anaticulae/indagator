@@ -16,6 +16,8 @@ accessed
 ('[Online; Zugriff Oktober 20, 2015]', (2015, 10, 20))
 >>> accessed('Version:August 2012')
 ('Version:August 2012', (2012, 8, 0))
+>>> accessed('Zugriff am 19.06.2014')
+('Zugriff am 19.06.2014', (2014, 6, 19))
 """
 
 import contextlib
@@ -122,7 +124,8 @@ def accessed(raw: str):
         r'\((?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{2,4})\)',
         r'\[Online[ ]{0,3}Zugriff\:[ ]{0,3}(?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{2,4})\]',
         r'\[Online\;[ ]{0,3}Zugriff[ ]{0,3}(?P<month>\w+)[ ]{0,3}(?P<day>\d{1,2})\,[ ]{0,3}(?P<year>\d{2,4})\]',
-        r'Version\:[ ]{0,3}(?P<month>\w+)[ ]{0,3}(?P<year>\d{2,4})'
+        r'Version\:[ ]{0,3}(?P<month>\w+)[ ]{0,3}(?P<year>\d{2,4})',
+        r'Zugriff[ ]{0,3}am[ ]{0,3}(?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{2,4})',
     ]
     for item in pattern:
         matched = re.search(item, raw, re.IGNORECASE | re.VERBOSE)
