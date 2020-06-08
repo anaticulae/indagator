@@ -154,12 +154,25 @@ Elysée-Vertrag. https://www.lpb-bw.de/elysee-vertrag.html (01.07.2018).
         (2018, 5, 27),
         id='stratenschulte',
     ),
+    pytest.param(
+        LONGTEXT_LINK[2],
+        [['Macron', 'Emmanuel'], ['Merkel', 'Angela']],
+        2018,
+        'https://www.youtube.com/watch?v=RXbcAYxuZxw',
+        (2018, 8, 23),
+        id='macron',
+    ),
+    pytest.param(
+        LONGTEXT_LINK[3],
+        None,
+        'no year',
+        'https://www.lpb-bw.de/elysee-vertrag.html',
+        (2018, 7, 1),
+        id='landeszentrale',
+    ),
 ])
 def test_parse_freeand_with_link(text, authors, year, hyperlink, accessed):  # pylint:disable=W0613
     extracted = freeand.parse_longtext(text)
-    if year is not None:
-        assert extracted.year == year
-    if hyperlink:
-        assert extracted.hyperlink == hyperlink
-    if accessed:
-        assert extracted.accessed == accessed
+    assert extracted.year == year
+    assert extracted.hyperlink == hyperlink
+    assert extracted.accessed == accessed

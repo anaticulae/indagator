@@ -71,6 +71,16 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
         year = 'no year'
     number = matched['number'] if matched['number'] else None
 
+    hyperlink = dbr.link(content)
+    if hyperlink:
+        content = content.replace(hyperlink[0], '')
+    if len(hyperlink) > 1:
+        utila.error(f'more than one link parsed: {content}')
+
+    accessed = dbr.accessed(content)
+    if accessed:
+        content = content.replace(accessed[0], '')
+
     try:
         title, rest = matched['content'].split('.', maxsplit=1)  # pylint:disable=W0612
     except ValueError:
@@ -89,6 +99,8 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
         year=year,
         raw=content,
     )
+    result.__dict__['hyperlink'] = hyperlink[0] if hyperlink else None
+    result.__dict__['accessed'] = accessed[1] if accessed else None
 
     # TODO: ADD YEAREND after upgrading
     if page:
@@ -96,13 +108,4 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
         if len(page[1]) == 2:
             result.pageend = page[1][1]
 
-    hyperlink = dbr.link(rest)
-    if hyperlink:
-        result.__dict__['hyperlink'] = hyperlink[0]
-    if len(hyperlink) > 1:
-        utila.error(f'more than one link parsed: {content}')
-
-    accessed = dbr.accessed(rest)
-    if accessed:
-        result.__dict__['accessed'] = accessed[1]
     return result
