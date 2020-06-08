@@ -14,6 +14,8 @@ accessed
 
 >>> accessed('[Online; Zugriff Oktober 20, 2015]')
 ('[Online; Zugriff Oktober 20, 2015]', (2015, 10, 20))
+>>> accessed('Version:August 2012')
+('Version:August 2012', (2012, 8, 0))
 """
 
 import contextlib
@@ -120,6 +122,7 @@ def accessed(raw: str):
         r'\((?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{2,4})\)',
         r'\[Online[ ]{0,3}Zugriff\:[ ]{0,3}(?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{2,4})\]',
         r'\[Online\;[ ]{0,3}Zugriff[ ]{0,3}(?P<month>\w+)[ ]{0,3}(?P<day>\d{1,2})\,[ ]{0,3}(?P<year>\d{2,4})\]',
+        r'Version\:[ ]{0,3}(?P<month>\w+)[ ]{0,3}(?P<year>\d{2,4})'
     ]
     for item in pattern:
         matched = re.search(item, raw, re.IGNORECASE | re.VERBOSE)
@@ -129,7 +132,7 @@ def accessed(raw: str):
         date = (
             int(matched['year']),
             month(matched['month']),
-            int(matched['day']),
+            day(matched),
         )
         return (raw, date)
     return None
@@ -139,6 +142,12 @@ MONTH = [
     'januar', 'februar', 'märz', 'april', 'mai', 'juni', 'juli', 'august',
     'september', 'oktober', 'november', 'dezember'
 ]
+
+
+def day(matched):
+    with contextlib.suppress(IndexError):
+        return int(matched['day'])
+    return 0
 
 
 def month(item: str):
