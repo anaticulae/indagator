@@ -71,6 +71,7 @@ def parses(content: str) -> iamraw.BibliographyReferences:
 
 def parse_longtext(content: str) -> iamraw.BibliographyReference:
     content = content.replace('\n', ' ')
+    raw = content
     try:
         authors, rest = content.split(':', maxsplit=1)
     except ValueError:
@@ -98,8 +99,8 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
 
     result = iamraw.BibliographyReference(
         authors=authors,
-        raw=content,
         title=title,
+        raw=raw,
     )
     if page:
         result.page = page[1][0]

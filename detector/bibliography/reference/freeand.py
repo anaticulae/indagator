@@ -59,6 +59,7 @@ AND = r"""
 
 def parse_longtext(content: str) -> iamraw.BibliographyReference:
     content = content.replace('\n', ' ')
+    raw = content
     matched = re.search(AND, content, re.VERBOSE | re.IGNORECASE)
     if not matched:
         return None
@@ -97,7 +98,7 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
         number=number,
         title=title,
         year=year,
-        raw=content,
+        raw=raw,
     )
     result.__dict__['hyperlink'] = hyperlink[0] if hyperlink else None
     result.__dict__['accessed'] = accessed[1] if accessed else None
