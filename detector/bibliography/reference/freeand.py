@@ -43,7 +43,7 @@ import detector.bibliography.reference.authors as dbra
 AND = r"""
     (?P<authors>.+)
     \(
-        (?P<year>\d{4})
+        ((?P<year>\d{4})([ ]{0,3}\-(?P<yearend>\d{4})[ ]{0,3}){0,1})
         (?P<number>a|b|c|d){0,1}  # optional char
     \)
     [ ]{0,5}                      # remove trailing whitespaces
@@ -69,6 +69,8 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
         title, rest = None, matched['content']
 
     page = dbr.pages(rest)
+    if not page:
+        page = dbr.pages_complex(rest)
     if page:
         rest = rest.replace(page[0], '')
 
@@ -79,6 +81,7 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
         year=year,
         raw=content,
     )
+    # TODO: ADD YEAREND after upgrading
     if page:
         result.page = page[1][0]
         if len(page[1]) == 2:

@@ -28,6 +28,17 @@ Becker, W.; Ulrich, P.; Botzkowski, T.; Eurich, S. (2015): Data Analytics
 in Familienunternehmen – Implikationen für das Controlling, in:
 Zeitschrift für erfolgsorientierte Unternehmenssteuerung, Heft 27, 2015,
 S. 263–268
+
+Hahn, Hans Henning; Traba, Robert (Hrsg.) (2012-2015): Deutsch-Polnische
+Erinnerungsorte. I. Geteilt/Gemeinsam; Deutsch-Polnische Erinnerungsorte
+II. Geteilt gemeinsam; Deutsch-Polnische Erinnerungsorte III.
+Parallelen; Deutsch-Polnische Erinnerungsorte IV. Reflexionen;
+DeutschPolnische Erinnerungsorte V. Erinnerung auf Polnisch. Texte zu
+Theorie und Praxis des sozialen Gedächtnisses. Paderborn u.a.:
+Schöningh.
+
+Keller, Thomas (2007a): Die Sainte Victoire – ein deutsch-französischer
+Ort und seine Schatten. Cahiers d’Etudes Germaniques 53, H. 2, 93-122.
 """.split('\n\n')
 
 
@@ -47,7 +58,7 @@ S. 263–268
          'Feststellung der relativen alkoholbedingten Fahruntüchtigkeit'),
         [['Schmidt', 'R.'], ['Dettmeyer', 'R.'], ['Padosch', 'S.'],
          ['Madea', 'B.']],
-        None,
+        (1, 10),
         2004,
         None,
         id='schmidt',
@@ -67,10 +78,28 @@ S. 263–268
         None,
         [['Becker', 'W.'], ['Ulrich', 'P.'], ['Botzkowski', 'T.'],
          ['Eurich', 'S.']],
-        None,
+        (263, 268),
         2015,
         None,
         id='becker',
+    ),
+    pytest.param(
+        LONGTEXT[4],
+        None,
+        [['Hahn', 'Hans Henning'], ['Traba', 'Robert (Hrsg.)']],
+        None,
+        2012,
+        None,
+        id='hahn',
+    ),
+    pytest.param(
+        LONGTEXT[5],
+        'Die Sainte Victoire – ein deutsch-französischer Ort und seine Schatten',
+        [['Keller', 'Thomas']],
+        (93, 122),
+        2007,
+        None,
+        id='keller',
     ),
 ])
 def test_parse_freeand_long(text, title, authors, pages, year, publisher):  # pylint:disable=W0613
