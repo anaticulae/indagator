@@ -6,6 +6,15 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+"""Reference
+=========
+
+accessed
+--------
+
+>>> accessed('[Online; Zugriff Oktober 20, 2015]')
+('[Online; Zugriff Oktober 20, 2015]', (2015, 10, 20))
+"""
 
 import contextlib
 import re
@@ -101,20 +110,40 @@ def accessed(raw: str):
     """\
     >>> accessed('europaeischegemeinschaften?p=all (27.05.2018).')
     ('(27.05.2018)', (2018, 5, 27))
+    >>> accessed('[Letzter Zugriff: 16.02.15]')
+    ('[Letzter Zugriff: 16.02.15]', (15, 2, 16))
     """
     pattern = [
-        r'\((?P<year>\d{4})\.(?P<month>\d{1,2})\.(?P<day>\d{1,2})\)',
-        r'\((?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{4})\)',
+        r'\[Letzter[ ]{0,3}Zugriff\:[ ]{0,3}(?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{2,4})\]',
+        r'Letzter[ ]{0,3}Zugriff\:[ ]{0,3}(?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{2,4})',
+        r'\((?P<year>\d{2,4})\.(?P<month>\d{1,2})\.(?P<day>\d{1,2})\)',
+        r'\((?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{2,4})\)',
+        r'\[Online[ ]{0,3}Zugriff\:[ ]{0,3}(?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{2,4})\]',
+        r'\[Online\;[ ]{0,3}Zugriff[ ]{0,3}(?P<month>\w+)[ ]{0,3}(?P<day>\d{1,2})\,[ ]{0,3}(?P<year>\d{2,4})\]',
     ]
     for item in pattern:
-        matched = re.search(item, raw)
+        matched = re.search(item, raw, re.IGNORECASE | re.VERBOSE)
         if not matched:
             continue
         raw = utila.extract_match(matched)
         date = (
             int(matched['year']),
-            int(matched['month']),
+            month(matched['month']),
             int(matched['day']),
         )
         return (raw, date)
     return None
+
+
+MONTH = [
+    'januar', 'februar', 'märz', 'april', 'mai', 'juni', 'juli', 'august',
+    'september', 'oktober', 'november', 'dezember'
+]
+
+
+def month(item: str):
+    item = item.lower()
+    for index, month_ in enumerate(MONTH, start=1):
+        if item == month_:
+            return index
+    return int(item)
