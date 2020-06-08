@@ -44,8 +44,11 @@ import detector.bibliography.reference.authors as dbra
 AND = r"""
     (?P<authors>.+)
     \(
-        ((?P<year>\d{4})([ ]{0,3}\-(?P<yearend>\d{4})[ ]{0,3}){0,1})
-        (?P<number>a|b|c|d){0,1}  # optional char
+        (
+            (?P<oj>o\.j\.)|
+            ((?P<year>\d{4})([ ]{0,3}\-(?P<yearend>\d{4})[ ]{0,3}){0,1})
+            (?P<number>a|b|c|d){0,1}  # optional char
+        )
     \)
     [ ]{0,5}                      # remove trailing whitespaces
     [:\.]{0,1}                    # remove dot or colon
@@ -56,12 +59,16 @@ AND = r"""
 
 def parse_longtext(content: str) -> iamraw.BibliographyReference:
     content = content.replace('\n', ' ')
-    matched = re.search(AND, content, re.VERBOSE)
+    matched = re.search(AND, content, re.VERBOSE | re.IGNORECASE)
     if not matched:
         return None
 
     authors = dbra.parses(matched['authors'])
-    year = int(matched['year'])
+    if matched['year']:
+        year = int(matched['year'])
+    else:
+        # without year
+        year = 'no year'
     number = matched['number'] if matched['number'] else None
 
     try:

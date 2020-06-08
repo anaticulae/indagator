@@ -126,6 +126,14 @@ Stratenschulte, Eckart D. (2014): Gründung der Europäischen
 Gemeinschaften.
 http://www.bpb.de/internationales/europa/europaeische-union/42989/europaeischegemeinschaften?p=all
 (27.05.2018).
+
+Macron, Emmanuel; Merkel, Angela (2018): Die deutsch-französische
+Freundschaft geht alle etwas an!
+https://www.youtube.com/watch?v=RXbcAYxuZxw (23.08.2018).
+
+Landeszentrale für politische Bildung Baden-Württemberg (o.J.): Der
+Elysée-Vertrag. https://www.lpb-bw.de/elysee-vertrag.html (01.07.2018).
+
 """.split('\n\n')
 
 
