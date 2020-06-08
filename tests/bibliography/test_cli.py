@@ -32,7 +32,16 @@ def bachelor90(flat):
 
 
 def master89(flat):
-    pass
+    first = flat[0]
+    assert first.year == 2010
+    assert first.authors == [('ABELS', 'Heinz'), ('KÖNIG', 'Alexandra')]
+
+    second = flat[1]
+    assert second.year == 2009
+    assert second.authors == [('ANDRONIKASHVILI', 'Zaal')]
+
+    last = flat[-1]
+    assert last.year == 2009
 
 
 # yapf:disable
