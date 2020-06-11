@@ -7,38 +7,31 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import os
-
+import power
+import pytest
 import utila
 
-from tests.resources import NO_TITLE_GENERATED
-from tests.resources import REQURIED_RESOURCES
-from tests.resources.update import extract_examples
-from tests.resources.update import install_requirements
-from tests.resources.update import sync_resources
+import detector
+import tests.resources
+import tests.resources.update
 
 pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
 
+PACKAGE = detector.PACKAGE
 
-def pytest_sessionstart(session):  # pylint:disable=W0613
-    if 'PYTEST_XDIST_WORKER' in os.environ:
-        # master process only
-        return
+power.setup(detector.ROOT)
 
-    if 'GENERATE' in os.environ or utila.test.LONGRUN:
-        utila.log('install requirements')
-        install_requirements()
+REQUIRED = tests.resources.REQURIED_RESOURCES + tests.resources.NO_TITLE_GENERATED
 
-        # ensure that all test resources exists
-        utila.log('synchronize resources')
-        sync_resources()
 
-        utila.log('extract resources')
-        extract_examples()
+@pytest.mark.usefixtures('session')
+def pytest_sessionstart():
+    power.run(REQUIRED)
 
-    check = REQURIED_RESOURCES + NO_TITLE_GENERATED
 
-    advice = 'run `baw --test=generate` to generate test data'
-    for item in check:
-        msg = f'required test path does not exists: {item}, {advice}'
-        assert os.path.exists(item), msg
+def extract():
+    utila.log('synchronize resources')
+    tests.resources.update.sync_resources()
+
+    utila.log('extract resources')
+    tests.resources.update.extract_examples()
