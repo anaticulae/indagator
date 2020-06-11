@@ -7,13 +7,11 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import power
 import pytest
 import utila
 
 import tests
-from tests.resources import HOWTO_PYPORTING
-from tests.resources import PYPORTING
-from tests.resources import RESTRUCT
 
 
 @pytest.mark.parametrize('command', [
@@ -28,9 +26,9 @@ def test_detector_misc(command, testdir, monkeypatch, capsys):  #pylint: disable
 
 
 @pytest.mark.parametrize('example', [
-    pytest.param(HOWTO_PYPORTING, id='howto_pyporting'),
-    pytest.param(RESTRUCT, id='restructured'),
-    pytest.param(PYPORTING, id='pyporting'),
+    pytest.param(power.link(power.DOCU07_PDF), id='howto_pyporting'),
+    pytest.param(power.link(power.DOCU09_PDF), id='pyporting'),
+    pytest.param(power.link(power.DOCU27_PDF), id='restructured'),
 ])
 @utila.skip_longrun
 def test_detector_run_work(example, testdir, monkeypatch, capsys):  #pylint: disable=W0613

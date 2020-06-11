@@ -11,9 +11,12 @@ import os
 
 import hey
 import hey.example
+import power
 import utila
 
 import detector
+
+power.setup(detector.ROOT)
 
 RESOURCES = os.path.join(detector.ROOT, 'tests/resources')
 
@@ -28,16 +31,6 @@ TECHNICAL = os.path.join(RESOURCES, 'technical')
 GENERATED = os.path.join(RESOURCES, 'generated')
 # TODO: remove _ after fixing path bug
 NO_TITLE = os.path.join(GENERATED, '_notitle')
-
-RESTRUCT = os.path.join(GENERATED, 'restruct')
-RESTRUCT_PDF = os.path.join(DOCU, 'restructuredtext.pdf')
-
-HOWTO_PYPORTING = os.path.join(GENERATED, 'howto_pyporting')
-HOWTO_PYPORTING_PDF = os.path.join(DOCU, 'howto_pyporting.pdf')
-
-# porting module
-PYPORTING = os.path.join(GENERATED, 'porting_module')
-PYPORTING_PDF = os.path.join(DOCU, 'porting_extension_modules.pdf')
 
 BACHELOR56 = os.path.join(GENERATED, 'page_56_hard_to_read')
 BACHELOR56_PDF = os.path.join(BACHELOR, 'page_56_hard_to_read.pdf')
@@ -73,18 +66,16 @@ HOMEWORK50 = os.path.join(GENERATED, 'homework_page_50_math')
 HOMEWORK50_PDF = os.path.join(HOMEWORK, 'page_50_math.pdf')
 
 NO_TITLE_EXAMPLE = [
-    HOWTO_PYPORTING_PDF,
-    MASTER72_PDF,
-    MASTER78_PDF,
-    PYPORTING_PDF,
-    RESTRUCT_PDF,
+    power.DOCU07_PDF,
+    power.MASTER078_PDF,
+    power.MASTER072_PDF,
+    power.DOCU09_PDF,
+    power.DOCU27_PDF,
 ]
 NO_TITLE_GENERATED = [
     os.path.join(NO_TITLE, item)
     for item in utila.simplify_testfile_names(NO_TITLE_EXAMPLE)
 ]
-
-NO_TITLE_RESTRUCTURED = os.path.join(NO_TITLE, 'docu_restructuredtext')
 
 REQUIRED_RESOURCES = [
     BACHELOR56,
@@ -98,8 +89,6 @@ REQUIRED_RESOURCES = [
     BACHELOR90_PDF,
     HOMEWORK50,
     HOMEWORK50_PDF,
-    HOWTO_PYPORTING,
-    HOWTO_PYPORTING_PDF,
     MASTER116,
     MASTER116_PDF,
     MASTER72,
@@ -110,11 +99,9 @@ REQUIRED_RESOURCES = [
     MASTER89_PDF,
     MASTER98,
     MASTER98_PDF,
-    PYPORTING,
-    PYPORTING_PDF,
+    power.link(power.DOCU09_PDF),
+    power.link(power.DOCU27_PDF),
     RESOURCES,
-    RESTRUCT,
-    RESTRUCT_PDF,
 ]
 
 REQUIRED_RESOURCES = [utila.forward_slash(item) for item in REQUIRED_RESOURCES]

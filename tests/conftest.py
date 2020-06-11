@@ -19,8 +19,6 @@ pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
 
 PACKAGE = detector.PACKAGE
 
-power.setup(detector.ROOT)
-
 REQUIRED = tests.resources.REQUIRED_RESOURCES + tests.resources.NO_TITLE_GENERATED
 
 

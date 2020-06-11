@@ -12,6 +12,7 @@ import functools
 import os
 
 import hey.example
+import power
 import utila
 
 import detector
@@ -67,10 +68,9 @@ PACKAGE = [
     (tests.resources.BACHELOR76_PDF, tests.resources.BACHELOR76, '0:5'),
     (tests.resources.MASTER72_PDF, tests.resources.MASTER72, '0:10'),
     (tests.resources.BACHELOR63_PDF, tests.resources.BACHELOR63, '0:9,59:62'),
-    (tests.resources.HOWTO_PYPORTING_PDF, tests.resources.HOWTO_PYPORTING,
-     None),
-    (tests.resources.PYPORTING_PDF, tests.resources.PYPORTING, None),
-    (tests.resources.RESTRUCT_PDF, tests.resources.RESTRUCT, None),
+    (power.DOCU07_PDF, power.link(power.DOCU07_PDF), None),
+    (power.DOCU09_PDF, power.link(power.DOCU09_PDF), None),
+    (power.DOCU27_PDF, power.link(power.DOCU27_PDF), None),
     (tests.resources.HOMEWORK50_PDF, tests.resources.HOMEWORK50, '0:10'),
     (tests.resources.BACHELOR241_PDF, tests.resources.BACHELOR241, '0:10'),
     (tests.resources.MASTER78_PDF, tests.resources.MASTER78, '0:5'),

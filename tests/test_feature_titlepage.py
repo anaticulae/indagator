@@ -10,6 +10,7 @@
 import os
 
 import iamraw
+import power
 import pytest
 import serializeraw
 import utila
@@ -20,7 +21,6 @@ import detector.parser.complete
 import detector.parser.person
 import detector.titlepage
 import tests
-import tests.fixtures.simple
 import tests.resources as tr  # pylint:disable=W0611
 
 
@@ -28,11 +28,11 @@ import tests.resources as tr  # pylint:disable=W0611
 def test_titlepage_parser():
     extracted = detector.feature.titlepage.work(
         iamraw.path.text(
-            tests.resources.HOWTO_PYPORTING,
+            power.link(power.DOCU07_PDF),
             prefix='oneline',
         ),
         iamraw.path.textposition(
-            tests.resources.HOWTO_PYPORTING,
+            power.link(power.DOCU07_PDF),
             prefix='oneline',
         ),
     )
