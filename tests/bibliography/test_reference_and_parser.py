@@ -175,4 +175,4 @@ def test_parse_freeand_with_link(text, authors, year, hyperlink, accessed):  # p
     extracted = freeand.parse_longtext(text)
     assert extracted.year == year
     assert extracted.hyperlink == hyperlink
-    assert extracted.accessed == accessed
+    assert extracted.accessed == accessed  # pylint:disable=E1101

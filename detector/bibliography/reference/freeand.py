@@ -57,7 +57,7 @@ AND = r"""
 """
 
 
-def parse_longtext(content: str) -> iamraw.BibliographyReference:
+def parse_longtext(content: str) -> iamraw.BibliographyReference:  # pylint:disable=R1260
     content = content.replace('\n', ' ')
     raw = content
     matched = re.search(AND, content, re.VERBOSE | re.IGNORECASE)
