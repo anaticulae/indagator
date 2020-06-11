@@ -95,7 +95,7 @@ NO_TITLE_GENERATED = [
 
 NO_TITLE_RESTRUCTURED = os.path.join(NO_TITLE, 'docu_restructuredtext')
 
-REQURIED_RESOURCES = [
+REQUIRED_RESOURCES = [
     BACHELOR56,
     BACHELOR56_PDF,
     BACHELOR63,
@@ -126,4 +126,4 @@ REQURIED_RESOURCES = [
     RESTRUCT_PDF,
 ]
 
-REQURIED_RESOURCES = [utila.forward_slash(item) for item in REQURIED_RESOURCES]
+REQUIRED_RESOURCES = [utila.forward_slash(item) for item in REQUIRED_RESOURCES]

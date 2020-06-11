@@ -21,7 +21,7 @@ PACKAGE = detector.PACKAGE
 
 power.setup(detector.ROOT)
 
-REQUIRED = tests.resources.REQURIED_RESOURCES + tests.resources.NO_TITLE_GENERATED
+REQUIRED = tests.resources.REQUIRED_RESOURCES + tests.resources.NO_TITLE_GENERATED
 
 
 @pytest.mark.usefixtures('session')
