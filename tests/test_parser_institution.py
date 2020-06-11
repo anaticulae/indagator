@@ -6,24 +6,20 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+
 import pytest
 
-from detector.parser.institution import parse
-from tests import prepare as prepare_name
+import detector.parser.institution
 from tests.fixtures.titlepage import FIRST
 from tests.fixtures.titlepage import FIRST_INSTITUTION
 from tests.fixtures.titlepage import SECOND
 from tests.fixtures.titlepage import SECOND_INSTITUTION
 
 
-def prepare(item):
-    return prepare_name('institution_' + item)
-
-
 @pytest.mark.parametrize('example, expected', [
-    pytest.param(FIRST, FIRST_INSTITUTION, id=prepare(FIRST)),
-    pytest.param(SECOND, SECOND_INSTITUTION, id=prepare(SECOND)),
+    pytest.param(FIRST, FIRST_INSTITUTION, id='first'),
+    pytest.param(SECOND, SECOND_INSTITUTION, id='second'),
 ])
 def test_detector_parser_institution_parse(example, expected):
-    parsed, _ = parse(example)
+    parsed, _ = detector.parser.institution.parse(example)
     assert parsed == expected, str(parsed)

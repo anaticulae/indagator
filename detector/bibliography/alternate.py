@@ -7,8 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import contextlib
-
 import hey.geometry.alternate
 import hey.text.utils
 import iamraw

@@ -22,17 +22,17 @@ import tests.fixtures.titlepage
     pytest.param(
         tests.fixtures.titlepage.FIRST,
         tests.fixtures.titlepage.FIRST_EXPECTED,
-        id=tests.prepare(tests.fixtures.titlepage.FIRST),
+        id='first',
     ),
     pytest.param(
         tests.fixtures.titlepage.SECOND,
         tests.fixtures.titlepage.SECOND_EXPECTED,
-        id=tests.prepare(tests.fixtures.titlepage.SECOND),
+        id='second',
     ),
     pytest.param(
         tests.fixtures.titlepage.THIRD,
         tests.fixtures.titlepage.THIRD_EXPECTED,
-        id=tests.prepare(tests.fixtures.titlepage.THIRD),
+        id='third',
     ),
 ])
 def test_detector_parse_complete_title_page(page, expected):
