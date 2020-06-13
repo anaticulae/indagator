@@ -9,6 +9,7 @@
 
 import serializeraw
 import texmex
+import utila
 
 import detector.bibliography.data
 import detector.bibliography.strategy
@@ -21,6 +22,9 @@ def work(
         oneline_textpositions: str,
         pages: tuple = None,
 ) -> str:
+    # ensure to have connected pages
+    ensure_connected_pages(pages)
+
     text = serializeraw.load_document(text, pages=pages)
     textpositions = serializeraw.load_textpositions(textpositions, pages=pages)
 
@@ -46,3 +50,19 @@ def work(
 
     dumped = serializeraw.dump_bibliography_reference(extracted)
     return dumped
+
+
+def ensure_connected_pages(pages: list):
+    """Holes in pages selection is not allowed for bibliography
+    analysing."""
+    if not pages:
+        return
+    if len(pages) == 1:
+        # single page is always connected
+        return True
+    diff = utila.diffs(pages)
+    for item in diff:
+        if item == 1:
+            continue
+        utila.error(f'unconnected pages: {pages}')
+        exit(utila.INVALID_COMMAND)

@@ -73,3 +73,15 @@ def test_detector_bibliography_run(
 
     if validate:
         validate(flat)
+
+
+def test_unconnected_pages(testdir, monkeypatch, capsys):
+    root = testdir.tmpdir
+    source = tests.resources.BACHELOR56
+    pages = '1,2,3,5'  # invalid pages input
+
+    command = f'-i {source} -o {root} --bibliography --pages={pages}'
+    tests.fail(command, monkeypatch=monkeypatch)
+
+    _, stderr = capsys.readouterr()
+    assert 'unconnected pages' in stderr
