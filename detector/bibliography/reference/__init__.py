@@ -98,6 +98,8 @@ def link(raw: str):
     'http://student.unifr.ch/Referenzrahmen2001.pdf'
     >>> link('This is a link:https://www.youtube.com/watch?v=RXbcAYxuZxw')[0]
     'https://www.youtube.com/watch?v=RXbcAYxuZxw'
+    >>> link('Text.http://google.de')[0]
+    'http://google.de'
     """
     raw = raw.replace('\n', '')
     pattern = r"""
