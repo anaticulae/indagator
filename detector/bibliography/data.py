@@ -26,11 +26,11 @@ import utila
 def theissen_sort(items):
     """We sort by family name and as tybreaker by year. If no name is
     given, we use `o. V. = ohne Verfasser` instead. If no year is given,
-    we sort it after the items with year."""
+    we sort it after the items with year(INF year)."""
     # sort by year
     items = sorted(
         items,
-        key=lambda x: x.year if x.year is not None else utila.INF,
+        key=lambda x: utila.INF if x.year in ('no year', None) else x.year,
     )
     # sort by author name
     items = sorted(

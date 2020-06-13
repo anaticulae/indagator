@@ -37,7 +37,7 @@ def test_sort_byyear():
 def test_sort_bynoname():
     # pylint:disable=C0103
     ov = [
-        iamraw.BibliographyReference(year=None),
+        iamraw.BibliographyReference(year='no year'),
         iamraw.BibliographyReference(year=2016),
         iamraw.BibliographyReference.create('Fahrendholz Konrad', year=None),
         iamraw.BibliographyReference.create('Fahrendholz Konrad', year=1987),
