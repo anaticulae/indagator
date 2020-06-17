@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.3.0
+
+### Feature
+
+* ensure to have connected pages input for bib parsing (ae427807c7be)
+
+### Fix
+
+* fix theissen sort - support `no year` sorting (2265a88b1fa5)
+
 ## v0.2.1
 
 ### Fix
