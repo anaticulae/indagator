@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.4.0
+
+### Feature
+
+* change default behavior for bib grouping (5a58ded93a5b)
+
 ## v0.3.1
 
 ## v0.3.0
