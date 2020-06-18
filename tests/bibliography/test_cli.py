@@ -78,10 +78,10 @@ def test_detector_bibliography_run(
 def test_unconnected_pages(testdir, monkeypatch, capsys):
     root = testdir.tmpdir
     source = tests.resources.BACHELOR56
-    pages = '1,2,3,5'  # invalid pages input
+    pages = '1,2,3,6,7,8'  # invalid pages input
 
     command = f'-i {source} -o {root} --bibliography --pages={pages}'
-    tests.fail(command, monkeypatch=monkeypatch)
+    tests.run(command, monkeypatch=monkeypatch)
 
     stdout, _ = capsys.readouterr()
     assert 'more than one potential bib section' in stdout

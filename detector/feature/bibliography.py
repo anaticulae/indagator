@@ -15,7 +15,7 @@ import detector.bibliography.data
 import detector.bibliography.strategy
 
 
-def work(
+def work(  # pylint:disable=R0914
         text: str,
         textpositions: str,
         oneline_text: str,
@@ -30,25 +30,25 @@ def work(
 
     result = []
     for selected in pageslist:
-        text = serializeraw.load_document(text, pages=selected)
-        textpositions = serializeraw.load_textpositions(
+        text_ = serializeraw.load_document(text, pages=selected)
+        textpositions_ = serializeraw.load_textpositions(
             textpositions,
             pages=selected,
         )
 
-        oneline_text = serializeraw.load_document(oneline_text, pages=selected)
-        oneline_textpositions = serializeraw.load_textpositions(
+        oneline_text_ = serializeraw.load_document(oneline_text, pages=selected)
+        oneline_textpositions_ = serializeraw.load_textpositions(
             oneline_textpositions,
             pages=selected,
         )
 
         textnavigators = texmex.create_pagetextnavigators(
-            text,
-            textpositions,
+            text_,
+            textpositions_,
         )
         onelines = texmex.create_pagetextnavigators(
-            oneline_text,
-            oneline_textpositions,
+            oneline_text_,
+            oneline_textpositions_,
         )
 
         extracted = detector.bibliography.strategy.extracts(
