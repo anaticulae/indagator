@@ -83,5 +83,5 @@ def test_unconnected_pages(testdir, monkeypatch, capsys):
     command = f'-i {source} -o {root} --bibliography --pages={pages}'
     tests.fail(command, monkeypatch=monkeypatch)
 
-    _, stderr = capsys.readouterr()
-    assert 'unconnected pages' in stderr
+    stdout, _ = capsys.readouterr()
+    assert 'more than one potential bib section' in stdout

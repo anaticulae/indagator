@@ -23,46 +23,79 @@ def work(
         pages: tuple = None,
 ) -> str:
     # ensure to have connected pages
-    ensure_connected_pages(pages)
+    pageslist = groupby_diff(pages)
 
-    text = serializeraw.load_document(text, pages=pages)
-    textpositions = serializeraw.load_textpositions(textpositions, pages=pages)
+    if len(pageslist) > 1:
+        utila.log(f'more than one potential bib section: {len(pageslist)}')
 
-    oneline_text = serializeraw.load_document(oneline_text, pages=pages)
-    oneline_textpositions = serializeraw.load_textpositions(
-        oneline_textpositions,
-        pages=pages,
-    )
+    result = []
+    for selected in pageslist:
+        text = serializeraw.load_document(text, pages=selected)
+        textpositions = serializeraw.load_textpositions(
+            textpositions,
+            pages=selected,
+        )
 
-    textnavigators = texmex.create_pagetextnavigators(
-        text,
-        textpositions,
-    )
-    onelines = texmex.create_pagetextnavigators(
-        oneline_text,
-        oneline_textpositions,
-    )
+        oneline_text = serializeraw.load_document(oneline_text, pages=selected)
+        oneline_textpositions = serializeraw.load_textpositions(
+            oneline_textpositions,
+            pages=selected,
+        )
 
-    extracted = detector.bibliography.strategy.extracts(
-        textnavigators,
-        onelines,
-    )
+        textnavigators = texmex.create_pagetextnavigators(
+            text,
+            textpositions,
+        )
+        onelines = texmex.create_pagetextnavigators(
+            oneline_text,
+            oneline_textpositions,
+        )
 
-    dumped = serializeraw.dump_bibliography_reference(extracted)
+        extracted = detector.bibliography.strategy.extracts(
+            textnavigators,
+            onelines,
+        )
+        result.append(extracted)
+
+    # select best bib ref
+    best = longest(result)
+
+    dumped = serializeraw.dump_bibliography_reference(best)
     return dumped
 
 
-def ensure_connected_pages(pages: list):
-    """Holes in pages selection is not allowed for bibliography
-    analysing."""
+# TODO: MOVE TO UTILA
+def groupby_diff(pages: tuple, *, diff=1) -> list:
+    """\
+    >>> groupby_diff((1, 5, 2, 6, 9))
+    [(1, 2), (5, 6), (9,)]
+    >>> groupby_diff(None)
+    [None]
+    >>> groupby_diff((5,))
+    [(5,)]
+    """
+    assert diff >= 0, 'negative diff'
     if not pages:
-        return
-    if len(pages) == 1:
-        # single page is always connected
-        return True
-    diff = utila.diffs(pages)
-    for item in diff:
-        if item == 1:
-            continue
-        utila.error(f'unconnected pages: {pages}')
-        exit(utila.INVALID_COMMAND)
+        return [None]
+    pages = sorted(pages)
+    result = [[pages[0]]]
+    for item in pages[1:]:
+        if item - result[-1][-1] <= diff:
+            result[-1].append(item)
+        else:
+            result.append([item])
+    result = [tuple(item) for item in result]
+    return result
+
+
+def longest(items):
+    """\
+    >>> longest([(1, 2, 4), (2, 2, 2, 2), (5, 5, 5)])
+    (2, 2, 2, 2)
+    """
+    # TODO: MOVE TO UTILA
+    # TODO: SUPPORT MORE THAN ONE RESULT
+    if not items:
+        return []
+    items = sorted(items, key=len)
+    return items[-1]
