@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.4.1
+
+### Fix
+
+* fix selecting required resources (80ca66136674)
+
 ## v0.4.0
 
 ### Feature
