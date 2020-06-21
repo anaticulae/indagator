@@ -14,6 +14,7 @@ import os
 import hey.example
 import power
 import utila
+import utilatest
 
 import detector
 import detector.feature.titlepage
@@ -23,7 +24,7 @@ WORKER = 12
 
 
 def install_requirements():
-    utila.clean_install(detector.ROOT, detector.PACKAGE)
+    utilatest.clean_install(detector.ROOT, detector.PACKAGE)
 
 
 def sync_resources():
@@ -126,7 +127,7 @@ def notitle() -> list:
     destination = tests.resources.NO_TITLE
     without_titlepage = [
         os.path.join(destination, f'{item}.pdf')
-        for item in utila.simplify_testfile_names(
+        for item in utilatest.simplify_testfile_names(
             tests.resources.NO_TITLE_EXAMPLE, sort=False)
     ]
     return without_titlepage
@@ -145,7 +146,7 @@ def extract_without_titlepage():
 
     def run_notile(item):
         utila.log(f'notitle: {item[0:200]}')
-        with utila.assert_run(item, cwd=None):
+        with utilatest.assert_run(item, cwd=None):
             utila.log('completed')
 
     todo = [functools.partial(run_notile, item) for item in todo]

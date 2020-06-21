@@ -14,6 +14,7 @@ import power
 import pytest
 import serializeraw
 import utila
+import utilatest
 
 import detector.cli
 import detector.feature.titlepage
@@ -24,7 +25,7 @@ import tests
 import tests.resources as tr  # pylint:disable=W0611
 
 
-@utila.skip_longrun
+@utilatest.skip_longrun
 def test_titlepage_parser():
     extracted = detector.feature.titlepage.work(
         iamraw.path.text(
@@ -113,7 +114,7 @@ def check_bachelor90(titlepage: iamraw.TitlePage):
         id='bachelor90',
         marks=pytest.mark.xfail(reason='improve title page parser')),
 ])
-@utila.skip_longrun
+@utilatest.skip_longrun
 def test_detector_feature_titlepage_complete(
         source,
         checker,
@@ -127,7 +128,7 @@ def test_detector_feature_titlepage_complete(
     utila.run(cmd)
 
     cmd = f'-i {root} --titlepage'
-    utila.run_command(
+    utilatest.run_command(
         cmd,
         process=detector.cli.PROCESS,
         main=detector.cli.main,
@@ -150,14 +151,14 @@ def parse_titlepages(path: str, pages: tuple = None):
     return parsed
 
 
-@utila.skip_longrun
+@utilatest.skip_longrun
 def test_detector_feature_titlepage_select_best():
     parsed = parse_titlepages(tr.MASTER72, pages=None)
     best = detector.titlepage.select_best(parsed)
     assert best == parsed[0], str(best)
 
 
-# @utila.skip_longrun
+# @utilatest.skip_longrun
 # @pytest.mark.parametrize('source', [
 #     pytest.param(item, id=os.path.split(item)[1])
 #     for item in tr.NO_TITLE_GENERATED
@@ -179,7 +180,7 @@ def test_detector_feature_titlepage_select_best():
 #     range(40, 45),
 #     range(45, 50),
 # ])
-# @utila.skip_longrun
+# @utilatest.skip_longrun
 # def test_detector_feature_titlepage_parse_titlepage_negative(pages):
 #     """Split pages to increase mutli-process-testing."""
 #     pages = tuple(pages)

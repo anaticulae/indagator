@@ -9,7 +9,7 @@
 
 import power
 import pytest
-import utila
+import utilatest
 
 import tests
 
@@ -30,12 +30,12 @@ def test_detector_misc(command, testdir, monkeypatch, capsys):  #pylint: disable
     pytest.param(power.link(power.DOCU09_PDF), id='pyporting'),
     pytest.param(power.link(power.DOCU27_PDF), id='restructured'),
 ])
-@utila.skip_longrun
+@utilatest.skip_longrun
 def test_detector_run_work(example, testdir, monkeypatch, capsys):  #pylint: disable=W0613
     output = str(testdir)
     command = f'-i {example} -o {output}'
 
-    with utila.increased_filecount(output, mindiff=2, maxdiff=2):
+    with utilatest.increased_filecount(output, mindiff=2, maxdiff=2):
         tests.run(command, monkeypatch=monkeypatch)
 
     tests.write_capsys(capsys)

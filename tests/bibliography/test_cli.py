@@ -10,6 +10,7 @@
 import pytest
 import serializeraw
 import utila
+import utilatest
 
 import detector.bibliography.data
 import detector.path
@@ -53,7 +54,7 @@ def master89(flat):
     pytest.param(tests.resources.BACHELOR90, '84:89', 52, bachelor90, id='bachelor90'),
 ])
 # yapf:enable
-@utila.skip_longrun
+@utilatest.skip_longrun
 def test_detector_bibliography_run(
         source,
         pages,

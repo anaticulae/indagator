@@ -13,6 +13,7 @@ import hey
 import hey.example
 import power
 import utila
+import utilatest
 
 import detector
 
@@ -74,7 +75,7 @@ NO_TITLE_EXAMPLE = [
 ]
 NO_TITLE_GENERATED = [
     os.path.join(NO_TITLE, item)
-    for item in utila.simplify_testfile_names(NO_TITLE_EXAMPLE)
+    for item in utilatest.simplify_testfile_names(NO_TITLE_EXAMPLE)
 ]
 
 REQUIRED_RESOURCES = [

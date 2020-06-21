@@ -10,20 +10,21 @@
 import functools
 
 import utila
+import utilatest
 
 import detector
 import detector.cli
 
 #pylint:disable=C0103
 run = functools.partial(
-    utila.run_command,
+    utilatest.run_command,
     main=detector.cli.main,
     process=detector.PROCESS,
     success=True,
 )
 
 fail = functools.partial(
-    utila.run_command,
+    utilatest.run_command,
     main=detector.cli.main,
     process=detector.PROCESS,
     success=False,
