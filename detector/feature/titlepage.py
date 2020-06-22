@@ -55,8 +55,8 @@ import serializeraw
 import texmex
 import utila
 
-import detector.parser.complete
 import detector.titlepage
+import detector.titlepage.parser.complete
 
 # TODO: MOVE TO MORE GENERAL POSITION
 # TODO: check 0.1, use a higher number?
@@ -85,7 +85,7 @@ def work(text: str, text_positions: str, pages: tuple = None) -> str:
     )
 
     parsed = parse_titlepages(navigators, pages)
-    best = detector.titlepage.select_best(parsed)
+    best = detector.titlepage.strategy.select_best(parsed)
 
     dumped = serializeraw.dump_titlepage(best)
     return dumped
@@ -101,6 +101,6 @@ def parse_titlepages(navigators: texmex.PageTextNavigators, pages=None):
             # white page
             parsed = None
         else:
-            parsed = detector.parser.complete.parse(navigator)
+            parsed = detector.titlepage.parser.complete.parse(navigator)
         result.append(parsed)
     return result

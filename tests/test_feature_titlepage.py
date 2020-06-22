@@ -18,9 +18,9 @@ import utilatest
 
 import detector.cli
 import detector.feature.titlepage
-import detector.parser.complete
-import detector.parser.person
 import detector.titlepage
+import detector.titlepage.parser.complete
+import detector.titlepage.parser.person
 import tests
 import tests.resources as tr  # pylint:disable=W0611
 
@@ -154,7 +154,7 @@ def parse_titlepages(path: str, pages: tuple = None):
 @utilatest.skip_longrun
 def test_detector_feature_titlepage_select_best():
     parsed = parse_titlepages(tr.MASTER72, pages=None)
-    best = detector.titlepage.select_best(parsed)
+    best = detector.titlepage.strategy.select_best(parsed)
     assert best == parsed[0], str(best)
 
 

@@ -7,8 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-from detector.parser.title import TitleParserState
-from detector.parser.title import parse
+from detector.titlepage.parser.title import TitleParserState
+from detector.titlepage.parser.title import parse
 # pylint:disable=W0611
 from tests.titlepage.example import TEXT_TITLE
 from tests.titlepage.example import new_textnavgiator

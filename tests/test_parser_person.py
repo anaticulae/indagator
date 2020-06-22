@@ -10,7 +10,7 @@
 import iamraw
 import pytest
 
-import detector.parser.person
+import detector.titlepage.parser.person
 
 HELMUT = iamraw.Person(
     iamraw.AcademicTitle.BSC,
@@ -166,14 +166,14 @@ KAHN = iamraw.Person(
     ),
 ])
 def test_detector_parser_parse_person(raw, expected):
-    parsed = detector.parser.person.parse(raw)
+    parsed = detector.titlepage.parser.person.parse(raw)
     assert parsed == expected, str(parsed)
 
 
 def test_detector_parser_person_order_person():
     persons = [KAHN, GOMEZ, HELMUT]
     expected = (HELMUT, [GOMEZ, KAHN])
-    current = detector.parser.person.order_persons(persons)
+    current = detector.titlepage.parser.person.order_persons(persons)
 
     assert current == expected, str(current)
 
@@ -186,7 +186,7 @@ def test_detector_parser_person_parse_person_without_title():
         firstname='Helmut Konrad',
         raw=raw.strip(),
     )
-    parsed = detector.parser.person.parse_person_without_title(raw)
+    parsed = detector.titlepage.parser.person.parse_person_without_title(raw)
     assert parsed == expected
 
 
@@ -204,7 +204,8 @@ def test_detector_parser_person_regression(capsys):
     """The regex matches `Erstprüfer:\n\nZweitprüfer` and fails to
     extract name."""
     # TODO: SOLVE BY BETTER REGEX APPROACH
-    parsed = detector.parser.person.parse_person_without_title(BROKEN_INPUT)
+    parsed = detector.titlepage.parser.person.parse_person_without_title(
+        BROKEN_INPUT)
     assert not parsed, str(parsed)
     _, stderr = capsys.readouterr()
     assert '[ERROR]' in stderr  # TODO: REMOVE LATER

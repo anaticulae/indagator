@@ -3,7 +3,7 @@
 RP 0.5.0
 =========
 
-* [ ] refactor titlepage extractor to separate package
+* [x] refactor titlepage extractor to separate package
 
 * [x] replace moved code and remove outdated code
 

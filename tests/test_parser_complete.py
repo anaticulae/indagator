@@ -13,7 +13,7 @@ import serializeraw
 import texmex
 
 import detector.feature.titlepage
-import detector.parser.complete
+import detector.titlepage.parser.complete
 import tests
 import tests.fixtures.titlepage
 
@@ -37,7 +37,7 @@ import tests.fixtures.titlepage
 ])
 def test_detector_parse_complete_title_page(page, expected):
     pcn = texmex.create_pagetextnavigator_fromstr(page)
-    parsed = detector.parser.complete.parse(pcn)
+    parsed = detector.titlepage.parser.complete.parse(pcn)
     assert parsed == expected, str(parsed)
 
 

@@ -10,7 +10,7 @@
 import iamraw
 import pytest
 
-from detector.parser.matrikel import parse
+from detector.titlepage.parser.matrikel import parse
 
 
 @pytest.mark.parametrize('raw, expected', [

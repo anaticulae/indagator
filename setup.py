@@ -57,7 +57,8 @@ if __name__ == "__main__":
             'detector.feature',
             'detector.bibliography',
             'detector.bibliography.reference',
-            'detector.parser',
+            'detector.titlepage',
+            'detector.titlepage.parser',
         ],
         entry_points={
             'console_scripts': [

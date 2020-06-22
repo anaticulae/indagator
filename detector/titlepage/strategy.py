@@ -11,14 +11,15 @@ import typing
 
 import iamraw
 
-import detector.parser.complete
+import detector.titlepage.parser.complete
 
 MIN_TITLEPAGE_RATING = 20  # TODO: HOLY VALUE
 
 
 def select_best(pages: typing.List[iamraw.TitlePage]) -> iamraw.TitlePage:
     pages = [
-        item for item in pages if detector.parser.complete.valid_titlepage(item)
+        item for item in pages
+        if detector.titlepage.parser.complete.valid_titlepage(item)
     ]
     if not pages:
         # no valid page

@@ -13,14 +13,14 @@ import iamraw
 import utila
 from texmex import PageTextNavigator
 
-from detector.parser import textblock_token
-from detector.parser.date import parse as parse_date
-from detector.parser.institution import parse as parse_institution
-from detector.parser.matrikel import parse as parse_matrikel
-from detector.parser.person import order_persons
-from detector.parser.person import parse_all as parse_person_all
-from detector.parser.thesis import parse as parse_thesis
-from detector.parser.title import parse as parse_title
+from detector.titlepage.parser import textblock_token
+from detector.titlepage.parser.date import parse as parse_date
+from detector.titlepage.parser.institution import parse as parse_institution
+from detector.titlepage.parser.matrikel import parse as parse_matrikel
+from detector.titlepage.parser.person import order_persons
+from detector.titlepage.parser.person import parse_all as parse_person_all
+from detector.titlepage.parser.thesis import parse as parse_thesis
+from detector.titlepage.parser.title import parse as parse_title
 
 
 def parse(text: PageTextNavigator) -> iamraw.TitlePage:
