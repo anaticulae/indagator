@@ -23,7 +23,7 @@ def work(  # pylint:disable=R0914
         pages: tuple = None,
 ) -> str:
     # ensure to have connected pages
-    pageslist = groupby_diff(pages)
+    pageslist = utila.groupby_diff(pages)
 
     if len(pageslist) > 1:
         utila.log(f'more than one potential bib section: {len(pageslist)}')
@@ -58,44 +58,7 @@ def work(  # pylint:disable=R0914
         result.append(extracted)
 
     # select best bib ref
-    best = longest(result)
+    best = utila.longest(result)
 
     dumped = serializeraw.dump_bibliography_reference(best)
     return dumped
-
-
-# TODO: MOVE TO UTILA
-def groupby_diff(pages: tuple, *, diff=1) -> list:
-    """\
-    >>> groupby_diff((1, 5, 2, 6, 9))
-    [(1, 2), (5, 6), (9,)]
-    >>> groupby_diff(None)
-    [None]
-    >>> groupby_diff((5,))
-    [(5,)]
-    """
-    assert diff >= 0, 'negative diff'
-    if not pages:
-        return [None]
-    pages = sorted(pages)
-    result = [[pages[0]]]
-    for item in pages[1:]:
-        if item - result[-1][-1] <= diff:
-            result[-1].append(item)
-        else:
-            result.append([item])
-    result = [tuple(item) for item in result]
-    return result
-
-
-def longest(items):
-    """\
-    >>> longest([(1, 2, 4), (2, 2, 2, 2), (5, 5, 5)])
-    (2, 2, 2, 2)
-    """
-    # TODO: MOVE TO UTILA
-    # TODO: SUPPORT MORE THAN ONE RESULT
-    if not items:
-        return []
-    items = sorted(items, key=len)
-    return items[-1]

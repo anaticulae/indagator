@@ -22,7 +22,7 @@ def test_detector_misc(command, testdir, monkeypatch, capsys):  #pylint: disable
     """Run help and version command to reach basic test coverage"""
     tests.run(command, monkeypatch=monkeypatch)
 
-    tests.write_capsys(capsys)
+    utilatest.write_capsys(capsys)
 
 
 @pytest.mark.parametrize('example', [
@@ -38,4 +38,4 @@ def test_detector_run_work(example, testdir, monkeypatch, capsys):  #pylint: dis
     with utilatest.increased_filecount(output, mindiff=2, maxdiff=2):
         tests.run(command, monkeypatch=monkeypatch)
 
-    tests.write_capsys(capsys)
+    utilatest.write_capsys(capsys)

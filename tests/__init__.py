@@ -29,13 +29,3 @@ fail = functools.partial(
     process=detector.PROCESS,
     success=False,
 )
-
-
-def write_capsys(capsys, path: str = None):
-    """Save logged capsys to filespace"""
-    # TODO: REPLACE WITH UTILA
-    stdout, stderr = capsys.readouterr()
-    change = utila.chdir if path else utila.nothing
-    with change(path):
-        utila.file_create('logging.txt', stdout)
-        utila.file_create('error.txt', stderr)
