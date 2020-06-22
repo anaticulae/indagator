@@ -1,0 +1,19 @@
+.. _0_5_0:
+
+RP 0.5.0
+=========
+
+* [ ] refactor titlepage extractor to separate package
+
+* [ ] replace moved code and remove outdated code
+
+* [ ] add math extractor step
+
+code quality
+------------
+
+before
+~~~~~~
+
+* Total coverage: 95.53%
+* Your code has been rated: 10.0/10
