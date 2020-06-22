@@ -43,6 +43,16 @@ WORKPLAN = [
         ],
         output=(TITLEPAGE_OUTPUT,),
     ),
+    step(
+        'formula',
+        inputs=[
+            ResultFile('rawmaker', 'oneline_text_text'),
+            ResultFile('rawmaker', 'oneline_text_positions'),
+            ResultFile('rawmaker', 'border_pages'),
+            ResultFile('groupme', 'footer_footerheader'),
+        ],
+        output=('formula',),
+    ),
 ]
 
 

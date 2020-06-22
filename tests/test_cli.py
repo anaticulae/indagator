@@ -35,7 +35,7 @@ def test_detector_run_work(example, testdir, monkeypatch, capsys):  #pylint: dis
     output = str(testdir)
     command = f'-i {example} -o {output}'
 
-    with utilatest.increased_filecount(output, mindiff=2, maxdiff=2):
+    with utilatest.increased_filecount(output, mindiff=3, maxdiff=3):
         tests.run(command, monkeypatch=monkeypatch)
 
     utilatest.write_capsys(capsys)

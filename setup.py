@@ -54,9 +54,10 @@ if __name__ == "__main__":
         ],
         packages=[
             'detector',
-            'detector.feature',
             'detector.bibliography',
             'detector.bibliography.reference',
+            'detector.feature',
+            'detector.formula',
             'detector.titlepage',
             'detector.titlepage.parser',
         ],
