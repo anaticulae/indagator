@@ -23,14 +23,7 @@ import tests.resources
 WORKER = 12
 
 
-def install_requirements():
-    utilatest.clean_install(detector.ROOT, detector.PACKAGE)
-
-
 def sync_resources():
-    completed = utila.run('power --all', tests.resources.RESOURCES)
-    assert completed.returncode == utila.SUCCESS, str(completed)
-
     utila.log('generate jam')
     todo = [
         f'jam -i {inpath} -o {outpath} --remove=0' for inpath, outpath in zip(
