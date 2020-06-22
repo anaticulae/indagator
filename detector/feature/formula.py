@@ -31,5 +31,5 @@ def work(
         parsed = detector.formula.parser.parse(page)
         result.append(parsed)
 
-    dumped = detector.formula.serialize.dump_formulas(result)
+    dumped = serializeraw.dump_formulas(result)
     return dumped

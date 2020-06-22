@@ -21,6 +21,7 @@ import detector.feature.titlepage
 import detector.titlepage
 import detector.titlepage.parser.complete
 import detector.titlepage.parser.person
+import detector.titlepage.strategy
 
 
 @utilatest.skip_longrun

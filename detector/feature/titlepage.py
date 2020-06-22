@@ -57,6 +57,7 @@ import utila
 
 import detector.titlepage
 import detector.titlepage.parser.complete
+import detector.titlepage.strategy
 
 # TODO: MOVE TO MORE GENERAL POSITION
 # TODO: check 0.1, use a higher number?
