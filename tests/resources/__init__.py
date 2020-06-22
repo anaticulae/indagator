@@ -20,8 +20,8 @@ power.setup(detector.ROOT)
 RESOURCES = os.path.join(detector.ROOT, 'tests/resources')
 
 GENERATED = os.path.join(RESOURCES, 'generated')
-# TODO: remove _ after fixing path bug
-NO_TITLE = os.path.join(GENERATED, '_notitle')
+
+NO_TITLE = os.path.join(GENERATED, 'notitle')
 
 NO_TITLE_EXAMPLE = [
     power.DOCU07_PDF,
