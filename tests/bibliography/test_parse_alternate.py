@@ -7,13 +7,13 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import power
 import pytest
 import serializeraw
 import utila
 import utilatest
 
 import detector.bibliography.alternate
-import tests.resources
 
 
 @pytest.mark.parametrize('pages, expected', [
@@ -25,7 +25,7 @@ import tests.resources
 @utilatest.skip_longrun
 def test_parse_bibliography_master116_page_x(pages, expected):
     navigators = serializeraw.create_pagetextnavigators_frompath(
-        tests.resources.MASTER116,
+        power.link(power.MASTER116_PDF),
         prefix='oneline',
         pages=pages,
     )
@@ -38,7 +38,7 @@ def test_parse_bibliography_hurenkind():
     expected = 8
     pages = (51)
     navigators = serializeraw.create_pagetextnavigators_frompath(
-        tests.resources.BACHELOR56,
+        power.link(power.BACHELOR056_PDF),
         prefix='oneline',
         pages=pages,
     )

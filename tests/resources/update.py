@@ -44,7 +44,7 @@ def sync_resources():
 
 
 def extract_examples():
-    if os.path.exists(tests.resources.BACHELOR241):
+    if os.path.exists(power.link(power.BACHELOR241_PDF)):
         return
     todo = []
     todo.extend(extract())
@@ -60,21 +60,20 @@ ONELINE = detector.feature.titlepage.RAWMAKER_CONFIGURATION
 # scheduler gets hungry in the end and runs with low cpu load.
 # NOTE: This schedule is orderd by the required runtime on my computer.
 PACKAGE = [
-    (tests.resources.MASTER116_PDF, tests.resources.MASTER116,
-     '0:25,97,98,99,100'),
-    (tests.resources.MASTER98_PDF, tests.resources.MASTER98, '0:5'),
-    (tests.resources.BACHELOR90_PDF, tests.resources.BACHELOR90, '0:5,84:90'),
-    (tests.resources.BACHELOR56_PDF, tests.resources.BACHELOR56, '47:55'),
-    (tests.resources.MASTER89_PDF, tests.resources.MASTER89, '68:82'),
-    (tests.resources.BACHELOR76_PDF, tests.resources.BACHELOR76, '0:5'),
-    (tests.resources.MASTER72_PDF, tests.resources.MASTER72, '0:10'),
-    (tests.resources.BACHELOR63_PDF, tests.resources.BACHELOR63, '0:9,59:62'),
+    (power.MASTER116_PDF, power.link(power.MASTER116_PDF), '0:25,97,98,99,100'),
+    (power.MASTER098_PDF, power.link(power.MASTER098_PDF), '0:5'),
+    (power.BACHELOR090_PDF, power.link(power.BACHELOR090_PDF), '0:5,84:90'),
+    (power.BACHELOR056_PDF, power.link(power.BACHELOR056_PDF), '47:55'),
+    (power.MASTER089_PDF, power.link(power.MASTER089_PDF), '68:82'),
+    (power.BACHELOR076_PDF, power.link(power.BACHELOR076_PDF), '0:5'),
+    (power.MASTER072_PDF, power.link(power.MASTER072_PDF), '0:10'),
+    (power.BACHELOR063_PDF, power.link(power.BACHELOR063_PDF), '0:9,59:62'),
     (power.DOCU07_PDF, power.link(power.DOCU07_PDF), None),
     (power.DOCU09_PDF, power.link(power.DOCU09_PDF), None),
     (power.DOCU27_PDF, power.link(power.DOCU27_PDF), None),
-    (tests.resources.HOMEWORK50_PDF, tests.resources.HOMEWORK50, '0:10'),
-    (tests.resources.BACHELOR241_PDF, tests.resources.BACHELOR241, '0:10'),
-    (tests.resources.MASTER78_PDF, tests.resources.MASTER78, '0:5'),
+    (power.HOMEWORK050_PDF, power.link(power.HOMEWORK050_PDF), '0:10'),
+    (power.BACHELOR241_PDF, power.link(power.BACHELOR241_PDF), '0:10'),
+    (power.MASTER078_PDF, power.link(power.MASTER078_PDF), '0:5'),
 ]
 
 

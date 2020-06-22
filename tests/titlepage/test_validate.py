@@ -8,6 +8,7 @@
 # =============================================================================
 
 import iamraw
+import power
 import pytest
 import serializeraw
 import utilatest
@@ -62,22 +63,26 @@ def homework50(titlepage: iamraw.TitlePage):
 
 
 @pytest.mark.parametrize('source, check', [
-    pytest.param(tests.resources.BACHELOR76, bachelor76, id='bachelor76'),
-    pytest.param(tests.resources.MASTER98, master98, id='master98'),
     pytest.param(
-        tests.resources.BACHELOR241,
+        power.link(power.BACHELOR076_PDF),
+        bachelor76,
+        id='bachelor76',
+    ),
+    pytest.param(power.link(power.MASTER098_PDF), master98, id='master98'),
+    pytest.param(
+        power.link(power.BACHELOR241_PDF),
         bachelor241,
         id='bachelor241',
         marks=pytest.mark.xfail(reason='improve headline parser'),
     ),
     pytest.param(
-        tests.resources.MASTER78,
+        power.link(power.MASTER078_PDF),
         master78,
         id='master78',
         marks=pytest.mark.xfail(reason='improve headline parser'),
     ),
     pytest.param(
-        tests.resources.HOMEWORK50,
+        power.link(power.HOMEWORK050_PDF),
         homework50,
         id='homework50',
         marks=pytest.mark.xfail(reason='improve headline parser'),

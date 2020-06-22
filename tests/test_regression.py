@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import power
 import utila
 import utilatest
 
@@ -37,7 +38,7 @@ def test_regression_detector(testdir, monkeypatch):
     root = str(testdir)
 
     pattern = '[rawmaker|groupme]*.yaml'
-    utila.copy_content(tests.resources.BACHELOR90, root, pattern=pattern)
+    utila.copy_content(power.link(power.BACHELOR090_PDF), root, pattern=pattern)
 
     jobs = 5
     cmd = f'-j{jobs} --all'

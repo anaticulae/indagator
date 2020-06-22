@@ -21,8 +21,6 @@ import detector.feature.titlepage
 import detector.titlepage
 import detector.titlepage.parser.complete
 import detector.titlepage.parser.person
-import tests
-import tests.resources as tr  # pylint:disable=W0611
 
 
 @utilatest.skip_longrun
@@ -94,22 +92,22 @@ def check_bachelor90(titlepage: iamraw.TitlePage):
 
 @pytest.mark.parametrize('source, checker', [
     pytest.param(
-        tests.resources.MASTER72_PDF,
+        power.MASTER072_PDF,
         check_72_pages,
         id='master72',
     ),
     pytest.param(
-        tests.resources.MASTER78_PDF,
+        power.MASTER078_PDF,
         check_78_pages,
         id='master78',
     ),
     pytest.param(
-        tests.resources.MASTER116_PDF,
+        power.MASTER116_PDF,
         check_116_pages,
         id='master116',
     ),
     pytest.param(
-        tests.resources.BACHELOR90_PDF,
+        power.BACHELOR090_PDF,
         check_bachelor90,
         id='bachelor90',
         marks=pytest.mark.xfail(reason='improve title page parser')),
@@ -153,7 +151,7 @@ def parse_titlepages(path: str, pages: tuple = None):
 
 @utilatest.skip_longrun
 def test_detector_feature_titlepage_select_best():
-    parsed = parse_titlepages(tr.MASTER72, pages=None)
+    parsed = parse_titlepages(power.link(power.MASTER072_PDF), pages=None)
     best = detector.titlepage.strategy.select_best(parsed)
     assert best == parsed[0], str(best)
 

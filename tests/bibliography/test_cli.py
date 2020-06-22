@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import power
 import pytest
 import serializeraw
 import utila
@@ -47,11 +48,11 @@ def master89(flat):
 
 # yapf:disable
 @pytest.mark.parametrize('source, pages, expected, validate', [
-    pytest.param(tests.resources.BACHELOR56, '49:53', 32, None, id='bachelor56'),
-    pytest.param(tests.resources.BACHELOR63, '59', 12, None, id='bachelor63'),
-    pytest.param(tests.resources.MASTER116, '97,98,99,100', 46, None, id='master116'),
-    pytest.param(tests.resources.MASTER89, '70:81', 149, master89, id='master89'),
-    pytest.param(tests.resources.BACHELOR90, '84:89', 52, bachelor90, id='bachelor90'),
+    pytest.param(power.link(power.BACHELOR056_PDF), '49:53', 32, None, id='bachelor56'),
+    pytest.param(power.link(power.BACHELOR063_PDF), '59', 12, None, id='bachelor63'),
+    pytest.param(power.link(power.MASTER116_PDF), '97,98,99,100', 46, None, id='master116'),
+    pytest.param(power.link(power.MASTER089_PDF), '70:81', 149, master89, id='master89'),
+    pytest.param(power.link(power.BACHELOR090_PDF), '84:89', 52, bachelor90, id='bachelor90'),
 ])
 # yapf:enable
 @utilatest.skip_longrun
@@ -78,7 +79,7 @@ def test_detector_bibliography_run(
 
 def test_unconnected_pages(testdir, monkeypatch, capsys):
     root = testdir.tmpdir
-    source = tests.resources.BACHELOR56
+    source = power.link(power.BACHELOR056_PDF)
     pages = '1,2,3,6,7,8'  # invalid pages input
 
     command = f'-i {source} -o {root} --bibliography --pages={pages}'
