@@ -94,13 +94,13 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
         # remove year from right to left
         rest = ' '.join(rest.rsplit(year[0], maxsplit=1))
 
-    # TODO: SAVE TO BIB REF AFTER UPGRADING IAMRAW
-    publisher = rest  # pylint:disable=W0612
+    # TODO: ADD PUBLISHER EXTRACTOR
 
     result = iamraw.BibliographyReference(
         authors=authors,
         title=title,
         raw=raw,
+        publisher=rest,
     )
     if page:
         result.page = page[1][0]
