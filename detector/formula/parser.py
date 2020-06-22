@@ -7,33 +7,11 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import collections
-import dataclasses
-import typing
-
+import iamraw
 import utila
 
-PageContentFormula = collections.namedtuple(
-    'PageContentFormula',
-    'content page',
-)
 
-PageContentFormulas = typing.List[PageContentFormula]
-
-
-@dataclasses.dataclass
-class Formula:
-    line: int = None
-    lineend: int = None
-    char: int = None
-    charend: int = None
-    raw: str = None
-
-
-Formulas = typing.List[Formula]
-
-
-def parse(ptcn) -> PageContentFormula:
+def parse(ptcn) -> iamraw.PageContentFormula:
     result = []
     for lineindex, line in enumerate(ptcn):
         extracted = extract_formula(line)
@@ -43,10 +21,10 @@ def parse(ptcn) -> PageContentFormula:
             item.line = lineindex
         result.extend(extracted)
 
-    return PageContentFormula(page=ptcn.page, content=result)
+    return iamraw.PageContentFormula(page=ptcn.page, content=result)
 
 
-def extract_formula(line) -> Formulas:
+def extract_formula(line) -> iamraw.Formulas:
     # TODO: IMPROVE THIS VERY SIMPLE FORMULA CHECKER
     chars = [ord(char) for char in line.text]
     maxchar = utila.maxs(chars)
@@ -58,6 +36,6 @@ def extract_formula(line) -> Formulas:
     # if '=' not in raw:
     #     return None
     result = [
-        Formula(raw=raw),
+        iamraw.Formula(raw=raw),
     ]
     return result
