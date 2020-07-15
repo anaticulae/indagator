@@ -126,14 +126,16 @@ COURSES = [
 # TODO: Load from dictonary
 UNIVERSITIES = [
     'Duale Hochschule Baden-Würtemberg',
+    'Freie Universität Berlin',
     'Hochschule für Technik und Wirtschaft Berlin',
     'Katholische Hochschule Nordrhein-Westfalen',
     'Ludwig-Maximilians-Universität München'
     'Suchtakademie Berlin-Brandenburg',
-    'Technische Universität Berlin',
     'Technische Universita\xA8t Berlin',  # TODO: INVESTIGATE HERE
+    'Technische Universität Berlin',
     'Technische Universität Darmstadt',
     'Universität Bielefeld',
+    'Universität Hamburg',
     'Universität Münster',
 ]
 
