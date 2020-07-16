@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.6.0
+
+### Feature
+
+* extend university list (bc33db0e90b0)
+
 ## v0.5.6
 
 ## v0.5.5
