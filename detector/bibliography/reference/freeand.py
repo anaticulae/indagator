@@ -41,12 +41,13 @@ import utila
 import detector.bibliography.reference as dbr
 import detector.bibliography.reference.authors as dbra
 
+# TODO: REMOVE 4,5 HACK: WHEN SUPPORTING HIGHNOTE
 AND = r"""
     (?P<authors>.+)
     \(
         (
             (?P<oj>o\.j\.)|
-            ((?P<year>\d{4})([ ]{0,3}\-(?P<yearend>\d{4})[ ]{0,3}){0,1})
+            ((?P<year>\d{4,5})([ ]{0,3}\-(?P<yearend>\d{4})[ ]{0,3}){0,1})
             (?P<number>a|b|c|d){0,1}  # optional char
         )
     \)

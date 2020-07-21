@@ -30,8 +30,6 @@ def test_parse_master116_page24():
 
 def test_parse_master116_page23():
     content = formulas(source=power.MASTER116_PDF, page=23)
-    for item in content:
-        print(item)
     # TODO: merge multiline equations together
     assert len(content) == 17  # not correct, if changed, algo changed
 

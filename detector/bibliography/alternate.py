@@ -64,5 +64,6 @@ def split_bibliography(raw: str) -> iamraw.BibliographyReference:
     matched = detector.bibliography.reference.tech.parses(raw)  # pylint:disable=R0204
     if matched:
         return matched[0]
-    default = iamraw.BibliographyReference(raw=raw)
-    return default
+    return None
+    # default = iamraw.BibliographyReference(raw=raw)
+    # return default
