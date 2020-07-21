@@ -52,7 +52,7 @@ def master89(flat):
     pytest.param(power.link(power.BACHELOR063_PDF), '59', 12, None, id='bachelor63',
                  marks=pytest.mark.xfail(reason='improve layout config')),
     pytest.param(power.link(power.MASTER116_PDF), '97,98,99,100', 46, None, id='master116'),
-    pytest.param(power.link(power.MASTER089_PDF), '70:81', 149, master89, id='master89'),
+    pytest.param(power.link(power.MASTER089_PDF), None, 149, master89, id='master89'),
     pytest.param(power.link(power.BACHELOR090_PDF), '84:89', 52, bachelor90, id='bachelor90'),
 ])
 # yapf:enable

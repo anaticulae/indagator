@@ -65,7 +65,7 @@ def extract_without_titlepage():
 # NOTE: This schedule is orderd by the required runtime on my computer.
 PACKAGE = [
     (power.MASTER116_PDF, '0:25,97,98,99,100'),
-    (power.MASTER098_PDF, '0:5'),
+    (power.MASTER098_PDF, None),
     (power.BACHELOR090_PDF, '0:5,84:90'),
     (power.BACHELOR056_PDF, '47:55'),
     (power.MASTER089_PDF, '68:82'),
