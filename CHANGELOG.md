@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.7.0
+
+### Feature
+
+* add error level checker to skip male extractions (ea72e4cc3c07)
+
+### Fix
+
+* disable default parser cause of to many fault parsing (5254d84e6921)
+
 ## v0.6.0
 
 ### Feature
