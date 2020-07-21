@@ -19,6 +19,8 @@ MIN_CONTENT_LENGTH = 15  # TODO: HOLY VALUE
 
 MIN_WORD_COUNT = 2  # TODO: HOLY VALUE
 
+ERROR_MAX_LEVEL = 0.25
+
 
 def extracts(items: texmex.PageTextNavigators) -> iamraw.BibliographyReferences:
     result = []
@@ -32,6 +34,12 @@ def extracts(items: texmex.PageTextNavigators) -> iamraw.BibliographyReferences:
         return []
     for page in parsed:
         extracted = extract(page)
+        if not extracted:
+            continue
+        error = len([item for item in extracted if not item])
+        error_quote = error / len(extracted)
+        if error_quote >= ERROR_MAX_LEVEL:
+            continue
         result.append(extracted)
     return result
 
