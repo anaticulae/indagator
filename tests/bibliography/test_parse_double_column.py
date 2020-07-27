@@ -8,14 +8,12 @@
 # =============================================================================
 
 import power
-import pytest
 import serializeraw
 import utila
 
 import detector.bibliography.column
 
 
-@pytest.mark.xfail(reason='improve layout configuration')
 def test_parse_bibliography_bachelor63_page59():
     """Latex double column. Left side with [Hem10] pattern"""
     pages = (59)
