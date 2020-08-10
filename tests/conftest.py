@@ -28,8 +28,5 @@ def pytest_sessionstart():
 
 
 def extract():
-    utila.log('synchronize resources')
     tests.resources.update.sync_resources()
-
-    utila.log('extract resources')
     tests.resources.update.extract_examples()
