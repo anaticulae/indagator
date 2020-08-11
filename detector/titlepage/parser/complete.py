@@ -27,10 +27,7 @@ def parse(text: PageTextNavigator) -> iamraw.TitlePage:
     """Extract `TitlePage` out of tile page data
 
     Args:
-        text(PageTextNavigator/str): complete text content of title page
-                                     with NEWLINES. Ordinary str input
-                                     in conveted to PageTextNavigator
-                                     with equal BoundingBoxes
+        text(PageTextNavigator): content of potential title page
     Returns:
         extracted TitlePage
     """
@@ -41,7 +38,7 @@ def parse(text: PageTextNavigator) -> iamraw.TitlePage:
 
     text = utila.NEWLINE.join([item.text for item in text[:]])
 
-    # remove textual lines cause there slow down persons parsing
+    # remove textual horizontal lines cause there slow down persons parsing
     text = re.sub(r'[\-\=\_]{5,}', '', text)
 
     if isinstance(title, str):
