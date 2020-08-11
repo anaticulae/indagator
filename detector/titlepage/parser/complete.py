@@ -10,8 +10,8 @@
 import re
 
 import iamraw
+import texmex
 import utila
-from texmex import PageTextNavigator
 
 from detector.titlepage.parser import textblock_token
 from detector.titlepage.parser.date import parse as parse_date
@@ -23,7 +23,7 @@ from detector.titlepage.parser.thesis import parse as parse_thesis
 from detector.titlepage.parser.title import parse as parse_title
 
 
-def parse(text: PageTextNavigator) -> iamraw.TitlePage:
+def parse(text: texmex.PageTextNavigator) -> iamraw.TitlePage:
     """Extract `TitlePage` out of tile page data
 
     Args:
@@ -31,7 +31,7 @@ def parse(text: PageTextNavigator) -> iamraw.TitlePage:
     Returns:
         extracted TitlePage
     """
-    assert isinstance(text, PageTextNavigator), type(text)
+    assert isinstance(text, texmex.PageTextNavigator), type(text)
     result = iamraw.TitlePage()
     with utila.profile('title'):  # TODO: USE VERBOSE FLAG
         title = parse_title(text)

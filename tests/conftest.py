@@ -9,7 +9,6 @@
 
 import power
 import pytest
-import utila
 
 import detector
 import tests.resources
