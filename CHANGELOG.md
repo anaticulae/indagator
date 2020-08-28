@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.8.0
+
+### Feature
+
+* add extracted title pdf page to titlepage (bfa0b0d00b89)
+
+### Documentation
+
+* fix outdated interface documentation (98b97e29e4a6)
+
 ## v0.7.3
 
 ## v0.7.2
