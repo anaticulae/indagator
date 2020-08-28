@@ -32,7 +32,8 @@ def parse(text: texmex.PageTextNavigator) -> iamraw.TitlePage:
         extracted TitlePage
     """
     assert isinstance(text, texmex.PageTextNavigator), type(text)
-    result = iamraw.TitlePage()
+    result = iamraw.TitlePage(pageraw=text.page)
+
     with utila.profile('title'):  # TODO: USE VERBOSE FLAG
         title = parse_title(text)
 

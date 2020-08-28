@@ -81,6 +81,7 @@ FIRST_EXPECTED = iamraw.TitlePage(
         ),
     ],
     institution=FIRST_INSTITUTION,
+    pageraw=-1,
 )
 
 SECOND = """
@@ -150,6 +151,7 @@ SECOND_EXPECTED = iamraw.TitlePage(
         ),
     ],
     institution=SECOND_INSTITUTION,
+    pageraw=-1,
 )
 
 THIRD = """
@@ -219,4 +221,5 @@ THIRD_EXPECTED = iamraw.TitlePage(
         title='Masterarbeit',
         raw='Masterarbeit',
     ),
+    pageraw=-1,
 )
