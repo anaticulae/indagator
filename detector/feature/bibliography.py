@@ -23,7 +23,11 @@ def work(  # pylint:disable=R0914
         pages: tuple = None,
 ) -> str:
     # ensure to have connected pages
-    pageslist = utila.groupby_diff(pages)
+    if pages:
+        pageslist = utila.groupby_diff(pages)
+    else:
+        # analyze all pages
+        pageslist = [None]
 
     if len(pageslist) > 1:
         utila.log(f'more than one potential bib section: {len(pageslist)}')
