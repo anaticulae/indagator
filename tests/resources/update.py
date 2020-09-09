@@ -9,7 +9,7 @@
 
 import os
 
-import hey.example
+import genex
 import power
 import utila
 import utilatest
@@ -42,7 +42,7 @@ def extract_examples():
 
 
 def extract():
-    todo = hey.example.todolist(
+    todo = genex.todolist(
         PACKAGE,
         power.generated(),
         groupme=True,
@@ -52,7 +52,7 @@ def extract():
 
 def extract_without_titlepage():
     destination = tests.resources.NO_TITLE
-    todo = hey.example.todolist(
+    todo = genex.todolist(
         files=notitle(),
         destination=destination,
         pages='0:10',
