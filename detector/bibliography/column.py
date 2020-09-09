@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import hey.geometry.double_column
+import geostrat
 import iamraw
 import texmex
 
@@ -25,7 +25,7 @@ def extracts(items: texmex.PageTextNavigators):
 
 
 def extract(content: texmex.PageTextNavigator) -> iamraw.BibliographyReferences:
-    parsed = hey.geometry.double_column.parse_page(content)
+    parsed = geostrat.dc_parse_page(content)
     if parsed is None:
         return None
 

@@ -7,8 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import hey.geometry.alternate
-import hey.text.utils
+import geostrat
 import iamraw
 import texmex
 
@@ -24,13 +23,13 @@ ERROR_MAX_LEVEL = 0.25
 
 def extracts(items: texmex.PageTextNavigators) -> iamraw.BibliographyReferences:
     result = []
-    config = hey.geometry.alternate.ParserConfig(
+    config = geostrat.ParserConfig(
         min_content_length=MIN_CONTENT_LENGTH,
         min_word_count=MIN_WORD_COUNT,
     )
     try:
-        parsed = hey.geometry.alternate.parse_pages(items, config=config)
-    except hey.geometry.alternate.NoMultipleLiningPoints:
+        parsed = geostrat.al_parse_pages(items, config=config)
+    except geostrat.NoMultipleLiningPoints:
         return []
     for page in parsed:
         extracted = extract(page)
@@ -50,7 +49,7 @@ def extract(content) -> iamraw.BibliographyReferences:
         return []
     result = []
     for group in content:
-        raw = hey.text.utils.connect_text(group)
+        raw = geostrat.connect_text(group)
         parsed = split_bibliography(raw)
         result.append(parsed)
     return result
