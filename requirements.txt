@@ -10,3 +10,4 @@
 hey==4.0.1
 iamraw==2.4.2
 utila==2.8.0
+geostrat==0.1.1
