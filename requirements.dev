@@ -17,3 +17,6 @@ power==0.15.0
 
 # test data generator
 jam==0.2.18
+
+# example data generator
+genex==0.1.1
