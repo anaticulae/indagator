@@ -46,7 +46,7 @@ if __name__ == "__main__":
         long_description=README,
         name='detector',
         platforms='any',
-        url='https://dev.package.checkitweg.de/hey',
+        url='https://dev.package.checkitweg.de/detector',
         version=VERSION,
         zip_safe=False,  # create 'zip'-file if True. Don't do it!
         classifiers=[
