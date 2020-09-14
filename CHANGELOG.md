@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.8.3
+
+### Fix
+
+* fix link to package description (2427db197684)
+
 ## v0.8.2
 
 ## v0.8.1
