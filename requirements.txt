@@ -7,6 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-iamraw==3.2.0
-utila==2.10.0
-geostrat==0.1.2
+iamraw==4.0.1
+utila==2.11.0
+geostrat==1.0.0
