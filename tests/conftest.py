@@ -7,25 +7,89 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import os
+
+import genex
 import power
 import pytest
+import utila
+import utilatest
 
 import detector
-import tests.resources
-import tests.resources.update
 
 pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
 
+power.setup(detector.ROOT)
+
 PACKAGE = detector.PACKAGE
 
-REQUIRED = tests.resources.REQUIRED_RESOURCES + tests.resources.NO_TITLE_GENERATED
+WORKER = 4
+
+# Put long documents first! If we have the long documents at the end, the
+# scheduler gets hungry in the end and runs with low cpu load.
+# NOTE: This schedule is orderd by the required runtime on my computer.
+RESOURCES = [
+    (power.MASTER116_PDF, '0:25,97,98,99,100'),
+    (power.MASTER098_PDF, None),
+    (power.BACHELOR090_PDF, '0:5,84:90'),
+    (power.BACHELOR056_PDF, '47:55'),
+    (power.MASTER089_PDF, '68:82'),
+    (power.BACHELOR076_PDF, '0:5'),
+    (power.MASTER072_PDF, '0:10'),
+    (power.BACHELOR063_PDF, '0:9,59:62'),
+    (power.DOCU07_PDF, None),
+    (power.DOCU09_PDF, None),
+    (power.DOCU27_PDF, None),
+    (power.HOMEWORK050_PDF, '0:10'),
+    (power.BACHELOR241_PDF, '0:10'),
+    (power.MASTER078_PDF, '0:5'),
+]
+
+RESOURCES_NOTITLE = [
+    power.DOCU07_PDF,
+    power.MASTER078_PDF,
+    power.MASTER072_PDF,
+    power.DOCU09_PDF,
+    power.DOCU27_PDF,
+]
+
+
+def extract(resources):
+    genex.extract(
+        resources + [power.REPOSITORY],
+        destination=power.generated(),
+        groupme=True,
+        pages=':',
+        worker=WORKER,
+    )
+
+
+def extract_notitle(resources):
+    destination = power.generated(folder='notitle')
+    files = [item[0] if isinstance(item, tuple) else item for item in resources]
+    # prepare
+    without_titlepage = [
+        os.path.join(destination, f'{item}.pdf')
+        for item in utilatest.simplify_testfile_names(
+            files + [power.REPOSITORY],  # ensure correct parent
+            sort=False,
+        )
+    ]
+    # jam
+    todo = []
+    for inpath, outpath in zip(files, without_titlepage):
+        todo.append(f'jam -i {inpath} -o {outpath} --remove=0')
+    utila.run_parallel(todo)
+
+    # generate
+    genex.extract(
+        without_titlepage + [destination],  # ensure correct parent
+        destination,
+        pages='0:10',
+        worker=1,
+    )
 
 
 @pytest.mark.usefixtures('session')
 def pytest_sessionstart():
-    power.run(REQUIRED)
-
-
-def extract():
-    tests.resources.update.sync_resources()
-    tests.resources.update.extract_examples()
+    power.run()
