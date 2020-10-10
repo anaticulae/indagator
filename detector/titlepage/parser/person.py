@@ -67,12 +67,13 @@ def create_with_title_pattern():
         r'Verfasser(in)?',
         r'Zweitprüfer(in)?',
         r'vorgelegt von',
+        r'Name, Vorname:'
         # r'von', # TODO: exclude von in `title`
     ]
     preamble = [fr'(?P<t{index}>{item})' for index, item in enumerate(preamble)]
     preamble = '(' + '|'.join(preamble) + ')'  # pylint:disable=R0204
     between = r'[:]?[\s ]{0,8}'
-    name = r'(?P<names>(\w+[ ]{0,5}){1,5})\b'
+    name = r'(?P<names>(\w+\,?[ ]{0,5}){1,5})\b'
     pattern = re.compile(preamble + between + name, re.IGNORECASE)
     return pattern
 
@@ -95,7 +96,9 @@ def parse_person_without_title(raw: str) -> iamraw.Person:
     try:
         # TODO: SUPPORT SINGLE NAME?
         # TODO: LINT TO VERIFY PRE AND SUR NAME
-        firstname, name = matched['names'].rsplit(' ', maxsplit=1)
+        # TODO: REMOVE , after improving regex
+        names = matched['names'].replace(',', '')
+        firstname, name = names.rsplit(' ', maxsplit=1)
     except ValueError:
         utila.error(f'could not split: {matched["names"]}; {matched}')
         return None

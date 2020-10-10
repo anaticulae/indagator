@@ -62,6 +62,14 @@ def homework50(titlepage: iamraw.TitlePage):
     assert len(titlepage.examiner) == 3, titlepage.examiner
 
 
+def bachelor51(titlepage: iamraw.TitlePage):
+    assert titlepage
+    assert titlepage.author.name == 'Ilja'
+    assert titlepage.author.firstname == 'Laas'
+    assert titlepage.thesis.typ == iamraw.DocumentType.BACHELOR
+    # assert len(titlepage.examiner) == 2, titlepage.examiner
+
+
 @pytest.mark.parametrize('source, check', [
     pytest.param(
         power.link(power.BACHELOR076_PDF),
@@ -69,6 +77,7 @@ def homework50(titlepage: iamraw.TitlePage):
         id='bachelor76',
     ),
     pytest.param(power.link(power.MASTER098_PDF), master98, id='master98'),
+    pytest.param(power.link(power.BACHELOR051_PDF), bachelor51, id='bachelo51'),
     pytest.param(
         power.link(power.BACHELOR241_PDF),
         bachelor241,
