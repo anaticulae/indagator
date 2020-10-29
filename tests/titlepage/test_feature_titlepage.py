@@ -133,7 +133,7 @@ def test_detector_feature_titlepage_complete(
         success=True,
         monkeypatch=monkeypatch,
     )
-    resultpath = detector.path.titlepage(root)
+    resultpath = detector.path.titlepage_detected(root)
     titlepage: iamraw.TitlePage = serializeraw.load_titlepage(resultpath)
     assert titlepage
 

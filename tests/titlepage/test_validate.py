@@ -104,6 +104,6 @@ def test_validate_titlepage_extractor(source, check, testdir, monkeypatch):  #py
 
     tests.run(cmd, monkeypatch=monkeypatch)
 
-    source = detector.path.titlepage(outdir)
+    source = detector.path.titlepage_detected(outdir)
     titlepage = serializeraw.load_titlepage(source)
     check(titlepage)

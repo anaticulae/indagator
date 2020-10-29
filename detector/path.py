@@ -19,10 +19,19 @@ def bibliography_detected(path: str, prefix: str = '') -> str:
     )
 
 
-def titlepage(path: str, prefix: str = '') -> str:
+def titlepage_detected(path: str, prefix: str = '') -> str:
     return utila.pathconnector(
         path,
         'detector',
         'titlepage_detected',
+        prefix,
+    )
+
+
+def formula_detected(path: str, prefix: str = '') -> str:
+    return utila.pathconnector(
+        path,
+        'detector',
+        'formula_formula',
         prefix,
     )
