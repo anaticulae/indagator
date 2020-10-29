@@ -7,8 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import os
-
 import iamraw
 import power
 import pytest
@@ -18,6 +16,7 @@ import utilatest
 
 import detector.cli
 import detector.feature.titlepage
+import detector.path
 import detector.titlepage
 import detector.titlepage.parser.complete
 import detector.titlepage.parser.person
@@ -134,10 +133,7 @@ def test_detector_feature_titlepage_complete(
         success=True,
         monkeypatch=monkeypatch,
     )
-    cli = detector.cli
-    resultfile = f'{cli.PROCESS}__{cli.TITLEPAGE_STEP}_{cli.TITLEPAGE_OUTPUT}.yaml'
-    resultpath = os.path.join(root, resultfile)
-
+    resultpath = detector.path.titlepage(root)
     titlepage: iamraw.TitlePage = serializeraw.load_titlepage(resultpath)
     assert titlepage
 

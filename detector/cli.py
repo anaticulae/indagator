@@ -20,10 +20,6 @@ DESCRIPTION = ''
 
 ResultFile = lambda producer, name: RF(producer=producer, name=name)  # pylint:disable=C0103
 
-TITLEPAGE_STEP = 'titlepage'
-
-TITLEPAGE_OUTPUT = 'detected'
-
 WORKPLAN = [
     step(
         'bibliography',
@@ -33,15 +29,15 @@ WORKPLAN = [
             ResultFile('rawmaker', 'oneline_text_text'),
             ResultFile('rawmaker', 'oneline_text_positions'),
         ],
-        output=(TITLEPAGE_OUTPUT,),
+        output=('detected',),
     ),
     step(
-        TITLEPAGE_STEP,
+        'titlepage',
         inputs=[
             ResultFile('rawmaker', 'oneline_text_text'),
             ResultFile('rawmaker', 'oneline_text_positions'),
         ],
-        output=(TITLEPAGE_OUTPUT,),
+        output=('detected',),
     ),
     step(
         'formula',
