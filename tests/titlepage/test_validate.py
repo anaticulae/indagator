@@ -91,7 +91,7 @@ def bachelor51(titlepage: iamraw.TitlePage):
         marks=pytest.mark.xfail(reason='improve headline parser'),
     ),
     pytest.param(
-        power.link(power.HOMEWORK050_PDF),
+        power.link(power.HOME050_PDF),
         homework50,
         id='homework50',
         marks=pytest.mark.xfail(reason='improve headline parser'),
