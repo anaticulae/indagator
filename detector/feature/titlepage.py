@@ -70,19 +70,19 @@ RAWMAKER_CONFIGURATION = (
 SELECTED_PAGES = (0, 1, 2, 3, 4)
 
 
-def work(text: str, text_positions: str, pages: tuple = None) -> str:
+def work(text: str, textpositions: str, pages: tuple = None) -> str:
     if pages is None:
         # first five pages
         pages = SELECTED_PAGES
     text = serializeraw.load_document(text, pages=pages)
-    text_positions = serializeraw.load_textpositions(
-        text_positions,
+    textpositions = serializeraw.load_textpositions(
+        textpositions,
         pages=pages,
     )
 
     navigators = texmex.create_pagetextnavigators(
         text,
-        text_positions,
+        textpositions,
     )
 
     parsed = parse_titlepages(navigators, pages)

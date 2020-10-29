@@ -14,14 +14,14 @@ import detector.formula.parser
 
 def work(
         text: str,
-        text_positions: str,
+        textpositions: str,
         sizeandborder: str,
         headerfooter: str,
         pages: tuple = None,
 ) -> str:
     ptcns = serializeraw.create_pagetextcontentnavigators_fromfile(
         text,
-        text_positions,
+        textpositions,
         sizeandborder,
         headerfooter,
         pages=pages,
