@@ -42,6 +42,7 @@ WORKPLAN = [
     step(
         'formula',
         inputs=[
+            ResultFile('rawmaker', 'formula_formula'),
             ResultFile('rawmaker', 'oneline_text_text'),
             ResultFile('rawmaker', 'oneline_text_positions'),
             ResultFile('rawmaker', 'border_pages'),
