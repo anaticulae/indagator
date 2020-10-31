@@ -32,6 +32,9 @@ import utila
 def parse(raw: str) -> iamraw.Matrikel:
     """Parse matrikel number from text line
 
+    >>> parse('(Student No. 532196)')
+    Matrikel(number=532196, intro='Student No.', raw='Student No. 532196')
+
     Args:
         raw(str): raw text of title page
     Returns:
@@ -51,6 +54,7 @@ def parse(raw: str) -> iamraw.Matrikel:
 INTRO = [
     '',
     r'Matrikel-Nr\.',
+    r'Student No\.',
     'Matrikelnummer',
     'vorgelegt von',
 ]
