@@ -69,6 +69,7 @@ def create_with_title_pattern():
         r'Primary Supervisor',
         r'Secondary Supervisor',
         r'vorgelegt von',
+        r'by',
         r'Name, Vorname:'
         # r'von', # TODO: exclude von in `title`
     ]
