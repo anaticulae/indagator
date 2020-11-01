@@ -155,7 +155,6 @@ SECOND_EXPECTED = iamraw.TitlePage(
 )
 
 THIRD = """
-
 Technische Universität Berlin
 
 Fakultät I – Geisteswissenschaften
@@ -179,6 +178,7 @@ Zweitgutachter:  Dipl.-Medienberater Stephan Frühwirt
 
 Abgabedatum:   31.7.2014
 """
+
 THIRD_INSTITUTION = iamraw.Institution(
     courseofstudies='Kommunikation und Sprache',
     department='Geisteswissenschaften',
@@ -220,6 +220,75 @@ THIRD_EXPECTED = iamraw.TitlePage(
         iamraw.DocumentType.MASTER,
         title='Masterarbeit',
         raw='Masterarbeit',
+    ),
+    pageraw=-1,
+)
+
+FOURTH = """\
+THE IMPACT OF EMOTIONAL RATINGS
+ON RISK BEHAVIOR
+
+by
+Venja Och
+B. Sc., Humboldt-Universität zu Berlin, 2012
+(Student No. 532196)
+
+Thesis Submitted in Partial Fulfillment
+of the Requirements for the Degree of
+Master of Science (M. Sc.)
+
+in the
+Department of Psychology
+Faculty of Mathematics and Natural Sciences II
+
+Primary Supervisor: Prof. Dr. T. Schubert
+Secondary Supervisor: Dr. A. Weinreich
+
+January 22, 2014
+"""
+
+FOURTH_EXPECTED = iamraw.TitlePage(
+    title='',
+    thesis=iamraw.TitleThesisType(
+        iamraw.DocumentType.MASTER,
+        title='Master',
+        raw='Master',
+    ),
+    date=iamraw.TitleDate(
+        year=2014,
+        month=1,
+        day=22,
+        location=None,
+        valid=True,
+        raw='January 22, 2014',
+    ),
+    author=iamraw.Person(
+        title=iamraw.AcademicTitle.NO_TITLE,
+        name='Och',
+        firstname='Venja',
+        raw='by\nVenja Och',
+    ),
+    matrikel=iamraw.Matrikel(number=2012, intro=',', raw=', 2012'),
+    examiner=[
+        iamraw.Person(  # TODO: REQUIRE IMPROVEMENT
+            title=iamraw.AcademicTitle.EXAMINIER,
+            name='Schubert',
+            firstname='Prof. Dr. T.',
+            raw='Primary Supervisor: Prof. Dr. T. Schubert',
+        ),
+        iamraw.Person(
+            title=iamraw.AcademicTitle.EXAMINIER,
+            name='Weinreich',
+            firstname='Dr. A.',
+            raw='Secondary Supervisor: Dr. A. Weinreich',
+        )
+    ],
+    institution=iamraw.Institution(
+        courseofstudies=None,
+        department='Mathematics and Natural Sciences II',
+        field='Psychology',
+        institute=None,
+        university='Humboldt-Universität zu Berlin',
     ),
     pageraw=-1,
 )

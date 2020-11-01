@@ -34,6 +34,11 @@ import tests.fixtures.titlepage
         tests.fixtures.titlepage.THIRD_EXPECTED,
         id='third',
     ),
+    pytest.param(
+        tests.fixtures.titlepage.FOURTH,
+        tests.fixtures.titlepage.FOURTH_EXPECTED,
+        id='fourth',
+    ),
 ])
 def test_detector_parse_complete_title_page(page, expected):
     pcn = texmex.create_pagetextnavigator_fromstr(page)
