@@ -106,11 +106,15 @@ DEPARTMENT = [
     'Fakultät I -',
     'Fakultät I ',
     'Fakultät',
+    'Faculty of',
+    'Faculty',
 ]
 
 FIELD = [
     'Fachgebiet',
     'Fachbereich',
+    'Department of',
+    'Department',
 ]
 
 UNIVERSITY = [
@@ -128,6 +132,7 @@ UNIVERSITIES = [
     'Duale Hochschule Baden-Würtemberg',
     'Freie Universität Berlin',
     'Hochschule für Technik und Wirtschaft Berlin',
+    'Humboldt-Universität zu Berlin',
     'Katholische Hochschule Nordrhein-Westfalen',
     'Ludwig-Maximilians-Universität München'
     'Suchtakademie Berlin-Brandenburg',
