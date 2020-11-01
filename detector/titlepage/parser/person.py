@@ -66,6 +66,8 @@ def create_with_title_pattern():
         r'Autor(in)?',
         r'Verfasser(in)?',
         r'Zweitprüfer(in)?',
+        r'Primary Supervisor',
+        r'Secondary Supervisor',
         r'vorgelegt von',
         r'Name, Vorname:'
         # r'von', # TODO: exclude von in `title`
@@ -73,7 +75,7 @@ def create_with_title_pattern():
     preamble = [fr'(?P<t{index}>{item})' for index, item in enumerate(preamble)]
     preamble = '(' + '|'.join(preamble) + ')'  # pylint:disable=R0204
     between = r'[:]?[\s ]{0,8}'
-    name = r'(?P<names>(\w+\,?[ ]{0,5}){1,5})\b'
+    name = r'(?P<names>(\w+(\,|\.)?[ ]{0,5}){1,5})\b'
     pattern = re.compile(preamble + between + name, re.IGNORECASE)
     return pattern
 
@@ -193,6 +195,8 @@ EXAMINER = [
     r'Zweitgutachter(in)?',
     # [\s|:] to avoid confusing 'Prof. Dr. Theo Wil'
     r'(\w+\s?){1,4}?[\s|:]',
+    r'Primary Supervisor',
+    r'Secondary Supervisor',
     r'^',
 ]
 
@@ -247,7 +251,7 @@ def author_or_examiner(raw: str) -> iamraw.AcademicTitle:
     if any([item in raw for item in author]):
         return iamraw.AcademicTitle.STUDENT
 
-    examiner = ['prüfer', 'gutachter', 'betreuer']
+    examiner = ['prüfer', 'gutachter', 'betreuer', 'supervisor']
     if any([item in raw for item in examiner]):
         return iamraw.AcademicTitle.EXAMINIER
 
