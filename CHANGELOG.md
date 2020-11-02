@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v0.10.0
+
+### Feature
+
+* extend person parser (10b6eab19ca5)
+* extend examiner parser (672b95e61306)
+* extend institution parser (2d7b79a3c40f)
+* extend matrikel parser (e653e29a882b)
+* convert raw formula to formula (92f81a76bcd7)
+* add method to determine path to extracted formula (829e5da6e0a6)
+
 ## v0.9.1
 
 ## v0.9.0
