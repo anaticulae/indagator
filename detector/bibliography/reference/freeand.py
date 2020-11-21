@@ -58,7 +58,7 @@ AND = r"""
 """
 
 
-def parse_longtext(content: str) -> iamraw.BibliographyReference:  # pylint:disable=R1260
+def parse_longtext(content: str) -> iamraw.BibliographyReference:  # pylint:disable=R1260,R0912
     content = content.replace('\n', ' ')
     raw = content
     matched = re.search(AND, content, re.VERBOSE | re.IGNORECASE)
@@ -84,9 +84,13 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:  # pylint:disa
         content = content.replace(accessed[0], '')
 
     try:
-        title, rest = matched['content'].split('.', maxsplit=1)  # pylint:disable=W0612
+        title, rest = matched['content'].split('. ', maxsplit=1)  # pylint:disable=W0612
     except ValueError:
-        title, rest = None, matched['content']
+        title_link = title_with_link(matched['content'])
+        if title_link:
+            title, rest = title_link
+        else:
+            title, rest = None, matched['content']
 
     page = dbr.pages(rest)
     if not page:
@@ -111,3 +115,17 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:  # pylint:disa
             result.pageend = page[1][1]
 
     return result
+
+
+def title_with_link(text: str) -> str:
+    """\
+    >>> title_with_link('Zentrale Orte Raumordnungsprogramm (NÖ) https://www.ris.bka.gv.at/LRNI_1992062.pdf (25.01.2018)')
+    ('Zentrale Orte Raumordnungsprogramm (NÖ)', 'https://www.ris.bka.gv.at/LRNI_1992062.pdf (25.01.2018)')
+    """
+    hypers = dbr.link(text)
+    if not hypers:
+        return None
+    started = text.find(hypers[0])
+    title = text[0:started].strip()
+    rest = text[started:].strip()
+    return title, rest
