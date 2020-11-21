@@ -46,7 +46,7 @@ def master89(flat):
     assert last.year == 2009
 
 
-def master75(flat):
+def master75(flat):  # pylint:disable=W0613
     pass
 
 

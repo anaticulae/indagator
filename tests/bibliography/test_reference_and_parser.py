@@ -134,15 +134,18 @@ https://www.youtube.com/watch?v=RXbcAYxuZxw (23.08.2018).
 Landeszentrale für politische Bildung Baden-Württemberg (o.J.): Der
 Elysée-Vertrag. https://www.lpb-bw.de/elysee-vertrag.html (01.07.2018).
 
+Bundeskanzleramt Österreich (Hrsg.) (1992): Zentrale Orte Raumordnungsprogramm (NÖ)
+https://www.ris.bka.gv.at/Dokumente/LgblNO/LRNI_1992062/LRNI_1992062.pdf (25.01.2018)
 """.split('\n\n')
 
 
-@pytest.mark.parametrize('text, authors, year, hyperlink, accessed', [
+@pytest.mark.parametrize('text, authors, year, hyperlink, accessed, title', [
     pytest.param(
         LONGTEXT_LINK[0],
         None,
         2001,
         'http://student.unifr.ch/pluriling/assets/files/Referenzrahmen2001.pdf',
+        None,
         None,
         id='trim',
     ),
@@ -152,6 +155,7 @@ Elysée-Vertrag. https://www.lpb-bw.de/elysee-vertrag.html (01.07.2018).
         2014,
         'http://www.bpb.de/internationales/europa/europaeische-union/42989/europaeischegemeinschaften?p=all',
         (2018, 5, 27),
+        None,
         id='stratenschulte',
     ),
     pytest.param(
@@ -160,6 +164,7 @@ Elysée-Vertrag. https://www.lpb-bw.de/elysee-vertrag.html (01.07.2018).
         2018,
         'https://www.youtube.com/watch?v=RXbcAYxuZxw',
         (2018, 8, 23),
+        None,
         id='macron',
     ),
     pytest.param(
@@ -168,11 +173,29 @@ Elysée-Vertrag. https://www.lpb-bw.de/elysee-vertrag.html (01.07.2018).
         'no year',
         'https://www.lpb-bw.de/elysee-vertrag.html',
         (2018, 7, 1),
+        None,
         id='landeszentrale',
     ),
+    pytest.param(
+        LONGTEXT_LINK[4],
+        None,
+        1992,
+        'https://www.ris.bka.gv.at/Dokumente/LgblNO/LRNI_1992062/LRNI_1992062.pdf',
+        (2018, 1, 25),
+        'Zentrale Orte Raumordnungsprogramm (NÖ)',
+        id='raumordnung',
+    ),
 ])
-def test_parse_freeand_with_link(text, authors, year, hyperlink, accessed):  # pylint:disable=W0613
+def test_parse_freeand_with_link(
+        text,
+        authors,
+        year,
+        hyperlink,
+        accessed,
+        title,
+):  # pylint:disable=W0613
     extracted = freeand.parse_longtext(text)
     assert extracted.year == year
     assert extracted.hyperlink == hyperlink
     assert extracted.accessed == accessed  # pylint:disable=E1101
+    assert extracted.title == title or title is None
