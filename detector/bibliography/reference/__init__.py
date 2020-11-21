@@ -100,10 +100,12 @@ def link(raw: str):
     'https://www.youtube.com/watch?v=RXbcAYxuZxw'
     >>> link('Text.http://google.de')[0]
     'http://google.de'
+    >>> link('Gemeinde Neunkirchen 31818\nwww.statistik.at/blickgem/fa1/g31818.pdf (03.12.2017')[0]
+    'www.statistik.at/blickgem/fa1/g31818.pdf'
     """
     raw = raw.replace('\n', '')
     pattern = r"""
-    (http|https|www)[:]//[\w\d\./\-\?\=]+
+    (http://|https://|www)[\w\d\./\-\?\=]+
     """
     result = []
     for item in re.finditer(pattern, raw, flags=re.VERBOSE):
