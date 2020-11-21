@@ -8,16 +8,16 @@
 # =============================================================================
 
 import serializeraw
-import texmex
 import utila
 
-import detector.bibliography.data
 import detector.bibliography.strategy
 
 
 def work(  # pylint:disable=R0914
         text: str,
         textpositions: str,
+        sizeandborderpath: str,
+        headerfooterpath: str,
         oneline_text: str,
         oneline_textpositions: str,
         pages: tuple = None,
@@ -34,25 +34,19 @@ def work(  # pylint:disable=R0914
 
     result = []
     for selected in pageslist:
-        text_ = serializeraw.load_document(text, pages=selected)
-        textpositions_ = serializeraw.load_textpositions(
+        textnavigators = serializeraw.create_pagetextcontentnavigators_fromfile(
+            text,
             textpositions,
+            sizeandborderpath,
+            headerfooterpath,
             pages=selected,
         )
-
-        oneline_text_ = serializeraw.load_document(oneline_text, pages=selected)
-        oneline_textpositions_ = serializeraw.load_textpositions(
+        onelines = serializeraw.create_pagetextcontentnavigators_fromfile(
+            oneline_text,
             oneline_textpositions,
+            sizeandborderpath,
+            headerfooterpath,
             pages=selected,
-        )
-
-        textnavigators = texmex.create_pagetextnavigators(
-            text_,
-            textpositions_,
-        )
-        onelines = texmex.create_pagetextnavigators(
-            oneline_text_,
-            oneline_textpositions_,
         )
 
         extracted = detector.bibliography.strategy.extracts(
