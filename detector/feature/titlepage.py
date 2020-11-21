@@ -47,15 +47,12 @@ Requirements - "Wissenschaftliches Arbeiten" - Manuel Rene Theisen:
    + Studienadresse
    + Studiengang, Fachrichtung, (Semesterzahl?)
    + Termin der Abgabe/Einreichung
-
-
 """
 
 import serializeraw
 import texmex
 import utila
 
-import detector.titlepage
 import detector.titlepage.parser.complete
 import detector.titlepage.strategy
 
