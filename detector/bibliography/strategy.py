@@ -13,6 +13,7 @@ import texmex
 import detector.bibliography.alternate
 import detector.bibliography.column
 import detector.bibliography.data
+import detector.bibliography.vspace
 
 
 def extracts(
@@ -21,9 +22,28 @@ def extracts(
 ) -> iamraw.BibliographyReferences:
     column = detector.bibliography.column.extracts(text)
     alternate = detector.bibliography.alternate.extracts(text_oneline)
+    vspace = detector.bibliography.vspace.extracts(text_oneline)
 
-    if (len(alternate) / 2) > len(column):
-        # alternate extracts a lot of more possible bibs, therefore we
-        # have to punish the number of results. HolyValue: 0.5
-        return alternate
-    return column
+    count_column = count(column)
+    # alternate extracts a lot of more possible bibs, therefore we
+    # have to punish the number of results. HolyValue: 0.5
+    count_alternate = count(alternate) * 0.7
+    count_vspace = count(vspace) * 0.5
+
+    count_best, best = count_column, column
+    for value, selected in [
+        (count_alternate, alternate),
+        (count_vspace, vspace),
+    ]:
+        if value < count_best:
+            continue
+        count_best = value
+        best = selected
+    return best
+
+
+def count(pages) -> int:
+    result = 0
+    for page in pages:
+        result += len(page)
+    return result
