@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.11.0
+
+### Feature
+
+* extend reference parser (4eb3cbbf2992)
+* extend link pattern parser (6a1978527e62)
+* extend bib decider strategy (b28b477560b3)
+* add vspace strategy (7b19870b811f)
+* improve parser due using page text content (00d837112533)
+
 ## v0.10.1
 
 ## v0.10.0
