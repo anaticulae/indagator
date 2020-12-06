@@ -52,12 +52,12 @@ def master75(flat):  # pylint:disable=W0613
 
 # yapf:disable
 @pytest.mark.parametrize('source, pages, expected, validate', [
-    pytest.param(power.link(power.BACHELOR056_PDF), '49:53', 32, None, id='bachelor56'),
-    pytest.param(power.link(power.BACHELOR063_PDF), '59', 12, None, id='bachelor63'),
-    pytest.param(power.link(power.MASTER116_PDF), '97,98,99,100', 46, None, id='master116'), # VALIDATED BY HAND
-    pytest.param(power.link(power.MASTER089_PDF), None, 149, master89, id='master89'),
-    pytest.param(power.link(power.BACHELOR090_PDF), '84:89', 52, bachelor90, id='bachelor90'),
-    pytest.param(power.link(power.MASTER075_PDF), '70', 18, master75, id='master75'),
+    pytest.param(power.BACHELOR056_PDF, '49:53', 32, None, id='bachelor56'),
+    pytest.param(power.BACHELOR063_PDF, '59', 12, None, id='bachelor63'),
+    pytest.param(power.MASTER116_PDF, '97,98,99,100', 46, None, id='master116'), # VALIDATED BY HAND
+    pytest.param(power.MASTER089_PDF, None, 149, master89, id='master89'),
+    pytest.param(power.BACHELOR090_PDF, '84:89', 52, bachelor90, id='bachelor90'),
+    pytest.param(power.MASTER075_PDF, '70', 18, master75, id='master75'),
 ])
 # yapf:enable
 @utilatest.skip_longrun
@@ -69,6 +69,7 @@ def test_detector_bibliography_run(
         testdir,
         monkeypatch,
 ):  #pylint: disable=W0613
+    source = power.link(source)
     root = testdir.tmpdir
     command = f'-i {source} -o {root} --bibliography --pages={pages}'
     tests.run(command, monkeypatch=monkeypatch)
