@@ -43,7 +43,7 @@ import detector.bibliography.reference.authors as dbra
 
 # TODO: REMOVE 4,5 HACK: WHEN SUPPORTING HIGHNOTE
 AND = r"""
-    (?P<authors>.+)
+    (?P<authors>[A-Za-z,;\(\)\.\-\&ÖöÄäÜü ]{10,})
     \(
         (
             (?P<oj>o\.j\.)|
@@ -59,7 +59,7 @@ AND = r"""
 
 
 def parse_longtext(content: str) -> iamraw.BibliographyReference:  # pylint:disable=R1260,R0912
-    content = content.replace('\n', ' ')
+    content = content.replace('\n', ' ').strip()
     raw = content
     matched = re.search(AND, content, re.VERBOSE | re.IGNORECASE)
     if not matched:
@@ -91,6 +91,8 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:  # pylint:disa
             title, rest = title_link
         else:
             title, rest = None, matched['content']
+    if invalid_title(title):
+        return None
 
     page = dbr.pages(rest)
     if not page:
@@ -117,6 +119,9 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:  # pylint:disa
     return result
 
 
+TITLE_MIN_LENGTH = 10
+
+
 def title_with_link(text: str) -> str:
     """\
     >>> title_with_link('Zentrale Orte Raumordnungsprogramm (NÖ) https://www.ris.bka.gv.at/LRNI_1992062.pdf (25.01.2018)')
@@ -129,3 +134,26 @@ def title_with_link(text: str) -> str:
     title = text[0:started].strip()
     rest = text[started:].strip()
     return title, rest
+
+
+def invalid_title(title: str) -> bool:
+    if not title:
+        return True
+    if len(title) < TITLE_MIN_LENGTH:
+        return True
+    rate = char_rate(title)
+    if rate < 0.8:
+        return True
+    return False
+
+
+ALPHA = 'abcdefghijklmnopqrstuvwxyz '
+
+
+def char_rate(text: str):
+    # TODO: MOVE
+    if not text:
+        return 0
+    text = text.lower()
+    selected = len([item for item in text if item in ALPHA])
+    return selected / len(text)

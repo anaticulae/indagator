@@ -199,3 +199,25 @@ def test_parse_freeand_with_link(
     assert extracted.hyperlink == hyperlink
     assert extracted.accessed == accessed  # pylint:disable=E1101
     assert extracted.title == title or title is None
+
+
+NEGATIVE = """\
+[Jaa13] Jaafar, A.: A Systemic Approach Integrating Driving Cycles for
+the Design ofHybrid Locomotives. In: TRANSACTIONS ON VEHICULAR
+TECHNOLOGY(2013), S. 3541 ▒ 3550.
+http://dx.doi.org/10.1109/TVT.2013.2267099. ▒DOI
+10.1109/TVT.2013.2267099
+
+[Tsc12] Tschöke, H.: Informationsreihe MTZ Wissen Die Elektrifizierung
+des Antriebsstrangs 1. Hybridantriebe Definition, Lösungsvarianten. In: MTZ - Motortechnische Zeitschrift (2012).
+http://dx.doi.org/10.1007/s35146-012-0327-0. - DOI 10.1007/s35146/012/0327/0
+""".split('\n\n')
+
+
+@pytest.mark.parametrize('text', [
+    pytest.param(NEGATIVE[0], id='jaa13'),
+    pytest.param(NEGATIVE[1], id='tsc12'),
+])
+def test_parse_freeand_negative(text):
+    extracted = freeand.parse_longtext(text)
+    assert not extracted
