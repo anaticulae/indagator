@@ -7,12 +7,15 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import configo
 import iamraw
 import texmex
+import utila
 
 import detector.bibliography.alternate
 import detector.bibliography.column
 import detector.bibliography.data
+import detector.bibliography.invalid
 import detector.bibliography.vspace
 
 
@@ -23,6 +26,10 @@ def extracts(
     column = detector.bibliography.column.extracts(text)
     alternate = detector.bibliography.alternate.extracts(text_oneline)
     vspace = detector.bibliography.vspace.extracts(text_oneline)
+
+    column = judge(column)
+    alternate = judge(alternate)
+    vspace = judge(vspace)
 
     count_column = count(column)
     # alternate extracts a lot of more possible bibs, therefore we
@@ -47,3 +54,31 @@ def count(pages) -> int:
     for page in pages:
         result += len(page)
     return result
+
+
+INVALID = configo.HolyTable(
+    items=[
+        (5, 0),
+        (15, 0),
+        (30, 3 / 30),
+        (100, 10 / 100),
+    ],
+    right_outranges_none=False,
+    left_outranges_none=False,
+)
+
+
+def judge(pages: list) -> bool:
+    counted = count(pages)
+    if not counted:
+        return []
+    invalid = 0
+    for item in utila.flatten(pages):
+        if item is None or detector.bibliography.invalid.single(item):
+            invalid += 1
+    # determine invalid ratio
+    ratio = invalid / counted
+    if ratio >= INVALID(counted):
+        # invalid result
+        return []
+    return pages
