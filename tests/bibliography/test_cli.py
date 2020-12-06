@@ -50,11 +50,24 @@ def master75(flat):  # pylint:disable=W0613
     pass
 
 
+def master116(flat):
+    expected = [
+        'App14', 'Bah12', 'Bas14', 'Bor13', 'Bra11', 'Dit13', 'Don04', 'EB03',
+        'EPA98', 'Fil15', 'Fis12', 'Fri15', 'Gas13', 'Gev13', 'Hei13', 'Hof11',
+        'IAV15', 'Jaa13', 'Kac14', 'Kon13', 'Kur16', 'Les15', 'LG03', 'Mü13',
+        'Mag14', 'MAT16', 'Min13', 'Mor09', 'Nit11', 'Pac12', 'Pap15', 'Pfe14',
+        'Rö15', 'Rei10', 'Rie11', 'RNB12', 'Sch09', 'Sko11', 'Spi05', 'Stö10',
+        'Tom12', 'Tsc12', 'Vö15', 'Wik07', 'Wik13', 'Wit13'
+    ]
+    references = [item.reference for item in flat]
+    assert references == expected
+
+
 # yapf:disable
 @pytest.mark.parametrize('source, pages, expected, validate', [
     pytest.param(power.BACHELOR056_PDF, '49:53', 32, None, id='bachelor56'),
     pytest.param(power.BACHELOR063_PDF, '59', 12, None, id='bachelor63'),
-    pytest.param(power.MASTER116_PDF, '97,98,99,100', 46, None, id='master116'), # VALIDATED BY HAND
+    pytest.param(power.MASTER116_PDF, '97,98,99,100', 46, master116, id='master116'), # VALIDATED BY HAND
     pytest.param(power.MASTER089_PDF, None, 149, master89, id='master89'),
     pytest.param(power.BACHELOR090_PDF, '84:89', 52, bachelor90, id='bachelor90'),
     pytest.param(power.MASTER075_PDF, '70', 18, master75, id='master75'),
