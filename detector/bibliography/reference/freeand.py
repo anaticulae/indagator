@@ -108,7 +108,7 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:  # pylint:disa
         raw=raw,
     )
     result.hyperlink = hyperlink[0] if hyperlink else None
-    result.__dict__['accessed'] = accessed[1] if accessed else None
+    result.accessed = accessed[1] if accessed else None
 
     # TODO: ADD YEAREND after upgrading
     if page:
