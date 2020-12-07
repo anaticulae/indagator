@@ -56,6 +56,7 @@ def parses(content: str) -> iamraw.BibliographyReferences:
 
         techref = item['author'] + item['year'] + (number if number else '')
         year = int(item['year'])
+        year = millennium(year)
 
         reference = iamraw.BibliographyReference(
             page=page,
@@ -67,6 +68,25 @@ def parses(content: str) -> iamraw.BibliographyReferences:
         )
         result.append(reference)
     return result
+
+
+def millennium(year: int) -> int:
+    """\
+    >>> millennium(99)
+    1999
+    >>> millennium(0)
+    2000
+    >>> millennium(29)
+    2029
+    """
+    # HINT: Works till 2030 :)
+    if year < 30:
+        # 2000 - 2029
+        year += 2000
+    else:
+        # 1900 - 1999
+        year += 1900
+    return year
 
 
 def parse_longtext(content: str) -> iamraw.BibliographyReference:
