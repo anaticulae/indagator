@@ -73,11 +73,12 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:  # pylint:disa
         year = 'no year'
     number = matched['number'] if matched['number'] else None
 
-    hyperlink = dbr.link(content)
-    if hyperlink:
-        content = content.replace(hyperlink[0], '')
-    if len(hyperlink) > 1:
-        utila.error(f'more than one link parsed: {content}')
+    hyperlinks = dbr.link(content)
+    if hyperlinks:
+        for hyperlink in hyperlinks:
+            content = content.replace(hyperlink, '')
+    if len(hyperlinks) > 1:
+        utila.error(f'more than one link parsed: {raw}')
 
     accessed = dbr.accessed(content)
     if accessed:
@@ -107,7 +108,7 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:  # pylint:disa
         year=year,
         raw=raw,
     )
-    result.hyperlink = hyperlink[0] if hyperlink else None
+    result.hyperlink = hyperlinks[0] if hyperlinks else None
     result.accessed = accessed[1] if accessed else None
 
     # TODO: ADD YEAREND after upgrading
