@@ -16,7 +16,6 @@ import detector.bibliography.invalid
 import detector.bibliography.layout.alternate
 import detector.bibliography.layout.column
 import detector.bibliography.layout.vspace
-import detector.bibliography.order
 
 
 def extracts(
