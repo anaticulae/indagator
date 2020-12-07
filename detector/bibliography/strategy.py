@@ -56,7 +56,7 @@ def count(pages) -> int:
     return result
 
 
-INVALID = configo.HolyTable(
+INVALID_MAX = configo.HolyTable(
     items=[
         (5, 0),
         (15, 0),
@@ -78,7 +78,9 @@ def judge(pages: list) -> bool:
             invalid += 1
     # determine invalid ratio
     ratio = invalid / counted
-    if ratio >= INVALID(counted):
+    # use greather instead of greather equal to pass zero findings with
+    # ration 0.0 and allowed ratio of 0.0
+    if ratio > INVALID_MAX(counted):
         # invalid result
         return []
     return pages
