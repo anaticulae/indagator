@@ -2,6 +2,24 @@
 
 Every noteable change is logged here.
 
+## v0.11.3
+
+### Feature
+
+* extend tech label parser (c79d03740926)
+* use improved authors parser (c1a7ab591114)
+* remove more than one link out of rest content (fa9ac97d70e9)
+* convert short year to ac (0a6a893a599d)
+
+### Fix
+
+* skip empty publisher (0b6ba927a902)
+
+### Documentation
+
+* extend documentation (b3dfcdb85505)
+* extend documentation (f91733f566d0)
+
 ## v0.11.2
 
 ### Feature
