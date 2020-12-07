@@ -6,18 +6,24 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+"""Alternate
+============
 
+[Bra11] Braess, H.H.: Vieweg Handbuch Kraftfahrzeugtechnik. Vieweg+Teubner Verlag,
+        2011 (ATZ/MTZ-Fachbuch)
+[Dit13] Dittmann, D.: Alstom Hybridlokomotiven im Verschubeinsatz - Konzept und
+        Erfahrungen im Einsatz H3 Fahrzeugplattform. 2013
+"""
 import geostrat
 import iamraw
 import texmex
+import utila
 
 import detector.bibliography.label
 import detector.bibliography.reference.freeand
 
 MIN_CONTENT_LENGTH = 15  # TODO: HOLY VALUE
-
 MIN_WORD_COUNT = 2  # TODO: HOLY VALUE
-
 ERROR_MAX_LEVEL = 0.25
 
 
@@ -62,6 +68,11 @@ def split_bibliography(raw: str) -> iamraw.BibliographyReference:
         return matched
     matched = detector.bibliography.label.parses(raw)  # pylint:disable=R0204
     if matched:
+        if len(matched) > 1:
+            # Mostly a result of failure in layout grouping. This can
+            # happen if a wrong layout grouping mechanism is used. This
+            # issn't a problem cause we have more than one strategy.
+            utila.error(f'parses more than one reference: {raw}')
         return matched[0]
     return None
     # default = iamraw.BibliographyReference(raw=raw)
