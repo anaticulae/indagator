@@ -28,7 +28,7 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
 
     title = title.strip()
     authors = authors.strip()
-    authors = dbra.simple(authors)
+    authors = dbra.parses(authors)
 
     page = dbr.pages(rest)
     if page:
