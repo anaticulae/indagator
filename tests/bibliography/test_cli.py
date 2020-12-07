@@ -13,7 +13,6 @@ import serializeraw
 import utila
 import utilatest
 
-import detector.bibliography.order
 import detector.path
 import tests
 import tests.resources
