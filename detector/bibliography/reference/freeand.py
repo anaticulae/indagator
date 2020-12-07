@@ -35,11 +35,11 @@ Failures
 
 import re
 
+import german
 import iamraw
 import utila
 
 import detector.bibliography.reference as dbr
-import detector.bibliography.reference.authors as dbra
 
 # TODO: REMOVE 4,5 HACK: WHEN SUPPORTING HIGHNOTE
 AND = r"""
@@ -67,7 +67,7 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:  # pylint:disa
     if not matched:
         return None
 
-    authors = dbra.parses(matched['authors'])
+    authors = german.authors(matched['authors'])
     if matched['year']:
         year = int(matched['year'])
     else:

@@ -7,12 +7,12 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import german
 import iamraw
 import utila
 
 import detector.bibliography.label
 import detector.bibliography.reference as dbr
-import detector.bibliography.reference.authors as dbra
 
 
 def parse_single_row(content: str) -> iamraw.BibliographyReference:
@@ -54,7 +54,7 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
 
     title = title.strip()
     authors = authors.strip()
-    authors = dbra.parses(authors)
+    authors = german.authors(authors)
 
     page = dbr.pages(rest)
     if page:
