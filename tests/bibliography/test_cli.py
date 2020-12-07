@@ -61,6 +61,8 @@ def master116(flat):
     ]
     references = [item.reference for item in flat]
     assert references == expected
+    authors = [item.authors for item in flat]
+    assert authors
 
 
 # yapf:disable

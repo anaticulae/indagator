@@ -14,13 +14,13 @@
 [Dit13] Dittmann, D.: Alstom Hybridlokomotiven im Verschubeinsatz - Konzept und
         Erfahrungen im Einsatz H3 Fahrzeugplattform. 2013
 """
+
 import geostrat
 import iamraw
 import texmex
-import utila
 
-import detector.bibliography.label
 import detector.bibliography.reference.freeand
+import detector.bibliography.reference.tech
 
 MIN_CONTENT_LENGTH = 15  # TODO: HOLY VALUE
 MIN_WORD_COUNT = 2  # TODO: HOLY VALUE
@@ -66,12 +66,7 @@ def split_bibliography(raw: str) -> iamraw.BibliographyReference:
     matched = detector.bibliography.reference.freeand.parse_longtext(raw)
     if matched:
         return matched
-    matched = detector.bibliography.label.parses(raw)  # pylint:disable=R0204
+    matched = detector.bibliography.reference.tech.parse_single_row(raw)
     if matched:
-        if len(matched) > 1:
-            # Mostly a result of failure in layout grouping. This can
-            # happen if a wrong layout grouping mechanism is used. This
-            # issn't a problem cause we have more than one strategy.
-            utila.error(f'parses more than one reference: {raw}')
-        return matched[0]
+        return matched
     return None

@@ -8,9 +8,35 @@
 # =============================================================================
 
 import iamraw
+import utila
 
+import detector.bibliography.label
 import detector.bibliography.reference as dbr
 import detector.bibliography.reference.authors as dbra
+
+
+def parse_single_row(content: str) -> iamraw.BibliographyReference:
+    matched = detector.bibliography.label.parses(content)
+    if not matched:
+        return None
+    if len(matched) > 1:
+        # Mostly a result of failure in layout grouping. This can
+        # happen if a wrong layout grouping mechanism is used. This
+        # issn't a problem cause we have more than one strategy.
+        utila.error(f'parses more than one reference: {content}')
+        return None
+    matched: iamraw.BibliographyReference = matched[0]
+    content = content.replace(matched.raw, '')
+    detected = detector.bibliography.reference.tech.parse_longtext(content)
+    if not detected:
+        # no further information detected
+        return matched
+    # append information of second parsing step
+    matched.title = detected.title
+    matched.authors = detected.authors
+    matched.publisher = detected.publisher
+    matched.raw += detected.raw
+    return matched
 
 
 def parse_longtext(content: str) -> iamraw.BibliographyReference:
