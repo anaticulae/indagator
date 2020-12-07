@@ -39,6 +39,12 @@ Schöningh.
 
 Keller, Thomas (2007a): Die Sainte Victoire – ein deutsch-französischer
 Ort und seine Schatten. Cahiers d’Etudes Germaniques 53, H. 2, 93-122.
+
+BOUS K. (1933): 900 Jahre Neunkirchen. Kurze chronologische Geschichte
+von 1036-1930. - Neunkirchen
+
+BOBEK H., FESL M. (1978): Das System der zentralen Orte Österreichs:
+Eine empirische Untersuchung - Graz
 """.split('\n\n')
 
 
@@ -101,9 +107,28 @@ Ort und seine Schatten. Cahiers d’Etudes Germaniques 53, H. 2, 93-122.
         None,
         id='keller',
     ),
+    pytest.param(
+        LONGTEXT[6],
+        None,
+        [['BOUS', 'K.']],
+        None,
+        None,
+        None,
+        id='bous',
+    ),
+    pytest.param(
+        LONGTEXT[7],
+        None,
+        [['BOBEK', 'H.'], ['FESL', 'M.']],
+        None,
+        None,
+        None,
+        id='bobek',
+    ),
 ])
 def test_parse_freeand_long(text, title, authors, pages, year, publisher):  # pylint:disable=W0613
     extracted = freeand.parse_longtext(text)
+    assert extracted
     if title:
         assert extracted.title == title
     if pages:

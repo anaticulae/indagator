@@ -43,7 +43,7 @@ import detector.bibliography.reference.authors as dbra
 
 # TODO: REMOVE 4,5 HACK: WHEN SUPPORTING HIGHNOTE
 AND = r"""
-    (?P<authors>[A-Za-z,;\(\)\.\-\&ÖöÄäÜü ]{10,})
+    (?P<authors>[A-Za-z,;\(\)\.\-\&ÖöÄäÜü ]{5,})
     \(
         (
             (?P<oj>o\.j\.)|
