@@ -2,6 +2,21 @@
 
 Every noteable change is logged here.
 
+## v0.11.2
+
+### Feature
+
+* add author comma pattern (f287b2441bcf)
+* use number of parser authors to tie equal successful pattern (f8ffe6f8510e)
+* disable too much negative bib results (97cea61e1c29)
+
+### Fix
+
+* handle border of invalid parsing correctly (c7cf60c620d3)
+* do not handle empty title as invalid title (fb4c05819e9a)
+* reduce min length of valid author (187823023706)
+* detect fewer false positive freeand bib (51b17cfb6796)
+
 ## v0.11.1
 
 ## v0.11.0
