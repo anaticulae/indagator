@@ -18,13 +18,16 @@ def parses(raw: str):
     [['Beirness', 'D.'], ['Vogel-Sprott', 'M.']]
     >>> parses('KUNCZIK, Michael/ZIPFEL, Astrid')
     [['KUNCZIK', 'Michael'], ['ZIPFEL', 'Astrid']]
+    >>> parses('BOBEK H., FESL M.')
+    [['BOBEK', 'H.'], ['FESL', 'M.']]
     """
     free = freeand(raw)
     semicolon = simple(raw)
     hyphen = simple(raw, extern='-', intern=',')
     slash = simple(raw, extern='/', intern=',')
+    comma = simple(raw, extern=',', intern=' ')
 
-    result = [free, semicolon, hyphen, slash]
+    result = [free, semicolon, hyphen, slash, comma]
     balanced = [balance(item) for item in result]
     max_balance = maxindex(balanced)
     return result[max_balance]
