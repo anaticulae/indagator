@@ -37,7 +37,7 @@ def simple(raw: str, extern: str = ';', intern: str = ','):
     """
     result = []
     for item in raw.split(extern):
-        result.append([it.strip() for it in item.split(intern)])
+        result.append([it.strip() for it in item.split(intern) if it.strip()])
     return result
 
 
@@ -72,7 +72,7 @@ def balance(authors):
     common = [valid_author(author) for author in authors]
     valid = len([item for item in common if item])
     ratio = valid / len(common)
-    return ratio
+    return ratio, len(common)
 
 
 def valid_author(author):
@@ -92,7 +92,12 @@ def maxindex(items):
     if not items:
         return None
     current = 0
-    for index, value in enumerate(items[1:], start=1):
-        if value > items[current]:
+    for index, (value, count) in enumerate(items[1:], start=1):
+        best = items[current][0]
+        if value > best:
             current = index
+        elif value == best:
+            # equal values, use count as tie braker
+            if count > items[current][1]:
+                current = index
     return current
