@@ -40,11 +40,12 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
 
     # TODO: ADD PUBLISHER EXTRACTOR
 
+    rest = rest.strip()
     result = iamraw.BibliographyReference(
         authors=authors,
         title=title,
         raw=raw,
-        publisher=rest,
+        publisher=rest or None,
     )
     if page:
         result.page = page[1][0]
