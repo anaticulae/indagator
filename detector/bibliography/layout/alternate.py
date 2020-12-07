@@ -75,5 +75,3 @@ def split_bibliography(raw: str) -> iamraw.BibliographyReference:
             utila.error(f'parses more than one reference: {raw}')
         return matched[0]
     return None
-    # default = iamraw.BibliographyReference(raw=raw)
-    # return default
