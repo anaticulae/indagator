@@ -19,4 +19,4 @@ power==1.0.0
 jam==0.2.18
 
 # example data generator
-genex==0.4.1
+genex==0.5.2
