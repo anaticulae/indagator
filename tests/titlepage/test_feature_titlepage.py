@@ -76,10 +76,10 @@ def check_116_pages(titlepage: iamraw.TitlePage):
 
     # TODO: Activate later
     author = iamraw.Person(
-        iamraw.AcademicTitle.STUDENT,
         'Fahrendholz',
         'Helmut Konrad',
-        'vorgelegt von:\nHelmut Konrad Fahrendholz',
+        iamraw.AcademicTitle.STUDENT,
+        raw='vorgelegt von:\nHelmut Konrad Fahrendholz',
     )
     assert titlepage.author == author
 

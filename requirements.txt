@@ -10,3 +10,5 @@
 iamraw==4.5.0
 utila==2.15.0
 geostrat==1.1.5
+
+german==0.13.0
