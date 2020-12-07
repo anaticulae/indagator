@@ -11,7 +11,7 @@ import iamraw
 import texmex
 import utila
 
-import detector.bibliography.alternate
+import detector.bibliography.layout.alternate
 
 
 def extracts(navigators: texmex.PageTextContentNavigator
@@ -31,7 +31,7 @@ def extract(navigator) -> iamraw.BibliographyReferences:
         max_distance=maxdistance,
     )
     grouped = [[navigator[item] for item in group] for group in grouped]
-    result = detector.bibliography.alternate.extract(grouped)
+    result = detector.bibliography.layout.alternate.extract(grouped)
     result = utila.not_none(result)
     return result
 

@@ -11,8 +11,8 @@ import geostrat
 import iamraw
 import texmex
 
+import detector.bibliography.label
 import detector.bibliography.reference.freeand
-import detector.bibliography.reference.tech
 
 MIN_CONTENT_LENGTH = 15  # TODO: HOLY VALUE
 
@@ -60,7 +60,7 @@ def split_bibliography(raw: str) -> iamraw.BibliographyReference:
     matched = detector.bibliography.reference.freeand.parse_longtext(raw)
     if matched:
         return matched
-    matched = detector.bibliography.reference.tech.parses(raw)  # pylint:disable=R0204
+    matched = detector.bibliography.label.parses(raw)  # pylint:disable=R0204
     if matched:
         return matched[0]
     return None

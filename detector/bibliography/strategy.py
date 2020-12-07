@@ -12,20 +12,20 @@ import iamraw
 import texmex
 import utila
 
-import detector.bibliography.alternate
-import detector.bibliography.column
-import detector.bibliography.data
 import detector.bibliography.invalid
-import detector.bibliography.vspace
+import detector.bibliography.layout.alternate
+import detector.bibliography.layout.column
+import detector.bibliography.layout.vspace
+import detector.bibliography.order
 
 
 def extracts(
         text: texmex.PageTextNavigators,
         text_oneline: texmex.PageTextNavigators,
 ) -> iamraw.BibliographyReferences:
-    column = detector.bibliography.column.extracts(text)
-    alternate = detector.bibliography.alternate.extracts(text_oneline)
-    vspace = detector.bibliography.vspace.extracts(text_oneline)
+    column = detector.bibliography.layout.column.extracts(text)
+    alternate = detector.bibliography.layout.alternate.extracts(text_oneline)
+    vspace = detector.bibliography.layout.vspace.extracts(text_oneline)
 
     column = judge(column)
     alternate = judge(alternate)

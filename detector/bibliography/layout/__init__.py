@@ -6,22 +6,3 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
-
-import power
-import serializeraw
-import utila
-
-import detector.bibliography.layout.column
-
-
-def test_parse_bibliography_bachelor63_page59():
-    """Latex double column. Left side with [Hem10] pattern"""
-    pages = (59)
-    navigators = serializeraw.create_pagetextnavigators_frompath(
-        power.link(power.BACHELOR063_PDF),
-        # fill_empty=False,
-        pages=pages,
-    )
-    parsed = detector.bibliography.layout.column.extracts(navigators)
-    parsed = utila.flatten(parsed)
-    assert len(parsed) == 12, str(parsed)

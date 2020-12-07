@@ -13,7 +13,7 @@ import serializeraw
 import utila
 import utilatest
 
-import detector.bibliography.alternate
+import detector.bibliography.layout.alternate
 
 
 @pytest.mark.parametrize('pages, expected', [
@@ -29,7 +29,7 @@ def test_parse_bibliography_master116_page_x(pages, expected):
         prefix='oneline',
         pages=pages,
     )
-    parsed = detector.bibliography.alternate.extracts(navigators)
+    parsed = detector.bibliography.layout.alternate.extracts(navigators)
     parsed = utila.flatten(parsed)
     assert len(parsed) == expected, str(parsed)
 
@@ -42,6 +42,6 @@ def test_parse_bibliography_hurenkind():
         prefix='oneline',
         pages=pages,
     )
-    parsed = detector.bibliography.alternate.extracts(navigators)
+    parsed = detector.bibliography.layout.alternate.extracts(navigators)
     parsed = utila.flatten(parsed)
     assert len(parsed) == expected, str(parsed)

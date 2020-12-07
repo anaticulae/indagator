@@ -9,7 +9,8 @@
 
 import pytest
 
-import detector.bibliography.reference.tech as dbrt
+import detector.bibliography.label
+import detector.bibliography.reference.tech
 
 CONTENT = """\
 Verknüpfung klassisches und AUTOSAR-Steuergerät
@@ -30,7 +31,7 @@ OSELAS.BSP( ) -Pengutronix Generic-arm. August 2011
 
 
 def test_parse_tech():
-    extracted = dbrt.parses(CONTENT)
+    extracted = detector.bibliography.label.parses(CONTENT)
     assert len(extracted) == 11
 
 
@@ -119,7 +120,7 @@ Systeme · Mechatronik · Perspektiven. Springer Fachmedien Wiesbaden,
     ),
 ])
 def test_parse_tech_long(text, title, authors, pages, year, publisher):  # pylint:disable=W0613
-    extracted = dbrt.parse_longtext(text)
+    extracted = detector.bibliography.reference.tech.parse_longtext(text)
     if title:
         assert extracted.title == title
     if pages:
