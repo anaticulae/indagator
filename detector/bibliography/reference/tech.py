@@ -55,6 +55,8 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
     title = title.strip()
     authors = authors.strip()
     authors = german.authors(authors)
+    # disable non person authors
+    authors = german.authors_decide(authors)
 
     page = dbr.pages(rest)
     if page:

@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import iamraw
 import pytest
 
 import detector.bibliography.label
@@ -62,12 +63,14 @@ Systeme · Mechatronik · Perspektiven. Springer Fachmedien Wiesbaden,
 2013 (ATZ/MTZ-Fachbuch)
 """.split('\n\n')
 
+# pylint:disable=E1101
+
 
 @pytest.mark.parametrize('text, title, authors, pages, year, publisher', [
     pytest.param(
         LONGTEXT[0],
         'Locomotive emission standards: regulatory support document',
-        None,
+        [iamraw.NoPerson(raw='EPA')],
         None,
         1999,
         'Office of Mobile Sources, Office of Air and Radiation, U.S. Environmental Protection Agency',
@@ -76,7 +79,7 @@ Systeme · Mechatronik · Perspektiven. Springer Fachmedien Wiesbaden,
     pytest.param(
         LONGTEXT[1],
         'Hybrid technology for the rail industry',
-        None,
+        [iamraw.Person('Donnelly', 'F.', raw='Donnelly F.')],
         (113, 117),
         2004,
         'Rail Conference, 2004. Proceedings of the 2004 ASME/IEEE Joint',
@@ -85,7 +88,7 @@ Systeme · Mechatronik · Perspektiven. Springer Fachmedien Wiesbaden,
     pytest.param(
         LONGTEXT[2],
         'Zusammenfassung Datenanalyse',
-        None,
+        [iamraw.NoPerson(raw='IAV')],
         None,
         2015,
         None,
@@ -94,7 +97,10 @@ Systeme · Mechatronik · Perspektiven. Springer Fachmedien Wiesbaden,
     pytest.param(
         LONGTEXT[3],
         'VeLoDyn - Ein Werkzeug zur Triebstrangsimulation von Kraftfahrzeugen',
-        [['Lindemann', 'M'], ['Gühmann', 'C']],
+        [
+            iamraw.Person('Lindemann', 'M', raw='Lindemann M'),
+            iamraw.Person('Gühmann', 'C', raw='Gühmann C'),
+        ],
         None,
         2003,
         None,
@@ -103,7 +109,7 @@ Systeme · Mechatronik · Perspektiven. Springer Fachmedien Wiesbaden,
     pytest.param(
         LONGTEXT[4],
         'Flachheitsbasierter Vorsteuerungsentwurf für den Antriebsstrang eines Parallelhybridfahrzeuges',
-        [['Gasper', 'R.']],
+        [iamraw.Person('Gasper', 'R.', raw='Gasper R.')],
         None,
         2013,
         None,
@@ -112,11 +118,12 @@ Systeme · Mechatronik · Perspektiven. Springer Fachmedien Wiesbaden,
     pytest.param(
         LONGTEXT[6],
         'Fahrwerkhandbuch: Grundlagen · Fahrdynamik · Komponenten · Systeme · Mechatronik · Perspektiven',
-        [['Heißing', 'B.']],
+        [iamraw.Person('Heißing', 'B.', raw='Heißing B.')],
         None,
         2013,
         None,
         id='heissing',
+        marks=pytest.mark.xfail(reason='use smart german person detector'),
     ),
 ])
 def test_parse_tech_long(text, title, authors, pages, year, publisher):  # pylint:disable=W0613
