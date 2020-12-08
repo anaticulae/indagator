@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.12.0
+
+### Feature
+
+* convert parsed author to higher abstraction (510cc69a9802)
+
 ## v0.11.3
 
 ### Feature
