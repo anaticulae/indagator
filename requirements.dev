@@ -10,7 +10,7 @@
 utilatest==0.2.2
 
 # ensure that test data is generated with the right version of rawmaker
-rawmaker==2.9.2
+rawmaker==2.9.3
 
 # reference to test data
 power==1.0.0
@@ -19,4 +19,4 @@ power==1.0.0
 jam==0.2.18
 
 # example data generator
-genex==0.5.2
+genex==0.5.3

@@ -27,7 +27,7 @@ import re
 import typing
 
 import iamraw
-import iamraw.person
+import iamraw.title
 import utila
 
 
@@ -239,7 +239,7 @@ def extract_title(result):
             # IndexError: no every group is used. For example only t3:master
             continue
         else:
-            matches = [it for it in iamraw.person.MATCHES.values()]
+            matches = [it for it in iamraw.title.MATCHES.values()]
             title.append(matches[item])
     return title
 
