@@ -32,8 +32,8 @@ TECHNICAL = r"""\[[ ]{0,3}
                 (?P<number>a|b|c|d){0,1}[ ]{0,3}
                 (\,[ ]{0,3}(Seite|S\.)[ ]{0,3}
                 (
-                 (?P<page>\d{1,3})|
-                 (?P<pagestart>\d{1,3})[ ]{0,3}\-[ ]{0,3}(?P<pageend>\d{1,3})
+                 (?P<pagestart>\d{1,3})[ ]{0,3}\-[ ]{0,3}(?P<pageend>\d{1,3})|
+                 (?P<page>\d{1,3}[ ]{0,3}[f]{0,2}\.?)
                 )
                 ){0,1}
                 [ ]{0,3}\]
@@ -45,8 +45,8 @@ def parses(content: str) -> iamraw.BibliographyReferences:
     for item in re.finditer(TECHNICAL, content, re.VERBOSE):
         raw = utila.extract_match(item)
         page, pageend = None, None
-        with contextlib.suppress(KeyError, TypeError):
-            page = int(item['page'])
+        if item['page']:
+            page, pageraw = parse_single(item['page'])  # pylint:disable=W0612
         with contextlib.suppress(KeyError, TypeError):
             page, pageend = int(item['pagestart']), int(item['pageend'])
         number = item['number'] if item['number'] else None
@@ -65,6 +65,17 @@ def parses(content: str) -> iamraw.BibliographyReferences:
         )
         result.append(reference)
     return result
+
+
+def parse_single(page: str):
+    number = parse_ints(page)[0]
+    follow = page.replace(str(number), '').strip()
+    return number, follow
+
+
+def parse_ints(item: str) -> int:
+    # TODO: REPLACE WITH UTILA CODE
+    return [int(item) for item in re.findall(r'\d+', item)]
 
 
 def millennium(year: int) -> int:
