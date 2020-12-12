@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.12.2
+
+### Feature
+
+* add page follows to tech label parser (bfb9bedd5e6e)
+* add page shortcut to tech label parser (e4e8b79bec48)
+
 ## v0.12.1
 
 ## v0.12.0
