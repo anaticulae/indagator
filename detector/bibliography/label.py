@@ -11,11 +11,19 @@
 
 Parses technical bibliographic reference like:
 
+Technical:
+
 .. code-block:: none
 
     [WL11]
     [Rum05, Seite 10]
 
+Number:
+
+.. code-block:: none
+
+    [23]
+    [10, Seite 10]
 """
 
 import contextlib
@@ -61,6 +69,38 @@ def parses(content: str) -> iamraw.BibliographyReferences:
             reference=techref,
             year=year,
             number=number,
+            raw=raw,
+        )
+        result.append(reference)
+    return result
+
+
+NUMBER = r"""\[[ ]{0,3}
+            (?P<number>\d+)
+            (\,[ ]{0,3}(Seite|S\.)[ ]{0,3}
+            (
+             (?P<pagestart>\d{1,3})[ ]{0,3}\-[ ]{0,3}(?P<pageend>\d{1,3})|
+             (?P<page>\d{1,3}[ ]{0,3}[f]{0,2}\.?)
+            )
+            ){0,1}[ ]{0,3}
+            \]
+"""
+
+
+def numbers(content: str) -> iamraw.BibliographyReferences:
+    result = []
+    for item in re.finditer(NUMBER, content, re.VERBOSE):
+        raw = utila.extract_match(item)
+        page, pageend = None, None
+        if item['page']:
+            page, pageraw = parse_single(item['page'])  # pylint:disable=W0612
+        with contextlib.suppress(KeyError, TypeError):
+            page, pageend = int(item['pagestart']), int(item['pageend'])
+        number = int(item['number'])
+        reference = iamraw.BibliographyReference(
+            page=page,
+            pageend=pageend,
+            reference=number,
             raw=raw,
         )
         result.append(reference)
