@@ -18,6 +18,8 @@ import detector.bibliography.reference
 def parse_single_row(content: str) -> iamraw.BibliographyReference:
     matched = detector.bibliography.label.parses(content)
     if not matched:
+        matched = detector.bibliography.label.numbers(content)
+    if not matched:
         return None
     if len(matched) > 1:
         # Mostly a result of failure in layout grouping. This can
