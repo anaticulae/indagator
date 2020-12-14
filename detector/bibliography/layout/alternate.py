@@ -7,12 +7,18 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 """Alternate
-============
+=========
 
 [Bra11] Braess, H.H.: Vieweg Handbuch Kraftfahrzeugtechnik. Vieweg+Teubner Verlag,
         2011 (ATZ/MTZ-Fachbuch)
 [Dit13] Dittmann, D.: Alstom Hybridlokomotiven im Verschubeinsatz - Konzept und
         Erfahrungen im Einsatz H3 Fahrzeugplattform. 2013
+
+[1] W. Abmayr. Einführung in die digitale Bildverarbeitung. B.G.
+    Teubner Stuttgart, 1994.
+[2] M. Baccar, L.A. Gee, R.C. Gonzalez, and M.A. Abidi. Segmentation of
+    Range Images via Data Fusion and Morphological Watersheds. Pattern
+    Recognition, 29(10):1673 – 1687, 1996.
 """
 
 import geostrat
