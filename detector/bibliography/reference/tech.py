@@ -12,7 +12,7 @@ import iamraw
 import utila
 
 import detector.bibliography.label
-import detector.bibliography.reference as dbr
+import detector.bibliography.reference
 
 
 def parse_single_row(content: str) -> iamraw.BibliographyReference:
@@ -58,10 +58,10 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
     # disable non person authors
     authors = german.authors_decide(authors)
 
-    page = dbr.pages(rest)
+    page = detector.bibliography.reference.pages(rest)
     if page:
         rest = rest.replace(page[0], '')
-    year = dbr.years(rest)
+    year = detector.bibliography.reference.years(rest)
     if year:
         # remove year from right to left
         rest = ' '.join(rest.rsplit(year[0], maxsplit=1))
