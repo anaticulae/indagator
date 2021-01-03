@@ -2,6 +2,21 @@
 
 Every noteable change is logged here.
 
+## v0.13.0
+
+### Feature
+
+* add numbers pattern to tech parser (e62c6d34acaf)
+* add number label detection pattern (77e5782ffb36)
+
+### Fix
+
+* add simple year to extend more bib pattern (4227a1a8c715)
+
+### Documentation
+
+* Happy New Year! (99053cd20e90)
+
 ## v0.12.2
 
 ### Feature
