@@ -41,16 +41,18 @@ import utila
 
 import detector.bibliography.reference as dbr
 
+# TODO: ADD OPTIONAL BRACKETS TO REMOVE DIRTY SIMPLE YEAR HACK
 # TODO: REMOVE 4,5 HACK: WHEN SUPPORTING HIGHNOTE
 AND = r"""
     (?P<authors>[A-Za-z,;\(\)\.\-\&ÖöÄäÜü ]{5,})
-    \(
-        (
-            (?P<oj>o\.j\.)|
-            ((?P<year>\d{4,5})([ ]{0,3}\-(?P<yearend>\d{4})[ ]{0,3}){0,1})
-            (?P<number>a|b|c|d){0,1}  # optional char
-        )
-    \)
+    (
+        \((?P<oj>o\.j\.)\)|
+        \(
+        ((?P<year>\d{4,5})([ ]{0,3}\-(?P<yearend>\d{4})[ ]{0,3}){0,1})
+        (?P<number>a|b|c|d){0,1}  # optional char
+        \)|
+        (?P<simpleyear>\d{4})[ ]{0,2}[a-z]{0,1}[ ]{0,2}:          # see wessels 2007, TODO: DIRTY
+    )
     [ ]{0,5}                      # remove trailing whitespaces
     [:\.]{0,1}                    # remove dot or colon
     [ ]{0,5}                      # remove trailing whitespaces
@@ -70,6 +72,8 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:  # pylint:disa
     authors = german.authors(matched['authors'])
     if matched['year']:
         year = int(matched['year'])
+    elif matched['simpleyear']:
+        year = int(matched['simpleyear'])
     else:
         # without year
         year = 'no year'

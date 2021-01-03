@@ -45,6 +45,11 @@ von 1036-1930. - Neunkirchen
 
 BOBEK H., FESL M. (1978): Das System der zentralen Orte Österreichs:
 Eine empirische Untersuchung - Graz
+
+Wessels, Wolfgang, 2007: Die Europapolitik in der wissenschaftlichen
+Debatte. In: Weidenfeld, Werner / Wessels, Wolfgang (Hrsg.): Jahrbuch
+der Europäischen Integration 2006. Baden-Baden: Nomos
+Verlagsgesellschaft, 1. Auflage, S. 27 - 38.
 """.split('\n\n')
 
 
@@ -124,6 +129,15 @@ Eine empirische Untersuchung - Graz
         None,
         None,
         id='bobek',
+    ),
+    pytest.param(
+        LONGTEXT[8],
+        None,
+        [['Wessels', 'Wolfgang']],
+        None,
+        None,
+        None,
+        id='wessels',
     ),
 ])
 def test_parse_freeand_long(text, title, authors, pages, year, publisher):  # pylint:disable=W0613
