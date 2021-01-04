@@ -9,6 +9,6 @@
 
 iamraw==4.6.0
 utila==2.16.1
-geostrat==1.1.6
+geostrat==1.1.7
 
-german==0.13.3
+german==0.13.4
