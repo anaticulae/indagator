@@ -58,7 +58,7 @@ def work(  # pylint:disable=R0914
     # select best bib ref
     best = utila.longest(result)
     # remove None items
-    best = [utila.not_none(page) for page in best]
+    best = [utila.notnone(page) for page in best]
 
     dumped = serializeraw.dump_bibliography_reference(best)
     return dumped
