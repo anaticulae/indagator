@@ -70,6 +70,8 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:  # pylint:disa
         return None
 
     authors = german.authors(matched['authors'])
+    # disable non person authors
+    authors = german.authors_decide(authors)
     if matched['year']:
         year = int(matched['year'])
     elif matched['simpleyear']:

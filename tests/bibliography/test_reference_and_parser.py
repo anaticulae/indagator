@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import iamraw
 import pytest
 
 import detector.bibliography.reference.freeand as freeand
@@ -152,6 +153,10 @@ def test_parse_freeand_long(text, title, authors, pages, year, publisher):  # py
     if year:
         assert extracted.year == year
     if authors:
+        authors = [
+            iamraw.Person(name=author[0], firstname=' '.join(author[1:]))
+            for author in authors
+        ]
         assert extracted.authors == authors
 
 
