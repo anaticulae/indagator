@@ -138,3 +138,12 @@ def test_parse_tech_long(text, title, authors, pages, year, publisher):  # pylin
         assert extracted.year == year
     if authors:
         assert extracted.authors == authors
+
+
+NO_PERSON = 'OHMEDA MEDIZINTECHNIK: 2300 Finapress Blutdruckmonitor; Bedienungsanleitung,Puchheim (1991)'
+
+
+def test_parse_no_person():
+    extracted = detector.bibliography.reference.tech.parse_longtext(NO_PERSON)
+    assert extracted.title
+    assert extracted.authors
