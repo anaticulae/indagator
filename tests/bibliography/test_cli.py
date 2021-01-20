@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import iamraw
 import power
 import pytest
 import serializeraw
@@ -16,6 +17,24 @@ import utilatest
 import detector.path
 import tests
 import tests.resources
+
+
+def bachelor63(flat):
+    # zero is iamraw.NoPerson
+    # numbers iamraw.Person
+    expected = [2, 1, 1, 2, 0, 1, 1, 0, 1, 1, 2, 1]
+    parsed = []
+    for item in flat:
+        authors = item.authors
+        if not authors:
+            parsed.append(None)
+            continue
+        if all([isinstance(item, iamraw.Person) for item in authors]):
+            parsed.append(len(authors))
+            continue
+        # no person
+        parsed.append(0)
+    assert parsed == expected
 
 
 def bachelor90(flat):
@@ -67,7 +86,7 @@ def master116(flat):
 # yapf:disable
 @pytest.mark.parametrize('source, pages, expected, validate', [
     pytest.param(power.BACHELOR056_PDF, '49:53', 32, None, id='bachelor56', marks=pytest.mark.xfail(reason='improve parser')),
-    pytest.param(power.BACHELOR063_PDF, '59', 12, None, id='bachelor63'),
+    pytest.param(power.BACHELOR063_PDF, '59', 12, bachelor63, id='bachelor63'),
     pytest.param(power.MASTER116_PDF, '97,98,99,100', 46, master116, id='master116'), # VALIDATED BY HAND
     pytest.param(power.MASTER089_PDF, None, 149, master89, id='master89', marks=pytest.mark.xfail(reason='improve parser')),
     pytest.param(power.BACHELOR090_PDF, '84:89', 52, bachelor90, id='bachelor90'),
