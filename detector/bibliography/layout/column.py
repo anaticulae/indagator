@@ -28,14 +28,12 @@ def extract(content: texmex.PageTextNavigator) -> iamraw.BibliographyReferences:
     parsed = geostrat.dc_parse_page(content)
     if parsed is None:
         return None
-
     result = []
     for item in parsed:
         reference = item[0].strip()
         # remove latex reference pattern [FCB87]
         reference = remove_bracket_angle(reference)
         data = item[1].strip()
-
         techref = detector.bibliography.reference.tech.parse_longtext(data)
         if techref:
             techref.reference = reference

@@ -122,7 +122,6 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:  # pylint:disa
         result.page = page[1][0]
         if len(page[1]) == 2:
             result.pageend = page[1][1]
-
     return result
 
 
