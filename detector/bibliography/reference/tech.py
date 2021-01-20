@@ -64,6 +64,8 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
     if year:
         # remove year from right to left
         rest = ' '.join(rest.rsplit(year[0], maxsplit=1))
+        # remove fragment from year splitter, TODO: remove later!
+        rest = rest.replace('( )', '').strip()
     # TODO: ADD PUBLISHER EXTRACTOR
     rest = rest.strip()
     result = iamraw.BibliographyReference(
