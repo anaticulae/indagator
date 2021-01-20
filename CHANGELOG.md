@@ -2,6 +2,20 @@
 
 Every noteable change is logged here.
 
+## v0.13.2
+
+### Feature
+
+* improve tech parser (01309da842f6)
+
+### Fix
+
+* remove year fragment (fe101ea42b8f)
+
+### Documentation
+
+* extend interface documentation (7a48fd533472)
+
 ## v0.13.1
 
 ## v0.13.0
