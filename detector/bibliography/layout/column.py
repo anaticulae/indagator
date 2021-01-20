@@ -48,8 +48,8 @@ def extract(content: texmex.PageTextNavigator) -> iamraw.BibliographyReferences:
     return result
 
 
-def remove_bracket_angle(reference: str):
-    """Remove bracket angle at start and and of `reference`.
+def remove_bracket_angle(reference: str) -> str:
+    """Remove bracket angle at start and end of `reference`.
 
     >>> remove_bracket_angle('[TM12]')
     'TM12'
