@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.13.3
+
+### Fix
+
+* adjust unit test to new Person data structure (1683395a5ca6)
+
 ## v0.13.2
 
 ### Feature
