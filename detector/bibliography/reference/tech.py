@@ -49,17 +49,14 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
     except ValueError:
         return None
     try:
-        title, rest = rest.split('.', maxsplit=1)
-    except ValueError:
+        title, rest = parse_title(rest)
+    except TypeError:
         return None
-    # press = rest.split('.)
-
     title = title.strip()
     authors = authors.strip()
     authors = german.authors(authors)
     # disable non person authors
     authors = german.authors_decide(authors)
-
     page = detector.bibliography.reference.pages(rest)
     if page:
         rest = rest.replace(page[0], '')
@@ -67,9 +64,7 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
     if year:
         # remove year from right to left
         rest = ' '.join(rest.rsplit(year[0], maxsplit=1))
-
     # TODO: ADD PUBLISHER EXTRACTOR
-
     rest = rest.strip()
     result = iamraw.BibliographyReference(
         authors=authors,
@@ -84,3 +79,14 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
     if year:
         result.year = year[1]
     return result
+
+
+def parse_title(rest: str) -> tuple:
+    rest = rest.strip()
+    if '.' in rest:
+        return rest.split('.', maxsplit=1)
+    if ';' in rest:
+        return rest.split(';', maxsplit=1)
+    if ',' in rest:
+        return rest.split(',', maxsplit=1)
+    return None
