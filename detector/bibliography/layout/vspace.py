@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import typing
+
 import iamraw
 import texmex
 import utila
@@ -25,17 +27,6 @@ def extracts(navigators: texmex.PageTextContentNavigator
     return result
 
 
-def extract(navigator) -> iamraw.BibliographyReferences:
-    grouped = texmex.group_linedistances_complex(
-        navigator,
-        max_distance=maxdistance,
-    )
-    grouped = [[navigator[item] for item in group] for group in grouped]
-    result = detector.bibliography.layout.alternate.extract(grouped)
-    result = utila.not_none(result)
-    return result
-
-
 def maxdistance(size: float):
     # TODO: HOLY VALUE. Support table as holy value
     if size <= 12.0:
@@ -45,3 +36,41 @@ def maxdistance(size: float):
     if size <= 15.96:
         return 35
     return 50.0
+
+
+def extract(
+        navigator: texmex.NavigatorMixin,
+        vspace_max: callable = maxdistance,
+) -> iamraw.BibliographyReferences:
+    grouped = texmex.group_linedistances_complex(
+        navigator,
+        max_distance=vspace_max,
+    )
+    grouped = [[navigator[item] for item in group] for group in grouped]
+    result = detector.bibliography.layout.alternate.extract(grouped)
+    result = utila.not_none(result)
+    return result
+
+
+def extract_optimize(navigator: texmex.NavigatorMixin,
+                    ) -> iamraw.BibliographyReferences:
+    results = []
+    for factor in [0.8, 0.85, 0.90, 0.95, 1.0, 1.05, 1.1]:
+        adjusted = lambda x: factor * maxdistance(x)  # pylint:disable=cell-var-from-loop
+        extracted = extract(navigator, vspace_max=adjusted)
+        results.append(extracted)
+    # select best
+    best = select_best(results)
+    return best
+
+
+def select_best(items: list, selector=len) -> typing.Any:
+    # TODO: REPLACE WITH UTILA CODE
+    if not items:
+        return None
+    best = items[0]
+    for item in items[1:]:
+        if selector(item) < selector(best):
+            continue
+        best = item
+    return best

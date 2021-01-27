@@ -25,3 +25,14 @@ def test_parse_bibliography_bachelor63_page59():
     parsed = detector.bibliography.layout.column.extracts(navigators)
     parsed = utila.flatten(parsed)
     assert len(parsed) == 12, str(parsed)
+
+
+def test_parse_bibliography_bachelor37():
+    pages = (33,)
+    navigators = serializeraw.create_pagetextnavigators_frompath(
+        power.link(power.BACHELOR037_PDF),
+        pages=pages,
+    )
+    parsed = detector.bibliography.layout.column.extracts(navigators)
+    parsed = utila.flatten(parsed)
+    assert len(parsed) == 31, str(parsed)

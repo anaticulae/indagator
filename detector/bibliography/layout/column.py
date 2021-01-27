@@ -58,8 +58,10 @@ def double_column(content: texmex.PageTextNavigator) -> iamraw.BibliographyRefer
         return None
     result = []
     for column in parsed:
-        parsed = detector.bibliography.layout.vspace.extract(column)
-        result.extend(result)
+        navigator = texmex.PageTextNavigator()
+        navigator.data = column
+        parsed = detector.bibliography.layout.vspace.extract_optimize(navigator)
+        result.extend(parsed)
     return result
 
 
