@@ -14,28 +14,28 @@ import utilatest
 import tests
 
 
-@pytest.mark.parametrize('command', [
+@pytest.mark.usefixtures('testdir')
+@pytest.mark.parametrize('cmd', [
     ['--help'],
     ['--version'],
 ])
-def test_detector_misc(command, testdir, monkeypatch, capsys):  #pylint: disable=W0613
+def test_detector_misc(cmd, monkeypatch, capsys):
     """Run help and version command to reach basic test coverage"""
-    tests.run(command, monkeypatch=monkeypatch)
-
+    tests.run(cmd, monkeypatch=monkeypatch)
     utilatest.write_capsys(capsys)
 
 
 @pytest.mark.parametrize('example', [
-    pytest.param(power.link(power.DOCU07_PDF), id='howto_pyporting'),
-    pytest.param(power.link(power.DOCU09_PDF), id='pyporting'),
-    pytest.param(power.link(power.DOCU27_PDF), id='restructured'),
+    pytest.param(power.DOCU07_PDF, id='howto_pyporting'),
+    pytest.param(power.DOCU09_PDF, id='pyporting'),
+    pytest.param(power.DOCU27_PDF, id='restructured'),
 ])
 @utilatest.skip_longrun
-def test_detector_run_work(example, testdir, monkeypatch, capsys):  #pylint: disable=W0613
-    output = str(testdir)
-    command = f'-i {example} -o {output}'
+def test_detector_run_work(example, testdir, monkeypatch, capsys):
+    example = power.link(example)
+    cmd = f'-i {example} -o {testdir.tmpdir}'
 
-    with utilatest.increased_filecount(output, mindiff=3, maxdiff=3):
-        tests.run(command, monkeypatch=monkeypatch)
+    with utilatest.increased_filecount(testdir.tmpdir, mindiff=3, maxdiff=3):
+        tests.run(cmd, monkeypatch=monkeypatch)
 
     utilatest.write_capsys(capsys)
