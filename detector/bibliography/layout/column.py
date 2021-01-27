@@ -11,6 +11,7 @@ import geostrat
 import iamraw
 import texmex
 
+import detector.bibliography.layout.vspace
 import detector.bibliography.reference.tech
 
 
@@ -45,6 +46,17 @@ def extract(content: texmex.PageTextNavigator) -> iamraw.BibliographyReferences:
                     reference=reference,
                     data=data,
                 ))
+    return result
+
+
+def double_column(content: texmex.PageTextNavigator) -> iamraw.BibliographyReferences: # yapf:disable
+    parsed = geostrat.parse(content, column_count=2)
+    if parsed is None:
+        return None
+    result = []
+    for column in parsed:
+        parsed = detector.bibliography.layout.vspace.extract(column)
+        result.extend(result)
     return result
 
 
