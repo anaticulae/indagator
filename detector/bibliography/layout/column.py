@@ -15,14 +15,17 @@ import detector.bibliography.layout.vspace
 import detector.bibliography.reference.tech
 
 
-def extracts(items: texmex.PageTextNavigators):
-    result = []
-    for item in items:
-        extracted = extract(item)
-        if not extracted:
-            continue
-        result.append(extracted)
-    return result
+def extracts(navigators: texmex.PageTextNavigators):
+    for strategy in [extract, double_column]:
+        result = []
+        for navigator in navigators:
+            extracted = strategy(navigator)
+            if not extracted:
+                continue
+            result.append(extracted)
+        if result:
+            return result
+    return []
 
 
 def extract(content: texmex.PageTextNavigator) -> iamraw.BibliographyReferences:
