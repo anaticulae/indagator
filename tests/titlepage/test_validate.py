@@ -18,6 +18,11 @@ import tests
 import tests.resources
 
 
+def bachelor37(titlepage: iamraw.TitlePage):
+    assert titlepage
+    assert len(titlepage.examiner) == 2, titlepage.examiner
+
+
 def bachelor76(titlepage: iamraw.TitlePage):
     assert titlepage
 
@@ -71,6 +76,7 @@ def bachelor51(titlepage: iamraw.TitlePage):
 
 
 @pytest.mark.parametrize('source, check', [
+    pytest.param(power.BACHELOR037_PDF, bachelor37, id='bachelor37'),
     pytest.param(power.BACHELOR076_PDF, bachelor76, id='bachelor76'),
     pytest.param(power.MASTER098_PDF, master98, id='master98'),
     pytest.param(power.BACHELOR051_PDF, bachelor51, id='bachelo51'),
