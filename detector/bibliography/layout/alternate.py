@@ -69,6 +69,9 @@ def extract(content) -> iamraw.BibliographyReferences:
 
 def split_bibliography(raw: str) -> iamraw.BibliographyReference:
     raw = raw.strip()
+    matched = detector.bibliography.reference.number.parse(raw)
+    if matched:
+        return matched
     matched = detector.bibliography.reference.freeand.parse_longtext(raw)
     if matched:
         return matched
