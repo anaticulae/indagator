@@ -26,6 +26,7 @@ import iamraw
 import texmex
 
 import detector.bibliography.reference.freeand
+import detector.bibliography.reference.number
 import detector.bibliography.reference.tech
 
 MIN_CONTENT_LENGTH = 15  # TODO: HOLY VALUE
