@@ -6,10 +6,12 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+
 import iamraw
 import utila
 
 
+@utila.profile('institution')
 def parse(raw: str) -> iamraw.Institution:
     university = find_institution(raw)
     if university:

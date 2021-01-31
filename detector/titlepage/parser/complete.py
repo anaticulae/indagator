@@ -34,8 +34,7 @@ def parse(text: texmex.PageTextNavigator) -> iamraw.TitlePage:
     assert isinstance(text, texmex.PageTextNavigator), type(text)
     result = iamraw.TitlePage(pageraw=text.page)
 
-    with utila.profile('title'):  # TODO: USE VERBOSE FLAG
-        title = parse_title(text)
+    title = parse_title(text)
 
     text = utila.NEWLINE.join([item.text for item in text[:]])
 
@@ -49,8 +48,7 @@ def parse(text: texmex.PageTextNavigator) -> iamraw.TitlePage:
         # TODO: check title error lstatus
         pass
 
-    with utila.profile('institution'):
-        result.institution, text = parse_institution(text)
+    result.institution, text = parse_institution(text)
     parsed = textblock_token(text)
 
     undecided = []
@@ -59,24 +57,23 @@ def parse(text: texmex.PageTextNavigator) -> iamraw.TitlePage:
         with utila.profile(sink):
             for index, item in enumerate(parsed):
                 collected = action(item)
-                if collected:
-                    setattr(result, sink, collected)
-                    rest = item.replace(collected.raw, '').strip()
-                    if not rest:
-                        parsed.remove(item)
-                    else:
-                        # after replacement some data is left, try to use a further
-                        parsed[index] = rest
-                    break
+                if not collected:
+                    continue
+                setattr(result, sink, collected)
+                rest = item.replace(collected.raw, '').strip()
+                if not rest:
+                    parsed.remove(item)
+                else:
+                    # after replacement some data is left, try to use a further
+                    parsed[index] = rest
+                break
             else:
                 undecided.append(action)
 
     # run complex parsing
-    with utila.profile('persons'):
-        persons, _ = parse_person_all(parsed)
+    persons, _ = parse_person_all(parsed)
     if persons:
         result.author, result.examiner = order_persons(persons)
-
     return result
 
 

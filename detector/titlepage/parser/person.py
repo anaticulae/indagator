@@ -22,6 +22,7 @@ Examples:
         Prof. Dr. Nobert Bolz
         Zweitgutachter: Dipl.-Medienberater Stephan Frühwirt
 """
+
 import operator
 import re
 import typing
@@ -117,6 +118,7 @@ def parse_person_without_title(raw: str) -> iamraw.Person:
     return result
 
 
+@utila.profile('persons')
 def parse_all(items: list) -> list:
     """Parse title content to extract a list of Persons.
 

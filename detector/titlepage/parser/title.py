@@ -11,6 +11,7 @@
 
 TODO: Introduce multiple extraction strategies
 """
+
 import enum
 import math
 
@@ -47,6 +48,7 @@ TITLE_BLACKLIST = {
 }
 
 
+@utila.profile('title')
 def parse(textnavigator: texmex.PageTextNavigator) -> str:
     """Parse hugest text line as title.
 
