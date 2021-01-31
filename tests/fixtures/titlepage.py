@@ -270,18 +270,18 @@ FOURTH_EXPECTED = iamraw.TitlePage(
     ),
     matrikel=iamraw.Matrikel(number=2012, intro=',', raw=', 2012'),
     examiner=[
-        iamraw.Person(  # TODO: REQUIRE IMPROVEMENT
-            title=iamraw.AcademicTitle.EXAMINIER,
-            name='Schubert',
-            firstname='Prof. Dr. T.',
-            raw='Primary Supervisor: Prof. Dr. T. Schubert',
+        iamraw.Person(
+            title=iamraw.AcademicTitle.DR,
+            name='Weinreich',
+            firstname='A.',
+            raw='Secondary Supervisor: Dr. A. Weinreich',
         ),
         iamraw.Person(
-            title=iamraw.AcademicTitle.EXAMINIER,
-            name='Weinreich',
-            firstname='Dr. A.',
-            raw='Secondary Supervisor: Dr. A. Weinreich',
-        )
+            title=iamraw.PROF_DR,
+            name='Schubert',
+            firstname='T.',
+            raw='Primary Supervisor: Prof. Dr. T. Schubert',
+        ),
     ],
     institution=iamraw.Institution(
         courseofstudies=None,
