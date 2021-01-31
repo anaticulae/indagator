@@ -2,6 +2,14 @@
 
 Every noteable change is logged here.
 
+## v0.15.0
+
+### Feature
+
+* extend title page parser and judger (7730a9e84017)
+* extend person pattern (3b8d0f9beeae)
+* simplify titlepage extractor loader (9686d9cef10c)
+
 ## v0.14.0
 
 ### Feature
