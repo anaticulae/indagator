@@ -123,7 +123,6 @@ Systeme · Mechatronik · Perspektiven. Springer Fachmedien Wiesbaden,
         2013,
         None,
         id='heissing',
-        marks=pytest.mark.xfail(reason='use smart german person detector'),
     ),
 ])
 def test_parse_tech_long(text, title, authors, pages, year, publisher):  # pylint:disable=W0613
