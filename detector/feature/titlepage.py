@@ -68,18 +68,12 @@ SELECTED_PAGES = (0, 1, 2, 3, 4)
 
 
 def work(text: str, textpositions: str, pages: tuple = None) -> str:
-    if pages is None:
-        # first five pages
-        pages = SELECTED_PAGES
-    text = serializeraw.load_document(text, pages=pages)
-    textpositions = serializeraw.load_textpositions(
-        textpositions,
-        pages=pages,
-    )
-
-    navigators = texmex.create_pagetextnavigators(
+    # first five pages
+    pages = pages if pages else SELECTED_PAGES
+    navigators = serializeraw.create_pagetextnavigators_fromfile(
         text,
         textpositions,
+        pages=pages,
     )
 
     parsed = parse_titlepages(navigators, pages)
@@ -90,8 +84,7 @@ def work(text: str, textpositions: str, pages: tuple = None) -> str:
 
 
 def parse_titlepages(navigators: texmex.PageTextNavigators, pages=None):
-    if not pages:
-        pages = SELECTED_PAGES
+    pages = pages if pages else SELECTED_PAGES
     result = []
     for page in pages:
         navigator = utila.select_page(navigators, page=page)
