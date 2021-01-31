@@ -61,12 +61,13 @@ RESOURCES_NOTITLE = [
 
 def extract(resources):
     genex.extract(
-        resources + [power.REPOSITORY],
+        resources,
         destination=power.generated(),
         groupme=True,
         sections=True,
         pages=':',
         worker=WORKER,
+        base=power.REPOSITORY,
     )
 
 
@@ -89,10 +90,11 @@ def extract_notitle(resources):
 
     # generate
     genex.extract(
-        without_titlepage + [destination],  # ensure correct parent
+        without_titlepage,
         destination,
         pages='0:10',
         worker=1,
+        base=destination,
     )
 
 
