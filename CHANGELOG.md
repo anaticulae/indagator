@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.16.0
+
+### Feature
+
+* add new [1]-pattern parser to alternate parser (d3106301929a)
+* add numbered reference[1]-parser (ee7d4af13b6b)
+
 ## v0.15.0
 
 ### Feature
