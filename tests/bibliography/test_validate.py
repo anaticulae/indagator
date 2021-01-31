@@ -67,6 +67,11 @@ def master75(flat):  # pylint:disable=W0613
     pass
 
 
+def master110(flat):
+    titles = [item.title for item in flat if item.title]
+    assert len(titles) >= 66  # NOT VALIDATED
+
+
 def master116(flat):
     expected = [
         'App14', 'Bah12', 'Bas14', 'Bor13', 'Bra11', 'Dit13', 'Don04', 'EB03',
@@ -90,7 +95,7 @@ def master116(flat):
     pytest.param(power.MASTER089_PDF, None, 149, master89, id='master89', marks=pytest.mark.xfail(reason='improve parser')),
     pytest.param(power.BACHELOR090_PDF, '84:89', 52, bachelor90, id='bachelor90'),
     pytest.param(power.MASTER075_PDF, '70', 18, master75, id='master75', marks=pytest.mark.xfail(reason='improve parser')), # VALIDATED BY HAND
-    pytest.param(power.MASTER110_PDF, '104:109', 71, None, id='master110'),
+    pytest.param(power.MASTER110_PDF, '104:109', 71, master110, id='master110'),
     pytest.param(power.DISS266_PDF, '215:247', 402, None, id='diss266'),
 ])
 # yapf:enable
