@@ -117,6 +117,7 @@ FIELD = [
     'Fachbereich',
     'Department of',
     'Department',
+    'Fach',
 ]
 
 UNIVERSITY = [

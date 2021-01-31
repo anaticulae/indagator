@@ -56,4 +56,6 @@ def rate(title: iamraw.TitlePage) -> int:
         result += 5 * len(title.examiner)
     if title.institution:
         result += 20
+    if title.author:
+        result += 5
     return result
