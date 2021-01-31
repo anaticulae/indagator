@@ -2,6 +2,14 @@
 
 Every noteable change is logged here.
 
+## v0.14.0
+
+### Feature
+
+* add double column optimizer (873a1fee2133)
+* enable second bib column detector strategy (490a0bfd6c44)
+* add special double column parser (4043d9776e0c)
+
 ## v0.13.3
 
 ### Fix
