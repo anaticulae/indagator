@@ -115,15 +115,3 @@ def test_detector_bibliography_run(
 
     if validate:
         validate(flat)
-
-
-def test_unconnected_pages(testdir, monkeypatch, capsys):
-    root = testdir.tmpdir
-    source = power.link(power.BACHELOR056_PDF)
-    pages = '1,2,3,6,7,8'  # invalid pages input
-
-    command = f'-i {source} -o {root} --bibliography --pages={pages}'
-    tests.run(command, monkeypatch=monkeypatch)
-
-    stdout, _ = capsys.readouterr()
-    assert 'more than one potential bib section' in stdout
