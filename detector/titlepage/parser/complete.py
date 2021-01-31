@@ -36,10 +36,7 @@ def parse(text: texmex.PageTextNavigator) -> iamraw.TitlePage:
 
     title = parse_title(text)
 
-    text = utila.NEWLINE.join([item.text for item in text[:]])
-
-    # remove textual horizontal lines cause there slow down persons parsing
-    text = re.sub(r'[\-\=\_]{5,}', '', text)
+    text = clean_text(text)
 
     if isinstance(title, str):
         text.replace(title, '')
@@ -51,6 +48,23 @@ def parse(text: texmex.PageTextNavigator) -> iamraw.TitlePage:
     result.institution, text = parse_institution(text)
     parsed = textblock_token(text)
 
+    result = run_simple(result, parsed)
+
+    # run complex parsing
+    persons, _ = parse_person_all(parsed)
+    if persons:
+        result.author, result.examiner = order_persons(persons)
+    return result
+
+
+STRATEGY = [
+    ('date', parse_date),
+    ('thesis', parse_thesis),
+    ('matrikel', parse_matrikel),
+]
+
+
+def run_simple(title, parsed):
     undecided = []
     # run single/simple parsing tasks
     for (sink, action) in STRATEGY:
@@ -59,7 +73,7 @@ def parse(text: texmex.PageTextNavigator) -> iamraw.TitlePage:
                 collected = action(item)
                 if not collected:
                     continue
-                setattr(result, sink, collected)
+                setattr(title, sink, collected)
                 rest = item.replace(collected.raw, '').strip()
                 if not rest:
                     parsed.remove(item)
@@ -69,12 +83,14 @@ def parse(text: texmex.PageTextNavigator) -> iamraw.TitlePage:
                 break
             else:
                 undecided.append(action)
+    return title
 
-    # run complex parsing
-    persons, _ = parse_person_all(parsed)
-    if persons:
-        result.author, result.examiner = order_persons(persons)
-    return result
+
+def clean_text(text: list) -> str:
+    text = utila.NEWLINE.join([item.text for item in text[:]])
+    # remove textual horizontal lines cause there slow down persons parsing
+    text = re.sub(r'[\-\=\_]{5,}', '', text)
+    return text
 
 
 def valid_titlepage(titlepage: iamraw.TitlePage) -> bool:
@@ -85,10 +101,3 @@ def valid_titlepage(titlepage: iamraw.TitlePage) -> bool:
     if titlepage.title in ('Inhaltsverzeichnis', 'Inhalt', 'Content'):
         return False
     return True
-
-
-STRATEGY = [
-    ('date', parse_date),
-    ('thesis', parse_thesis),
-    ('matrikel', parse_matrikel),
-]
