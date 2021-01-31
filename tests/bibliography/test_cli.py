@@ -16,7 +16,6 @@ import utilatest
 
 import detector.path
 import tests
-import tests.resources
 
 
 def bachelor63(flat):
