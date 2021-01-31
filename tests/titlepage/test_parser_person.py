@@ -164,6 +164,10 @@ KAHN = iamraw.Person(
             raw='Zweitgutachterin: Aleksandra Filonova, M.A.',
         ),
     ),
+    (
+        'Erstgutachter: Herr Prof. Dr. O. T. Wolf',
+        iamraw.Person('Wolf', 'O. T.', iamraw.PROF_DR),
+    ),
 ])
 def test_detector_parser_parse_person(raw, expected):
     parsed = detector.titlepage.parser.person.parse(raw)
