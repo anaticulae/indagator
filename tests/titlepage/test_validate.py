@@ -71,39 +71,35 @@ def bachelor51(titlepage: iamraw.TitlePage):
 
 
 @pytest.mark.parametrize('source, check', [
+    pytest.param(power.BACHELOR076_PDF, bachelor76, id='bachelor76'),
+    pytest.param(power.MASTER098_PDF, master98, id='master98'),
+    pytest.param(power.BACHELOR051_PDF, bachelor51, id='bachelo51'),
     pytest.param(
-        power.link(power.BACHELOR076_PDF),
-        bachelor76,
-        id='bachelor76',
-    ),
-    pytest.param(power.link(power.MASTER098_PDF), master98, id='master98'),
-    pytest.param(power.link(power.BACHELOR051_PDF), bachelor51, id='bachelo51'),
-    pytest.param(
-        power.link(power.BACHELOR241_PDF),
+        power.BACHELOR241_PDF,
         bachelor241,
         id='bachelor241',
         marks=pytest.mark.xfail(reason='improve headline parser'),
     ),
     pytest.param(
-        power.link(power.MASTER078_PDF),
+        power.MASTER078_PDF,
         master78,
         id='master78',
         marks=pytest.mark.xfail(reason='improve headline parser'),
     ),
     pytest.param(
-        power.link(power.HOME050_PDF),
+        power.HOME050_PDF,
         homework50,
         id='homework50',
         marks=pytest.mark.xfail(reason='improve headline parser'),
     ),
 ])
 @utilatest.skip_longrun
-def test_validate_titlepage_extractor(source, check, testdir, monkeypatch):  #pylint: disable=W0613
-    outdir = testdir.tmpdir
-    cmd = f'-i {source} -o {outdir} --title --page=0'
+def test_validate_titlepage_extractor(source, check, testdir, monkeypatch):
+    source = power.link(source)
+    cmd = f'-i {source} -o {testdir.tmpdir} --title --page=0'
 
     tests.run(cmd, monkeypatch=monkeypatch)
 
-    source = detector.path.titlepage_detected(outdir)
+    source = detector.path.titlepage_detected(testdir.tmpdir)
     titlepage = serializeraw.load_titlepage(source)
     check(titlepage)
