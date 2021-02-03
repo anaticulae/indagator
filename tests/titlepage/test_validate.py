@@ -75,6 +75,12 @@ def bachelor51(titlepage: iamraw.TitlePage):
     # assert len(titlepage.examiner) == 2, titlepage.examiner
 
 
+def diss170(titlepage: iamraw.TitlePage):
+    assert titlepage
+    assert titlepage.author.name == 'Dunger'
+    assert len(titlepage.examiner) == 3
+
+
 @pytest.mark.parametrize('source, check', [
     pytest.param(power.BACHELOR037_PDF, bachelor37, id='bachelor37'),
     pytest.param(power.BACHELOR076_PDF, bachelor76, id='bachelor76'),
@@ -97,6 +103,11 @@ def bachelor51(titlepage: iamraw.TitlePage):
         homework50,
         id='homework50',
         marks=pytest.mark.xfail(reason='improve headline parser'),
+    ),
+    pytest.param(
+        power.DISS170_PDF,
+        diss170,
+        id='diss170',
     ),
 ])
 @utilatest.skip_longrun
