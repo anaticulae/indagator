@@ -115,7 +115,7 @@ def test_detector_bibliography_run(
     outpath = detector.path.bibliography_detected(testdir.tmpdir)
     loaded = serializeraw.load_bibliography_reference(outpath)
     flat = utila.flatten(loaded)
-    assert len(flat) == expected, str(loaded)
+    assert len(flat) == expected or expected is None, str(loaded)
 
     if validate:
         validate(flat)
