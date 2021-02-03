@@ -108,14 +108,9 @@ def numbers(content: str) -> iamraw.BibliographyReferences:
 
 
 def parse_single(page: str):
-    number = parse_ints(page)[0]
+    number = utila.parse_numbers(page)[0]
     follow = page.replace(str(number), '').strip()
     return number, follow
-
-
-def parse_ints(item: str) -> int:
-    # TODO: REPLACE WITH UTILA CODE
-    return [int(item) for item in re.findall(r'\d+', item)]
 
 
 def millennium(year: int) -> int:
