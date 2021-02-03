@@ -109,11 +109,10 @@ def test_detector_bibliography_run(
         monkeypatch,
 ):
     source = power.link(source)
-    root = testdir.tmpdir
-    command = f'-i {source} -o {root} --bibliography --pages={pages}'
-    tests.run(command, monkeypatch=monkeypatch)
+    cmd = f'-i {source} -o {testdir.tmpdir} --bibliography --pages={pages}'
+    tests.run(cmd, monkeypatch=monkeypatch)
 
-    outpath = detector.path.bibliography_detected(root)
+    outpath = detector.path.bibliography_detected(testdir.tmpdir)
     loaded = serializeraw.load_bibliography_reference(outpath)
     flat = utila.flatten(loaded)
     assert len(flat) == expected, str(loaded)
