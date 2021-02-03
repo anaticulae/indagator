@@ -40,11 +40,10 @@ def parse(raw: str) -> iamraw.Person:
     Returns:
         Person if parsing was successful, else None
     """
-    result = re.search(PATTERN, raw)
+    result = re.search(PATTERN, raw, re.X)
     if not result:
         # second try with reversed title
         result = re.search(PATTER_PERSON_AFTER, raw)
-
     if not result:
         # try second parser
         result = parse_person_without_title(raw)
@@ -58,31 +57,6 @@ def parse(raw: str) -> iamraw.Person:
     raw = utila.extract_match(result)
     person = iamraw.Person(title=title, name=name, firstname=firstname, raw=raw)
     return person
-
-
-def create_with_title_pattern():
-    # TODO: Keep attention to the list below. Refactor later
-    preamble = [
-        r'Erstprüfer(in)?',  # TODO: Remove this later
-        r'Autor(in)?',
-        r'Verfasser(in)?',
-        r'Zweitprüfer(in)?',
-        r'Primary Supervisor',
-        r'Secondary Supervisor',
-        r'vorgelegt von',
-        r'by',
-        r'Name, Vorname:'
-        # r'von', # TODO: exclude von in `title`
-    ]
-    preamble = [fr'(?P<t{index}>{item})' for index, item in enumerate(preamble)]
-    preamble = '(' + '|'.join(preamble) + ')'  # pylint:disable=R0204
-    between = r'[:]?[\s ]{0,8}'
-    name = r'(?P<names>(\w+(\,|\.)?[ ]{0,5}){1,5})\b'
-    pattern = re.compile(preamble + between + name, re.IGNORECASE)
-    return pattern
-
-
-PERSON_WITHOUT_TITLE_PATTERN = create_with_title_pattern()
 
 
 def parse_person_without_title(raw: str) -> iamraw.Person:
@@ -151,6 +125,122 @@ def parse_all(items: list) -> list:
     return persons, rest
 
 
+def create_with_title_pattern():
+    # TODO: Keep attention to the list below. Refactor later
+    preamble = [
+        r'Erstprüfer(in)?',  # TODO: Remove this later
+        r'Autor(in)?',
+        r'Verfasser(in)?',
+        r'Zweitprüfer(in)?',
+        r'Primary Supervisor',
+        r'Secondary Supervisor',
+        r'vorgelegt von',
+        r'by',
+        r'Name, Vorname:'
+        # r'von', # TODO: exclude von in `title`
+    ]
+    preamble = [fr'(?P<t{index}>{item})' for index, item in enumerate(preamble)]
+    preamble = '(' + '|'.join(preamble) + ')'  # pylint:disable=R0204
+    between = r'[:]?[\s ]{0,8}'
+    name = r'(?P<names>(\w+(\,|\.)?[ ]{0,5}){1,5})\b'
+    pattern = re.compile(preamble + between + name, re.IGNORECASE)
+    return pattern
+
+
+PERSON_WITHOUT_TITLE_PATTERN = create_with_title_pattern()
+
+
+def create_person_title_pattern() -> str:
+    keys = [
+        item.replace('.', r'\.').replace(' ', '[ ]')
+        for item in iamraw.AcademicTitle.keys()
+        if item
+    ]
+    result = (fr'(?P<t{index}>{item})[ ]?' for index, item in enumerate(keys))
+    joined = '|'.join(result)
+    return joined
+
+
+EXAMINER = '|'.join([
+    # it's important to limit parsing length to avoid very long running parsing
+    r'(\d\.\s?)?Betreuer(in)?',
+    r'Erstgutachter(in)?',
+    r'Betreuung',
+    r'Gutachter(in)?',
+    r'Hochschullehrer(in)?',
+    r'Zweitgutachter(in)?',
+    # [\s|:] to avoid confusing 'Prof. Dr. Theo Wil'
+    r'(\w+\s?){1,4}?[\s|:]',
+    r'Primary Supervisor',
+    r'Secondary Supervisor',
+    r'^',
+])
+PERSON_TITLE = create_person_title_pattern()
+PERSON_NAME = r'(?P<fname>([A-Z]\.[ ]?|\w+[ ]?){1,5})[ ](?P<name>[\w|-]+)'
+
+# pattern can be spread over more than one line
+PATTERN = rf"""(?P<examiner>({EXAMINER})[:]?\s?)?
+    ([ ]{0,4}(Herr|Frau)[ ]{0,4})?
+    ({PERSON_TITLE}[ ]*)+\s?
+    {PERSON_NAME}
+"""
+
+# TODO: IMPROVE THIS
+# TODO: SUPPORT PARSING DOUBLE PRE NAME
+# TODO: VERIFY HERR/FRAU PATTERN
+# Parses: Examiner: Hemut Konrad, M.A.
+PATTER_PERSON_AFTER = rf"""
+            (?P<examiner>({EXAMINER})[:]?\s?)
+            ([ ]{0,4}(Herr|Frau)?[ ]{0,4})?
+            (?P<fname>(\w+[ ]?){1,5}?)[ ](?P<name>[\w|-]+)
+            [,]?[ ]{0,3}?(?P<t3>M\.A\.?\B)
+            """
+PATTER_PERSON_AFTER = re.compile(PATTER_PERSON_AFTER, re.X)
+
+
+def extract_title(result: re.Match) -> list:
+    title = []
+    for item in range(len(iamraw.AcademicTitle.keys())):
+        try:
+            parsed_title = result['t%d' % item]
+            if not parsed_title:
+                continue
+        except (KeyError, IndexError):
+            # IndexError: no every group is used. For example only t3:master
+            continue
+        else:
+            matches = [it for it in iamraw.title.MATCHES.values()]
+            title.append(matches[item])
+    return title
+
+
+def author_or_examiner(raw: str) -> iamraw.AcademicTitle:
+    raw = raw.lower()
+
+    # Hint: add items as lower case
+    author = ['vorgelegt', 'verfasser', 'autor']
+    if any([item in raw for item in author]):
+        return iamraw.AcademicTitle.STUDENT
+
+    examiner = ['prüfer', 'gutachter', 'betreuer', 'supervisor']
+    if any([item in raw for item in examiner]):
+        return iamraw.AcademicTitle.EXAMINIER
+
+    return iamraw.AcademicTitle.NO_TITLE
+
+
+def merge_title(items) -> iamraw.AcademicTitle:
+    # TODO: REPLACE WITH IAMRAW CODE
+    if not items:
+        return None
+    result = items[0]
+    for item in items:
+        if not item:
+            continue
+        result |= item
+    return result
+
+
 def lookbehind(rest):
     complete = '\n'.join(rest)
     parsed = parse(complete)
@@ -186,92 +276,3 @@ def order_persons(persons: list) -> typing.Tuple[iamraw.Person, iamraw.Persons]:
 
     author, examiner = persons[0], persons[1:]
     return author, examiner
-
-
-EXAMINER = [
-    # it's important to limit parsing length to avoid very long running parsing
-    r'(\d\.\s?)?Betreuer(in)?',
-    r'Erstgutachter(in)?',
-    r'Betreuung',
-    r'Gutachter(in)?',
-    r'Hochschullehrer(in)?',
-    r'Zweitgutachter(in)?',
-    # [\s|:] to avoid confusing 'Prof. Dr. Theo Wil'
-    r'(\w+\s?){1,4}?[\s|:]',
-    r'Primary Supervisor',
-    r'Secondary Supervisor',
-    r'^',
-]
-
-TITLE_KEYS = [
-    item.replace('.', r'\.').replace(' ', '[ ]')
-    for item in iamraw.AcademicTitle.keys()
-    if item
-]
-
-PERSON_TITLE = '|'.join(fr'(?P<t{index}>{item})[ ]?' for index, item in enumerate(TITLE_KEYS)) # yapf:disable
-EXAMINER = '|'.join(EXAMINER)  # pylint:disable=R0204
-
-PERSON_NAME = r'(?P<fname>([A-Z]\.[ ]?|\w+[ ]?){1,5})[ ](?P<name>[\w|-]+)'
-
-# pattern can be spread over more than one line
-PATTERN = rf"""(?P<examiner>({EXAMINER})[:]?\s?)?
-       ([ ]{0,4}(Herr|Frau)[ ]{0,4})?
-       ({PERSON_TITLE}[ ]*)+\s?
-       {PERSON_NAME}
-"""
-PATTERN = re.compile(PATTERN, re.X)
-
-# TODO: IMPROVE THIS
-# TODO: SUPPORT PARSING DOUBLE PRE NAME
-# TODO: VERIFY HERR/FRAU PATTERN
-# Parses: Examiner: Hemut Konrad, M.A.
-PATTER_PERSON_AFTER = rf"""
-            (?P<examiner>({EXAMINER})[:]?\s?)
-            ([ ]{0,4}(Herr|Frau)?[ ]{0,4})?
-            (?P<fname>(\w+[ ]?){1,5}?)[ ](?P<name>[\w|-]+)
-            [,]?[ ]{0,3}?(?P<t3>M\.A\.?\B)
-            """
-PATTER_PERSON_AFTER = re.compile(PATTER_PERSON_AFTER, re.X)
-
-
-def extract_title(result):
-    title = []
-    for item in range(len(iamraw.AcademicTitle.keys())):
-        try:
-            parsed_title = result['t%d' % item]
-            if not parsed_title:
-                continue
-        except (KeyError, IndexError):
-            # IndexError: no every group is used. For example only t3:master
-            continue
-        else:
-            matches = [it for it in iamraw.title.MATCHES.values()]
-            title.append(matches[item])
-    return title
-
-
-def author_or_examiner(raw: str) -> iamraw.AcademicTitle:
-    raw = raw.lower()
-
-    # Hint: add items as lower case
-    author = ['vorgelegt', 'verfasser', 'autor']
-    if any([item in raw for item in author]):
-        return iamraw.AcademicTitle.STUDENT
-
-    examiner = ['prüfer', 'gutachter', 'betreuer', 'supervisor']
-    if any([item in raw for item in examiner]):
-        return iamraw.AcademicTitle.EXAMINIER
-
-    return iamraw.AcademicTitle.NO_TITLE
-
-
-def merge_title(items) -> iamraw.AcademicTitle:
-    if not items:
-        return None
-    result = items[0]
-    for item in items:
-        if not item:
-            continue
-        result |= item
-    return result
