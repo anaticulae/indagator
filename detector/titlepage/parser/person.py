@@ -40,21 +40,39 @@ def parse(raw: str) -> iamraw.Person:
     Returns:
         Person if parsing was successful, else None
     """
-    result = re.search(PATTERN, raw, re.X)
-    if not result:
-        # second try with reversed title
-        result = re.search(PATTER_PERSON_AFTER, raw)
-    if not result:
-        # try second parser
-        result = parse_person_without_title(raw)
-        if result:
-            return result
-        return None
-    title = extract_title(result)
-    title = merge_title(title)
+    strategies = [
+        parse_pattern,
+        parse_person_after,
+        parse_person_without_title,
+    ]
+    for strategy in strategies:
+        parsed = strategy(raw)
+        if not parsed:
+            continue
+        return parsed
+    return None
 
-    name, firstname = result['name'], result['fname']
-    raw = utila.extract_match(result)
+
+def parse_pattern(raw: str) -> iamraw.Person:
+    parsed = re.search(PATTERN, raw, re.X)
+    if not parsed:
+        return None
+    title = extract_title(parsed)
+    title = merge_title(title)
+    name, firstname = parsed['name'], parsed['fname']
+    raw = utila.extract_match(parsed)
+    person = iamraw.Person(title=title, name=name, firstname=firstname, raw=raw)
+    return person
+
+
+def parse_person_after(raw: str) -> iamraw.Person:
+    parsed = re.search(PATTER_PERSON_AFTER, raw, re.X)
+    if not parsed:
+        return None
+    title = extract_title(parsed)
+    title = merge_title(title)
+    name, firstname = parsed['name'], parsed['fname']
+    raw = utila.extract_match(parsed)
     person = iamraw.Person(title=title, name=name, firstname=firstname, raw=raw)
     return person
 
@@ -183,7 +201,8 @@ PERSON_TITLE = create_person_title_pattern()
 PERSON_NAME = r'(?P<fname>([A-Z]\.[ ]?|\w+[ ]?){1,5})[ ](?P<name>[\w|-]+)'
 
 # pattern can be spread over more than one line
-PATTERN = rf"""(?P<examiner>({EXAMINER})[:]?\s?)?
+PATTERN = rf"""
+    (?P<examiner>({EXAMINER})[:]?\s?)?
     ([ ]{0,4}(Herr|Frau)[ ]{0,4})?
     ({PERSON_TITLE}[ ]*)+\s?
     {PERSON_NAME}
@@ -194,12 +213,11 @@ PATTERN = rf"""(?P<examiner>({EXAMINER})[:]?\s?)?
 # TODO: VERIFY HERR/FRAU PATTERN
 # Parses: Examiner: Hemut Konrad, M.A.
 PATTER_PERSON_AFTER = rf"""
-            (?P<examiner>({EXAMINER})[:]?\s?)
-            ([ ]{0,4}(Herr|Frau)?[ ]{0,4})?
-            (?P<fname>(\w+[ ]?){1,5}?)[ ](?P<name>[\w|-]+)
-            [,]?[ ]{0,3}?(?P<t3>M\.A\.?\B)
-            """
-PATTER_PERSON_AFTER = re.compile(PATTER_PERSON_AFTER, re.X)
+    (?P<examiner>({EXAMINER})[:]?\s?)
+    ([ ]{0,4}(Herr|Frau)?[ ]{0,4})?
+    (?P<fname>(\w+[ ]?){1,5}?)[ ](?P<name>[\w|-]+)
+    [,]?[ ]{0,3}?(?P<t3>M\.A\.?\B)
+"""
 
 
 def extract_title(result: re.Match) -> list:
