@@ -93,11 +93,15 @@ def parse_person_without_title(raw: str) -> iamraw.Person:
 
 
 @utila.profile('persons')
-def parse_all(items: list) -> list:
+def parse_all(
+        items: list,
+        person_length_max: int = 70,  # TODO: HOLY VALUE
+) -> list:
     """Parse title content to extract a list of Persons.
 
     Args:
         items(list): content of title page
+        person_length_max(int): max length of potential title
     Returns:
         detected list of Persons and the rest of the page content as a list
     """
@@ -106,7 +110,7 @@ def parse_all(items: list) -> list:
     for item in items:
         lines = item.splitlines()
         for line in lines:
-            if len(line) > 70:  # TODO: HOLY VALUE
+            if len(line) > person_length_max:
                 rest.append(line)
                 continue
             parsed = parse(line)
