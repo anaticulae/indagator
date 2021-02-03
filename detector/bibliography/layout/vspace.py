@@ -20,7 +20,7 @@ def extracts(navigators: texmex.PageTextContentNavigator
             ) -> iamraw.BibliographyReferences:
     result = []
     for navigator in navigators:
-        extracted = extract(navigator)
+        extracted = extract_optimize(navigator)
         if not extracted:
             continue
         result.append(extracted)
