@@ -35,7 +35,7 @@ import utila
 # [ ]{0,3} Optional whitespaces
 
 TECHNICAL = r"""\[[ ]{0,3}
-            (?P<author>[\w\.]{2,3}[+]{0,1})[ ]{0,3}
+            (?P<author>[\w\.]{2,4}[+]{0,1})[ ]{0,3}
             (?P<year>\d{2})[ ]{0,3}
             (?P<number>a|b|c|d){0,1}[ ]{0,3}
             (\,[ ]{0,3}(Seite|S\.)[ ]{0,3}
