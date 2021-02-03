@@ -13,7 +13,7 @@ import utila
 import detector.bibliography.strategy
 
 
-def work(  # pylint:disable=R0914
+def work(
         text: str,
         textpositions: str,
         sizeandborderpath: str,

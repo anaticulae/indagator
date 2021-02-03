@@ -107,7 +107,7 @@ def test_detector_bibliography_run(
         validate,
         testdir,
         monkeypatch,
-):  #pylint: disable=W0613
+):
     source = power.link(source)
     root = testdir.tmpdir
     command = f'-i {source} -o {root} --bibliography --pages={pages}'
