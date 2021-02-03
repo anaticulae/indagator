@@ -214,10 +214,12 @@ EXAMINER = '|'.join(EXAMINER)  # pylint:disable=R0204
 
 PERSON_NAME = r'(?P<fname>([A-Z]\.[ ]?|\w+[ ]?){1,5})[ ](?P<name>[\w|-]+)'
 
+# pattern can be spread over more than one line
 PATTERN = rf"""(?P<examiner>({EXAMINER})[:]?\s?)?
-               ([ ]{0,4}(Herr|Frau)?[ ]{0,4})?
-               ({PERSON_TITLE}[ ]*)+[ ]?{PERSON_NAME}
-            """
+       ([ ]{0,4}(Herr|Frau)[ ]{0,4})?
+       ({PERSON_TITLE}[ ]*)+\s?
+       {PERSON_NAME}
+"""
 PATTERN = re.compile(PATTERN, re.X)
 
 # TODO: IMPROVE THIS
