@@ -33,6 +33,13 @@ KAHN = iamraw.Person(
     raw='Zweitgutachter: Prof. Dr. Oliver Kahn',
 )
 
+BIRTH = """\
+vorgelegt von
+Dipl.-Ing.
+Manfred Helmer
+geb. in Berlin
+"""
+
 
 @pytest.mark.parametrize('raw, expected', [
     (
@@ -167,6 +174,11 @@ KAHN = iamraw.Person(
     (
         'Erstgutachter: Herr Prof. Dr. O. T. Wolf',
         iamraw.Person('Wolf', 'O. T.', iamraw.PROF_DR),
+    ),
+    pytest.param(
+        BIRTH,
+        iamraw.Person('Helmer', 'Manfred', iamraw.AcademicTitle.MASTER),
+        id='multiline',
     ),
 ])
 def test_detector_parser_parse_person(raw, expected):
