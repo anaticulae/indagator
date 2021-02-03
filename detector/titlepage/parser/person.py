@@ -58,6 +58,8 @@ def parse_pattern(raw: str) -> iamraw.Person:
     if not parsed:
         return None
     title = extract_title(parsed)
+    if not title:
+        return None
     title = merge_title(title)
     name, firstname = parsed['name'], parsed['fname']
     raw = utila.extract_match(parsed)
@@ -70,6 +72,8 @@ def parse_person_after(raw: str) -> iamraw.Person:
     if not parsed:
         return None
     title = extract_title(parsed)
+    if not title:
+        return None
     title = merge_title(title)
     name, firstname = parsed['name'], parsed['fname']
     raw = utila.extract_match(parsed)
@@ -224,8 +228,10 @@ def extract_title(result: re.Match) -> list:
     title = []
     for item in range(len(iamraw.AcademicTitle.keys())):
         try:
-            parsed_title = result['t%d' % item]
-            if not parsed_title:
+            parsed = result['t%d' % item]
+            if not parsed:
+                continue
+            if not valid_title(parsed):
                 continue
         except (KeyError, IndexError):
             # IndexError: no every group is used. For example only t3:master
@@ -234,6 +240,23 @@ def extract_title(result: re.Match) -> list:
             matches = [it for it in iamraw.title.MATCHES.values()]
             title.append(matches[item])
     return title
+
+
+def valid_title(title: str) -> bool:
+    """\
+    >>> valid_title('geb.')
+    False
+    """
+    # TODO: INVESTIGATE VALID LIST OF ACADEMIC TITLES
+    title = title.strip().lower()
+    if title in TITLE_INVALID:
+        return False
+    return True
+
+
+TITLE_INVALID = {
+    'geb.',
+}
 
 
 def author_or_examiner(raw: str) -> iamraw.AcademicTitle:
