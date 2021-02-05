@@ -26,6 +26,7 @@ import iamraw
 import texmex
 
 import detector.bibliography.reference.freeand
+import detector.bibliography.reference.magic
 import detector.bibliography.reference.number
 import detector.bibliography.reference.tech
 
@@ -77,6 +78,9 @@ def split_bibliography(raw: str) -> iamraw.BibliographyReference:
     if matched:
         return matched
     matched = detector.bibliography.reference.tech.parse_single_row(raw)  # pylint:disable=R0204
+    if matched:
+        return matched
+    matched = detector.bibliography.reference.magic.parse(raw)
     if matched:
         return matched
     return None
