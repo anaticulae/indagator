@@ -2,6 +2,18 @@
 
 Every noteable change is logged here.
 
+## v0.17.0
+
+### Feature
+
+* skip none parsings in alternate layout (d9c1a50b3d30)
+* use magic parser in alternate layout (62d1e8657938)
+* add very less accurate `magic` parser (dc39c6b8efd1)
+* use layout optimize to gather better results (0ae30b3cfef0)
+* increase maximum label char width (b86fdb779417)
+* add method to skip invalid parsed academic titles (76af10785b41)
+* spread pattern over more than one line (090212b4b46f)
+
 ## v0.16.1
 
 ### Fix
