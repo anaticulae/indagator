@@ -65,6 +65,8 @@ def extract(content) -> iamraw.BibliographyReferences:
     for group in content:
         raw = geostrat.connect_text(group)
         parsed = split_bibliography(raw)
+        if not parsed:
+            continue
         result.append(parsed)
     return result
 
