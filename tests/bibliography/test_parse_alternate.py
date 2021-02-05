@@ -35,8 +35,8 @@ def test_parse_bibliography_master116_page_x(pages, expected):
 
 
 def test_parse_bibliography_hurenkind():
-    expected = 8
-    pages = (51)
+    expected = 7  # VALIDATED; 8 with item from before, but item in not completed
+    pages = (51,)
     navigators = serializeraw.create_pagetextnavigators_frompath(
         power.link(power.BACHELOR056_PDF),
         prefix='oneline',
