@@ -45,3 +45,29 @@ def test_parse_bibliography_hurenkind():
     parsed = detector.bibliography.layout.alternate.extracts(navigators)
     parsed = utila.flatten(parsed)
     assert len(parsed) == expected, str(parsed)
+
+
+def simple(item):
+    # TODO: REPLACE WITH UTILATEST
+    item = item.replace(' ', '')
+    item = item[0:25]
+    return item
+
+
+ALTERNATE = """\
+Adloff, Frank: Zivilgesellschaft – Theorie und politische Praxis.
+Frankfurt/Main: Campus Verlag, 2005.
+
+Aktion Demenz e.V.: Eine Kommune auf dem Weg: Arnsberg.
+(unveröffentlichtes Material)
+
+""".split('\n\n')
+
+
+@pytest.mark.parametrize(
+    'raw',
+    [pytest.param(item, id=simple(item)) for item in ALTERNATE if item],
+)
+def test_parse_alternate_single(raw):
+    parsed = detector.bibliography.layout.alternate.split_bibliography(raw)
+    assert parsed

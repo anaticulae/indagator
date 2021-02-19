@@ -82,6 +82,9 @@ def split_bibliography(raw: str) -> iamraw.BibliographyReference:
     matched = detector.bibliography.reference.tech.parse_single_row(raw)  # pylint:disable=R0204
     if matched:
         return matched
+    matched = detector.bibliography.reference.tech.parse_longtext(raw)
+    if matched:
+        return matched
     matched = detector.bibliography.reference.magic.parse(raw)
     if matched:
         return matched
