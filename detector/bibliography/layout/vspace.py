@@ -13,6 +13,7 @@ import iamraw
 import texmex
 import utila
 
+import detector.bibliography.judge
 import detector.bibliography.layout.alternate
 
 
@@ -82,9 +83,13 @@ def extract_optimize(navigator: texmex.NavigatorMixin,
 
 
 def select_best(items: list, selector=len) -> typing.Any:
+    # count valid items only
+    items = [
+        item for item in items if detector.bibliography.judge.judge([item])
+    ]
     # TODO: REPLACE WITH UTILA CODE
     if not items:
-        return None
+        return []
     best = items[0]
     for item in items[1:]:
         if selector(item) < selector(best):
