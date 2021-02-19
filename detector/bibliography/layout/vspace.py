@@ -52,10 +52,27 @@ def extract(
     return result
 
 
+# TODO: HOLY VALUE
+MAXDISTANCE_FACTOR = [
+    0.8,
+    0.85,
+    0.90,
+    0.95,
+    1.0,
+    1.05,
+    1.1,
+    1.5,
+    1.7,
+    2.0,
+    2.3,
+    2.6,
+]
+
+
 def extract_optimize(navigator: texmex.NavigatorMixin,
                     ) -> iamraw.BibliographyReferences:
     results = []
-    for factor in [0.8, 0.85, 0.90, 0.95, 1.0, 1.05, 1.1]:
+    for factor in MAXDISTANCE_FACTOR:
         adjusted = lambda x: factor * maxdistance(x)  # pylint:disable=cell-var-from-loop
         extracted = extract(navigator, vspace_max=adjusted)
         results.append(extracted)
