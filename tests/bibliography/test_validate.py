@@ -89,12 +89,12 @@ def master116(flat):
 
 def diss170(flat):
     # 11+11+11+12+11+11+11+11+11+13+11+13+5
-    assert len(flat) == 144  # change to 142!
+    assert len(flat) == 146  # change to 142!
 
 
 def diss272(flat):
     # 11 11 11 9 10 11 11 11 12 11 12 3 = 124
-    assert len(flat) == 96  # TODO: CHANGES LATER
+    assert len(flat) == 119  # TODO: CHANGES LATER
 
 
 # yapf:disable
@@ -104,9 +104,9 @@ def diss272(flat):
     pytest.param(power.MASTER116_PDF, '97,98,99,100', 46, master116, id='master116'), # VALIDATED BY HAND
     pytest.param(power.MASTER089_PDF, None, 149, master89, id='master89', marks=pytest.mark.xfail(reason='improve parser')),
     pytest.param(power.BACHELOR090_PDF, '84:89', 52, bachelor90, id='bachelor90'),
-    pytest.param(power.MASTER075_PDF, '70', 18, master75, id='master75', marks=pytest.mark.xfail(reason='improve parser')), # VALIDATED BY HAND
+    pytest.param(power.MASTER075_PDF, '70', 18, master75, id='master75'), # VALIDATED BY HAND
     pytest.param(power.MASTER110_PDF, '104:109', 71, master110, id='master110'),
-    pytest.param(power.DISS266_PDF, '215:247', 403, None, id='diss266'),
+    pytest.param(power.DISS266_PDF, '215:247', 415, None, id='diss266'),
     pytest.param(power.DISS170_PDF, '150:163', None, diss170, id='diss170'),
     pytest.param(power.DISS272_PDF, '259:271', None, diss272, id='diss272'),
 ])
