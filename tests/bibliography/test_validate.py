@@ -97,6 +97,12 @@ def diss272(flat):
     assert len(flat) == 119  # TODO: CHANGES LATER
 
 
+def bachelor128(flat):
+    assert flat
+    # 51: Validated by hand
+    assert len(flat) == 58
+
+
 # yapf:disable
 @pytest.mark.parametrize('source, pages, expected, validate', [
     pytest.param(power.BACHELOR056_PDF, '49:53', 32, None, id='bachelor56', marks=pytest.mark.xfail(reason='improve parser')),
@@ -109,6 +115,7 @@ def diss272(flat):
     pytest.param(power.DISS266_PDF, '215:247', 415, None, id='diss266'),
     pytest.param(power.DISS170_PDF, '150:163', None, diss170, id='diss170'),
     pytest.param(power.DISS272_PDF, '259:271', None, diss272, id='diss272'),
+    pytest.param(power.BACHELOR128_PDF, '96:103', None, bachelor128, id='bachelor128'),
 ])
 # yapf:enable
 @utilatest.skip_longrun
