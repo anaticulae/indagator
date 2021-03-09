@@ -2,6 +2,15 @@
 
 Every noteable change is logged here.
 
+## v0.18.0
+
+### Feature
+
+* decrease verbosity of logging (5fddb4ffaffe)
+* count valid bibs only (bd8199ad88ab)
+* extend bib pattern support (7754bb3a22ea)
+* increase vspace max variation range (99919476a5bc)
+
 ## v0.17.0
 
 ### Feature
