@@ -86,7 +86,7 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:  # pylint:disa
         for hyperlink in hyperlinks:
             content = content.replace(hyperlink, '')
     if len(hyperlinks) > 1:
-        utila.error(f'more than one link parsed: {raw}')
+        utila.debug(f'more than one link parsed: {raw}')
 
     accessed = dbr.accessed(content)
     if accessed:
