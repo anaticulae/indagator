@@ -7,8 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-iamraw>=4.12.1<5.0.0
-utila>=2.22.2<3.0.0
+iamraw>=4.14.2<5.0.0
+utila>=2.26.0<3.0.0
 geostrat>=1.1.11<2.0.0
 
-german>=1.0.0<2.0.0
+german>=1.2.3<2.0.0
