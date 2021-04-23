@@ -28,12 +28,15 @@ der Zugriffe nach [JL07, Seite 389]
 [ Ju04] JUERGEN LEOHOLD:
 [K.11] K., Pengutronix e.: How to become a PTXdist Guru - Based on the
 OSELAS.BSP( ) -Pengutronix Generic-arm. August 2011
+Weiss führt zu den Kernfunktionen noch den Begriff Prediction (Prognose)
+für Text Categorization ein ([We05], S. 48). Weiss et al. behandeln in
+([WIZ12]) die vier Gebiete Document Classification
 """
 
 
 def test_parse_tech():
     extracted = detector.bibliography.label.parses(CONTENT)
-    assert len(extracted) == 11
+    assert len(extracted) == 13
 
 
 LONGTEXT = """\
