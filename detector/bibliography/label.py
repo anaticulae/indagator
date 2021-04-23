@@ -34,46 +34,67 @@ import utila
 
 # [ ]{0,3} Optional whitespaces
 
+PAGES = r"""
+    (\,
+    [ ]{0,3}(Seite|S\.)[ ]{0,3}
+    (
+     (?P<pagestart>\d{1,3})[ ]{0,3}\-[ ]{0,3}(?P<pageend>\d{1,3})|
+     (?P<page>\d{1,3}[ ]{0,3}[f]{0,2}\.?)
+    )
+    ){0,1}
+"""
+
+
+def extract_pages(match):
+    raw = utila.extract_match(match)
+    page, pageend = None, None
+    if match['page']:
+        page, pageraw = parse_single(match['page'])  # pylint:disable=W0612
+    with contextlib.suppress(KeyError, TypeError):
+        page, pageend = int(match['pagestart']), int(match['pageend'])
+    return page, pageend, raw
+
+
+AUTHOR = r"""
+    (?P<author>[\w\.]{2,4}[+]{0,1})[ ]{0,3}
+    (?P<year>\d{2})[ ]{0,3}
+    (?P<plus>a|b|c|d){0,1}
+"""
+
+
+def extract_author(match):
+    plus = match['plus']
+    techref = match['author'] + match['year']
+    if plus is not None:
+        techref += plus
+    year = int(match['year'])
+    year = millennium(year)
+    return techref, plus, year
+
+
 TECHNICAL = r"""
     \[
     [ ]{0,3}
-        (?P<author>[\w\.]{2,4}[+]{0,1})[ ]{0,3}
-        (?P<year>\d{2})[ ]{0,3}
-        (?P<number>a|b|c|d){0,1}
+    %s
     [ ]{0,3}
-        (\,
-        [ ]{0,3}(Seite|S\.)[ ]{0,3}
-        (
-         (?P<pagestart>\d{1,3})[ ]{0,3}\-[ ]{0,3}(?P<pageend>\d{1,3})|
-         (?P<page>\d{1,3}[ ]{0,3}[f]{0,2}\.?)
-        )
-        ){0,1}
+    %s
     [ ]{0,3}
     \]
-"""
+""" % (AUTHOR, PAGES)
 
 
 def parses(content: str) -> iamraw.BibliographyReferences:
     result = []
     for item in re.finditer(TECHNICAL, content, re.VERBOSE):
-        raw = utila.extract_match(item)
-        page, pageend = None, None
-        if item['page']:
-            page, pageraw = parse_single(item['page'])  # pylint:disable=W0612
-        with contextlib.suppress(KeyError, TypeError):
-            page, pageend = int(item['pagestart']), int(item['pageend'])
-        number = item['number'] if item['number'] else None
-
-        techref = item['author'] + item['year'] + (number if number else '')
-        year = int(item['year'])
-        year = millennium(year)
+        page, pageend, raw = extract_pages(item)
+        techref, plus, year = extract_author(item)
 
         reference = iamraw.BibliographyReference(
             page=page,
             pageend=pageend,
             reference=techref,
             year=year,
-            number=number,
+            number=plus,
             raw=raw,
         )
         result.append(reference)
@@ -85,28 +106,18 @@ NUMBER = r"""
     [ ]{0,3}
         (?P<number>\d+)
     [ ]{0,3}
-        (\,
-        [ ]{0,3}(Seite|S\.)[ ]{0,3}
-        (
-         (?P<pagestart>\d{1,3})[ ]{0,3}\-[ ]{0,3}(?P<pageend>\d{1,3})|
-         (?P<page>\d{1,3}[ ]{0,3}[f]{0,2}\.?)
-        )
-        ){0,1}
+        %s
     [ ]{0,3}
     \]
-"""
+""" % PAGES
 
 
 def numbers(content: str) -> iamraw.BibliographyReferences:
     result = []
     for item in re.finditer(NUMBER, content, re.VERBOSE):
-        raw = utila.extract_match(item)
-        page, pageend = None, None
-        if item['page']:
-            page, pageraw = parse_single(item['page'])  # pylint:disable=W0612
-        with contextlib.suppress(KeyError, TypeError):
-            page, pageend = int(item['pagestart']), int(item['pageend'])
+        page, pageend, raw = extract_pages(item)
         number = int(item['number'])
+
         reference = iamraw.BibliographyReference(
             page=page,
             pageend=pageend,
