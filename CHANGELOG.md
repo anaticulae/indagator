@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.19.0
+
+### Feature
+
+* decrease verbosity (2504fa00eaff)
+
 ## v0.18.0
 
 ### Feature
