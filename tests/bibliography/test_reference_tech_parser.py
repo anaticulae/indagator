@@ -35,6 +35,8 @@ für Text Categorization ein ([We05], S. 48). Weiss et al. behandeln in
 """
 
 EXPECTED = """\
+([We05], S. 48)
+([WIZ12])
 [WL11]
 [WR10, Seite 214]
 [WR10, Seite 216]
@@ -46,8 +48,6 @@ EXPECTED = """\
 [Sch05, Seite 3-4]
 [ Ju04]
 [K.11]
-([We05], S. 48)
-([WIZ12])
 """
 
 
@@ -55,7 +55,7 @@ def test_parse_tech():
     extracted = detector.bibliography.label.parses(CONTENT)
     assert len(extracted) == len(EXPECTED.splitlines())
     current = utila.NEWLINE.join((item.raw for item in extracted))
-    assert current == EXPECTED
+    assert current == EXPECTED.strip()
 
 
 LONGTEXT = """\

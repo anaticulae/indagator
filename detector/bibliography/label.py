@@ -82,22 +82,39 @@ TECHNICAL = r"""
     \]
 """ % (AUTHOR, PAGES)
 
+TECHNICAL_SPECIAL = r"""
+    \(
+        [ ]{0,3}
+        \[
+        [ ]{0,3}
+        %s
+        [ ]{0,3}
+        \]
+        [ ]{0,3}
+        %s
+        [ ]{0,3}
+    \)
+""" % (AUTHOR, PAGES)
+
 
 def parses(content: str) -> iamraw.BibliographyReferences:
     result = []
-    for item in re.finditer(TECHNICAL, content, re.VERBOSE):
-        page, pageend, raw = extract_pages(item)
-        techref, plus, year = extract_author(item)
-
-        reference = iamraw.BibliographyReference(
-            page=page,
-            pageend=pageend,
-            reference=techref,
-            year=year,
-            number=plus,
-            raw=raw,
-        )
-        result.append(reference)
+    for pattern in (TECHNICAL_SPECIAL, TECHNICAL):
+        for item in re.finditer(pattern, content, re.VERBOSE):
+            page, pageend, raw = extract_pages(item)
+            techref, plus, year = extract_author(item)
+            reference = iamraw.BibliographyReference(
+                page=page,
+                pageend=pageend,
+                reference=techref,
+                year=year,
+                number=plus,
+                raw=raw,
+            )
+            result.append(reference)
+        # remove collected items
+        for item in result:
+            content = content.replace(item.raw, '')
     return result
 
 
