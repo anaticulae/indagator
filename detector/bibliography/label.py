@@ -34,17 +34,22 @@ import utila
 
 # [ ]{0,3} Optional whitespaces
 
-TECHNICAL = r"""\[[ ]{0,3}
-            (?P<author>[\w\.]{2,4}[+]{0,1})[ ]{0,3}
-            (?P<year>\d{2})[ ]{0,3}
-            (?P<number>a|b|c|d){0,1}[ ]{0,3}
-            (\,[ ]{0,3}(Seite|S\.)[ ]{0,3}
-            (
-             (?P<pagestart>\d{1,3})[ ]{0,3}\-[ ]{0,3}(?P<pageend>\d{1,3})|
-             (?P<page>\d{1,3}[ ]{0,3}[f]{0,2}\.?)
-            )
-            ){0,1}[ ]{0,3}
-            \]
+TECHNICAL = r"""
+    \[
+    [ ]{0,3}
+        (?P<author>[\w\.]{2,4}[+]{0,1})[ ]{0,3}
+        (?P<year>\d{2})[ ]{0,3}
+        (?P<number>a|b|c|d){0,1}
+    [ ]{0,3}
+        (\,
+        [ ]{0,3}(Seite|S\.)[ ]{0,3}
+        (
+         (?P<pagestart>\d{1,3})[ ]{0,3}\-[ ]{0,3}(?P<pageend>\d{1,3})|
+         (?P<page>\d{1,3}[ ]{0,3}[f]{0,2}\.?)
+        )
+        ){0,1}
+    [ ]{0,3}
+    \]
 """
 
 
@@ -75,15 +80,20 @@ def parses(content: str) -> iamraw.BibliographyReferences:
     return result
 
 
-NUMBER = r"""\[[ ]{0,3}
-            (?P<number>\d+)
-            (\,[ ]{0,3}(Seite|S\.)[ ]{0,3}
-            (
-             (?P<pagestart>\d{1,3})[ ]{0,3}\-[ ]{0,3}(?P<pageend>\d{1,3})|
-             (?P<page>\d{1,3}[ ]{0,3}[f]{0,2}\.?)
-            )
-            ){0,1}[ ]{0,3}
-            \]
+NUMBER = r"""
+    \[
+    [ ]{0,3}
+        (?P<number>\d+)
+    [ ]{0,3}
+        (\,
+        [ ]{0,3}(Seite|S\.)[ ]{0,3}
+        (
+         (?P<pagestart>\d{1,3})[ ]{0,3}\-[ ]{0,3}(?P<pageend>\d{1,3})|
+         (?P<page>\d{1,3}[ ]{0,3}[f]{0,2}\.?)
+        )
+        ){0,1}
+    [ ]{0,3}
+    \]
 """
 
 
