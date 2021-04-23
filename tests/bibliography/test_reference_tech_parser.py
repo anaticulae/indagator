@@ -9,6 +9,7 @@
 
 import iamraw
 import pytest
+import utila
 
 import detector.bibliography.label
 import detector.bibliography.reference.tech
@@ -33,10 +34,28 @@ für Text Categorization ein ([We05], S. 48). Weiss et al. behandeln in
 ([WIZ12]) die vier Gebiete Document Classification
 """
 
+EXPECTED = """\
+[WL11]
+[WR10, Seite 214]
+[WR10, Seite 216]
+[WL11, Seite 19]
+[Rum05, Seite 62]
+[JL07, Seite 389]
+[VAC+08]
+[mat12b]
+[Sch05, Seite 3-4]
+[ Ju04]
+[K.11]
+([We05], S. 48)
+([WIZ12])
+"""
+
 
 def test_parse_tech():
     extracted = detector.bibliography.label.parses(CONTENT)
-    assert len(extracted) == 13
+    assert len(extracted) == len(EXPECTED.splitlines())
+    current = utila.NEWLINE.join((item.raw for item in extracted))
+    assert current == EXPECTED
 
 
 LONGTEXT = """\
