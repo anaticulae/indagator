@@ -36,6 +36,7 @@ RESOURCES = [
     (power.MASTER110_PDF, '90:110'),
     (power.BACHELOR056_PDF, '47:55'),
     (power.MASTER089_PDF, '68:82'),
+    (power.ORDER109_PDF, '90:108'),  # TODO FIX VAR NAME
     (power.BACHELOR076_PDF, '0:5'),
     (power.MASTER072_PDF, '0:10'),
     (power.MASTER075_PDF, None),
