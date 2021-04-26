@@ -108,6 +108,10 @@ def master91b(flat):
     assert len(flat) == 85  # VALIDATED
 
 
+def order107(flat):
+    pass
+
+
 # yapf:disable
 @pytest.mark.parametrize('source, pages, expected, validate', [
     pytest.param(power.BACHELOR056_PDF, '49:53', 32, None, id='bachelor56', marks=pytest.mark.xfail(reason='improve parser')),
@@ -122,6 +126,7 @@ def master91b(flat):
     pytest.param(power.DISS272_PDF, '259:271', None, diss272, id='diss272'),
     pytest.param(power.BACHELOR128_PDF, '96:103', None, bachelor128, id='bachelor128'),
     pytest.param(power.MASTER091B_PDF, '82:89', 85, master91b, id='master91b'), # VALIDATED BY HAND
+    pytest.param(power.ORDER109_PDF, '104:108', 30, order107, id='order107'), # VALIDATED BY HAND
 ])
 # yapf:enable
 @utilatest.skip_longrun
