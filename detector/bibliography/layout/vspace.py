@@ -70,8 +70,7 @@ MAXDISTANCE_FACTOR = [
 ]
 
 
-def extract_optimize(navigator: texmex.NavigatorMixin,
-                    ) -> iamraw.BibliographyReferences:
+def extract_optimize(navigator: texmex.NavigatorMixin) -> iamraw.BibliographyReferences: # yapf:disable
     results = []
     for factor in MAXDISTANCE_FACTOR:
         adjusted = lambda x: factor * maxdistance(x)  # pylint:disable=cell-var-from-loop
