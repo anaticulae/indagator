@@ -157,7 +157,39 @@ def test_parse_freeand_long(text, title, authors, pages, year, publisher):  # py
             iamraw.Person(name=author[0], firstname=' '.join(author[1:]))
             for author in authors
         ]
-        assert extracted.authors == authors
+        assert extracted.authors == authors or not authors
+
+
+LONGTEXT_NOPERSON = """\
+Deutsche Norm DIN 1422, Teil 1 (1983). Veröffentlichungen aus
+Wissenschaft, Technik, Wirtschaft und Verwaltung. Gestaltung von
+Manuskripten und Typoskripten. Berlin: Beuth
+""".split('\n\n')
+
+
+@pytest.mark.parametrize('text, title, authors, pages, year, publisher', [
+    pytest.param(
+        LONGTEXT_NOPERSON[0],
+        None,
+        [iamraw.NoPerson(confidence=None, raw='Deutsche Norm DIN 1422 Teil 1')],
+        None,
+        1983,
+        None,
+        id='din1422',
+    ),
+])
+def test_parse_freeand_noperson(text, title, authors, pages, year, publisher):  # pylint:disable=W0613
+    extracted = freeand.parse_longtext(text)
+    assert extracted
+    if title:
+        assert extracted.title == title
+    if pages:
+        assert extracted.page == pages[0]
+        if len(pages) == 2:
+            assert extracted.pageend == pages[1]
+    if year:
+        assert extracted.year == year
+    assert extracted.authors == authors or not authors
 
 
 LONGTEXT_LINK = """\

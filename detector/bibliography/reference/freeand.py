@@ -42,7 +42,7 @@ import utila
 # TODO: ADD OPTIONAL BRACKETS TO REMOVE DIRTY SIMPLE YEAR HACK
 # TODO: REMOVE 4,5 HACK: WHEN SUPPORTING HIGHNOTE
 AND = r"""
-    (?P<authors>[A-Za-z,;\(\)\.\-\&ÖöÄäÜü ]{5,})
+    (?P<authors>[A-Za-z,;\(\)\.\-\&ÖöÄäÜü\d ]{5,})
     (
         \((?P<oj>o\.j\.)\)|
         \(
