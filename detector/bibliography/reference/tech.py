@@ -58,7 +58,7 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
     authors = german.authors(authors)
     # disable non person authors
     authors = german.authors_decide(authors)
-    page = detector.bibliography.reference.pages(rest)
+    page = german.pages(rest)
     if page:
         rest = rest.replace(page[0], '')
     year = detector.bibliography.reference.years(rest)

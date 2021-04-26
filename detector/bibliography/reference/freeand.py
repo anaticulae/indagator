@@ -39,8 +39,6 @@ import german
 import iamraw
 import utila
 
-import detector.bibliography.reference as dbr
-
 # TODO: ADD OPTIONAL BRACKETS TO REMOVE DIRTY SIMPLE YEAR HACK
 # TODO: REMOVE 4,5 HACK: WHEN SUPPORTING HIGHNOTE
 AND = r"""
@@ -81,14 +79,14 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:  # pylint:disa
         year = 'no year'
     number = matched['number'] if matched['number'] else None
 
-    hyperlinks = dbr.link(content)
+    hyperlinks = german.hyperlink(content)
     if hyperlinks:
         for hyperlink in hyperlinks:
             content = content.replace(hyperlink, '')
     if len(hyperlinks) > 1:
         utila.debug(f'more than one link parsed: {raw}')
 
-    accessed = dbr.accessed(content)
+    accessed = german.accessed(content)
     if accessed:
         content = content.replace(accessed[0], '')
 
@@ -103,9 +101,9 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:  # pylint:disa
     if invalid_title(title):
         return None
 
-    page = dbr.pages(rest)
+    page = german.pages(rest)
     if not page:
-        page = dbr.pages_complex(rest)
+        page = german.pages_complex(rest)
     if page:
         rest = rest.replace(page[0], '')
 
@@ -135,7 +133,7 @@ def title_with_link(text: str) -> str:
     >>> title_with_link('Zentrale Orte Raumordnungsprogramm (NÖ) https://www.ris.bka.gv.at/LRNI_1992062.pdf (25.01.2018)')
     ('Zentrale Orte Raumordnungsprogramm (NÖ)', 'https://www.ris.bka.gv.at/LRNI_1992062.pdf (25.01.2018)')
     """
-    hypers = dbr.link(text)
+    hypers = german.hyperlink(text)
     if not hypers:
         return None
     started = text.find(hypers[0])
