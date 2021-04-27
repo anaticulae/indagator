@@ -58,12 +58,12 @@ AND = r"""
 """
 
 
-def parse_longtext(content: str) -> iamraw.BibliographyReference:  # pylint:disable=R1260,R0912
+def parse_longtext(content: str, pattern=AND) -> iamraw.BibliographyReference:  # pylint:disable=R1260,R0912
     # convert multiple lines into a single text block. Convert inner
     # newlines into space and trim spaces at front and end
     content = content.replace('\n', ' ').strip()  # TODO: USE EXTERNAL METHOD
     raw = content
-    matched = re.search(AND, content, re.VERBOSE | re.IGNORECASE)
+    matched = re.search(pattern, content, re.VERBOSE | re.IGNORECASE)
     if not matched:
         return None
 
