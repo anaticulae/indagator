@@ -45,10 +45,11 @@ AND = r"""
     (?P<authors>[A-Z,;\(\)\.\-\&ÖÄÜ\d ]{5,})
     (
         \((?P<oj>o\.j\.)\)|
-        \(
+        %s # brackets open
         ((?P<year>\d{4,5})([ ]{0,3}\-(?P<yearend>\d{4})[ ]{0,3}){0,1})
         (?P<number>a|b|c|d){0,1}  # optional char
-        \)|
+        %s # brackets close
+        |
         (?P<simpleyear>\d{4})[ ]{0,2}[a-z]{0,1}[ ]{0,2}:          # see wessels 2007, TODO: DIRTY
     )
     [ ]{0,5}                      # remove trailing whitespaces
@@ -57,8 +58,19 @@ AND = r"""
     (?P<content>.+)
 """
 
+NORMAL = AND % (r'\(', r'\)')
 
-def parse_longtext(content: str, pattern=AND) -> iamraw.BibliographyReference:  # pylint:disable=R1260,R0912
+BROKEN_BRACKETS = AND % (r'[\(\[]', r'[\]\)]')
+"""\
+>>> parse_longtext('Deutsche Norm DIN 1421 (1983]: Abschnitte. Berlin: Beuth', pattern=BROKEN_BRACKETS).authors
+[NoPerson(confidence=None, raw='Deutsche Norm DIN 1421')]
+"""
+
+
+def parse_longtext(  # pylint:disable=R1260,R0912
+        content: str,
+        pattern=NORMAL,
+) -> iamraw.BibliographyReference:
     # convert multiple lines into a single text block. Convert inner
     # newlines into space and trim spaces at front and end
     content = content.replace('\n', ' ').strip()  # TODO: USE EXTERNAL METHOD
@@ -123,6 +135,15 @@ def parse_longtext(content: str, pattern=AND) -> iamraw.BibliographyReference:  
         if len(page[1]) == 2:
             result.pageend = page[1][1]
     return result
+
+
+def parse_longtext_less_strict(content: str) -> iamraw.BibliographyReference:
+    for pattern in [NORMAL, BROKEN_BRACKETS]:
+        parsed = parse_longtext(content, pattern=pattern)
+        if not parsed:
+            continue
+        return parsed
+    return None
 
 
 TITLE_MIN_LENGTH = 10
