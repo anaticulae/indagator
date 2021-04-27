@@ -71,7 +71,7 @@ def extract(content) -> iamraw.BibliographyReferences:
     return result
 
 
-def split_bibliography(raw: str) -> iamraw.BibliographyReference:
+def split_bibliography(raw: str) -> iamraw.BibliographyReference:  # pylint:disable=R0911
     raw = raw.strip()
     matched = detector.bibliography.reference.number.parse(raw)
     if matched:
@@ -88,4 +88,33 @@ def split_bibliography(raw: str) -> iamraw.BibliographyReference:
     matched = detector.bibliography.reference.magic.parse(raw)
     if matched:
         return matched
+    matched = parse_last(raw)
+    if matched:
+        return matched
     return None
+
+
+MAGIC_LENGTH = 120
+
+
+def parse_last(raw: str) -> iamraw.BibliographyReference:
+    # TODO: NOT VERY SMART
+    if len(raw) < MAGIC_LENGTH:
+        return None
+    content = raw
+    year = detector.bibliography.reference.years(raw)
+    if year:
+        raw = raw.replace(year[0], '')
+        year = year[1]
+    try:
+        title, rest = raw.split('-')
+    except ValueError:
+        title, rest = 'NO TITLE', raw
+    authors = iamraw.NoPerson(raw='o.A.')
+    result = iamraw.BibliographyReference(
+        authors=[authors],
+        title=title,
+        year=year,
+        raw=content,
+    )
+    return result

@@ -94,7 +94,7 @@ def diss170(flat):
 
 def diss272(flat):
     # 11 11 11 9 10 11 11 11 12 11 12 3 = 124
-    assert len(flat) == 119  # TODO: CHANGES LATER
+    assert len(flat) == 120  # TODO: CHANGES LATER
 
 
 def bachelor128(flat):
@@ -108,8 +108,52 @@ def master91b(flat):
     assert len(flat) == 85  # VALIDATED
 
 
+ORDER107 = """\
+Büker Stella
+Deppe Joachim
+Deutsche Norm DIN 1421
+Deutsche Norm DIN 1422 Teil 1
+Deutsche Norm DIN 1422 Teil 3
+Deutsche Norm DIN 1426
+Dreyer Hilke ; Schmitt Richard
+Duden. Die deutsche Rechtschreibung
+Duden. Grammatik der deutschen Gegenwartssprache
+Ebel Hans F. ; Bliefert Claus
+ETH Zürich (Eidgenössische Technische Hochschule Zürich)
+Kerans Mary Ellen
+Kruse Otto
+Langer Inghard ; Schulz von Thun Friedemann ; Tausch Reinhard
+Meer Dorothee
+o.A.
+TU Berlin
+Weber-Wulff Debora
+Arndt Wulf-Holger
+Esser Peter ; Lippert Jana und Tutorenteam (überarb.)
+Gemünden Hans Georg
+Herrmann Klaus
+Köppel Johann ; Lippert Jana
+Krallmann Hermann
+Krystek Ulrich
+Mirow Michael
+o.A.
+Straube Frank
+Werder Axel v.
+Zarnekow Rüdiger
+Grafische  Gestaltung  von  Titelbild  und  Abbildungen  (wenn  nicht  anders angegeben)
+""".strip()
+
+
 def order107(flat):
-    pass
+    raw = authors_raw(flat)
+    utila.log(raw)
+    assert raw == ORDER107
+
+
+def authors_raw(flat) -> str:
+    items = [' ; '.join([item.raw for item in line.authors]) for line in flat]
+    items = [item.strip() for item in items]
+    raw = utila.NEWLINE.join(items)
+    return raw
 
 
 # yapf:disable
@@ -126,7 +170,7 @@ def order107(flat):
     pytest.param(power.DISS272_PDF, '259:271', None, diss272, id='diss272'),
     pytest.param(power.BACHELOR128_PDF, '96:103', None, bachelor128, id='bachelor128'),
     pytest.param(power.MASTER091B_PDF, '82:89', 85, master91b, id='master91b'), # VALIDATED BY HAND
-    pytest.param(power.ORDER109_PDF, '104:108', 30, order107, id='order107'), # VALIDATED BY HAND
+    pytest.param(power.ORDER109_PDF, '104:108', 31, order107, id='order107'), # VALIDATED BY HAND
 ])
 # yapf:enable
 @utilatest.skip_longrun
