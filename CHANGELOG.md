@@ -2,6 +2,18 @@
 
 Every noteable change is logged here.
 
+## v0.20.0
+
+### Feature
+
+* add rest parser to solve order107 (10f6972cce35)
+* change order in bib detection strategy (bfdb921f9e46)
+* return None to signal invalid input (9a47360f90ae)
+* use less strict bib pattern (327ac04ff8b3)
+* add option to parse multiple bib pattern (3e2a2a84682c)
+* add option change used regex (08e4af79d63b)
+* add noperson bib parser (c93e5ad672e3)
+
 ## v0.19.0
 
 ### Feature
