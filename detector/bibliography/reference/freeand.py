@@ -173,7 +173,7 @@ def title_with_link(text: str) -> str:
 
 def invalid_title(title: str, title_min_length: int = TITLE_MIN_LENGTH) -> bool:
     if not title:
-        return False
+        return None
     if len(title) < title_min_length:
         return True
     rate = char_rate(title)
