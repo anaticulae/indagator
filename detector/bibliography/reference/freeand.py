@@ -102,16 +102,10 @@ def parse_longtext(  # pylint:disable=R1260,R0912
     if accessed:
         content = content.replace(accessed[0], '')
 
-    try:
-        title, rest = matched['content'].split('. ', maxsplit=1)  # pylint:disable=W0612
-    except ValueError:
-        title_link = title_with_link(matched['content'])
-        if title_link:
-            title, rest = title_link
-        else:
-            title, rest = None, matched['content']
-    if invalid_title(title):
+    parsed_title = parse_title(content=matched['content'])
+    if not parsed_title:
         return None
+    title, rest = parsed_title
 
     page = german.pages(rest)
     if not page:
@@ -135,6 +129,20 @@ def parse_longtext(  # pylint:disable=R1260,R0912
         if len(page[1]) == 2:
             result.pageend = page[1][1]
     return result
+
+
+def parse_title(content: str) -> tuple:
+    try:
+        title, rest = content.split('. ', maxsplit=1)
+    except ValueError:
+        title_link = title_with_link(content)
+        if title_link:
+            title, rest = title_link
+        else:
+            title, rest = None, content
+    if invalid_title(title):
+        return None
+    return title, rest
 
 
 def parse_longtext_less_strict(content: str) -> iamraw.BibliographyReference:
