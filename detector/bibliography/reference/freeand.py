@@ -132,17 +132,37 @@ def parse_longtext(  # pylint:disable=R1260,R0912
 
 
 def parse_title(content: str) -> tuple:
+    """Increase number of valid dots to parse long title with a lot of dots.
+
+    >>> parse_title('Hrsg. von der Dudenredaktion. 23. neu bearb. Aufl..') # TODO: CHANGE LATER
+    ('Hrsg. von der Dudenredaktion', '23. neu bearb. Aufl..')
+    >>> parse_title('Das System der zentralen Orte Österreichs: Eine empirische Untersuchung - Graz')
+    ['Das System der zentralen Orte Österreichs: Eine empirische Untersuchung', 'Graz']
+    """
+    # 1.  Try normal title splitter
+    # 1b. Try splitting till link starts
+    # 2.  Extend number of valid dots
     try:
         title, rest = content.split('. ', maxsplit=1)
+        if invalid_title(title) is False:  # None means no title given
+            return title, rest
     except ValueError:
         title_link = title_with_link(content)
         if title_link:
             title, rest = title_link
-        else:
-            title, rest = None, content
-    if invalid_title(title):
-        return None
-    return title, rest
+            return title, rest
+    if not '.' in content:
+        # TODO: ADD OTHER ALGO
+        if ' - ' in content:
+            return content.split(' - ', maxsplit=1)
+        return content, ''
+
+    for maxdots in range(1, 5):
+        splitted = content.split('. ', maxsplit=maxdots)
+        title, rest = '. '.join(splitted[:-1]), splitted[-1]
+        if invalid_title(title) is False:  # None means no title given
+            return title, rest
+    return None
 
 
 def parse_longtext_less_strict(content: str) -> iamraw.BibliographyReference:
