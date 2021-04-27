@@ -164,6 +164,9 @@ LONGTEXT_NOPERSON = """\
 Deutsche Norm DIN 1422, Teil 1 (1983). Veröffentlichungen aus
 Wissenschaft, Technik, Wirtschaft und Verwaltung. Gestaltung von
 Manuskripten und Typoskripten. Berlin: Beuth
+
+Duden. Rechtschreibung (2004). Hrsg. von der Dudenredaktion. 23. neu
+bearb. Aufl.. Mannheim et al.: Dudenverlag. (Der Duden Bd. 1)
 """.split('\n\n')
 
 
@@ -176,6 +179,15 @@ Manuskripten und Typoskripten. Berlin: Beuth
         1983,
         None,
         id='din1422',
+    ),
+    pytest.param(
+        LONGTEXT_NOPERSON[1],
+        None,
+        [iamraw.NoPerson(confidence=None, raw='Duden. Rechtschreibung')],
+        None,
+        2004,
+        None,
+        id='duden2004',
     ),
 ])
 def test_parse_freeand_noperson(text, title, authors, pages, year, publisher):  # pylint:disable=W0613
