@@ -10,7 +10,7 @@
 utilatest==0.5.2
 
 # ensure that test data is generated with the right version of rawmaker
-rawmaker==2.15.0
+rawmaker==2.16.0
 
 # reference to test data
 power==1.4.4
