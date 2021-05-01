@@ -53,6 +53,7 @@ RESOURCES = [
     (power.DISS170_PDF, '0:10,150:163'),
     (power.DISS272_PDF, '259:271'),
     (power.MASTER091B_PDF, '82:89'),
+    (power.MASTER155_PDF, '78:85'),
 ]
 
 RESOURCES_NOTITLE = [
