@@ -149,6 +149,10 @@ def order107(flat):
     assert raw == ORDER107
 
 
+def master155(flat):  # pylint:disable=W0613
+    pass
+
+
 def authors_raw(flat) -> str:
     items = [' ; '.join([item.raw for item in line.authors]) for line in flat]
     items = [item.strip() for item in items]
@@ -171,6 +175,7 @@ def authors_raw(flat) -> str:
     pytest.param(power.BACHELOR128_PDF, '96:103', None, bachelor128, id='bachelor128'),
     pytest.param(power.MASTER091B_PDF, '82:89', 85, master91b, id='master91b'), # VALIDATED BY HAND
     pytest.param(power.ORDER109_PDF, '104:108', 31, order107, id='order107'), # VALIDATED BY HAND
+    pytest.param(power.MASTER155_PDF, '75:85', 109, master155, id='master155', marks=pytest.mark.xfail(reason='improve parser')), # VALIDATED BY HAND
 ])
 # yapf:enable
 @utilatest.skip_longrun
