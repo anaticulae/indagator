@@ -107,7 +107,7 @@ def parse_last(raw: str) -> iamraw.BibliographyReference:
         raw = raw.replace(year[0], '')
         year = year[1]
     try:
-        title, rest = raw.split('-')
+        title, rest = raw.split('-')  # pylint:disable=W0612
     except ValueError:
         title, rest = 'NO TITLE', raw
     authors = iamraw.NoPerson(raw='o.A.')
