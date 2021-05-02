@@ -39,6 +39,25 @@ import german
 import iamraw
 import utila
 
+MONTHRAW = '|'.join("""
+JANUAR FEBRUAR MÄRZ APRIL MAI JUNI JULI AUGUST \
+SEPTEMBER OKTOBER NOVEMBER DEZEMBER \
+JANUARY FEBRUARY MARCH APRIL MAY JUNE JULY AUGUST \
+SEPTEMBER OCTOBER NOVEMBER DECEMBER
+""".strip().split())
+
+MONTH = r"""
+    (
+        [ ]{0,3}
+        (%s)
+        [ ]{0,3}
+        \d{0,2}
+        [ ]{0,3}
+        \,{0,1}
+        [ ]{0,3}
+    ){0,1}
+""" % MONTHRAW
+
 # TODO: ADD OPTIONAL BRACKETS TO REMOVE DIRTY SIMPLE YEAR HACK
 # TODO: REMOVE 4,5 HACK: WHEN SUPPORTING HIGHNOTE
 AND = r"""
@@ -46,6 +65,7 @@ AND = r"""
     (
         \((?P<oj>o\.j\.)\)|
         %s # brackets open
+        %s # optional month
         ((?P<year>\d{4,5})([ ]{0,3}\-(?P<yearend>\d{4})[ ]{0,3}){0,1})
         (?P<number>a|b|c|d){0,1}  # optional char
         %s # brackets close
@@ -58,9 +78,9 @@ AND = r"""
     (?P<content>.+)
 """
 
-NORMAL = AND % (r'\(', r'\)')
+NORMAL = AND % (r'\(', MONTH, r'\)')
 
-BROKEN_BRACKETS = AND % (r'[\(\[]', r'[\]\)]')
+BROKEN_BRACKETS = AND % (r'[\(\[]', MONTH, r'[\]\)]')
 """\
 >>> parse_longtext('Deutsche Norm DIN 1421 (1983]: Abschnitte. Berlin: Beuth', pattern=BROKEN_BRACKETS).authors
 [NoPerson(confidence=None, raw='Deutsche Norm DIN 1421')]

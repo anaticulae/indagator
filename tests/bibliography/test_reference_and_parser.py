@@ -51,6 +51,8 @@ Wessels, Wolfgang, 2007: Die Europapolitik in der wissenschaftlichen
 Debatte. In: Weidenfeld, Werner / Wessels, Wolfgang (Hrsg.): Jahrbuch
 der Europäischen Integration 2006. Baden-Baden: Nomos
 Verlagsgesellschaft, 1. Auflage, S. 27 - 38.
+
+Latham L. & Lundy B. (March 8, 2006). Podcasting is new and suoer nice. More nice.
 """.split('\n\n')
 
 
@@ -140,6 +142,7 @@ Verlagsgesellschaft, 1. Auflage, S. 27 - 38.
         None,
         id='wessels',
     ),
+    pytest.param(LONGTEXT[9], None, None, None, None, None, id='plusmonth'),
 ])
 def test_parse_freeand_long(text, title, authors, pages, year, publisher):  # pylint:disable=W0613
     extracted = freeand.parse_longtext(text)
