@@ -45,7 +45,7 @@ def extracts(items: texmex.PageTextNavigators) -> iamraw.BibliographyReferences:
         parsed = geostrat.al_parse_pages(items, config=config)
     except geostrat.NoMultipleLiningPoints:
         return []
-    for page in parsed:
+    for page, navigator in zip(parsed, items):
         extracted = extract(page)
         if not extracted:
             continue
@@ -53,6 +53,9 @@ def extracts(items: texmex.PageTextNavigators) -> iamraw.BibliographyReferences:
         error_quote = error / len(extracted)
         if error_quote >= ERROR_MAX_LEVEL:
             continue
+        # update pdf page number
+        for item in extracted:
+            item.raw_pdfpage = navigator.page
         result.append(extracted)
     return result
 

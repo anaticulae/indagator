@@ -22,6 +22,9 @@ def extracts(navigators: texmex.PageTextNavigators):
             extracted = strategy(navigator)
             if not extracted:
                 continue
+            # update pdf page number
+            for item in extracted:
+                item.raw_pdfpage = navigator.page
             result.append(extracted)
         if result:
             return result
