@@ -80,6 +80,10 @@ def parse_person_after(raw: str) -> iamraw.Person:
         return None
     title = merge_title(title)
     name, firstname = parsed['name'], parsed['fname']
+    if name.lower() in ('master', 'of', 'science'):
+        # skip false positive detection
+        # Master of Science (M. Sc.)
+        return None
     raw = utila.extract_match(parsed)
     person = iamraw.Person(title=title, name=name, firstname=firstname, raw=raw)
     return person
@@ -165,6 +169,7 @@ def create_with_title_pattern():
         r'Primary Supervisor',
         r'Secondary Supervisor',
         r'vorgelegt von',
+        r'angefertigt von',
         r'by',
         r'Name, Vorname:'
         # r'von', # TODO: exclude von in `title`
@@ -224,7 +229,7 @@ PATTER_PERSON_AFTER = rf"""
     (?P<examiner>({EXAMINER})[:]?\s?)
     ([ ]{0,4}(Herr|Frau)?[ ]{0,4})?
     (?P<fname>(\w+[ ]?){1,5}?)[ ](?P<name>[\w|-]+)
-    [,]?[ ]{0,3}?(?P<t3>M\.A\.?\B)
+    [,]?[ ]{0,3}?(?P<t3>(M\.[ ]?A\.?\B|\(?M\.[ ]?Sc\.\)?))
 """
 
 
@@ -267,7 +272,7 @@ def author_or_examiner(raw: str) -> iamraw.AcademicTitle:
     raw = raw.lower()
 
     # Hint: add items as lower case
-    author = ['vorgelegt', 'verfasser', 'autor']
+    author = ['vorgelegt', 'verfasser', 'autor', 'angefertigt']
     if any([item in raw for item in author]):
         return iamraw.AcademicTitle.STUDENT
 
