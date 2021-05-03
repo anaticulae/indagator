@@ -81,6 +81,12 @@ def diss170(titlepage: iamraw.TitlePage):
     assert len(titlepage.examiner) == 3
 
 
+def master91a(titlepage: iamraw.TitlePage):
+    assert titlepage
+    assert titlepage.author.name == 'Sprengel'
+    assert len(titlepage.examiner) == 2
+
+
 @pytest.mark.parametrize('source, check', [
     pytest.param(power.BACHELOR037_PDF, bachelor37, id='bachelor37'),
     pytest.param(power.BACHELOR076_PDF, bachelor76, id='bachelor76'),
@@ -105,6 +111,7 @@ def diss170(titlepage: iamraw.TitlePage):
         marks=pytest.mark.xfail(reason='improve headline parser'),
     ),
     pytest.param(power.DISS170_PDF, diss170, id='diss170'),
+    pytest.param(power.MASTER091A_PDF, master91a, id='master91a'),
 ])
 @utilatest.skip_longrun
 def test_validate_titlepage_extractor(source, check, testdir, monkeypatch):
