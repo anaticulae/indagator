@@ -68,6 +68,10 @@ def parse_pattern(raw: str) -> iamraw.Person:
 
 
 def parse_person_after(raw: str) -> iamraw.Person:
+    """\
+    >>> parse_person_after('Betreuer extern: Eduard Wagner (M. Sc.)').title
+    <AcademicTitle.MASTER: 8>
+    """
     parsed = re.search(PATTER_PERSON_AFTER, raw, re.X)
     if not parsed:
         return None
