@@ -69,9 +69,10 @@ def parse_pattern(raw: str) -> iamraw.Person:
 
 def parse_person_after(raw: str) -> iamraw.Person:
     """\
-    >>> parse_person_after('Betreuer extern: Eduard Wagner (M. Sc.)').title
+    >>> parse_person_after('Betreuer extern :  Eduard  Wagner (M. Sc.)').title
     <AcademicTitle.MASTER: 8>
     """
+    raw = utila.normalize_whitespaces(raw)  # TODO: REMOVE LATER?
     parsed = re.search(PATTERN_PERSON_AFTER, raw, re.X)
     if not parsed:
         return None
@@ -156,6 +157,8 @@ def parse_all(
                 continue
             rest.append(line.replace(parsed.raw, ''))
             persons.append(parsed)
+    # remove double parsed authors
+    persons = utila.make_unique(persons)  # TODO: REMOVE LATER
     return persons, rest
 
 
