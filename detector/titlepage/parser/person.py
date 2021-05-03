@@ -308,12 +308,19 @@ def lookbehind(rest):
     return parsed, rest
 
 
+EXAMINERS = (
+    iamraw.AcademicTitle.DR,
+    iamraw.AcademicTitle.EXAMINIER,
+    iamraw.AcademicTitle.PROF,
+)
+
+
 def order_persons(persons: list) -> typing.Tuple[iamraw.Person, iamraw.Persons]:
     """Sort persons by academical rank and return the lowester rang as author
     and the rest as examier.
 
     Args:
-        persons(list[Person]): list to order
+        persons(Persons): list to order
     Returns:
         author(Person), examines as a list of persons
     """
@@ -321,15 +328,11 @@ def order_persons(persons: list) -> typing.Tuple[iamraw.Person, iamraw.Persons]:
         return None
     # sort persons by title and name as a tiebraker
     persons = sorted(persons, key=operator.attrgetter('title', 'name'))
-
-    if any([
-            persons[0].title in (iamraw.AcademicTitle.EXAMINIER,
-                                 iamraw.AcademicTitle.DR,
-                                 iamraw.AcademicTitle.PROF),
-            author_or_examiner(persons[0].raw) == iamraw.AcademicTitle.EXAMINIER
-    ]):
+    if persons[0].title in EXAMINERS:
         # author was not detected
         return None, persons
-
+    if author_or_examiner(persons[0].raw) == iamraw.AcademicTitle.EXAMINIER:
+        # author was not detected
+        return None, persons
     author, examiner = persons[0], persons[1:]
     return author, examiner
