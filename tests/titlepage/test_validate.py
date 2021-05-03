@@ -104,11 +104,7 @@ def diss170(titlepage: iamraw.TitlePage):
         id='homework50',
         marks=pytest.mark.xfail(reason='improve headline parser'),
     ),
-    pytest.param(
-        power.DISS170_PDF,
-        diss170,
-        id='diss170',
-    ),
+    pytest.param(power.DISS170_PDF, diss170, id='diss170'),
 ])
 @utilatest.skip_longrun
 def test_validate_titlepage_extractor(source, check, testdir, monkeypatch):
