@@ -198,7 +198,7 @@ def create_person_title_pattern() -> str:
 
 EXAMINER = '|'.join([
     # it's important to limit parsing length to avoid very long running parsing
-    r'(\d\.\s?)?Betreuer(in)?',
+    r'(\d\.\s?)?Betreuer(in)?[ ]{0,3}(extern)?',
     r'Erstgutachter(in)?',
     r'Betreuung',
     r'Gutachter(in)?',
