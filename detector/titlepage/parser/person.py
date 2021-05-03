@@ -72,7 +72,7 @@ def parse_person_after(raw: str) -> iamraw.Person:
     >>> parse_person_after('Betreuer extern: Eduard Wagner (M. Sc.)').title
     <AcademicTitle.MASTER: 8>
     """
-    parsed = re.search(PATTER_PERSON_AFTER, raw, re.X)
+    parsed = re.search(PATTERN_PERSON_AFTER, raw, re.X)
     if not parsed:
         return None
     title = extract_title(parsed)
@@ -225,7 +225,7 @@ PATTERN = rf"""
 # TODO: SUPPORT PARSING DOUBLE PRE NAME
 # TODO: VERIFY HERR/FRAU PATTERN
 # Parses: Examiner: Hemut Konrad, M.A.
-PATTER_PERSON_AFTER = rf"""
+PATTERN_PERSON_AFTER = rf"""
     (?P<examiner>({EXAMINER})[:]?\s?)
     ([ ]{0,4}(Herr|Frau)?[ ]{0,4})?
     (?P<fname>(\w+[ ]?){1,5}?)[ ](?P<name>[\w|-]+)
