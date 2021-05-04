@@ -97,9 +97,7 @@ def parse_longtext(  # pylint:disable=R1260,R0912
         content: str,
         pattern=NORMAL,
 ) -> iamraw.BibliographyReference:
-    # convert multiple lines into a single text block. Convert inner
-    # newlines into space and trim spaces at front and end
-    content = content.replace('\n', ' ').strip()  # TODO: USE EXTERNAL METHOD
+    content = utila.normalize_text(content)
     raw = content
     matched = re.search(pattern, content, re.VERBOSE | re.IGNORECASE)
     if not matched:
