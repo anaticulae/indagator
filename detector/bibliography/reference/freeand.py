@@ -61,16 +61,22 @@ MONTH = r"""
 # TODO: ADD OPTIONAL BRACKETS TO REMOVE DIRTY SIMPLE YEAR HACK
 # TODO: REMOVE 4,5 HACK: WHEN SUPPORTING HIGHNOTE
 AND = r"""
-    (?P<authors>[A-Z,;\(\)\.\-\&ÖÄÜ\d ]{5,})
+    (?P<authors>
+        [A-Z,;\(\)\.\-\&ÖÄÜ\d ]{5,}
+        [^\(\)\[\]]                           # author does not ends with bracket
+    )
     (
-        \((?P<oj>o\.j\.)\)|
+        \(?(?P<oj>o\.j\.)\)?
+        |
         %s # brackets open
         %s # optional month
         ((?P<year>\d{4,5})([ ]{0,3}\-(?P<yearend>\d{4})[ ]{0,3}){0,1})
         (?P<number>a|b|c|d){0,1}  # optional char
         %s # brackets close
         |
-        (?P<simpleyear>\d{4})[ ]{0,2}[a-z]{0,1}[ ]{0,2}:          # see wessels 2007, TODO: DIRTY
+        \({0,1}
+        (?P<simpleyear>\d{4})[ ]{0,2}[a-z]{0,1}[ ]{0,2}:    # see wessels 2007, TODO: DIRTY
+        \){0,1}
     )
     [ ]{0,5}                      # remove trailing whitespaces
     [:\.]{0,1}                    # remove dot or colon
@@ -98,7 +104,6 @@ def parse_longtext(  # pylint:disable=R1260,R0912
     matched = re.search(pattern, content, re.VERBOSE | re.IGNORECASE)
     if not matched:
         return None
-
     authors = german.authors(matched['authors'])
     # disable non person authors
     authors = german.authors_decide(authors)

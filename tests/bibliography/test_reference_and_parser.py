@@ -52,7 +52,11 @@ Debatte. In: Weidenfeld, Werner / Wessels, Wolfgang (Hrsg.): Jahrbuch
 der Europäischen Integration 2006. Baden-Baden: Nomos
 Verlagsgesellschaft, 1. Auflage, S. 27 - 38.
 
-Latham L. & Lundy B. (March 8, 2006). Podcasting is new and suoer nice. More nice.
+Latham L. & Lundy B. (March 8, 2006). Podcasting is new and suoer nice.
+More nice.
+
+Lorenz, Sascha (2001:) Text Mining – Methoden und Techniken.
+Diplomarbeit an der Technischen Universität Dresden.
 """.split('\n\n')
 
 
@@ -143,6 +147,15 @@ Latham L. & Lundy B. (March 8, 2006). Podcasting is new and suoer nice. More nic
         id='wessels',
     ),
     pytest.param(LONGTEXT[9], None, None, None, None, None, id='plusmonth'),
+    pytest.param(
+        LONGTEXT[10],
+        None,
+        [['Lorenz', 'Sascha']],
+        None,
+        2001,
+        None,
+        id='typo',
+    ),
 ])
 def test_parse_freeand_long(text, title, authors, pages, year, publisher):  # pylint:disable=W0613
     extracted = freeand.parse_longtext(text)
