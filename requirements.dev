@@ -13,7 +13,7 @@ utilatest==0.5.2
 rawmaker==2.16.0
 
 # reference to test data
-power==1.4.4
+power==1.4.5
 
 # test data generator
 jam==0.2.18
