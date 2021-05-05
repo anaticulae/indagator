@@ -79,10 +79,10 @@ def split_bibliography(raw: str) -> iamraw.BibliographyReference:  # pylint:disa
     matched = detector.bibliography.reference.number.parse(raw)
     if matched:
         return matched
-    matched = detector.bibliography.reference.freeand.parse_longtext_less_strict(raw)  # yapf:disable
+    matched = detector.bibliography.reference.tech.parse_single_row(raw)  # pylint:disable=R0204
     if matched:
         return matched
-    matched = detector.bibliography.reference.tech.parse_single_row(raw)  # pylint:disable=R0204
+    matched = detector.bibliography.reference.freeand.parse_longtext_less_strict(raw)  # yapf:disable
     if matched:
         return matched
     matched = detector.bibliography.reference.tech.parse_longtext(raw)
