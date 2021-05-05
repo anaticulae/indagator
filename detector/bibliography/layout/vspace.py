@@ -9,6 +9,7 @@
 
 import typing
 
+import configo
 import iamraw
 import texmex
 import utila
@@ -31,21 +32,12 @@ def extracts(navigators: texmex.PageTextContentNavigator
     return result
 
 
-def maxdistance(size: float):
-    # TODO: HOLY VALUE. Support table as holy value
-    if size <= 12.0:
-        return 15.0
-    if size <= 14.5:
-        return 30
-    if size <= 15.96:
-        return 35
-    return 50.0
-
-
 def extract(
         navigator: texmex.NavigatorMixin,
-        vspace_max: callable = maxdistance,
+        vspace_max: callable = None,
 ) -> iamraw.BibliographyReferences:
+    if vspace_max is None:
+        vspace_max = MAXDISTANCE
     grouped = texmex.group_linedistances_complex(
         navigator,
         max_distance=vspace_max,
@@ -55,6 +47,18 @@ def extract(
     result = utila.not_none(result)
     return result
 
+
+MAXDISTANCE = configo.HolyTable(
+    items=[
+        (12.0, 15.0),  # LOWER LIMIT
+        (14.5, 30.0),
+        (15.96, 35),
+        (60.0, 50.0),  # UPPER LIMIT
+    ],
+    strategy=utila.Strategy.LOWER,
+    left_outranges_none=False,
+    right_outranges_none=False,
+)
 
 # TODO: HOLY VALUE
 MAXDISTANCE_FACTOR = [
@@ -76,7 +80,7 @@ MAXDISTANCE_FACTOR = [
 def extract_optimize(navigator: texmex.NavigatorMixin) -> iamraw.BibliographyReferences: # yapf:disable
     results = []
     for factor in MAXDISTANCE_FACTOR:
-        adjusted = lambda x: factor * maxdistance(x)  # pylint:disable=cell-var-from-loop
+        adjusted = lambda x: factor * MAXDISTANCE(x)  # pylint:disable=cell-var-from-loop
         extracted = extract(navigator, vspace_max=adjusted)
         results.append(extracted)
     # select best
