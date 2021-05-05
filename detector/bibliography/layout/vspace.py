@@ -60,8 +60,7 @@ MAXDISTANCE = configo.HolyTable(
     right_outranges_none=False,
 )
 
-# TODO: HOLY VALUE
-MAXDISTANCE_FACTOR = [
+MAXDISTANCE_FACTOR = configo.HolyList([
     0.8,
     0.85,
     0.90,
@@ -74,7 +73,7 @@ MAXDISTANCE_FACTOR = [
     2.0,
     2.3,
     2.6,
-]
+])
 
 
 def extract_optimize(navigator: texmex.NavigatorMixin) -> iamraw.BibliographyReferences: # yapf:disable
