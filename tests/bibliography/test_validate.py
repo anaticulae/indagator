@@ -153,6 +153,34 @@ def master155(flat):  # pylint:disable=W0613
     pass
 
 
+BACHELOR111 = """\
+Bhebhe Leo
+Dahlman Erik ; Parkvall Stefan ; Sköld Johan ; Beming Per
+Friedel Prof. Dr. Ing Rainer ; Mahler Dipl.-Ing. Hans-Detlev
+Friedel Prof. Dr. Ing Rainer ; Mahler Dipl.-Ing. Hans-Detlev
+Frank Karlheinz
+Freeman Roger L.
+Gessler Ralf ; Krause Thomas
+Günther Andreas
+Huber Josef F.
+Iftode Liviu ; Borcea Cristian ; Ravi Nishkam ; Kang Porlin ; Zhou Peng
+KNX Association
+Kriesel Werner ; Sokollik Frank ; Helm Peter
+Lehner Franz
+Lin Feida ; Yen Weiguo
+Merz Hermann ; Hansemann Thomas ; Hübner Christof
+Walke Bernhard
+Walke Bernhard
+Zheng Pei ; Ni Lionel M.
+""".strip()
+
+
+def bachelor111(flat):
+    raw = authors_raw(flat)
+    utila.log(raw)
+    assert raw == BACHELOR111
+
+
 def authors_raw(flat) -> str:
     items = [' ; '.join([item.raw for item in line.authors]) for line in flat]
     items = [item.strip() for item in items]
@@ -175,6 +203,7 @@ def authors_raw(flat) -> str:
     pytest.param(power.BACHELOR128_PDF, '96:103', None, bachelor128, id='bachelor128'),
     pytest.param(power.MASTER091B_PDF, '82:89', 85, master91b, id='master91b'), # VALIDATED BY HAND
     pytest.param(power.ORDER107_PDF, '104:108', 31, order107, id='order107'), # VALIDATED BY HAND
+    pytest.param(power.BACHELOR111_PDF, '85:87', 18, bachelor111, id='bachelor111'), # VALIDATED BY HAND
     pytest.param(power.MASTER155_PDF, '75:85', 109, master155, id='master155', marks=pytest.mark.xfail(reason='improve parser')), # VALIDATED BY HAND
 ])
 # yapf:enable
