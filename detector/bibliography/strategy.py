@@ -9,6 +9,7 @@
 
 import iamraw
 import texmex
+import utila
 
 import detector.bibliography.judge
 import detector.bibliography.layout.alternate
@@ -28,6 +29,10 @@ def extracts(
     column = detector.bibliography.judge.judge(column)
     alternate = detector.bibliography.judge.judge(alternate)
     vspace = detector.bibliography.judge.judge(vspace)
+
+    utila.debug(f'column:    {detector.bibliography.utils.count(column)}')
+    utila.debug(f'alternate: {detector.bibliography.utils.count(alternate)}')
+    utila.debug(f'vspace:    {detector.bibliography.utils.count(vspace)}')
 
     count_column = detector.bibliography.utils.count(column)
     # alternate extracts a lot of more possible bibs, therefore we
