@@ -6,3 +6,14 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+
+import utila
+
+
+# TODO: REMOVE LATER
+def simplify_chars(text: str) -> str:
+    text = text.replace('–', '-')
+    return text
+
+
+utila.simplify_chars = simplify_chars

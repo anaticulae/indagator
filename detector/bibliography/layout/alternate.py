@@ -24,6 +24,7 @@
 import geostrat
 import iamraw
 import texmex
+import utila
 
 import detector.bibliography.reference.freeand
 import detector.bibliography.reference.magic
@@ -76,6 +77,7 @@ def extract(content) -> iamraw.BibliographyReferences:
 
 def split_bibliography(raw: str) -> iamraw.BibliographyReference:  # pylint:disable=R0911
     raw = raw.strip()
+    raw = utila.simplify_chars(raw)
     matched = detector.bibliography.reference.number.parse(raw)
     if matched:
         return matched
