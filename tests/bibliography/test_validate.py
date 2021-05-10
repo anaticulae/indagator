@@ -18,6 +18,10 @@ import detector.path
 import tests
 
 
+def bachelor51(flat):
+    assert len(flat) == 37  # VALIDATED
+
+
 def bachelor63(flat):
     # zero is iamraw.NoPerson
     # numbers iamraw.Person
@@ -190,6 +194,7 @@ def authors_raw(flat) -> str:
 
 # yapf:disable
 @pytest.mark.parametrize('source, pages, expected, validate', [
+    pytest.param(power.BACHELOR051_PDF, '42:46', 37, bachelor51, id='bachelor51'),
     pytest.param(power.BACHELOR056_PDF, '49:53', 32, None, id='bachelor56', marks=pytest.mark.xfail(reason='improve parser')),
     pytest.param(power.BACHELOR063_PDF, '59', 12, bachelor63, id='bachelor63', marks=pytest.mark.xfail(reason='improve name detector')),
     pytest.param(power.MASTER116_PDF, '97,98,99,100', 46, master116, id='master116'), # VALIDATED BY HAND
