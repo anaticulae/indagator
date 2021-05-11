@@ -104,6 +104,10 @@ INSTITUTE = [
 DEPARTMENT = [
     # TODO: Think about chaning in parser, special character?
     # 2 different minus signs
+    'Fakultat I –',
+    'Fakultat I -',
+    'Fakultat I ',
+    'Fakultat',
     'Fakultät I –',
     'Fakultät I -',
     'Fakultät I ',
