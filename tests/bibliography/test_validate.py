@@ -202,7 +202,7 @@ def authors_raw(flat) -> str:
     pytest.param(power.BACHELOR090_PDF, '84:89', 52, bachelor90, id='bachelor90'),
     pytest.param(power.MASTER075_PDF, '70', 18, master75, id='master75'), # VALIDATED BY HAND
     pytest.param(power.MASTER110_PDF, '104:109', 71, master110, id='master110'),
-    pytest.param(power.DISS266_PDF, '215:247', 415, None, id='diss266'),
+    pytest.param(power.DISS266_PDF, '215:247', 427, None, id='diss266', marks=pytest.mark.xfail(reason='improve parser')), # VALIDATED BY HAND
     pytest.param(power.DISS170_PDF, '150:163', None, diss170, id='diss170'),
     pytest.param(power.DISS272_PDF, '259:271', None, diss272, id='diss272'),
     pytest.param(power.BACHELOR128_PDF, '96:103', None, bachelor128, id='bachelor128'),
