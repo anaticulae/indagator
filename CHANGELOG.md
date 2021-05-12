@@ -2,6 +2,24 @@
 
 Every noteable change is logged here.
 
+## v0.21.0
+
+### Feature
+
+* use more specific parser first (07d9cadf2e76)
+* extend debugging information (8fde94d652a2)
+* use improved newline converter (493aa5e60392)
+* improve freeand parser (078e3e112a74)
+* normalize white spaces to ease regex (c336e846872b)
+* add optional extern flag (b6e9b7052355)
+* add master title to title after person pattern (ce983854fd1c)
+* add optional month part (fafe3d64057a)
+* add location of parsed bib to result (afc4bb841ad8)
+
+### Fix
+
+* support character simplification (a355a8dd66a4)
+
 ## v0.20.0
 
 ### Feature
