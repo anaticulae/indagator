@@ -216,7 +216,11 @@ def location_comma_day_month_year(raw: str) -> iamraw.TitleDate:
     return result
 
 
-SEMESTER = r'(Sommersemester|Wintersemester)[ ](?P<year>\d{4})'
+SEMESTER = r"""
+    (SOMMERSEMESTER|WINTERSEMESTER|SS|WS)
+    [ ]{1,4}
+    (?P<year>\d{2,4})
+"""
 
 
 def semester_year(raw: str) -> iamraw.TitleDate:
@@ -225,16 +229,16 @@ def semester_year(raw: str) -> iamraw.TitleDate:
     >>> semester_year('BACHELORARBEIT von Martina Feilke Sommersemester 2009 SOLAR II').year
     2009
     """
-    res = re.search(SEMESTER, raw)
-    if not res:
+    searched = re.search(SEMESTER, raw, re.IGNORECASE | re.VERBOSE)
+    if not searched:
         return None
-    year = int(res['year'])
+    year = int(searched['year'])
     result = iamraw.TitleDate(
         year=year,
         month=None,
         day=None,
         location=None,
         valid=True,
-        raw=utila.extract_match(res),
+        raw=utila.extract_match(searched),
     )
     return result
