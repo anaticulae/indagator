@@ -19,6 +19,7 @@ import calendar
 import functools
 import re
 
+import german
 import iamraw
 import utila
 
@@ -157,13 +158,12 @@ def simple_alpha_date(  # pylint:disable=R0914
 
     matched = utila.extract_match(res)
     day = int(res['day'])
-    collected = month_match[res['month']]
-    month_ = month.index(collected) + 1
+    month = german.month(res['month'])
     year = int(res['year'])
     valid = len(res['day']) == 2
     result = iamraw.TitleDate(
         year=year,
-        month=month_,
+        month=month,
         day=day,
         location=None,
         valid=valid,
@@ -178,7 +178,7 @@ def simple_month_year_date(raw):
         return None
     res = res.groups()
     raw = '%s %s' % res
-    month = MONTH.index(res[0]) + 1
+    month = german.month(res[0])
     year = int(res[1])
     result = iamraw.TitleDate(
         year=year,
@@ -197,7 +197,7 @@ def location_comma_day_month_year(raw: str) -> iamraw.TitleDate:
         return None
     location = res['location']
     day = int(res['day'])
-    month = MONTH.index(res['month']) + 1
+    month = german.month(res['month'])
     year = int(res['year'])
     valid = validate_date(year, month, day)
 
