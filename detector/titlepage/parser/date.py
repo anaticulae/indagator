@@ -95,15 +95,16 @@ def simple_date(raw):
     parsed = re_search(SIMPLE_DATE, raw)
     if not parsed:
         return None
-    valid = len(parsed['day']) == len(parsed['month']) == 2
-    year, month, day = int(parsed['year']), int(parsed['month']), int(parsed['day']) # yapf:disable
     result = iamraw.TitleDate(
-        year=year,
-        month=month,
-        day=day,
-        location=None,
-        valid=valid,
-        raw=utila.extract_match(parsed),
+        valid=len(parsed['day']) == len(parsed['month']) == 2,
+        **extract_data(
+            parsed,
+            values=dict(
+                day=int,
+                month=int,
+                year=int,
+            ),
+        ),
     )
     return result
 
@@ -134,18 +135,16 @@ def simple_alpha_date(  # pylint:disable=R0914
     parsed = re_search(changed_pattern, raw)
     if not parsed:
         return None
-
-    day = int(parsed['day'])
-    monthcount = german.month(parsed['month'])
-    year = int(parsed['year'])
-    valid = len(parsed['day']) == 2
     result = iamraw.TitleDate(
-        year=year,
-        month=monthcount,
-        day=day,
-        location=None,
-        valid=valid,
-        raw=utila.extract_match(parsed),
+        valid=len(parsed['day']) == 2,
+        **extract_data(
+            parsed,
+            values=dict(
+                day=int,
+                month=german.month,
+                year=int,
+            ),
+        ),
     )
     return result
 
@@ -158,15 +157,15 @@ def simple_month_year_date(raw):
     parsed = re_search(SIMPLE_MONTH_YEAR, raw)
     if not parsed:
         return None
-    month = german.month(parsed['month'])
-    year = int(parsed['year'])
     result = iamraw.TitleDate(
-        year=year,
-        month=month,
-        day=None,
-        location=None,
         valid=True,
-        raw=utila.extract_match(parsed),
+        **extract_data(
+            parsed,
+            values=dict(
+                month=german.month,
+                year=int,
+            ),
+        ),
     )
     return result
 
@@ -179,20 +178,16 @@ def location_comma_day_month_year(raw: str) -> iamraw.TitleDate:
     parsed = re_search(LOCATION_COMMA_DAY_MONTH_YEAR, raw)
     if not parsed:
         return None
-    location = parsed['location']
-    day = int(parsed['day'])
-    month = german.month(parsed['month'])
-    year = int(parsed['year'])
-    valid = validate_date(year, month, day)
-
-    result = iamraw.TitleDate(
-        year=year,
-        month=month,
-        day=day,
-        location=location,
-        valid=valid,
-        raw=utila.extract_match(parsed),
-    )
+    result = iamraw.TitleDate(**extract_data(
+        parsed,
+        values=dict(
+            location=str,
+            day=int,
+            month=german.month,
+            year=int,
+        ),
+    ))
+    result.valid = validate_date(result.year, result.month, result.day)
     return result
 
 
@@ -209,16 +204,24 @@ def semester_year(raw: str) -> iamraw.TitleDate:
     >>> semester_year('BACHELORARBEIT von Martina Feilke Sommersemester 2009 SOLAR II').year
     2009
     """
-    searched = re_search(SEMESTER, raw)
-    if not searched:
+    parsed = re_search(SEMESTER, raw)
+    if not parsed:
         return None
-    year = int(searched['year'])
     result = iamraw.TitleDate(
-        year=year,
-        month=None,
-        day=None,
-        location=None,
         valid=True,
-        raw=utila.extract_match(searched),
+        **extract_data(
+            parsed,
+            values=dict(year=int,),
+        ),
     )
+    return result
+
+
+def extract_data(data, values: list) -> dict:
+    # TODO: MOVE TO UTILA
+    result = {
+        'raw': utila.extract_match(data),
+    }
+    for key, converter in values.items():
+        result[key] = converter(data[key])
     return result
