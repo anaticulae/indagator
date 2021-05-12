@@ -23,6 +23,8 @@ import german
 import iamraw
 import utila
 
+re_search = functools.partial(re.search, flags=re.VERBOSE | re.IGNORECASE)  # pylint:disable=C0103
+
 
 def parse(raw: str) -> iamraw.TitleDate:
     """Convert `raw` line to `TitleDate`
@@ -106,16 +108,16 @@ MONTH_GROUP_ENG = r'(?P<month>' + '|'.join(MONTH_ENG) + ')'
 
 SIMPLE_DATE = r'(?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{4})'
 
-SIMPLE_ALPHA_DATE = r'(?P<day>\d{1,2})([\.|,]) %s (?P<year>\d{4})' % MONTH_GROUP
-SIMPLE_ALPHA_DATE_MONTH_FIRST = r'%s (?P<day>\d{1,2})([\.|,]) (?P<year>\d{4})' % MONTH_GROUP_ENG
+SIMPLE_ALPHA_DATE = r'(?P<day>\d{1,2})([\.|,])[ ]%s[ ](?P<year>\d{4})' % MONTH_GROUP
+SIMPLE_ALPHA_DATE_MONTH_FIRST = r'%s[ ](?P<day>\d{1,2})([\.|,])[ ](?P<year>\d{4})' % MONTH_GROUP_ENG
 
-SIMPLE_MONTH_YEAR = r'%s (\d{4})' % MONTH_GROUP
+SIMPLE_MONTH_YEAR = r'%s[ ](\d{4})' % MONTH_GROUP
 
-LOCATION_COMMA_DAY_MONTH_YEAR = r'(?P<location>\w+), (den ){0,1}(%s)' % SIMPLE_ALPHA_DATE
+LOCATION_COMMA_DAY_MONTH_YEAR = r'(?P<location>\w+),[ ](den[ ]){0,1}(%s)' % SIMPLE_ALPHA_DATE
 
 
 def simple_date(raw):
-    res = re.search(SIMPLE_DATE, raw)
+    res = re_search(SIMPLE_DATE, raw)
     if not res:
         return None
     res = res.groups()
@@ -152,7 +154,7 @@ def simple_alpha_date(  # pylint:disable=R0914
     changed_pattern = str(pattern)
     for key, value in month_match.items():
         changed_pattern = changed_pattern.replace(value, key)
-    res = re.search(changed_pattern, raw)
+    res = re_search(changed_pattern, raw)
     if not res:
         return None
 
@@ -173,7 +175,7 @@ def simple_alpha_date(  # pylint:disable=R0914
 
 
 def simple_month_year_date(raw):
-    res = re.search(SIMPLE_MONTH_YEAR, raw)
+    res = re_search(SIMPLE_MONTH_YEAR, raw)
     if not res:
         return None
     res = res.groups()
@@ -192,7 +194,7 @@ def simple_month_year_date(raw):
 
 
 def location_comma_day_month_year(raw: str) -> iamraw.TitleDate:
-    res = re.search(LOCATION_COMMA_DAY_MONTH_YEAR, raw)
+    res = re_search(LOCATION_COMMA_DAY_MONTH_YEAR, raw)
     if not res:
         return None
     location = res['location']
@@ -226,7 +228,7 @@ def semester_year(raw: str) -> iamraw.TitleDate:
     >>> semester_year('BACHELORARBEIT von Martina Feilke Sommersemester 2009 SOLAR II').year
     2009
     """
-    searched = re.search(SEMESTER, raw, re.IGNORECASE | re.VERBOSE)
+    searched = re_search(SEMESTER, raw)
     if not searched:
         return None
     year = int(searched['year'])
