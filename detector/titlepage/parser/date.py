@@ -39,7 +39,7 @@ def parse(raw: str) -> iamraw.TitleDate:
     # Judge function to decide when having multiple results
     simple_alpha_date_month_first = functools.partial(
         simple_alpha_date,
-        month=MONTH_ENG,
+        month=german.MONTH,
         pattern=SIMPLE_ALPHA_DATE_MONTH_FIRST,
     )
 
@@ -71,45 +71,12 @@ def validate_date(year, month, day):
     return True
 
 
-MONTH = [
-    'Januar',
-    'Februar',
-    'März',
-    'April',
-    'Mai',
-    'Juni',
-    'Juli',
-    'August',
-    'September',
-    'Oktober',
-    'November',
-    'Dezember',
-]
-
-# TODO: Add shorten month name, see `Sep`
-
-MONTH_ENG = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'Sep',
-    'October',
-    'November',
-    'December',
-]
-
-MONTH_GROUP = r'(?P<month>' + '|'.join(MONTH) + ')'
-MONTH_GROUP_ENG = r'(?P<month>' + '|'.join(MONTH_ENG) + ')'
+MONTH_GROUP = r'(?P<month>%s)' % german.MONTH_REGEX[1:-1]
 
 SIMPLE_DATE = r'(?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{4})'
 
 SIMPLE_ALPHA_DATE = r'(?P<day>\d{1,2})([\.|,])[ ]%s[ ](?P<year>\d{4})' % MONTH_GROUP
-SIMPLE_ALPHA_DATE_MONTH_FIRST = r'%s[ ](?P<day>\d{1,2})([\.|,])[ ](?P<year>\d{4})' % MONTH_GROUP_ENG
+SIMPLE_ALPHA_DATE_MONTH_FIRST = r'%s[ ](?P<day>\d{1,2})([\.|,])[ ](?P<year>\d{4})' % MONTH_GROUP
 
 SIMPLE_MONTH_YEAR = r'%s[ ](\d{4})' % MONTH_GROUP
 
@@ -149,7 +116,7 @@ def simple_alpha_date(  # pylint:disable=R0914
         pattern=SIMPLE_ALPHA_DATE,
 ):
     if not month:
-        month = MONTH
+        month = german.MONTH
     month_match = {reduce_word(item, reduce): item for item in month}
     changed_pattern = str(pattern)
     for key, value in month_match.items():
