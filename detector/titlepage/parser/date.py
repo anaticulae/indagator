@@ -78,26 +78,24 @@ SIMPLE_DATE = r'(?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{4})'
 SIMPLE_ALPHA_DATE = r'(?P<day>\d{1,2})([\.|,])[ ]%s[ ](?P<year>\d{4})' % MONTH_GROUP
 SIMPLE_ALPHA_DATE_MONTH_FIRST = r'%s[ ](?P<day>\d{1,2})([\.|,])[ ](?P<year>\d{4})' % MONTH_GROUP
 
-SIMPLE_MONTH_YEAR = r'%s[ ](\d{4})' % MONTH_GROUP
+SIMPLE_MONTH_YEAR = r'%s[ ](?P<year>\d{4})' % MONTH_GROUP
 
 LOCATION_COMMA_DAY_MONTH_YEAR = r'(?P<location>\w+),[ ](den[ ]){0,1}(%s)' % SIMPLE_ALPHA_DATE
 
 
 def simple_date(raw):
-    res = re_search(SIMPLE_DATE, raw)
-    if not res:
+    parsed = re_search(SIMPLE_DATE, raw)
+    if not parsed:
         return None
-    res = res.groups()
-    valid = len(res[0]) == len(res[1]) == 2
-    raw = '%s.%s.%s' % res
-    year, month, day = int(res[2]), int(res[1]), int(res[0])
+    valid = len(parsed['day']) == len(parsed['month']) == 2
+    year, month, day = int(parsed['year']), int(parsed['month']), int(parsed['day']) # yapf:disable
     result = iamraw.TitleDate(
         year=year,
         month=month,
         day=day,
         location=None,
         valid=valid,
-        raw=raw,
+        raw=utila.extract_match(parsed),
     )
     return result
 
@@ -121,63 +119,59 @@ def simple_alpha_date(  # pylint:disable=R0914
     changed_pattern = str(pattern)
     for key, value in month_match.items():
         changed_pattern = changed_pattern.replace(value, key)
-    res = re_search(changed_pattern, raw)
-    if not res:
+    parsed = re_search(changed_pattern, raw)
+    if not parsed:
         return None
 
-    matched = utila.extract_match(res)
-    day = int(res['day'])
-    month = german.month(res['month'])
-    year = int(res['year'])
-    valid = len(res['day']) == 2
+    day = int(parsed['day'])
+    monthcount = german.month(parsed['month'])
+    year = int(parsed['year'])
+    valid = len(parsed['day']) == 2
     result = iamraw.TitleDate(
         year=year,
-        month=month,
+        month=monthcount,
         day=day,
         location=None,
         valid=valid,
-        raw=matched,
+        raw=utila.extract_match(parsed),
     )
     return result
 
 
 def simple_month_year_date(raw):
-    res = re_search(SIMPLE_MONTH_YEAR, raw)
-    if not res:
+    parsed = re_search(SIMPLE_MONTH_YEAR, raw)
+    if not parsed:
         return None
-    res = res.groups()
-    raw = '%s %s' % res
-    month = german.month(res[0])
-    year = int(res[1])
+    month = german.month(parsed['month'])
+    year = int(parsed['year'])
     result = iamraw.TitleDate(
         year=year,
         month=month,
         day=None,
         location=None,
         valid=True,
-        raw=raw,
+        raw=utila.extract_match(parsed),
     )
     return result
 
 
 def location_comma_day_month_year(raw: str) -> iamraw.TitleDate:
-    res = re_search(LOCATION_COMMA_DAY_MONTH_YEAR, raw)
-    if not res:
+    parsed = re_search(LOCATION_COMMA_DAY_MONTH_YEAR, raw)
+    if not parsed:
         return None
-    location = res['location']
-    day = int(res['day'])
-    month = german.month(res['month'])
-    year = int(res['year'])
+    location = parsed['location']
+    day = int(parsed['day'])
+    month = german.month(parsed['month'])
+    year = int(parsed['year'])
     valid = validate_date(year, month, day)
 
-    raw = utila.extract_match(res)
     result = iamraw.TitleDate(
         year=year,
         month=month,
         day=day,
         location=location,
         valid=valid,
-        raw=raw,
+        raw=utila.extract_match(parsed),
     )
     return result
 
