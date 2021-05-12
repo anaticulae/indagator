@@ -47,9 +47,9 @@ def parse(raw: str) -> iamraw.TitleDate:
         simple_month_year_date,
         simple_date,
         semester_year,
-    ] + [
-        functools.partial(simple_alpha_date, reduce=index) for index in range(7)
     ]
+    for index in range(7):
+        pattern.append(functools.partial(simple_alpha_date, reduce=index))
 
     parsed = [parser(raw) for parser in pattern]
     parsed = [item for item in parsed if item]  # remove non matches
@@ -105,15 +105,12 @@ MONTH_GROUP_ENG = r'(?P<month>' + '|'.join(MONTH_ENG) + ')'
 
 SIMPLE_DATE = r'(?P<day>\d{1,2})\.(?P<month>\d{1,2})\.(?P<year>\d{4})'
 
-SIMPLE_ALPHA_DATE = r'(?P<day>\d{1,2})([\.|,]) ' + MONTH_GROUP\
-                                                 + r' (?P<year>\d{4})'
-SIMPLE_ALPHA_DATE_MONTH_FIRST = MONTH_GROUP_ENG +   r' (?P<day>\d{1,2})([\.|,])'\
-                                                 + r' (?P<year>\d{4})'
+SIMPLE_ALPHA_DATE = r'(?P<day>\d{1,2})([\.|,]) %s (?P<year>\d{4})' % MONTH_GROUP
+SIMPLE_ALPHA_DATE_MONTH_FIRST = r'%s (?P<day>\d{1,2})([\.|,]) (?P<year>\d{4})' % MONTH_GROUP_ENG
 
-SIMPLE_MONTH_YEAR = MONTH_GROUP + r' (\d{4})'
+SIMPLE_MONTH_YEAR = r'%s (\d{4})' % MONTH_GROUP
 
-LOCATION_COMMA_DAY_MONTH_YEAR = r'(?P<location>\w+), (den ){0,1}('\
-                                                      + SIMPLE_ALPHA_DATE + ')'
+LOCATION_COMMA_DAY_MONTH_YEAR = r'(?P<location>\w+), (den ){0,1}(%s)' % SIMPLE_ALPHA_DATE
 
 
 def simple_date(raw):
