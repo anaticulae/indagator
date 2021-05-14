@@ -63,19 +63,15 @@ Umsetzung von Projekten im Studium (Studieren, aber richtig. UTB 3357: \
 Schl\xFCsselkompetenzen). Konstanz: UVK.
 """.split('\n\n')
 
-
-@pytest.mark.parametrize('text, title, authors, pages, year, publisher', [
-    pytest.param(
-        LONGTEXT[0],
+LONGTEXT_EXPECTED = [
+    (
         'Lübecker Alkoholabhängigkeits- und -missbrauchs-Screening-Test',
         [['Rumph', 'H.-J.'], ['Hapke', 'U.'], ['John', 'U.']],
         None,
         1997,
         None,
-        id='luebecker',
     ),
-    pytest.param(
-        LONGTEXT[1],
+    (
         ('Beweiswert rechtsmedizinischer Begutachtungskriterien zur '
          'Feststellung der relativen alkoholbedingten Fahruntüchtigkeit'),
         [['Schmidt', 'R.'], ['Dettmeyer', 'R.'], ['Padosch', 'S.'],
@@ -83,92 +79,76 @@ Schl\xFCsselkompetenzen). Konstanz: UVK.
         (1, 10),
         2004,
         None,
-        id='schmidt',
     ),
-    pytest.param(
-        LONGTEXT[2],
+    (
         ('Alcohol and driving-related performance - A comprehensive '
          'meta-analysis focussing the significance of the nonsignificant'),
         [['Schnabel', 'Eva']],
         None,
         2011,
         None,
-        id='schnabel',
     ),
-    pytest.param(
-        LONGTEXT[3],
+    (
         None,
         [['Becker', 'W.'], ['Ulrich', 'P.'], ['Botzkowski', 'T.'],
          ['Eurich', 'S.']],
         (263, 268),
         2015,
         None,
-        id='becker',
     ),
-    pytest.param(
-        LONGTEXT[4],
+    (
         None,
         [['Hahn', 'Hans Henning'], ['Traba', 'Robert (Hrsg.)']],
         None,
         2012,
         None,
-        id='hahn',
     ),
-    pytest.param(
-        LONGTEXT[5],
+    (
         'Die Sainte Victoire – ein deutsch-französischer Ort und seine Schatten',
         [['Keller', 'Thomas']],
         (93, 122),
         2007,
         None,
-        id='keller',
-    ),
-    pytest.param(
-        LONGTEXT[6],
+    ), (
         None,
         [['BOUS', 'K.']],
         None,
         None,
         None,
-        id='bous',
-    ),
-    pytest.param(
-        LONGTEXT[7],
+    ), (
         None,
         [['BOBEK', 'H.'], ['FESL', 'M.']],
         None,
         None,
         None,
-        id='bobek',
-    ),
-    pytest.param(
-        LONGTEXT[8],
+    ), (
         None,
         [['Wessels', 'Wolfgang']],
         None,
         None,
         None,
-        id='wessels',
-    ),
-    pytest.param(LONGTEXT[9], None, None, None, None, None, id='plusmonth'),
-    pytest.param(
-        LONGTEXT[10],
+    ), (None, None, None, None, None),
+    (
         None,
         [['Lorenz', 'Sascha']],
         None,
         2001,
         None,
-        id='typo',
-    ),
-    pytest.param(
-        LONGTEXT[11],
+    ), (
         None,
         [['Hug', 'T.'], ['Poscheschnik', 'G.']],
         None,
         2010,
         None,
-        id='hug',
-    ),
+    )
+]
+
+
+@pytest.mark.parametrize('text, title, authors, pages, year, publisher', [
+    pytest.param(
+        *[LONGTEXT[index]] + list(item),
+        id=str(index),
+    ) for index, item in enumerate(LONGTEXT_EXPECTED)
 ])
 def test_parse_freeand_long(text, title, authors, pages, year, publisher):  # pylint:disable=W0613
     extracted = freeand.parse_longtext(text)
