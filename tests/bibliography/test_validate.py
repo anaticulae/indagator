@@ -194,22 +194,22 @@ def authors_raw(flat) -> str:
 
 # yapf:disable
 @pytest.mark.parametrize('source, pages, expected, validate', [
+    pytest.param(power.ORDER107_PDF, '104:108', 31, order107, id='order107'), # VALIDATED BY HAND
     pytest.param(power.BACHELOR051_PDF, '42:46', 37, bachelor51, id='bachelor51'),
     pytest.param(power.BACHELOR056_PDF, '49:53', 32, None, id='bachelor56', marks=pytest.mark.xfail(reason='improve parser')),
     pytest.param(power.BACHELOR063_PDF, '59', 12, bachelor63, id='bachelor63', marks=pytest.mark.xfail(reason='improve name detector')),
-    pytest.param(power.MASTER116_PDF, '97,98,99,100', 46, master116, id='master116'), # VALIDATED BY HAND
-    pytest.param(power.MASTER089_PDF, None, 149, master89, id='master89', marks=pytest.mark.xfail(reason='improve parser')),
     pytest.param(power.BACHELOR090_PDF, '84:89', 52, bachelor90, id='bachelor90'),
-    pytest.param(power.MASTER075_PDF, '70', 18, master75, id='master75'), # VALIDATED BY HAND
-    pytest.param(power.MASTER110_PDF, '104:109', 71, master110, id='master110'),
-    pytest.param(power.DISS266_PDF, '215:247', 427, None, id='diss266', marks=pytest.mark.xfail(reason='improve parser')), # VALIDATED BY HAND
-    pytest.param(power.DISS170_PDF, '150:163', None, diss170, id='diss170'),
-    pytest.param(power.DISS272_PDF, '259:271', None, diss272, id='diss272'),
-    pytest.param(power.BACHELOR128_PDF, '96:103', None, bachelor128, id='bachelor128'),
-    pytest.param(power.MASTER091B_PDF, '82:89', 85, master91b, id='master91b'), # VALIDATED BY HAND
-    pytest.param(power.ORDER107_PDF, '104:108', 31, order107, id='order107'), # VALIDATED BY HAND
     pytest.param(power.BACHELOR111_PDF, '85:87', 18, bachelor111, id='bachelor111'), # VALIDATED BY HAND
+    pytest.param(power.BACHELOR128_PDF, '96:103', None, bachelor128, id='bachelor128'),
+    pytest.param(power.MASTER075_PDF, '70', 18, master75, id='master75'), # VALIDATED BY HAND
+    pytest.param(power.MASTER089_PDF, None, 149, master89, id='master89', marks=pytest.mark.xfail(reason='improve parser')),
+    pytest.param(power.MASTER091B_PDF, '82:89', 85, master91b, id='master91b'), # VALIDATED BY HAND
+    pytest.param(power.MASTER110_PDF, '104:109', 71, master110, id='master110'),
+    pytest.param(power.MASTER116_PDF, '97,98,99,100', 46, master116, id='master116'), # VALIDATED BY HAND
     pytest.param(power.MASTER155_PDF, '75:85', 109, master155, id='master155', marks=pytest.mark.xfail(reason='improve parser')), # VALIDATED BY HAND
+    pytest.param(power.DISS170_PDF, '150:163', None, diss170, id='diss170'),
+    pytest.param(power.DISS266_PDF, '215:247', 427, None, id='diss266', marks=pytest.mark.xfail(reason='improve parser')), # VALIDATED BY HAND
+    pytest.param(power.DISS272_PDF, '259:271', None, diss272, id='diss272'),
 ])
 # yapf:enable
 @utilatest.skip_longrun
