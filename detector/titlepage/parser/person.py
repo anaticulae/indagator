@@ -228,11 +228,12 @@ PATTERN = rf"""
 # TODO: SUPPORT PARSING DOUBLE PRE NAME
 # TODO: VERIFY HERR/FRAU PATTERN
 # Parses: Examiner: Hemut Konrad, M.A.
+ACADEMIC_TITLE = r'(M\.[ ]?A\.?\B|DIPL\.[ ]PSYCH\.([ ]FH)?|\(?M\.[ ]?Sc\.\)?)'
 PATTERN_PERSON_AFTER = rf"""
     (?P<examiner>({EXAMINER})[:]?\s?)
     ([ ]{0,4}(Herr|Frau)?[ ]{0,4})?
     (?P<fname>(\w+[ ]?){1,5}?)[ ](?P<name>[\w|-]+)
-    [,]?[ ]{0,3}?(?P<t3>(M\.[ ]?A\.?\B|\(?M\.[ ]?Sc\.\)?))
+    [,]?[ ]{0,3}?(?P<t3>{ACADEMIC_TITLE})
 """
 
 
