@@ -38,6 +38,7 @@ RESOURCES = [
     (power.MASTER089_PDF, '68:82'),
     (power.ORDER107_PDF, '90:108'),
     (power.BACHELOR076_PDF, '0:5'),
+    (power.BACHELOR109_PDF, '0:5'),
     (power.MASTER072_PDF, '0:10'),
     (power.MASTER075_PDF, None),
     (power.BACHELOR063_PDF, '0:9,59:62'),
