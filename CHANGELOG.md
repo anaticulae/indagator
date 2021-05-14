@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.21.1
+
+### Feature
+
+* ignore cases and ease using regex (edd51d837fd3)
+* extend semester pattern (3e5ebb0d1082)
+
 ## v0.21.0
 
 ### Feature
