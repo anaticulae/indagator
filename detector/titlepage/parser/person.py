@@ -174,7 +174,7 @@ def create_with_title_pattern():
         r'vorgelegt von',
         r'angefertigt von',
         r'by',
-        r'Name, Vorname:'
+        r'Name, Vorname'
         # r'von', # TODO: exclude von in `title`
     ]
     preamble = [fr'(?P<t{index}>{item})' for index, item in enumerate(preamble)]
