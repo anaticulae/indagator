@@ -270,19 +270,31 @@ TITLE_INVALID = {
     'geb.',
 }
 
+AUTHOR_INTRO = utila.splitlines("""
+angefertigt
+autor
+verfasser
+vorgelegt
+""")
+
+EXAMINER_INTRO = utila.splitlines("""
+betreuer
+gutachter
+prüfer
+supervisor
+""")
+
 
 def author_or_examiner(raw: str) -> iamraw.AcademicTitle:
+    """\
+    >>> author_or_examiner('Betreuer:')
+    <AcademicTitle.EXAMINIER: 16>
+    """
     raw = raw.lower()
-
-    # Hint: add items as lower case
-    author = ['vorgelegt', 'verfasser', 'autor', 'angefertigt']
-    if any([item in raw for item in author]):
+    if any([item in raw for item in AUTHOR_INTRO]):
         return iamraw.AcademicTitle.STUDENT
-
-    examiner = ['prüfer', 'gutachter', 'betreuer', 'supervisor']
-    if any([item in raw for item in examiner]):
+    if any([item in raw for item in EXAMINER_INTRO]):
         return iamraw.AcademicTitle.EXAMINIER
-
     return iamraw.AcademicTitle.NO_TITLE
 
 
