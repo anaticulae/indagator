@@ -157,6 +157,115 @@ def master155(flat):  # pylint:disable=W0613
     pass
 
 
+# TODO: UPDATE AFTER UPGRADE
+BACHELOR109 = """\
+ADM Arbeitskreis Deutscher Markt ; und Sozialforschungsinstitute e.V.
+Alby T.
+Altaner F.
+Arbeitsgemeinschaft Social Media e. V.
+Back A. ; Heidecke F.
+Bundesamt  für  Statistik.
+Batinic B. ; Bosnjak M.
+Becker M.
+Becker M.
+Belliger A. ; Krieger D.
+Berekoven L. ; Eckert W. ; Ellenrieder P.
+Berlecon Research GmbH.
+BITKOM. (Hrsg.).
+BITKOM. (Hrsg.).
+Brahm T.
+Bremer C.
+Buchem I. ; Appelt R. ; Kaiser S. ; Schön S. ; Ebner M.
+Buck C.
+Buhse W.
+Bundesverband  Digitale  Wirtschaft  (BVDW)  e.  V.
+Crameri A.
+Crameri A.
+Deriu U.
+Deutsche Gesellschaft für Personalführung e. V. (Hrsg.).
+Disterer G.
+Döring N.
+Dzeyk W.
+Ebner M. ; Schiefner M.
+Ehle A. (2011). Twitter ; Facebook Co.
+E ; teaching.org.
+Hähnel M.
+Häntschel-Erhart I.
+Happel H.-J. ; Romberg T.
+Hawaiian Dictionaries.
+Hettler U.
+Hilzensauer W. ; Hornung-Prähauser V.
+Hippner H.
+Hisserich J. ; Primsch J.
+Hofer M. ; Negri C.
+Huang Y. ; Singh P.  V. ; Ghose A.
+Huber F. ; Matthes I. ; Stenneken N.
+Hug T. ; Poscheschnik G.
+ICR  Institute  for  Competitive  Recruiting.
+Jacobsmühlen T.  zur.
+Kaplan A.  M. ; Haenlein M.
+Kaplan A. M. ; Haenlein M.
+Kempski I. von.
+Kerres M.
+Kerres M. ; Preussler A.
+Kiefer B.-U.
+Klobas J.  E.
+Koch M. ; Richter A.
+Koch M. ; Richter A.
+Koch M. ; Richter A. ; Schlosser A.
+Komus A. ; Wauch F.
+Krämer M.
+Latham L. ; Lundy J.
+Lefrancois G.  R.
+Lehner F.
+Maier R. ; Schmidt A.
+Manz F.
+Mayer H.  O.
+McAfee A.  P.
+Mentzel W.
+Metz B. ; Pfeiffer J. ; Staiger M. ; Wichert A.
+Möller E.
+Manouchehri  Far S.
+Mudra P.
+Müller C. ; Gronau N.
+O'Reilly T.
+O'Reilly T.
+Pleil T.
+Probst G. ; Raub S. ; Romhardt K.
+Puhakainen P. ; Siponen M.
+Raabe A.
+Raab-Steiner E. ; Benesch M.
+Reinhardt W. ; Ebner M. ; Beham G. ; Costa C.
+Reinmann-Rothmeier G. ; Mandl H. ; Erlach C. ; Neubauer A.
+Reips U.  D.
+Rennstich J. K.
+Richardson W.
+Richter A.
+Richter A. ; Koch M.
+Robes J.
+Röll M.
+Sauer M.
+Sauerer A. ; Müller C. M.
+Sauter A.  M. ; Sauter W.
+Simon N. ; Bernhardt N.
+Spath D. (Hrsg.) ; Günther J.
+Thielsch M.  T.
+Thoeny P.
+Tosh D. ; Werdmuller B.
+Trost A.
+Trost A. ; Jenewein T.
+Uhss B.
+Universität Zürich.
+Wicht G.
+""".strip()
+
+
+def bachelor109(flat):
+    raw = authors_raw(flat)
+    utila.log(raw)
+    assert raw == BACHELOR109
+
+
 BACHELOR111 = """\
 Bhebhe Leo
 Dahlman Erik ; Parkvall Stefan ; Sköld Johan ; Beming Per
@@ -199,6 +308,7 @@ def authors_raw(flat) -> str:
     pytest.param(power.BACHELOR056_PDF, '49:53', 32, None, id='bachelor56', marks=pytest.mark.xfail(reason='improve parser')),
     pytest.param(power.BACHELOR063_PDF, '59', 12, bachelor63, id='bachelor63', marks=pytest.mark.xfail(reason='improve name detector')),
     pytest.param(power.BACHELOR090_PDF, '84:89', 52, bachelor90, id='bachelor90'),
+    pytest.param(power.BACHELOR109_PDF, '72:79', 98, bachelor109, id='bachelor109'),
     pytest.param(power.BACHELOR111_PDF, '85:87', 18, bachelor111, id='bachelor111'), # VALIDATED BY HAND
     pytest.param(power.BACHELOR128_PDF, '96:103', None, bachelor128, id='bachelor128'),
     pytest.param(power.MASTER075_PDF, '70', 18, master75, id='master75'), # VALIDATED BY HAND
