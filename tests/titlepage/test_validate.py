@@ -87,6 +87,11 @@ def master91a(titlepage: iamraw.TitlePage):
     assert len(titlepage.examiner) == 2
 
 
+def bachelor109(titlepage: iamraw.TitlePage):
+    assert titlepage
+    assert titlepage.examiner
+
+
 @pytest.mark.parametrize('source, check', [
     pytest.param(
         power.HOME050_PDF,
@@ -97,6 +102,7 @@ def master91a(titlepage: iamraw.TitlePage):
     pytest.param(power.BACHELOR037_PDF, bachelor37, id='bachelor37'),
     pytest.param(power.BACHELOR051_PDF, bachelor51, id='bachelo51'),
     pytest.param(power.BACHELOR076_PDF, bachelor76, id='bachelor76'),
+    pytest.param(power.BACHELOR109_PDF, bachelor109, id='bachelor109'),
     pytest.param(
         power.BACHELOR241_PDF,
         bachelor241,

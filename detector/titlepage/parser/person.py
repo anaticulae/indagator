@@ -73,7 +73,7 @@ def parse_person_after(raw: str) -> iamraw.Person:
     <AcademicTitle.MASTER: 8>
     """
     raw = utila.normalize_whitespaces(raw)  # TODO: REMOVE LATER?
-    parsed = re.search(PATTERN_PERSON_AFTER, raw, re.X)
+    parsed = re.search(PATTERN_PERSON_AFTER, raw, re.VERBOSE | re.IGNORECASE)
     if not parsed:
         return None
     title = extract_title(parsed)
@@ -174,7 +174,8 @@ def create_with_title_pattern():
         r'vorgelegt von',
         r'angefertigt von',
         r'by',
-        r'Name, Vorname'
+        r'Name, Vorname',
+        r'Referent(in)?',
         # r'von', # TODO: exclude von in `title`
     ]
     preamble = [fr'(?P<t{index}>{item})' for index, item in enumerate(preamble)]
@@ -211,6 +212,7 @@ EXAMINER = '|'.join([
     r'(\w+\s?){1,4}?[\s|:]',
     r'Primary Supervisor',
     r'Secondary Supervisor',
+    r'Referent(in)?',
     r'^',
 ])
 PERSON_TITLE = create_person_title_pattern()
@@ -282,6 +284,7 @@ EXAMINER_INTRO = utila.splitlines("""
 betreuer
 gutachter
 prüfer
+referent
 supervisor
 """)
 
