@@ -57,6 +57,10 @@ More nice.
 
 Lorenz, Sascha (2001:) Text Mining – Methoden und Techniken.
 Diplomarbeit an der Technischen Universität Dresden.
+
+Hug, T. & Poscheschnik, G. (2010). Empirisch Forschen. Die Planung und \
+Umsetzung von Projekten im Studium (Studieren, aber richtig. UTB 3357: \
+Schl\xFCsselkompetenzen). Konstanz: UVK.
 """.split('\n\n')
 
 
@@ -155,6 +159,15 @@ Diplomarbeit an der Technischen Universität Dresden.
         2001,
         None,
         id='typo',
+    ),
+    pytest.param(
+        LONGTEXT[11],
+        None,
+        [['Hug', 'T.'], ['Poscheschnik', 'G.']],
+        None,
+        2010,
+        None,
+        id='hug',
     ),
 ])
 def test_parse_freeand_long(text, title, authors, pages, year, publisher):  # pylint:disable=W0613
