@@ -88,10 +88,15 @@ def master91a(titlepage: iamraw.TitlePage):
 
 
 @pytest.mark.parametrize('source, check', [
+    pytest.param(
+        power.HOME050_PDF,
+        homework50,
+        id='homework50',
+        marks=pytest.mark.xfail(reason='improve headline parser'),
+    ),
     pytest.param(power.BACHELOR037_PDF, bachelor37, id='bachelor37'),
-    pytest.param(power.BACHELOR076_PDF, bachelor76, id='bachelor76'),
-    pytest.param(power.MASTER098_PDF, master98, id='master98'),
     pytest.param(power.BACHELOR051_PDF, bachelor51, id='bachelo51'),
+    pytest.param(power.BACHELOR076_PDF, bachelor76, id='bachelor76'),
     pytest.param(
         power.BACHELOR241_PDF,
         bachelor241,
@@ -104,14 +109,9 @@ def master91a(titlepage: iamraw.TitlePage):
         id='master78',
         marks=pytest.mark.xfail(reason='improve headline parser'),
     ),
-    pytest.param(
-        power.HOME050_PDF,
-        homework50,
-        id='homework50',
-        marks=pytest.mark.xfail(reason='improve headline parser'),
-    ),
-    pytest.param(power.DISS170_PDF, diss170, id='diss170'),
     pytest.param(power.MASTER091A_PDF, master91a, id='master91a'),
+    pytest.param(power.MASTER098_PDF, master98, id='master98'),
+    pytest.param(power.DISS170_PDF, diss170, id='diss170'),
 ])
 @utilatest.skip_longrun
 def test_validate_titlepage_extractor(source, check, testdir, monkeypatch):
