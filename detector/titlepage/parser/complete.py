@@ -9,6 +9,7 @@
 
 import re
 
+import elements
 import iamraw
 import texmex
 import utila
@@ -98,6 +99,7 @@ def valid_titlepage(titlepage: iamraw.TitlePage) -> bool:
         return False
     assert titlepage.title is None or titlepage.title.strip(
     ) == titlepage.title, f'invalid parsing result "{titlepage.title}"'
-    if titlepage.title in ('Inhaltsverzeichnis', 'Inhalt', 'Content'):
+
+    if elements.istoc(titlepage.title):
         return False
     return True
