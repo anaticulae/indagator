@@ -61,6 +61,9 @@ Diplomarbeit an der Technischen Universität Dresden.
 Hug, T. & Poscheschnik, G. (2010). Empirisch Forschen. Die Planung und \
 Umsetzung von Projekten im Studium (Studieren, aber richtig. UTB 3357: \
 Schl\xFCsselkompetenzen). Konstanz: UVK.
+
+Hawaiian Dictionaries. (2012). Wiki [On-line]. Available: \
+wehewehe.org/gsdl2.5/cgi-bin/hdict?d=D21021
 """.split('\n\n')
 
 LONGTEXT_EXPECTED = [
@@ -139,6 +142,12 @@ LONGTEXT_EXPECTED = [
         [['Hug', 'T.'], ['Poscheschnik', 'G.']],
         None,
         2010,
+        None,
+    ), (
+        None,
+        [['Hawaiian', 'Dictionaries.']],
+        None,
+        2012,
         None,
     )
 ]

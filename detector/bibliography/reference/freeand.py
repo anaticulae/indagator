@@ -213,7 +213,7 @@ def invalid_title(title: str, title_min_length: int = TITLE_MIN_LENGTH) -> bool:
     if len(title) < title_min_length:
         return True
     rate = char_rate(title)
-    if rate < 0.8:
+    if rate < 0.7:
         return True
     return False
 
