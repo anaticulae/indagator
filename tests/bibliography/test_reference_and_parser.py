@@ -64,6 +64,9 @@ Schl\xFCsselkompetenzen). Konstanz: UVK.
 
 Hawaiian Dictionaries. (2012). Wiki [On-line]. Available: \
 wehewehe.org/gsdl2.5/cgi-bin/hdict?d=D21021
+
+Rapoport, A., Chammah, M: (1965): Prisoner’s Dilemma – A Study in \
+Conflict and Cooperation. Ann Arbor: . University of Michigan Press.
 """.split('\n\n')
 
 LONGTEXT_EXPECTED = [
@@ -148,6 +151,12 @@ LONGTEXT_EXPECTED = [
         [['Hawaiian', 'Dictionaries.']],
         None,
         2012,
+        None,
+    ), (
+        None,
+        [['Rapoport', 'A.'], ['Chammah', 'M.']],
+        None,
+        1965,
         None,
     )
 ]

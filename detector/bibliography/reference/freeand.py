@@ -91,7 +91,7 @@ MONTH = r"""
 # TODO: REMOVE 4,5 HACK: WHEN SUPPORTING HIGHNOTE
 AND = r"""
     (?P<authors>
-        [A-Z,;\(\)\.\-\&ÖÄÜß\d\' ]{5,}?
+        [A-Z,;:\(\)\.\-\&ÖÄÜß\d\' ]{5,}?
         [^\(\)\[\]]                           # author does not ends with bracket
     )
     (
@@ -204,7 +204,10 @@ def select_year(matched):
 
 
 def select_authors(matched):
-    authors = german.authors(matched['authors'])
+    authors: str = matched['authors']
+    # backup strategy for solving typos
+    authors = authors.replace(':', '.')
+    authors = german.authors(authors)
     # decide non person authors
     authors = german.authors_decide(authors)
     return authors
