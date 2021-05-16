@@ -51,23 +51,12 @@ def parse_longtext(  # pylint:disable=R1260,R0912
     if not matched:
         return None
     authors = german.authors(matched['authors'])
-    # disable non person authors
+    # decide non person authors
     authors = german.authors_decide(authors)
-    if matched['year']:
-        year = int(matched['year'])
-    elif matched['simpleyear']:
-        year = int(matched['simpleyear'])
-    else:
-        # without year
-        year = 'no year'
+    year, yearend = select_year(matched)
     number = matched['number'] if matched['number'] else None
 
-    hyperlinks = german.hyperlink(content)
-    if hyperlinks:
-        for hyperlink in hyperlinks:
-            content = content.replace(hyperlink, '')
-    if len(hyperlinks) > 1:
-        utila.debug(f'more than one link parsed: {raw}')
+    hyperlinks, content = parse_hyperlinks(content)
 
     accessed = german.accessed(content)
     if accessed:
@@ -89,12 +78,12 @@ def parse_longtext(  # pylint:disable=R1260,R0912
         number=number,
         title=title,
         year=year,
+        yearend=yearend,
         raw=raw,
     )
     result.hyperlink = hyperlinks[0] if hyperlinks else None
     result.accessed = accessed[1] if accessed else None
 
-    # TODO: ADD YEAREND after upgrading
     if page:
         result.page = page[1][0]
         if len(page[1]) == 2:
@@ -181,6 +170,32 @@ def parse_title(content: str) -> tuple:
         if invalid_title(title) is False:  # None means no title given
             return title, rest
     return None
+
+
+def parse_hyperlinks(content):
+    hyperlinks = german.hyperlink(content)
+    if hyperlinks:
+        for hyperlink in hyperlinks:
+            content = content.replace(hyperlink, '')
+    if len(hyperlinks) > 1:
+        utila.debug(f'more than one link parsed: {content}')
+    return hyperlinks, content
+
+
+def select_year(matched):
+    if matched['year'] and matched['yearend']:
+        year = int(matched['year'])
+        yearend = int(matched['yearend'])
+        return year, yearend
+    if matched['year']:
+        year = int(matched['year'])
+        return year, None
+    if matched['simpleyear']:
+        year = int(matched['simpleyear'])
+        return year, None
+    # without year
+    year: str = 'no year'
+    return year, None
 
 
 def parse_longtext_less_strict(content: str) -> iamraw.BibliographyReference:
