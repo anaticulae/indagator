@@ -55,7 +55,7 @@ MONTH = r"""
 # TODO: REMOVE 4,5 HACK: WHEN SUPPORTING HIGHNOTE
 AND = r"""
     (?P<authors>
-        [A-Z,;\(\)\.\-\&ÖÄÜ\d\' ]{5,}?
+        [A-Z,;\(\)\.\-\&ÖÄÜß\d\' ]{5,}?
         [^\(\)\[\]]                           # author does not ends with bracket
     )
     (
