@@ -104,7 +104,7 @@ def diss272(flat):
 def bachelor128(flat):
     assert flat
     # 51: Validated by hand
-    assert len(flat) == 58
+    assert len(flat) == 47
 
 
 def master91b(flat):

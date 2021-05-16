@@ -10,7 +10,9 @@
 import geostrat
 import iamraw
 import texmex
+import utila
 
+import detector.bibliography.layout.utils
 import detector.bibliography.layout.vspace
 import detector.bibliography.reference.tech
 
@@ -21,6 +23,8 @@ def extracts(navigators: texmex.PageTextNavigators):
         for navigator in navigators:
             extracted = strategy(navigator)
             if not extracted:
+                continue
+            if detector.bibliography.layout.utils.invalid_title(extracted):
                 continue
             # update pdf page number
             for item in extracted:
@@ -63,8 +67,8 @@ def double_column(content: texmex.PageTextNavigator) -> iamraw.BibliographyRefer
     for column in parsed:
         navigator = texmex.PageTextNavigator()
         navigator.data = column
-        parsed = detector.bibliography.layout.vspace.extract_optimize(navigator)
-        result.extend(parsed)
+        parsed = detector.bibliography.layout.vspace.extracts([navigator])
+        result.extend(utila.flatten(parsed))
     return result
 
 

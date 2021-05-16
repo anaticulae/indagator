@@ -27,6 +27,7 @@ import utila
 
 import detector.bibliography.judge
 import detector.bibliography.layout.alternate
+import detector.bibliography.layout.utils
 
 
 def extracts(navigators: texmex.PageTextContentNavigator
@@ -100,7 +101,8 @@ MAXDISTANCE_FACTOR = configo.HolyList([
 def select_best(items: list, selector=len) -> typing.Any:
     # count valid items only
     items = [
-        item for item in items if detector.bibliography.judge.judge([item])
+        item for item in items if detector.bibliography.judge.judge([item]) and
+        not detector.bibliography.layout.utils.invalid_title(item)
     ]
     # TODO: REPLACE WITH UTILA CODE
     if not items:
