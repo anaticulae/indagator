@@ -302,7 +302,7 @@ Disterer G.
 Döring N.
 Dzeyk W.
 Ebner M. ; Schiefner M.
-Ehle A. (2011). Twitter ; Facebook Co.
+Ehle A.
 E ; teaching.org.
 Hähnel M.
 Häntschel-Erhart I.

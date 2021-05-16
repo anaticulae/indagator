@@ -134,7 +134,8 @@ def parse_title(content: str) -> tuple:
     # 1b. Try splitting till link starts
     # 2.  Extend number of valid dots
     try:
-        title, rest = content.split('. ', maxsplit=1)
+        title, rest = re.split(r'[\.\?\!][ ]', content, maxsplit=1)
+        # TODO: INCLUDE SENTENCE SIGN
         if invalid_title(title) is False:  # None means no title given
             return title, rest
     except ValueError:

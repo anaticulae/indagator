@@ -76,6 +76,11 @@ def extract(content) -> iamraw.BibliographyReferences:
 
 
 def split_bibliography(raw: str) -> iamraw.BibliographyReference:  # pylint:disable=R0911
+    """\
+    >>> split_bibliography('Vogel-Sprott,  M. (1997). Is behavioral  tolerance  '
+    ... 'learned?  Alcohol Health & Research World, 21, 161-168.')
+    BibliographyReference(...)
+    """
     raw = raw.strip()
     raw = utila.simplify_chars(raw)
     matched = detector.bibliography.reference.number.parse(raw)
