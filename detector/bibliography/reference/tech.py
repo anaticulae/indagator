@@ -43,7 +43,7 @@ def parse_single_row(content: str) -> iamraw.BibliographyReference:
 
 
 def parse_longtext(content: str) -> iamraw.BibliographyReference:
-    content = content.replace('\n', ' ')
+    content = utila.normalize_text(content)
     raw = content
     try:
         authors, rest = content.split(':', maxsplit=1)
