@@ -36,9 +36,6 @@ def extracts(navigators: texmex.PageTextContentNavigator
         extracted = extract_optimize(navigator)
         if not extracted:
             continue
-        # update pdf page number
-        for item in extracted:
-            item.raw_pdfpage = navigator.page
         result.append(extracted)
     return result
 
@@ -56,6 +53,9 @@ def extract(
     grouped = [[navigator[item] for item in group] for group in grouped]
     result = detector.bibliography.layout.alternate.extract(grouped)
     result = utila.not_none(result)
+    # update pdf page number
+    for item in result:
+        item.raw_pdfpage = navigator.page
     return result
 
 
