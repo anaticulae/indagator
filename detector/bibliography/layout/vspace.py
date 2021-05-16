@@ -6,6 +6,17 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+"""VSPACE
+======
+
+Global vs Local Optimization
+----------------------------
+
+1. Run equal text line distance optimization
+2. TODO: Merge to a single navigator and run optimization
+3. Run seperate optimization for every single page
+
+"""
 
 import typing
 
