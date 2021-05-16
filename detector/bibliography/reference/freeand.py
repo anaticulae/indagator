@@ -67,11 +67,7 @@ def parse_longtext(  # pylint:disable=R1260,R0912
         return None
     title, rest = parsed_title
 
-    page = german.pages(rest)
-    if not page:
-        page = german.pages_complex(rest)
-    if page:
-        rest = rest.replace(page[0], '')
+    page, pageend, rest = parse_pages(rest)
 
     result = iamraw.BibliographyReference(
         authors=authors,
@@ -79,15 +75,12 @@ def parse_longtext(  # pylint:disable=R1260,R0912
         title=title,
         year=year,
         yearend=yearend,
+        page=page,
+        pageend=pageend,
+        hyperlink=hyperlinks[0] if hyperlinks else None,
+        accessed=accessed[1] if accessed else None,
         raw=raw,
     )
-    result.hyperlink = hyperlinks[0] if hyperlinks else None
-    result.accessed = accessed[1] if accessed else None
-
-    if page:
-        result.page = page[1][0]
-        if len(page[1]) == 2:
-            result.pageend = page[1][1]
     return result
 
 
@@ -180,6 +173,20 @@ def parse_hyperlinks(content):
     if len(hyperlinks) > 1:
         utila.debug(f'more than one link parsed: {content}')
     return hyperlinks, content
+
+
+def parse_pages(content):
+    parsed = german.pages(content)
+    if not parsed:
+        parsed = german.pages_complex(content)
+    if parsed:
+        content = content.replace(parsed[0], '')
+    page, pageend = None, None
+    if parsed:
+        page = parsed[1][0]
+        if len(parsed[1]) == 2:
+            pageend = parsed[1][1]
+    return page, pageend, content
 
 
 def select_year(matched):
