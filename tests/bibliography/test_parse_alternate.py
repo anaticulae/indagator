@@ -22,7 +22,7 @@ import detector.bibliography.layout.alternate
     (99, 15),
     (100, 3),
 ])
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_parse_bibliography_master116_page_x(pages, expected):
     navigators = serializeraw.create_pagetextnavigators_frompath(
         power.link(power.MASTER116_PDF),

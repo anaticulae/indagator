@@ -30,7 +30,7 @@ def test_detector_misc(cmd, monkeypatch, capsys):
     pytest.param(power.DOCU09_PDF, id='pyporting'),
     pytest.param(power.DOCU27_PDF, id='restructured'),
 ])
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_detector_run_work(example, testdir, monkeypatch, capsys):
     example = power.link(example)
     cmd = f'-i {example} -o {testdir.tmpdir}'

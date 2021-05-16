@@ -23,7 +23,7 @@ import detector.titlepage.parser.person
 import detector.titlepage.strategy
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_titlepage_parser():
     extracted = detector.feature.titlepage.work(
         iamraw.path.text(
@@ -112,7 +112,7 @@ def check_bachelor90(titlepage: iamraw.TitlePage):
         id='bachelor90',
         marks=pytest.mark.xfail(reason='improve title page parser')),
 ])
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_detector_feature_titlepage_complete(
         source,
         checker,
@@ -146,14 +146,14 @@ def parse_titlepages(path: str, pages: tuple = None):
     return parsed
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_detector_feature_titlepage_select_best():
     parsed = parse_titlepages(power.link(power.MASTER072_PDF), pages=None)
     best = detector.titlepage.strategy.select_best(parsed)
     assert best == parsed[0], str(best)
 
 
-# @utilatest.skip_longrun
+# @utilatest.longrun
 # @pytest.mark.parametrize('source', [
 #     pytest.param(item, id=os.path.split(item)[1])
 #     for item in tr.NO_TITLE_GENERATED
@@ -175,7 +175,7 @@ def test_detector_feature_titlepage_select_best():
 #     range(40, 45),
 #     range(45, 50),
 # ])
-# @utilatest.skip_longrun
+# @utilatest.longrun
 # def test_detector_feature_titlepage_parse_titlepage_negative(pages):
 #     """Split pages to increase mutli-process-testing."""
 #     pages = tuple(pages)

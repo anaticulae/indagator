@@ -31,7 +31,7 @@ import tests.resources
 #     tests.words_.run_words_success('--all', monkeypatch=monkeypatch)
 
 
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_regression_detector(testdir, monkeypatch):
     """Start with whitepage that leads to some trouble with empty
     navigators and problems to detect title page"""

@@ -435,7 +435,7 @@ def authors_raw(flat) -> str:
     pytest.param(power.DISS272_PDF, '259:271', None, diss272, id='diss272'),
 ])
 # yapf:enable
-@utilatest.skip_longrun
+@utilatest.longrun
 def test_detector_bibliography_run(
         source,
         pages,
