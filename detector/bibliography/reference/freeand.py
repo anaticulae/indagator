@@ -92,16 +92,16 @@ MONTH = r"""
 AND = r"""
     (?P<authors>
         [A-Z,;:\(\)\.\-\&ÖÄÜß\d\' ]{5,}?
-        [^\(\)\[\]]                           # author does not ends with bracket
+        [^\(\)\[\]]               # author does not ends with bracket
     )
     (
         \(?(?P<oj>o\.j\.)\)?
         |
-        %s # brackets open
-        %s # optional month
+        %s                        # brackets open
+        %s                        # optional month
         ((?P<year>\d{4,5})([ ]{0,3}\-(?P<yearend>\d{4})[ ]{0,3}){0,1})
         (?P<number>a|b|c|d){0,1}  # optional char
-        %s # brackets close
+        %s                        # brackets close
         |
         \({0,1}
         (?P<simpleyear>\d{4})[ ]{0,2}[a-z]{0,1}[ ]{0,2}:    # see wessels 2007, TODO: DIRTY
