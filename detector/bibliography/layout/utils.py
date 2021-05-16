@@ -8,11 +8,27 @@
 # =============================================================================
 
 
-def invalid_title(result) -> True:
+def invalid_extraction(result) -> bool:
+    if invalid_title(result):
+        return True
+    if invalid_year(result):
+        return True
+    return False
+
+
+def invalid_title(result) -> bool:
     if not result:
         return False
     notitle = len([item for item in result if not item.title])
     rate = notitle / len(result)
+    if rate > 0.1:
+        return True
+    return False
+
+
+def invalid_year(result) -> bool:
+    noyear = len([item for item in result if not item.year])
+    rate = noyear / len(result)
     if rate > 0.1:
         return True
     return False

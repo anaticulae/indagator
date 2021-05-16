@@ -102,7 +102,7 @@ def select_best(items: list, selector=len) -> typing.Any:
     # count valid items only
     items = [
         item for item in items if detector.bibliography.judge.judge([item]) and
-        not detector.bibliography.layout.utils.invalid_title(item)
+        not detector.bibliography.layout.utils.invalid_extraction(item)
     ]
     # TODO: REPLACE WITH UTILA CODE
     if not items:
