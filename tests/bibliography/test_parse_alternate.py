@@ -55,18 +55,17 @@ def simple(item):
 
 
 ALTERNATE = """\
-Adloff, Frank: Zivilgesellschaft – Theorie und politische Praxis.
+Adloff, Frank: Zivilgesellschaft – Theorie und politische Praxis. \
 Frankfurt/Main: Campus Verlag, 2005.
 
-Aktion Demenz e.V.: Eine Kommune auf dem Weg: Arnsberg.
+Aktion Demenz e.V.: Eine Kommune auf dem Weg: Arnsberg. \
 (unveröffentlichtes Material)
-
 """.split('\n\n')
 
 
 @pytest.mark.parametrize(
     'raw',
-    [pytest.param(item, id=simple(item)) for item in ALTERNATE if item],
+    [pytest.param(item, id=simple(item)) for item in ALTERNATE],
 )
 def test_parse_alternate_single(raw):
     parsed = detector.bibliography.layout.alternate.split_bibliography(raw)
