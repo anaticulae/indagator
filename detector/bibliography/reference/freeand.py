@@ -39,58 +39,13 @@ import german
 import iamraw
 import utila
 
-MONTH = r"""
-    (
-        [ ]{0,3}
-        (%s)
-        [ ]{0,3}
-        \d{0,2}
-        [ ]{0,3}
-        \,{0,1}
-        [ ]{0,3}
-    ){0,1}
-""" % german.MONTH_REGEX
-
-# TODO: ADD OPTIONAL BRACKETS TO REMOVE DIRTY SIMPLE YEAR HACK
-# TODO: REMOVE 4,5 HACK: WHEN SUPPORTING HIGHNOTE
-AND = r"""
-    (?P<authors>
-        [A-Z,;\(\)\.\-\&ÖÄÜß\d\' ]{5,}?
-        [^\(\)\[\]]                           # author does not ends with bracket
-    )
-    (
-        \(?(?P<oj>o\.j\.)\)?
-        |
-        %s # brackets open
-        %s # optional month
-        ((?P<year>\d{4,5})([ ]{0,3}\-(?P<yearend>\d{4})[ ]{0,3}){0,1})
-        (?P<number>a|b|c|d){0,1}  # optional char
-        %s # brackets close
-        |
-        \({0,1}
-        (?P<simpleyear>\d{4})[ ]{0,2}[a-z]{0,1}[ ]{0,2}:    # see wessels 2007, TODO: DIRTY
-        \){0,1}
-    )
-    [ ]{0,5}                      # remove trailing whitespaces
-    [:\.]{0,1}                    # remove dot or colon
-    [ ]{0,5}                      # remove trailing whitespaces
-    (?P<content>.+)
-"""
-
-NORMAL = AND % (r'\(', MONTH, r'\)')
-
-BROKEN_BRACKETS = AND % (r'[\(\[]', MONTH, r'[\]\)]')
-"""\
->>> parse_longtext('Deutsche Norm DIN 1421 (1983]: Abschnitte. Berlin: Beuth', pattern=BROKEN_BRACKETS).authors
-[NoPerson(confidence=None, raw='Deutsche Norm DIN 1421')]
-"""
-
 
 def parse_longtext(  # pylint:disable=R1260,R0912
         content: str,
-        pattern=NORMAL,
+        pattern=None,
 ) -> iamraw.BibliographyReference:
     content = utila.normalize_text(content)
+    pattern = NORMAL if pattern is None else pattern
     raw = content
     matched = re.search(pattern, content, re.VERBOSE | re.IGNORECASE)
     if not matched:
@@ -145,6 +100,53 @@ def parse_longtext(  # pylint:disable=R1260,R0912
         if len(page[1]) == 2:
             result.pageend = page[1][1]
     return result
+
+
+MONTH = r"""
+    (
+        [ ]{0,3}
+        (%s)
+        [ ]{0,3}
+        \d{0,2}
+        [ ]{0,3}
+        \,{0,1}
+        [ ]{0,3}
+    ){0,1}
+""" % german.MONTH_REGEX
+
+# TODO: ADD OPTIONAL BRACKETS TO REMOVE DIRTY SIMPLE YEAR HACK
+# TODO: REMOVE 4,5 HACK: WHEN SUPPORTING HIGHNOTE
+AND = r"""
+    (?P<authors>
+        [A-Z,;\(\)\.\-\&ÖÄÜß\d\' ]{5,}?
+        [^\(\)\[\]]                           # author does not ends with bracket
+    )
+    (
+        \(?(?P<oj>o\.j\.)\)?
+        |
+        %s # brackets open
+        %s # optional month
+        ((?P<year>\d{4,5})([ ]{0,3}\-(?P<yearend>\d{4})[ ]{0,3}){0,1})
+        (?P<number>a|b|c|d){0,1}  # optional char
+        %s # brackets close
+        |
+        \({0,1}
+        (?P<simpleyear>\d{4})[ ]{0,2}[a-z]{0,1}[ ]{0,2}:    # see wessels 2007, TODO: DIRTY
+        \){0,1}
+    )
+    [ ]{0,5}                      # remove trailing whitespaces
+    [:\.]{0,1}                    # remove dot or colon
+    [ ]{0,5}                      # remove trailing whitespaces
+    (?P<content>.+)
+"""
+
+NORMAL = AND % (r'\(', MONTH, r'\)')
+
+BROKEN_BRACKETS = AND % (r'[\(\[]', MONTH, r'[\]\)]')
+"""\
+>>> parse_longtext('Deutsche Norm DIN 1421 (1983]: Abschnitte. Berlin: Beuth', pattern=BROKEN_BRACKETS).authors
+[NoPerson(confidence=None, raw='Deutsche Norm DIN 1421')]
+"""
 
 
 def parse_title(content: str) -> tuple:
