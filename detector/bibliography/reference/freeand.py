@@ -40,7 +40,7 @@ import iamraw
 import utila
 
 
-def parse_longtext(  # pylint:disable=R1260,R0912
+def parse_longtext(
         content: str,
         pattern=None,
 ) -> iamraw.BibliographyReference:
@@ -50,31 +50,22 @@ def parse_longtext(  # pylint:disable=R1260,R0912
     matched = re.search(pattern, content, re.VERBOSE | re.IGNORECASE)
     if not matched:
         return None
-    authors = german.authors(matched['authors'])
-    # decide non person authors
-    authors = german.authors_decide(authors)
-    year, yearend = select_year(matched)
+    authors = select_authors(matched)
+    years = select_year(matched)
     number = matched['number'] if matched['number'] else None
-
     hyperlinks, content = parse_hyperlinks(content)
-
-    accessed = german.accessed(content)
-    if accessed:
-        content = content.replace(accessed[0], '')
-
+    accessed, content = parse_accessed(content)
     parsed_title = parse_title(content=matched['content'])
     if not parsed_title:
         return None
     title, rest = parsed_title
-
     page, pageend, rest = parse_pages(rest)
-
     result = iamraw.BibliographyReference(
         authors=authors,
         number=number,
         title=title,
-        year=year,
-        yearend=yearend,
+        year=years[0],
+        yearend=years[1],
         page=page,
         pageend=pageend,
         hyperlink=hyperlinks[0] if hyperlinks else None,
@@ -189,6 +180,13 @@ def parse_pages(content):
     return page, pageend, content
 
 
+def parse_accessed(content):
+    accessed = german.accessed(content)
+    if accessed:
+        content = content.replace(accessed[0], '')
+    return accessed, content
+
+
 def select_year(matched):
     if matched['year'] and matched['yearend']:
         year = int(matched['year'])
@@ -203,6 +201,13 @@ def select_year(matched):
     # without year
     year: str = 'no year'
     return year, None
+
+
+def select_authors(matched):
+    authors = german.authors(matched['authors'])
+    # decide non person authors
+    authors = german.authors_decide(authors)
+    return authors
 
 
 def parse_longtext_less_strict(content: str) -> iamraw.BibliographyReference:
