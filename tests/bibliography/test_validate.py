@@ -22,6 +22,47 @@ def bachelor51(flat):
     assert len(flat) == 37  # VALIDATED
 
 
+BACHELOR56 = """\
+Breitmeier D. ; Seeland-Schulze I. ; Hecker H. ; Schneider U.
+Beirness D. ; Vogel-Sprott M.
+Borkenstein R. F. ; Crowther R. F. ; Shumate R. P. ; Ziel W. B. ; Zylman R.
+Bundesministerium  der Justiz  und  für  Verbraucherschutz
+Burian S.  E. ; Hensberry R. ; Liguori A.
+Fillmore M.  T. ; Carscadden J.  L. ; Vogel-Sprott M.
+Hansen M. A.
+Harrison E. L. R. ; Fillmore M. T.
+Heuer K.
+Kazenwadel J. ; Vollrath M.
+Kolasinski E. M.
+Krampe A.
+Krüger H.-P. ; Kazenwadel J. ; Vollrath M.
+Kuratorium  für Verkehrssicherheit
+Marczinski C. A. ; Fillmore M. T.
+Martin T. L ; Solbeck P. A. M. ; Mayers D. J. ; Langille R. M. ; Buczek Y. ; Pelletier M. R.
+Moskowitz H. ; Fiorentino D.
+Moskowitz H. ; Fiorentino D.
+Moskowitz H. ; Robinson C. D.
+Rumph H.-J. ; Hapke U. ; John U.
+Schmidt R. ; Dettmeyer R. ; Padosch S. ; Madea B.
+Schnabel Eva
+Sdao-Jarvie K. ; Vogel-Sprott M.
+Statistisches Bundesamt
+Statistisches Bundesamt
+Strafgesetzbuch
+Verkehrsunfallstatistik Braunschweig
+Vogel-Sprott M.
+Vogel-Sprott M. ; Sdao-Jarvie K.
+Vollrath M.
+Vollrath M. ; Krems J.
+Würzburger  Institut  für Verkehrswissenschaften  GmbH
+"""
+
+
+def bachelor56(flat):
+    raw = authors_raw(flat)
+    assert raw == BACHELOR56.strip()
+
+
 def bachelor63(flat):
     # zero is iamraw.NoPerson
     # numbers iamraw.Person
@@ -418,7 +459,7 @@ def authors_raw(flat) -> str:
 @pytest.mark.parametrize('source, pages, expected, validate', [
     pytest.param(power.ORDER107_PDF, '104:108', 31, order107, id='order107'), # VALIDATED BY HAND
     pytest.param(power.BACHELOR051_PDF, '42:46', 37, bachelor51, id='bachelor51'),
-    pytest.param(power.BACHELOR056_PDF, '49:53', 32, None, id='bachelor56', marks=pytest.mark.xfail(reason='improve parser')),
+    pytest.param(power.BACHELOR056_PDF, '49:53', 32, bachelor56, id='bachelor56'), # VALIDATED BY HAND
     pytest.param(power.BACHELOR063_PDF, '59', 12, bachelor63, id='bachelor63', marks=pytest.mark.xfail(reason='improve name detector')),
     pytest.param(power.BACHELOR090_PDF, '84:89', 52, bachelor90, id='bachelor90'),
     pytest.param(power.BACHELOR109_PDF, '72:79', 98, bachelor109, id='bachelor109'),
