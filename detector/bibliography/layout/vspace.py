@@ -31,12 +31,22 @@ import detector.bibliography.layout.alternate
 
 def extracts(navigators: texmex.PageTextContentNavigator
             ) -> iamraw.BibliographyReferences:
-    result = []
-    for navigator in navigators:
-        extracted = extract_optimize(navigator)
-        if not extracted:
-            continue
-        result.append(extracted)
+    glob = optimize_global(navigators)
+    return glob
+
+
+def optimize_global(navigators: texmex.PageTextContentNavigator
+                   ) -> iamraw.BibliographyReferences:
+    results = []
+    for factor in MAXDISTANCE_FACTOR:
+        adjusted = lambda x: factor * MAXDISTANCE(x)  # pylint:disable=cell-var-from-loop
+        current = []
+        for navigator in navigators:
+            extracted = extract(navigator, vspace_max=adjusted)
+            current.extend(extracted)
+        results.append(current)
+    best = select_best(results)
+    result = groupby_x(best, lambda x: x.raw_pdfpage)
     return result
 
 
@@ -87,17 +97,6 @@ MAXDISTANCE_FACTOR = configo.HolyList([
 ])
 
 
-def extract_optimize(navigator: texmex.NavigatorMixin) -> iamraw.BibliographyReferences: # yapf:disable
-    results = []
-    for factor in MAXDISTANCE_FACTOR:
-        adjusted = lambda x: factor * MAXDISTANCE(x)  # pylint:disable=cell-var-from-loop
-        extracted = extract(navigator, vspace_max=adjusted)
-        results.append(extracted)
-    # select best
-    best = select_best(results)
-    return best
-
-
 def select_best(items: list, selector=len) -> typing.Any:
     # count valid items only
     items = [
@@ -112,3 +111,16 @@ def select_best(items: list, selector=len) -> typing.Any:
             continue
         best = item
     return best
+
+
+def groupby_x(items, selector):
+    # TODO: MOVE TO UTILA
+    if not items:
+        return []
+    result = [[items[0]]]
+    for item in items[1:]:
+        if selector(result[-1][0]) == selector(item):
+            result[-1].append(item)
+        else:
+            result.append([item])
+    return result
