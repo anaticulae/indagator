@@ -153,8 +153,123 @@ def order107(flat):
     assert raw == ORDER107
 
 
-def master155(flat):  # pylint:disable=W0613
-    pass
+MASTER155 = """\
+Allen W.  D. ; Evans D.  A.
+Altmann S. ; Falk A. ; Marklein F.
+Anderson M.  J. ; Blue E.  R.
+Ang J.  S. ; Schwarz T.
+Arrow K.  J. ; Debreu G.
+Ball S. B. ; Bazerman M. H. Caroll ; J. S.
+Baye M. R. ; Morgan J. ; Scholten P.
+Bazerman M. H. ; Magliozzi T. ; Neale M.  A.
+Bester H.
+Blackburn J. M.
+Bohm P.
+Brandts J. ; Charness G.
+Brandts J. ; Gërxheim K. ; Schram, A. ; Ygosse-Battisti, J.
+Brehmer B.
+Bundesregierung  der  Bundesrepublik  Deutschland
+Burdett K. ; Judd K. L.
+Camerer C.  F. ; Hogarth R.  M.
+Chamberlin E. H.
+Charness G.
+Charness G.
+Chase W. G. ; Simon H. A.
+Chen S.-H. ; Hsieh Y.-L.
+Cheung S.  L. ; Palan S.
+Cooper D. ; Kagel J. ; Lo W. ; Gu Q.
+Davis D. ; Holt C.  A.
+Diamond P.  A.
+Diamond P. A. ; Maskin E.
+Dorsch F. ; Häcker H. ; Stapf K.  H.  (Hrsg.)
+Dürsch P. ; Oechssler J. ; Vadovic R.
+Eagly A.  H. ; Carli L.  L.
+Eckard E. W.
+Eisenführ F. ; Weber M.
+Erné M.
+Fehr E.  Kirchler ; E. Weichbold ; A. Gächter ; S.
+Fehr E. ; Gächter S. ; Kirchsteiger G.
+Fehr E. ; Kirchsteiger G. ; Riedl A.
+Fellner G. ; Maciejovsky B.
+Fiedler M.
+Fisher F. M.
+Friberg R. ; Ganslandt M. ; Sandström M.
+Gatti R. ; Kattuman P.
+Gneezy U. ; Kapteyn A. ; Potters J.
+Günther M ; Vossebein U. ; Wildner R.
+Hammann P. ; Erichson B.
+Hannan L. ; Kagel J. ; Moser D.
+Harrison G.  W. ; Johnson E. ; McInnes M.  M. ; Rutström E.  E.
+Holt C. A.
+Holt C. A. ; Laury S. K.
+Hong H. Shum ; M.
+Hudgens G. A. ; Fatkin L. T.
+Irlenbusch B. ; Sliwka D.
+Irlenbusch B. ; Sliwka D.
+Jehle G.  A. ; Reny P.  J.
+Kaase M.  (Hrsg.)
+Kachelmeier S. ; Limberg S. ; Schadewald M.
+Katzner D.  W.
+Kujal P. ; Smith V. L.
+Kuß A.
+Kußmaul A. ; Eisend M.
+Kußmaul H.
+Leibbrandt A.
+Leigh T.
+Leigh T.
+Levin I. P. ; Snyder M. A. ; Chapman D. P.
+Lingen T.  v.
+Major B. ; McFarlin D.  B. ; Gagnon D.
+Malhotra N. K. ; Birks D. F.
+Mankiw N.  G. ; Taylor M.  P.
+March J.  G.
+March J. G. ; Simon H. A.
+Marshall A.
+Matheson K.
+Mortensen D.  A.
+Neale M.  A. ; Huber V. ; Northcraft G.
+Neale M.  A. ; Northcraft G.
+Neu J. ; Graham J. L. ; Gilly M. C.
+Oberender P. ; Zerth J.
+Parson H.  M.
+Powell M. ; Ansic D.
+Pruitt D.  G.  Carnevale ; P.  J.  D. Forcey ; B. Van  Slyck ; M.  V.
+Rancer A. S. ; Baukus R. A.
+Rapoport A. ; Chammah M
+Riley W. B. ; Chow K. V.
+Rubin J.  Z. ; Brown B.  R.
+Rubinstein A.
+Rubinstein A. ; Wolinsky A.
+Savage L. J.
+Schöler K.
+Schubert R. ; Brown M. ; Gysler M. ; Brachinger H.  W.
+Selten R.
+Smith A.
+Smith V.  L.
+Smith V.  L.
+Smith V.  L.
+Sorensen A.
+Stahl D.  O.
+Stamato L.
+Stearns S.  C.
+Stigler G.  J.
+Stigler G.  J.
+Stiglitz J. E.
+Sudman S. ; Blair E.
+Teufel O.
+Urban D. ; Mayerl J.
+van  Baal S.
+von  Neumann J. ; Morgenstern O.
+Waldeck R.
+Walters A. E. ; Stuhlmacher A. F. ; Meyer L. L.
+Watson C.
+"""
+
+
+def master155(flat):
+    raw = authors_raw(flat)
+    utila.log(raw)
+    assert raw == MASTER155.strip()
 
 
 # TODO: UPDATE AFTER UPGRADE
