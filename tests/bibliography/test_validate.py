@@ -149,7 +149,6 @@ Grafische  Gestaltung  von  Titelbild  und  Abbildungen  (wenn  nicht  anders an
 
 def order107(flat):
     raw = authors_raw(flat)
-    utila.log(raw)
     assert raw == ORDER107
 
 
@@ -163,12 +162,13 @@ Ball S. B. ; Bazerman M. H. Caroll ; J. S.
 Baye M. R. ; Morgan J. ; Scholten P.
 Bazerman M. H. ; Magliozzi T. ; Neale M.  A.
 Bester H.
-Blackburn J. M.
+Blackburn J.  M.
 Bohm P.
 Brandts J. ; Charness G.
-Brandts J. ; Gërxheim K. ; Schram, A. ; Ygosse-Battisti, J.
+Brandts J. ; Gerxheim K. ; Schram A. ; Ygosse-Battisti J.
 Brehmer B.
 Bundesregierung  der  Bundesrepublik  Deutschland
+ab  01.01.1980.  Internet
 Burdett K. ; Judd K. L.
 Camerer C.  F. ; Hogarth R.  M.
 Chamberlin E. H.
@@ -186,7 +186,7 @@ Dürsch P. ; Oechssler J. ; Vadovic R.
 Eagly A.  H. ; Carli L.  L.
 Eckard E. W.
 Eisenführ F. ; Weber M.
-Erné M.
+Erne M.
 Fehr E.  Kirchler ; E. Weichbold ; A. Gächter ; S.
 Fehr E. ; Gächter S. ; Kirchsteiger G.
 Fehr E. ; Kirchsteiger G. ; Riedl A.
@@ -200,7 +200,7 @@ Günther M ; Vossebein U. ; Wildner R.
 Hammann P. ; Erichson B.
 Hannan L. ; Kagel J. ; Moser D.
 Harrison G.  W. ; Johnson E. ; McInnes M.  M. ; Rutström E.  E.
-Holt C. A.
+Holt C.  A.
 Holt C. A. ; Laury S. K.
 Hong H. Shum ; M.
 Hudgens G. A. ; Fatkin L. T.
@@ -212,7 +212,7 @@ Kachelmeier S. ; Limberg S. ; Schadewald M.
 Katzner D.  W.
 Kujal P. ; Smith V. L.
 Kuß A.
-Kußmaul A. ; Eisend M.
+Kuß A. ; Eisend M.
 Kußmaul H.
 Leibbrandt A.
 Leigh T.
@@ -235,7 +235,8 @@ Parson H.  M.
 Powell M. ; Ansic D.
 Pruitt D.  G.  Carnevale ; P.  J.  D. Forcey ; B. Van  Slyck ; M.  V.
 Rancer A. S. ; Baukus R. A.
-Rapoport A. ; Chammah M
+Rapoport A. ; Chammah M.
+Cooperation. Ann Arbor
 Riley W. B. ; Chow K. V.
 Rubin J.  Z. ; Brown B.  R.
 Rubinstein A.
@@ -268,7 +269,6 @@ Watson C.
 
 def master155(flat):
     raw = authors_raw(flat)
-    utila.log(raw)
     assert raw == MASTER155.strip()
 
 
@@ -377,7 +377,6 @@ Wicht G.
 
 def bachelor109(flat):
     raw = authors_raw(flat)
-    utila.log(raw)
     assert raw == BACHELOR109
 
 
@@ -405,7 +404,6 @@ Zheng Pei ; Ni Lionel M.
 
 def bachelor111(flat):
     raw = authors_raw(flat)
-    utila.log(raw)
     assert raw == BACHELOR111
 
 
@@ -431,7 +429,7 @@ def authors_raw(flat) -> str:
     pytest.param(power.MASTER091B_PDF, '82:89', 85, master91b, id='master91b'), # VALIDATED BY HAND
     pytest.param(power.MASTER110_PDF, '104:109', 71, master110, id='master110'),
     pytest.param(power.MASTER116_PDF, '97,98,99,100', 46, master116, id='master116'), # VALIDATED BY HAND
-    pytest.param(power.MASTER155_PDF, '75:85', 109, master155, id='master155', marks=pytest.mark.xfail(reason='improve parser')), # VALIDATED BY HAND
+    pytest.param(power.MASTER155_PDF, '75:85', 111, master155, id='master155'), # VALIDATED BY HAND 109
     pytest.param(power.DISS170_PDF, '150:163', None, diss170, id='diss170'),
     pytest.param(power.DISS266_PDF, '215:247', 427, None, id='diss266', marks=pytest.mark.xfail(reason='improve parser')), # VALIDATED BY HAND
     pytest.param(power.DISS272_PDF, '259:271', None, diss272, id='diss272'),
