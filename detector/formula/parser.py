@@ -20,7 +20,6 @@ def parse(ptcn) -> iamraw.PageContentFormula:
         for item in extracted:
             item.line = lineindex
         result.extend(extracted)
-
     return iamraw.PageContentFormula(page=ptcn.page, content=result)
 
 
