@@ -100,11 +100,12 @@ AND = r"""
         [^\(\)\[\]]               # author does not ends with bracket
     )
     (
-        \(?(?P<oj>o\.j\.)\)?
+        \(?(?P<oj>o\.j\.[ ]{0,3}[a-z]{0,1})\)?
         |
         %s                        # brackets open
         %s                        # optional month
-        ((?P<year>\d{4,5})([ ]{0,3}\-(?P<yearend>\d{4})[ ]{0,3}){0,1})
+        ((?P<year>\d{4,5})([ ]{0,3}\-(?P<yearend>\d{4})){0,1})
+        [ ]{0,3}
         (?P<number>a|b|c|d){0,1}  # optional char
         %s                        # brackets close
         |
