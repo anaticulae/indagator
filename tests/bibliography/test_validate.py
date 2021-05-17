@@ -63,22 +63,27 @@ def bachelor56(flat):
     assert raw == BACHELOR56.strip()
 
 
+BACHELOR63 = """\
+AASLID R. ; BRUBAKK AO.
+EBERHARD Thomas
+ELTER Peter
+GEORGI Wolfgang ; METIN Ergun
+HEMODYNAMICS AG
+HÖFER Judith
+LUNZE Jan
+LUNZE Jan
+OHMEDA MEDIZINTECHNIK
+PAULAT Klaus Prof. Dr.
+PAULAT Klaus Prof. Dr.
+REUTER M. ; ZACHER S.
+SCHULZ Gerd
+"""
+
+
 def bachelor63(flat):
-    # zero is iamraw.NoPerson
-    # numbers iamraw.Person
-    expected = [2, 1, 1, 2, 0, 1, 1, 0, 1, 1, 2, 1]
-    parsed = []
-    for item in flat:
-        authors = item.authors
-        if not authors:
-            parsed.append(None)
-            continue
-        if all([isinstance(item, iamraw.Person) for item in authors]):
-            parsed.append(len(authors))
-            continue
-        # no person
-        parsed.append(0)
-    assert parsed == expected
+    raw = authors_raw(flat)
+    utila.log(raw)
+    assert raw == BACHELOR63.strip()
 
 
 def bachelor90(flat):
