@@ -31,6 +31,11 @@ Failures
 * Schnabel, Eva
 * Sdao-Jarvie, K. and Vogel-Sprott, M.
 
+Examples
+~~~~~~~~
+
+* master148: very bad bib sources
+
 """
 
 import re
