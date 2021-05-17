@@ -7,7 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import iamraw
 import power
 import pytest
 import serializeraw
@@ -100,17 +99,162 @@ def bachelor90(flat):
     assert references == expected
 
 
+MASTER89 = """\
+ABELS Heinz ; KONIG Alexandra
+ANDRONIKASHVILI Zaal
+ARISTOTELES. Poetik. Griechisch ; Deutsch. Ubers. und hg. v. Manfred Fuhrmann
+ASSMANN Aleida
+ASSMANN Aleida
+ASSMANN Aleida ; ASSMANN Jan
+ASSMANN Jan
+BALL Samuel ; PALMER Patricia ; MILLWARD Emelia
+BANDURA Albert
+BANDURA Albert
+BANDURA Albert
+BARTEL Heike
+BENJAMIN Walter
+BERGER Peter ; LUCKMANN Thomas
+BLEICHER Joan K.
+BLUMENBERG Hans
+BLUMENBERG Hans
+BONFADELLI Heinz
+BORDWELL David
+BOHN Andreas ; SEIDLER Andreas
+BRUNER Jerome S.
+CAMPBELL Joseph
+CAMPBELL Joseph
+CHATMAN Seymour
+DIERSE Ulrich
+DORR Volker
+ERLL Astrid ; WODIANKA Stephanie
+ERLL Asrid
+ESTES Clarissa  P.
+FAULSTICH Werner
+FRIEDRICHS Jürgen
+FRISCH Max
+FRITZ Karsten ; STING Stephan ; VOLLBRECHT Ralf (Hgg.)
+FRYE Northrop
+FUHRMANN Manfred
+GENETTES Gerard
+GERBNER George ; GROSS Larry ; MORGAN Michael ; SIGNORIELLI Nancy
+GOFFMAN Erving
+GORDEN Michael ; MEISER Hans  C.
+HABERER Johanna
+HALBWACHS Maurice
+HALBWACHS Maurice
+HARTLEY John
+HARTMANN Tilo ; SCHRAMM Holger
+HARTMANN Tilo ; SCHRAMM Holger ; KLIMMT Christoph
+HAVELOCK Eric A.
+HAVELOCK Eric  A.
+HAVELOCK Eric  A.
+HAVELOCK Eric A.
+HAVELOCK Eric  A.
+HEJL Peter  M.
+HENTSCHEL Ulrike
+HEUERMANN Hartman
+HICKETHIER Knut
+HICKETHIER Knut
+HICKETHIER Knut
+HICKETHIER Knut
+HICKETHIER Knut
+HICKETHIER Knut
+HICKETHIER Knut
+HOCHSCHULE  DER  MEDIEN  STUTTGART
+HOFMANN Michael
+HOGGART Richard
+HOLL Mirjam-Kerstin
+HURRELMANN Bettina
+HULK Walburga
+INSIDEKINO
+JAEGER Werner
+JUNG Carl G.
+KEPPLER Angela
+KEPPLER Angela
+KETTNER Matthias
+KIRK Geoffrey  S.
+KLIPPEL Heike
+KLOEPFER Rolf
+KNOBLAUCH Hubert
+KOCH Peter ; OESTERREICHER Wulf
+KRUGER Brigitte ; STILLMARK Hans-Christian
+KUNCZIK Michael ; ZIPFEL Astrid
+KUBLER Hans-Dieter
+LEHMANN Albrecht
+LESSING Gotthold E.
+LORD Albert B.
+LOTHAR Mikos
+LUCKMANN Thomas
+LUHMANN Niklas
+LUHMANN Niklas
+LUKESCH Helmut
+MANUSCOM James  C.
+MCLUHAN Marshall
+MCLUHAN Marshall ; FIORE Quentin
+MCQUAIL Denis
+MEAD George H.
+MEHLIG Gabriele
+MEIER Christel
+MERTEN Klaus ; SCHMIDT Siegried  J. ; WEISCHENBERG Siegfried  (Hgg.)
+MERTEN Klaus
+MOENNINGHOFF Burkhard
+MURRAY Penelope ; WILSON Peter
+MULLER Corinna
+MULLER Klaus
+MULLER Klaus
+NEUMANN Birgit
+NUNNING Ansgar
+NUNNING Vera.
+ONG Walter J.
+ONG Walter J.
+PAPA Michael  J. ; SINGHAL Arvind ; LAW Sweety ; PANT Saumya ; SOOD Suruchi ; ROGERS Everett M. ; SHEFNER-ROGERS Corinne
+PERSE Elizabeth M.
+PETERS Helge
+PLATON. Menon. In. Schleiermacher Friedrich D. E. (Hg.)
+POLKINGHORNE Donald  E.
+POWELL Barry  B.
+POWELL Barry  B.
+RACHET Guy
+RAMMSTEDT Otthein
+REICHERTZ Jo
+RIEGLER Alexander
+ROBB Kevin
+ROBINSON John A. ; HAWPE Linda
+ROLL Franz J.
+RYSSEL Dirk
+SARBIN Theodore  R.  (Hg.)
+SARBIN Theodore R.
+SCHENK Michael
+SCHIEWER Gesine L.
+SCHILLER Friedrich
+SCHMIDT ; Siegfried  J.
+SCHMIDT Siegfried J.
+SCHNEIDER Michael
+SCHWAB Frank
+SCHWENDER Klaus
+SIMONIS Anette
+SOMMER Roy
+STRAUB Jürgen
+STRAUB Jürgen  (Hg.)
+STRAUB Jürgen
+STROHMAIER Alexandra  (Hg.)
+SUTTON-SMITH Brian
+TREPTE Sabine ; REINECKE Leonard
+VOGLER Christopher
+WEGENER Claudia
+WELCH Kathleen E.
+WELZER Harald  (Hg.)
+WELZER Harald
+WINEBURG Sam
+WITTROCK Manfred
+ZDF
+ZDF
+"""
+
+
 def master89(flat):
-    first = flat[0]
-    assert first.year == 2010
-    assert first.authors == [('ABELS', 'Heinz'), ('KÖNIG', 'Alexandra')]
-
-    second = flat[1]
-    assert second.year == 2009
-    assert second.authors == [('ANDRONIKASHVILI', 'Zaal')]
-
-    last = flat[-1]
-    assert last.year == 2009
+    raw = authors_raw(flat)
+    assert raw == MASTER89.strip()
 
 
 def master75(flat):  # pylint:disable=W0613
@@ -471,7 +615,7 @@ def authors_raw(flat) -> str:
     pytest.param(power.BACHELOR111_PDF, '85:87', 18, bachelor111, id='bachelor111'), # VALIDATED BY HAND
     pytest.param(power.BACHELOR128_PDF, '96:103', None, bachelor128, id='bachelor128'),
     pytest.param(power.MASTER075_PDF, '70', 18, master75, id='master75'), # VALIDATED BY HAND
-    pytest.param(power.MASTER089_PDF, None, 149, master89, id='master89', marks=pytest.mark.xfail(reason='improve parser')),
+    pytest.param(power.MASTER089_PDF, '70:81', 149, master89, id='master89'), # VALIDATED BY HAND
     pytest.param(power.MASTER091B_PDF, '82:89', 85, master91b, id='master91b'), # VALIDATED BY HAND
     pytest.param(power.MASTER110_PDF, '104:109', 71, master110, id='master110'),
     pytest.param(power.MASTER116_PDF, '97,98,99,100', 46, master116, id='master116'), # VALIDATED BY HAND
