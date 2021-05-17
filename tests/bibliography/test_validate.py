@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import os
+
 import power
 import pytest
 import serializeraw
@@ -17,72 +19,21 @@ import detector.path
 import tests
 
 
+def file_load(name):
+    path = os.path.join(detector.ROOT, f'tests/bibliography/expected/{name}')
+    loaded = utila.LazyFile(path)
+    return loaded
+
+
 def bachelor51(flat):
     assert len(flat) == 37  # VALIDATED
 
 
-BACHELOR56 = """\
-Breitmeier D. ; Seeland-Schulze I. ; Hecker H. ; Schneider U.
-Beirness D. ; Vogel-Sprott M.
-Borkenstein R. F. ; Crowther R. F. ; Shumate R. P. ; Ziel W. B. ; Zylman R.
-Bundesministerium  der Justiz  und  für  Verbraucherschutz
-Burian S.  E. ; Hensberry R. ; Liguori A.
-Fillmore M.  T. ; Carscadden J.  L. ; Vogel-Sprott M.
-Hansen M. A.
-Harrison E. L. R. ; Fillmore M. T.
-Heuer K.
-Kazenwadel J. ; Vollrath M.
-Kolasinski E. M.
-Krampe A.
-Krüger H.-P. ; Kazenwadel J. ; Vollrath M.
-Kuratorium  für Verkehrssicherheit
-Marczinski C. A. ; Fillmore M. T.
-Martin T. L ; Solbeck P. A. M. ; Mayers D. J. ; Langille R. M. ; Buczek Y. ; Pelletier M. R.
-Moskowitz H. ; Fiorentino D.
-Moskowitz H. ; Fiorentino D.
-Moskowitz H. ; Robinson C. D.
-Rumph H.-J. ; Hapke U. ; John U.
-Schmidt R. ; Dettmeyer R. ; Padosch S. ; Madea B.
-Schnabel Eva
-Sdao-Jarvie K. ; Vogel-Sprott M.
-Statistisches Bundesamt
-Statistisches Bundesamt
-Strafgesetzbuch
-Verkehrsunfallstatistik Braunschweig
-Vogel-Sprott M.
-Vogel-Sprott M. ; Sdao-Jarvie K.
-Vollrath M.
-Vollrath M. ; Krems J.
-Würzburger  Institut  für Verkehrswissenschaften  GmbH
-"""
-
-
-def bachelor56(flat):
-    raw = authors_raw(flat)
-    assert raw == BACHELOR56.strip()
-
-
-BACHELOR63 = """\
-AASLID R. ; BRUBAKK AO.
-EBERHARD Thomas
-ELTER Peter
-GEORGI Wolfgang ; METIN Ergun
-HEMODYNAMICS AG
-HÖFER Judith
-LUNZE Jan
-LUNZE Jan
-OHMEDA MEDIZINTECHNIK
-PAULAT Klaus Prof. Dr.
-PAULAT Klaus Prof. Dr.
-REUTER M. ; ZACHER S.
-SCHULZ Gerd
-"""
-
-
-def bachelor63(flat):
-    raw = authors_raw(flat)
-    utila.log(raw)
-    assert raw == BACHELOR63.strip()
+BACHELOR56 = file_load('bachelor056')
+BACHELOR63 = file_load('bachelor063')
+BACHELOR109 = file_load('bachelor109')  # TODO: UPDATE AFTER UPGRADE
+BACHELOR111 = file_load('bachelor111')
+MASTER89 = file_load('master089')
 
 
 def bachelor90(flat):
@@ -97,164 +48,6 @@ def bachelor90(flat):
         'VAC+08', 'VG06', 'WL11', 'WR10', 'ZSM11'
     ]
     assert references == expected
-
-
-MASTER89 = """\
-ABELS Heinz ; KONIG Alexandra
-ANDRONIKASHVILI Zaal
-ARISTOTELES. Poetik. Griechisch ; Deutsch. Ubers. und hg. v. Manfred Fuhrmann
-ASSMANN Aleida
-ASSMANN Aleida
-ASSMANN Aleida ; ASSMANN Jan
-ASSMANN Jan
-BALL Samuel ; PALMER Patricia ; MILLWARD Emelia
-BANDURA Albert
-BANDURA Albert
-BANDURA Albert
-BARTEL Heike
-BENJAMIN Walter
-BERGER Peter ; LUCKMANN Thomas
-BLEICHER Joan K.
-BLUMENBERG Hans
-BLUMENBERG Hans
-BONFADELLI Heinz
-BORDWELL David
-BOHN Andreas ; SEIDLER Andreas
-BRUNER Jerome S.
-CAMPBELL Joseph
-CAMPBELL Joseph
-CHATMAN Seymour
-DIERSE Ulrich
-DORR Volker
-ERLL Astrid ; WODIANKA Stephanie
-ERLL Asrid
-ESTES Clarissa  P.
-FAULSTICH Werner
-FRIEDRICHS Jürgen
-FRISCH Max
-FRITZ Karsten ; STING Stephan ; VOLLBRECHT Ralf (Hgg.)
-FRYE Northrop
-FUHRMANN Manfred
-GENETTES Gerard
-GERBNER George ; GROSS Larry ; MORGAN Michael ; SIGNORIELLI Nancy
-GOFFMAN Erving
-GORDEN Michael ; MEISER Hans  C.
-HABERER Johanna
-HALBWACHS Maurice
-HALBWACHS Maurice
-HARTLEY John
-HARTMANN Tilo ; SCHRAMM Holger
-HARTMANN Tilo ; SCHRAMM Holger ; KLIMMT Christoph
-HAVELOCK Eric A.
-HAVELOCK Eric  A.
-HAVELOCK Eric  A.
-HAVELOCK Eric A.
-HAVELOCK Eric  A.
-HEJL Peter  M.
-HENTSCHEL Ulrike
-HEUERMANN Hartman
-HICKETHIER Knut
-HICKETHIER Knut
-HICKETHIER Knut
-HICKETHIER Knut
-HICKETHIER Knut
-HICKETHIER Knut
-HICKETHIER Knut
-HOCHSCHULE  DER  MEDIEN  STUTTGART
-HOFMANN Michael
-HOGGART Richard
-HOLL Mirjam-Kerstin
-HURRELMANN Bettina
-HULK Walburga
-INSIDEKINO
-JAEGER Werner
-JUNG Carl G.
-KEPPLER Angela
-KEPPLER Angela
-KETTNER Matthias
-KIRK Geoffrey  S.
-KLIPPEL Heike
-KLOEPFER Rolf
-KNOBLAUCH Hubert
-KOCH Peter ; OESTERREICHER Wulf
-KRUGER Brigitte ; STILLMARK Hans-Christian
-KUNCZIK Michael ; ZIPFEL Astrid
-KUBLER Hans-Dieter
-LEHMANN Albrecht
-LESSING Gotthold E.
-LORD Albert B.
-LOTHAR Mikos
-LUCKMANN Thomas
-LUHMANN Niklas
-LUHMANN Niklas
-LUKESCH Helmut
-MANUSCOM James  C.
-MCLUHAN Marshall
-MCLUHAN Marshall ; FIORE Quentin
-MCQUAIL Denis
-MEAD George H.
-MEHLIG Gabriele
-MEIER Christel
-MERTEN Klaus ; SCHMIDT Siegried  J. ; WEISCHENBERG Siegfried  (Hgg.)
-MERTEN Klaus
-MOENNINGHOFF Burkhard
-MURRAY Penelope ; WILSON Peter
-MULLER Corinna
-MULLER Klaus
-MULLER Klaus
-NEUMANN Birgit
-NUNNING Ansgar
-NUNNING Vera.
-ONG Walter J.
-ONG Walter J.
-PAPA Michael  J. ; SINGHAL Arvind ; LAW Sweety ; PANT Saumya ; SOOD Suruchi ; ROGERS Everett M. ; SHEFNER-ROGERS Corinne
-PERSE Elizabeth M.
-PETERS Helge
-PLATON. Menon. In. Schleiermacher Friedrich D. E. (Hg.)
-POLKINGHORNE Donald  E.
-POWELL Barry  B.
-POWELL Barry  B.
-RACHET Guy
-RAMMSTEDT Otthein
-REICHERTZ Jo
-RIEGLER Alexander
-ROBB Kevin
-ROBINSON John A. ; HAWPE Linda
-ROLL Franz J.
-RYSSEL Dirk
-SARBIN Theodore  R.  (Hg.)
-SARBIN Theodore R.
-SCHENK Michael
-SCHIEWER Gesine L.
-SCHILLER Friedrich
-SCHMIDT ; Siegfried  J.
-SCHMIDT Siegfried J.
-SCHNEIDER Michael
-SCHWAB Frank
-SCHWENDER Klaus
-SIMONIS Anette
-SOMMER Roy
-STRAUB Jürgen
-STRAUB Jürgen  (Hg.)
-STRAUB Jürgen
-STROHMAIER Alexandra  (Hg.)
-SUTTON-SMITH Brian
-TREPTE Sabine ; REINECKE Leonard
-VOGLER Christopher
-WEGENER Claudia
-WELCH Kathleen E.
-WELZER Harald  (Hg.)
-WELZER Harald
-WINEBURG Sam
-WITTROCK Manfred
-ZDF
-ZDF
-"""
-
-
-def master89(flat):
-    raw = authors_raw(flat)
-    assert raw == MASTER89.strip()
 
 
 def master75(flat):  # pylint:disable=W0613
@@ -302,299 +95,8 @@ def master91b(flat):
     assert len(flat) == 85  # VALIDATED
 
 
-ORDER107 = """\
-Büker Stella
-Deppe Joachim
-Deutsche Norm DIN 1421
-Deutsche Norm DIN 1422 Teil 1
-Deutsche Norm DIN 1422 Teil 3
-Deutsche Norm DIN 1426
-Dreyer Hilke ; Schmitt Richard
-Duden. Die deutsche Rechtschreibung
-Duden. Grammatik der deutschen Gegenwartssprache
-Ebel Hans F. ; Bliefert Claus
-ETH Zürich (Eidgenössische Technische Hochschule Zürich)
-Kerans Mary Ellen
-Kruse Otto
-Langer Inghard ; Schulz von Thun Friedemann ; Tausch Reinhard
-Meer Dorothee
-o.A.
-TU Berlin
-Weber-Wulff Debora
-Arndt Wulf-Holger
-Esser Peter ; Lippert Jana und Tutorenteam (überarb.)
-Gemünden Hans Georg
-Herrmann Klaus
-Köppel Johann ; Lippert Jana
-Krallmann Hermann
-Krystek Ulrich
-Mirow Michael
-o.A.
-Straube Frank
-Werder Axel v.
-Zarnekow Rüdiger
-Grafische  Gestaltung  von  Titelbild  und  Abbildungen  (wenn  nicht  anders angegeben)
-""".strip()
-
-
-def order107(flat):
-    raw = authors_raw(flat)
-    assert raw == ORDER107
-
-
-MASTER155 = """\
-Allen W.  D. ; Evans D.  A.
-Altmann S. ; Falk A. ; Marklein F.
-Anderson M.  J. ; Blue E.  R.
-Ang J.  S. ; Schwarz T.
-Arrow K.  J. ; Debreu G.
-Ball S. B. ; Bazerman M. H. Caroll ; J. S.
-Baye M. R. ; Morgan J. ; Scholten P.
-Bazerman M. H. ; Magliozzi T. ; Neale M.  A.
-Bester H.
-Blackburn J.  M.
-Bohm P.
-Brandts J. ; Charness G.
-Brandts J. ; Gerxheim K. ; Schram A. ; Ygosse-Battisti J.
-Brehmer B.
-Bundesregierung  der  Bundesrepublik  Deutschland
-ab  01.01.1980.  Internet
-Burdett K. ; Judd K. L.
-Camerer C.  F. ; Hogarth R.  M.
-Chamberlin E. H.
-Charness G.
-Charness G.
-Chase W. G. ; Simon H. A.
-Chen S.-H. ; Hsieh Y.-L.
-Cheung S.  L. ; Palan S.
-Cooper D. ; Kagel J. ; Lo W. ; Gu Q.
-Davis D. ; Holt C.  A.
-Diamond P.  A.
-Diamond P. A. ; Maskin E.
-Dorsch F. ; Häcker H. ; Stapf K.  H.  (Hrsg.)
-Dürsch P. ; Oechssler J. ; Vadovic R.
-Eagly A.  H. ; Carli L.  L.
-Eckard E. W.
-Eisenführ F. ; Weber M.
-Erne M.
-Fehr E.  Kirchler ; E. Weichbold ; A. Gächter ; S.
-Fehr E. ; Gächter S. ; Kirchsteiger G.
-Fehr E. ; Kirchsteiger G. ; Riedl A.
-Fellner G. ; Maciejovsky B.
-Fiedler M.
-Fisher F. M.
-Friberg R. ; Ganslandt M. ; Sandström M.
-Gatti R. ; Kattuman P.
-Gneezy U. ; Kapteyn A. ; Potters J.
-Günther M ; Vossebein U. ; Wildner R.
-Hammann P. ; Erichson B.
-Hannan L. ; Kagel J. ; Moser D.
-Harrison G.  W. ; Johnson E. ; McInnes M.  M. ; Rutström E.  E.
-Holt C.  A.
-Holt C. A. ; Laury S. K.
-Hong H. Shum ; M.
-Hudgens G. A. ; Fatkin L. T.
-Irlenbusch B. ; Sliwka D.
-Irlenbusch B. ; Sliwka D.
-Jehle G.  A. ; Reny P.  J.
-Kaase M.  (Hrsg.)
-Kachelmeier S. ; Limberg S. ; Schadewald M.
-Katzner D.  W.
-Kujal P. ; Smith V. L.
-Kuß A.
-Kuß A. ; Eisend M.
-Kußmaul H.
-Leibbrandt A.
-Leigh T.
-Leigh T.
-Levin I. P. ; Snyder M. A. ; Chapman D. P.
-Lingen T.  v.
-Major B. ; McFarlin D.  B. ; Gagnon D.
-Malhotra N. K. ; Birks D. F.
-Mankiw N.  G. ; Taylor M.  P.
-March J.  G.
-March J. G. ; Simon H. A.
-Marshall A.
-Matheson K.
-Mortensen D.  A.
-Neale M.  A. ; Huber V. ; Northcraft G.
-Neale M.  A. ; Northcraft G.
-Neu J. ; Graham J. L. ; Gilly M. C.
-Oberender P. ; Zerth J.
-Parson H.  M.
-Powell M. ; Ansic D.
-Pruitt D.  G.  Carnevale ; P.  J.  D. Forcey ; B. Van  Slyck ; M.  V.
-Rancer A. S. ; Baukus R. A.
-Rapoport A. ; Chammah M.
-Cooperation. Ann Arbor
-Riley W. B. ; Chow K. V.
-Rubin J.  Z. ; Brown B.  R.
-Rubinstein A.
-Rubinstein A. ; Wolinsky A.
-Savage L. J.
-Schöler K.
-Schubert R. ; Brown M. ; Gysler M. ; Brachinger H.  W.
-Selten R.
-Smith A.
-Smith V.  L.
-Smith V.  L.
-Smith V.  L.
-Sorensen A.
-Stahl D.  O.
-Stamato L.
-Stearns S.  C.
-Stigler G.  J.
-Stigler G.  J.
-Stiglitz J. E.
-Sudman S. ; Blair E.
-Teufel O.
-Urban D. ; Mayerl J.
-van  Baal S.
-von  Neumann J. ; Morgenstern O.
-Waldeck R.
-Walters A. E. ; Stuhlmacher A. F. ; Meyer L. L.
-Watson C.
-"""
-
-
-def master155(flat):
-    raw = authors_raw(flat)
-    assert raw == MASTER155.strip()
-
-
-# TODO: UPDATE AFTER UPGRADE
-BACHELOR109 = """\
-ADM Arbeitskreis Deutscher Markt ; und Sozialforschungsinstitute e.V.
-Alby T.
-Altaner F.
-Arbeitsgemeinschaft Social Media e. V.
-Back A. ; Heidecke F.
-Bundesamt  für  Statistik.
-Batinic B. ; Bosnjak M.
-Becker M.
-Becker M.
-Belliger A. ; Krieger D.
-Berekoven L. ; Eckert W. ; Ellenrieder P.
-Berlecon Research GmbH.
-BITKOM. (Hrsg.).
-BITKOM. (Hrsg.).
-Brahm T.
-Bremer C.
-Buchem I. ; Appelt R. ; Kaiser S. ; Schön S. ; Ebner M.
-Buck C.
-Buhse W.
-Bundesverband  Digitale  Wirtschaft  (BVDW)  e.  V.
-Crameri A.
-Crameri A.
-Deriu U.
-Deutsche Gesellschaft für Personalführung e. V. (Hrsg.).
-Disterer G.
-Döring N.
-Dzeyk W.
-Ebner M. ; Schiefner M.
-Ehle A.
-E ; teaching.org.
-Hähnel M.
-Häntschel-Erhart I.
-Happel H.-J. ; Romberg T.
-Hawaiian Dictionaries.
-Hettler U.
-Hilzensauer W. ; Hornung-Prähauser V.
-Hippner H.
-Hisserich J. ; Primsch J.
-Hofer M. ; Negri C.
-Huang Y. ; Singh P.  V. ; Ghose A.
-Huber F. ; Matthes I. ; Stenneken N.
-Hug T. ; Poscheschnik G.
-ICR  Institute  for  Competitive  Recruiting.
-Jacobsmühlen T.  zur.
-Kaplan A.  M. ; Haenlein M.
-Kaplan A. M. ; Haenlein M.
-Kempski I. von.
-Kerres M.
-Kerres M. ; Preussler A.
-Kiefer B.-U.
-Klobas J.  E.
-Koch M. ; Richter A.
-Koch M. ; Richter A.
-Koch M. ; Richter A. ; Schlosser A.
-Komus A. ; Wauch F.
-Krämer M.
-Latham L. ; Lundy J.
-Lefrancois G.  R.
-Lehner F.
-Maier R. ; Schmidt A.
-Manz F.
-Mayer H.  O.
-McAfee A.  P.
-Mentzel W.
-Metz B. ; Pfeiffer J. ; Staiger M. ; Wichert A.
-Möller E.
-Manouchehri  Far S.
-Mudra P.
-Müller C. ; Gronau N.
-O'Reilly T.
-O'Reilly T.
-Pleil T.
-Probst G. ; Raub S. ; Romhardt K.
-Puhakainen P. ; Siponen M.
-Raabe A.
-Raab-Steiner E. ; Benesch M.
-Reinhardt W. ; Ebner M. ; Beham G. ; Costa C.
-Reinmann-Rothmeier G. ; Mandl H. ; Erlach C. ; Neubauer A.
-Reips U.  D.
-Rennstich J. K.
-Richardson W.
-Richter A.
-Richter A. ; Koch M.
-Robes J.
-Röll M.
-Sauer M.
-Sauerer A. ; Müller C. M.
-Sauter A.  M. ; Sauter W.
-Simon N. ; Bernhardt N.
-Spath D. (Hrsg.) ; Günther J.
-Thielsch M.  T.
-Thoeny P.
-Tosh D. ; Werdmuller B.
-Trost A.
-Trost A. ; Jenewein T.
-Uhss B.
-Universität Zürich.
-Wicht G.
-""".strip()
-
-
-def bachelor109(flat):
-    raw = authors_raw(flat)
-    assert raw == BACHELOR109
-
-
-BACHELOR111 = """\
-Bhebhe Leo
-Dahlman Erik ; Parkvall Stefan ; Sköld Johan ; Beming Per
-Friedel Prof. Dr. Ing Rainer ; Mahler Dipl.-Ing. Hans-Detlev
-Friedel Prof. Dr. Ing Rainer ; Mahler Dipl.-Ing. Hans-Detlev
-Frank Karlheinz
-Freeman Roger L.
-Gessler Ralf ; Krause Thomas
-Günther Andreas
-Huber Josef F.
-Iftode Liviu ; Borcea Cristian ; Ravi Nishkam ; Kang Porlin ; Zhou Peng
-KNX Association
-Kriesel Werner ; Sokollik Frank ; Helm Peter
-Lehner Franz
-Lin Feida ; Yen Weiguo
-Merz Hermann ; Hansemann Thomas ; Hübner Christof
-Walke Bernhard
-Walke Bernhard
-Zheng Pei ; Ni Lionel M.
-""".strip()
-
-
-def bachelor111(flat):
-    raw = authors_raw(flat)
-    assert raw == BACHELOR111
+ORDER107 = file_load('order107')
+MASTER155 = file_load('master155')
 
 
 def authors_raw(flat) -> str:
@@ -606,20 +108,20 @@ def authors_raw(flat) -> str:
 
 # yapf:disable
 @pytest.mark.parametrize('source, pages, expected, validate', [
-    pytest.param(power.ORDER107_PDF, '104:108', 31, order107, id='order107'), # VALIDATED BY HAND
+    pytest.param(power.ORDER107_PDF, '104:108', 31, ORDER107, id='order107'), # VALIDATED BY HAND
     pytest.param(power.BACHELOR051_PDF, '42:46', 37, bachelor51, id='bachelor51'),
-    pytest.param(power.BACHELOR056_PDF, '49:53', 32, bachelor56, id='bachelor56'), # VALIDATED BY HAND
-    pytest.param(power.BACHELOR063_PDF, '59', 12, bachelor63, id='bachelor63', marks=pytest.mark.xfail(reason='improve name detector')),
+    pytest.param(power.BACHELOR056_PDF, '49:53', 32, BACHELOR56, id='bachelor56'), # VALIDATED BY HAND
+    pytest.param(power.BACHELOR063_PDF, '59', 12, BACHELOR63, id='bachelor63', marks=pytest.mark.xfail(reason='improve name detector')),
     pytest.param(power.BACHELOR090_PDF, '84:89', 52, bachelor90, id='bachelor90'),
-    pytest.param(power.BACHELOR109_PDF, '72:79', 98, bachelor109, id='bachelor109'),
-    pytest.param(power.BACHELOR111_PDF, '85:87', 18, bachelor111, id='bachelor111'), # VALIDATED BY HAND
+    pytest.param(power.BACHELOR109_PDF, '72:79', 98, BACHELOR109, id='bachelor109'),
+    pytest.param(power.BACHELOR111_PDF, '85:87', 18, BACHELOR111, id='bachelor111'), # VALIDATED BY HAND
     pytest.param(power.BACHELOR128_PDF, '96:103', None, bachelor128, id='bachelor128'),
     pytest.param(power.MASTER075_PDF, '70', 18, master75, id='master75'), # VALIDATED BY HAND
-    pytest.param(power.MASTER089_PDF, '70:81', 149, master89, id='master89'), # VALIDATED BY HAND
+    pytest.param(power.MASTER089_PDF, '70:81', 149, MASTER89, id='master89'), # VALIDATED BY HAND
     pytest.param(power.MASTER091B_PDF, '82:89', 85, master91b, id='master91b'), # VALIDATED BY HAND
     pytest.param(power.MASTER110_PDF, '104:109', 71, master110, id='master110'),
     pytest.param(power.MASTER116_PDF, '97,98,99,100', 46, master116, id='master116'), # VALIDATED BY HAND
-    pytest.param(power.MASTER155_PDF, '75:85', 111, master155, id='master155'), # VALIDATED BY HAND 109
+    pytest.param(power.MASTER155_PDF, '75:85', 111, MASTER155, id='master155'), # VALIDATED BY HAND 109
     pytest.param(power.DISS170_PDF, '150:163', None, diss170, id='diss170'),
     pytest.param(power.DISS266_PDF, '215:247', 427, None, id='diss266', marks=pytest.mark.xfail(reason='improve parser')), # VALIDATED BY HAND
     pytest.param(power.DISS272_PDF, '259:271', None, diss272, id='diss272'),
@@ -643,5 +145,8 @@ def test_detector_bibliography_run(
     flat = utila.flatten(loaded)
     assert len(flat) == expected or expected is None, str(loaded)
 
-    if validate:
+    if isinstance(validate, utila.LazyFile):
+        raw = authors_raw(flat)
+        assert raw == validate
+    elif validate:
         validate(flat)
