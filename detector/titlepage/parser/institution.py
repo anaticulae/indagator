@@ -168,7 +168,7 @@ def find_institution(raw) -> str:
     # TODO require better lookup technology with hashing
     collected = [
         item for item in UNIVERSITIES
-        if any([test for test in splitted if item in test])
+        if any(test for test in splitted if item in test)
     ]
     if not collected:
         return None, raw

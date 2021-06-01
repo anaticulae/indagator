@@ -252,7 +252,7 @@ def extract_title(result: re.Match) -> list:
             # IndexError: no every group is used. For example only t3:master
             continue
         else:
-            matches = [it for it in iamraw.title.MATCHES.values()]
+            matches = list(iamraw.title.MATCHES.values())
             title.append(matches[item])
     return title
 
@@ -295,9 +295,9 @@ def author_or_examiner(raw: str) -> iamraw.AcademicTitle:
     <AcademicTitle.EXAMINIER: 16>
     """
     raw = raw.lower()
-    if any([item in raw for item in AUTHOR_INTRO]):
+    if any(item in raw for item in AUTHOR_INTRO):
         return iamraw.AcademicTitle.STUDENT
-    if any([item in raw for item in EXAMINER_INTRO]):
+    if any(item in raw for item in EXAMINER_INTRO):
         return iamraw.AcademicTitle.EXAMINIER
     return iamraw.AcademicTitle.NO_TITLE
 
