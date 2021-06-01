@@ -2,6 +2,33 @@
 
 Every noteable change is logged here.
 
+## v0.22.0
+
+### Feature
+
+* make parser more optimistic (604327de2833)
+* skip results with too many year errors (cc78489746c0)
+* skip invalid results (dbecfb06f21a)
+* use global vspace strategy (a70f20f8bccc)
+* make parser less strict (dbb5b062f94f)
+* improve year and hyperlink selector (2c18b8ff4aab)
+* adjust freeand parser (a8590259fcd6)
+* improve freeand parser (2a2eb57345c0)
+* add referent as potential examiner (d55ea3cc441b)
+* extend person title after parser (0374a736a793)
+* make person decider more robust (cb4f8d69b159)
+
+### Fix
+
+* adjust freeand parser (fc2e805d2631)
+* include more sentence signs (d4dffdb24f4d)
+* add szett as valid character (21681f8dc062)
+
+### Documentation
+
+* add information about very bad example (ae9e222f24f6)
+* add module documentation (2adbf32daec9)
+
 ## v0.21.1
 
 ### Feature
