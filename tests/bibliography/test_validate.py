@@ -137,12 +137,12 @@ def authors_raw(flat) -> str:
 # yapf:enable
 @utilatest.longrun
 def test_detector_bibliography_run(
-        source,
-        pages,
-        expected,
-        validate,
-        testdir,
-        monkeypatch,
+    source,
+    pages,
+    expected,
+    validate,
+    testdir,
+    monkeypatch,
 ):
     source = power.link(source)
     cmd = f'-i {source} -o {testdir.tmpdir} --bibliography --pages={pages}'

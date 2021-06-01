@@ -117,10 +117,10 @@ def reduce_word(word, count):
 
 
 def simple_alpha_date(  # pylint:disable=R0914
-        raw,
-        reduce: int = 0,
-        month=None,
-        pattern=SIMPLE_ALPHA_DATE,
+    raw,
+    reduce: int = 0,
+    month=None,
+    pattern=SIMPLE_ALPHA_DATE,
 ):
     """\
     >>> simple_alpha_date('Abgabedatum: 15. Jan 2010 ')

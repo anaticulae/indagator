@@ -46,8 +46,8 @@ import utila
 
 
 def parse_longtext(
-        content: str,
-        pattern=None,
+    content: str,
+    pattern=None,
 ) -> iamraw.BibliographyReference:
     content = utila.normalize_text(content)
     pattern = NORMAL if pattern is None else pattern

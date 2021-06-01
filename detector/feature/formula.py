@@ -13,12 +13,12 @@ import utila
 
 
 def work(
-        formula: str,
-        text: str,
-        textpositions: str,
-        sizeandborder: str,
-        headerfooter: str,
-        pages: tuple,
+    formula: str,
+    text: str,
+    textpositions: str,
+    sizeandborder: str,
+    headerfooter: str,
+    pages: tuple,
 ) -> str:
     loaded = serializeraw.load_rawformulas(formula, pages=pages)
     # TODO: ADD SPECIAL ANALYSIS HERE

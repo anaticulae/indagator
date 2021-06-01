@@ -19,8 +19,8 @@ import detector.bibliography.utils
 
 
 def extracts(
-        text: texmex.PageTextNavigators,
-        text_oneline: texmex.PageTextNavigators,
+    text: texmex.PageTextNavigators,
+    text_oneline: texmex.PageTextNavigators,
 ) -> iamraw.BibliographyReferences:
     column = detector.bibliography.layout.column.extracts(text)
     alternate = detector.bibliography.layout.alternate.extracts(text_oneline)

@@ -14,13 +14,13 @@ import detector.bibliography.strategy
 
 
 def work(
-        text: str,
-        textpositions: str,
-        sizeandborderpath: str,
-        headerfooterpath: str,
-        oneline_text: str,
-        oneline_textpositions: str,
-        pages: tuple = None,
+    text: str,
+    textpositions: str,
+    sizeandborderpath: str,
+    headerfooterpath: str,
+    oneline_text: str,
+    oneline_textpositions: str,
+    pages: tuple = None,
 ) -> str:
     # ensure to have connected pages
     if pages:

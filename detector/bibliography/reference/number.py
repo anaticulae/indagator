@@ -85,8 +85,8 @@ PATTERN = re.compile(
 
 
 def content(
-        raw: str,
-        title_length_min: int = 10,
+    raw: str,
+    title_length_min: int = 10,
 ) -> iamraw.BibliographyReference:
     """\
     >>> content('W. Abmayr. Einführung in die digitale Bildverarbeitung. B.G. Teubner Stuttgart, 1994.')

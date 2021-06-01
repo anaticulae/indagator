@@ -102,18 +102,17 @@ def check_bachelor90(titlepage: iamraw.TitlePage):
         check_116_pages,
         id='master116',
     ),
-    pytest.param(
-        power.BACHELOR090_PDF,
-        check_bachelor90,
-        id='bachelor90',
-        marks=pytest.mark.xfail(reason='improve title page parser')),
+    pytest.param(power.BACHELOR090_PDF,
+                 check_bachelor90,
+                 id='bachelor90',
+                 marks=pytest.mark.xfail(reason='improve title page parser')),
 ])
 @utilatest.longrun
 def test_detector_feature_titlepage_complete(
-        source,
-        checker,
-        testdir,
-        monkeypatch,
+    source,
+    checker,
+    testdir,
+    monkeypatch,
 ):
     """Intergration test to ensure that rawmaker -> detector works correctly."""
     root = str(testdir)

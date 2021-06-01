@@ -46,8 +46,8 @@ def judge(pages: list) -> list:
 
 
 def invalid_single(
-        item: iamraw.BibliographyReference,
-        title_length_min: int = TITLE_MIN_LENGTH,
+    item: iamraw.BibliographyReference,
+    title_length_min: int = TITLE_MIN_LENGTH,
 ) -> bool:
     if item.title:
         if len(item.title) < title_length_min:

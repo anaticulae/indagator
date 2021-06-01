@@ -302,12 +302,12 @@ https://www.ris.bka.gv.at/Dokumente/LgblNO/LRNI_1992062/LRNI_1992062.pdf (25.01.
     ),
 ])
 def test_parse_freeand_with_link(
-        text,
-        authors,
-        year,
-        hyperlink,
-        accessed,
-        title,
+    text,
+    authors,
+    year,
+    hyperlink,
+    accessed,
+    title,
 ):  # pylint:disable=W0613
     extracted = freeand.parse_longtext(text)
     assert extracted.year == year

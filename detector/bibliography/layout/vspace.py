@@ -30,14 +30,16 @@ import detector.bibliography.layout.alternate
 import detector.bibliography.layout.utils
 
 
-def extracts(navigators: texmex.PageTextContentNavigator
-            ) -> iamraw.BibliographyReferences:
+def extracts(
+    navigators: texmex.PageTextContentNavigator
+) -> iamraw.BibliographyReferences:
     glob = optimize_global(navigators)
     return glob
 
 
-def optimize_global(navigators: texmex.PageTextContentNavigator
-                   ) -> iamraw.BibliographyReferences:
+def optimize_global(
+    navigators: texmex.PageTextContentNavigator
+) -> iamraw.BibliographyReferences:
     results = []
     for factor in MAXDISTANCE_FACTOR:
         adjusted = lambda x: factor * MAXDISTANCE(x)  # pylint:disable=cell-var-from-loop
@@ -52,8 +54,8 @@ def optimize_global(navigators: texmex.PageTextContentNavigator
 
 
 def extract(
-        navigator: texmex.NavigatorMixin,
-        vspace_max: callable = None,
+    navigator: texmex.NavigatorMixin,
+    vspace_max: callable = None,
 ) -> iamraw.BibliographyReferences:
     if vspace_max is None:
         vspace_max = MAXDISTANCE

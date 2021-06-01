@@ -63,8 +63,6 @@ if __name__ == "__main__":
             'detector.titlepage.parser',
         ],
         entry_points={
-            'console_scripts': [
-                'detector = detector.cli:main',
-            ],
+            'console_scripts': ['detector = detector.cli:main',],
         },
     )
