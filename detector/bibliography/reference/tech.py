@@ -13,6 +13,7 @@ import utila
 
 import detector.bibliography.label
 import detector.bibliography.reference
+import detector.bibliography.reference.freeand
 
 
 def parse_single_row(content: str) -> iamraw.BibliographyReference:
@@ -62,6 +63,7 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
     if page:
         rest = rest.replace(page[0], '')
     year = detector.bibliography.reference.years(rest)
+    access, rest = detector.bibliography.reference.freeand.parse_accessed(rest)
     if year:
         # remove year from right to left
         rest = ' '.join(rest.rsplit(year[0], maxsplit=1))
@@ -69,11 +71,16 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
         rest = rest.replace('( )', '').strip()
     # TODO: ADD PUBLISHER EXTRACTOR
     rest = rest.strip()
+    hyperlinks, rest = detector.bibliography.reference.freeand.parse_hyperlinks(
+        rest)
+    publisher = parse_publisher(rest)
     result = iamraw.BibliographyReference(
         authors=authors,
         title=title,
         raw=raw,
-        publisher=rest or None,
+        publisher=publisher,
+        hyperlink=hyperlinks,
+        accessed=access,
     )
     if page:
         result.page = page[1][0]
@@ -93,3 +100,13 @@ def parse_title(rest: str) -> tuple:
     if ',' in rest:
         return rest.split(',', maxsplit=1)
     return None
+
+
+def parse_publisher(rest: str):
+    if not rest:
+        return None
+    rest = rest.strip()
+    if len(rest) < 10:
+        # Not a valid publisher
+        return None
+    return rest
