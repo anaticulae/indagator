@@ -311,7 +311,7 @@ def test_parse_freeand_with_link(
 ):  # pylint:disable=W0613
     extracted = freeand.parse_longtext(text)
     assert extracted.year == year
-    assert extracted.hyperlink == hyperlink
+    assert extracted.hyperlink in (hyperlink, [hyperlink])
     assert extracted.accessed == accessed  # pylint:disable=E1101
     assert extracted.title == title or title is None
 

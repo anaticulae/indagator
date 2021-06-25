@@ -73,7 +73,7 @@ def parse_longtext(
         yearend=years[1],
         page=page,
         pageend=pageend,
-        hyperlink=hyperlinks[0] if hyperlinks else None,
+        hyperlink=hyperlinks if hyperlinks else None,
         accessed=accessed[1] if accessed else None,
         raw=raw,
     )
