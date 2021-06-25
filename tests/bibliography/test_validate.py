@@ -133,6 +133,7 @@ def authors_raw(flat) -> str:
     pytest.param(power.DISS170_PDF, '150:163', None, diss170, id='diss170'),
     pytest.param(power.DISS266_PDF, '215:247', 427, None, id='diss266', marks=pytest.mark.xfail(reason='improve parser')), # VALIDATED BY HAND
     pytest.param(power.DISS272_PDF, '259:271', None, diss272, id='diss272'),
+    pytest.param(power.MASTER083_PDF, '75:82', None, 'master083', id='master083'),
 ])
 # yapf:enable
 @utilatest.longrun
@@ -154,6 +155,10 @@ def test_detector_bibliography_run(
     assert len(flat) == expected or expected is None, str(loaded)
 
     if isinstance(validate, utila.LazyFile):
+        raw = authors_raw(flat)
+        assert raw == validate
+    elif isinstance(validate, str):
+        validate = file_load(validate)
         raw = authors_raw(flat)
         assert raw == validate
     elif validate:
