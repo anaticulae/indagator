@@ -46,10 +46,10 @@ def parse_single_row(content: str) -> iamraw.BibliographyReference:
 def parse_longtext(content: str) -> iamraw.BibliographyReference:
     content = utila.normalize_text(content)
     raw = content
-    try:
-        authors, rest = content.split(':', maxsplit=1)
-    except ValueError:
+    parsed = parse_first(content)
+    if not parsed:
         return None
+    authors, rest = parsed
     try:
         title, rest = parse_title(rest)
     except TypeError:
@@ -89,6 +89,22 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
     if year:
         result.year = year[1]
     return result
+
+
+def parse_first(content: str):
+    """\
+    >>> parse_first('Put People First. http://www.putpeoplefirst.org.uk/ (19.1.2015).')
+    ('Put People First. ', 'http://www.putpeoplefirst.org.uk/ (19.1.2015).')
+    """
+    try:
+        authors, rest = content.split(':', maxsplit=1)
+    except ValueError:
+        return None
+    for token in 'https http'.split():
+        if authors.endswith(token):
+            rest = f'{token}:{rest}'
+            authors = authors[:-len(token)]
+    return authors, rest
 
 
 def parse_title(rest: str) -> tuple:
