@@ -25,15 +25,15 @@ def test_detector_misc(cmd, monkeypatch, capsys):
     utilatest.write_capsys(capsys)
 
 
-@pytest.mark.parametrize('example', [
+@pytest.mark.parametrize('source', [
     pytest.param(power.DOCU07_PDF, id='howto_pyporting'),
     pytest.param(power.DOCU09_PDF, id='pyporting'),
     pytest.param(power.DOCU27_PDF, id='restructured'),
 ])
 @utilatest.longrun
-def test_detector_run_work(example, testdir, monkeypatch, capsys):
-    example = power.link(example)
-    cmd = f'-i {example} -o {testdir.tmpdir}'
+def test_detector_run_work(source, testdir, monkeypatch, capsys):
+    source = power.link(source)
+    cmd = f'-i {source} -o {testdir.tmpdir}'
 
     with utilatest.increased_filecount(testdir.tmpdir, mindiff=3, maxdiff=3):
         tests.run(cmd, monkeypatch=monkeypatch)
