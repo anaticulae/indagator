@@ -10,11 +10,13 @@
 import power
 import serializeraw
 import utila
+import utilatest
 
 import detector.path
 import tests
 
 
+@utilatest.requires(power.MASTER116_PDF)
 def test_formula_cli_master116_page22(testdir, monkeypatch):
     source = power.link(power.MASTER116_PDF)
     command = f'-i {source}  --formula --pages=22'

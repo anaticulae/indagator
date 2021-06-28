@@ -24,6 +24,7 @@ import detector.titlepage.strategy
 
 
 @utilatest.longrun
+@utilatest.requires(power.DOCU07_PDF, folder='oneline')
 def test_titlepage_parser():
     extracted = detector.feature.titlepage.work(
         iamraw.path.text(
@@ -142,6 +143,7 @@ def parse_titlepages(path: str, pages: tuple = None):
 
 
 @utilatest.longrun
+@utilatest.requires(power.MASTER072_PDF)
 def test_detector_feature_titlepage_select_best():
     parsed = parse_titlepages(power.link(power.MASTER072_PDF), pages=None)
     best = detector.titlepage.strategy.select_best(parsed)

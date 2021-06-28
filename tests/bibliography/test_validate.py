@@ -147,6 +147,7 @@ def test_detector_bibliography_run(
     monkeypatch,
 ):
     source = power.link(source)
+    utilatest.fixture_requires(source)
     cmd = f'-i {source} -o {testdir.tmpdir} --bibliography --pages={pages}'
     tests.run(cmd, monkeypatch=monkeypatch)
 

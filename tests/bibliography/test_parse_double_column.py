@@ -10,10 +10,12 @@
 import power
 import serializeraw
 import utila
+import utilatest
 
 import detector.bibliography.layout.column
 
 
+@utilatest.requires(power.BACHELOR063_PDF)
 def test_parse_bibliography_bachelor63_page59():
     """Latex double column. Left side with [Hem10] pattern"""
     pages = (59)
@@ -27,6 +29,7 @@ def test_parse_bibliography_bachelor63_page59():
     assert len(parsed) == 12, str(parsed)
 
 
+@utilatest.requires(power.BACHELOR037_PDF)
 def test_parse_bibliography_bachelor37():
     pages = (33,)
     navigators = serializeraw.create_pagetextnavigators_frompath(

@@ -122,6 +122,7 @@ def bachelor109(titlepage: iamraw.TitlePage):
 @utilatest.longrun
 def test_validate_titlepage_extractor(source, check, testdir, monkeypatch):
     source = power.link(source)
+    utilatest.fixture_requires(source)
     cmd = f'-i {source} -o {testdir.tmpdir} --title --page=0'
 
     tests.run(cmd, monkeypatch=monkeypatch)

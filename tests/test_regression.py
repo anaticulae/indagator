@@ -32,6 +32,7 @@ import tests.resources
 
 
 @utilatest.longrun
+@utilatest.requires(power.BACHELOR090_PDF)
 def test_regression_detector(testdir, monkeypatch):
     """Start with whitepage that leads to some trouble with empty
     navigators and problems to detect title page"""

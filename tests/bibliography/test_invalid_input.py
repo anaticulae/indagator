@@ -13,6 +13,7 @@ import utilatest
 import tests
 
 
+@utilatest.requires(power.BACHELOR056_PDF)
 def test_unconnected_pages(testdir, monkeypatch, capsys):
     source = power.link(power.BACHELOR056_PDF)
     pages = '1,2,3,6,7,8'  # invalid pages input

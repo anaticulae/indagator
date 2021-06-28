@@ -33,6 +33,7 @@ def test_detector_misc(cmd, monkeypatch, capsys):
 @utilatest.longrun
 def test_detector_run_work(source, testdir, monkeypatch, capsys):
     source = power.link(source)
+    utilatest.fixture_requires(source)
     cmd = f'-i {source} -o {testdir.tmpdir}'
 
     with utilatest.increased_filecount(testdir.tmpdir, mindiff=3, maxdiff=3):
