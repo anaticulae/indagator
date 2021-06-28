@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v0.23.0
+
+### Feature
+
+* improve bib parser (d63423d5144e)
+* store more than one hyperlink (205002d55514)
+
+### Fix
+
+* do not split inside links (93575c5a1b0e)
+
 ## v0.22.0
 
 ### Feature
