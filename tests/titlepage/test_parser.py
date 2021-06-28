@@ -9,7 +9,7 @@
 
 from detector.titlepage.parser import textblock_token
 
-TOKEN = """Hello
+TEXT = """Hello
 My Name is Token
 
 
@@ -19,7 +19,7 @@ Single Space"""
 
 
 def test_parser_textblock_token():
-    splitted = textblock_token(TOKEN)
+    splitted = textblock_token(TEXT)
     assert len(splitted) == 3, str(splitted)
 
     first = 'Hello\nMy Name is Token'
