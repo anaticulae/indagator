@@ -35,11 +35,12 @@ import tests.resources
 def test_regression_detector(testdir, monkeypatch):
     """Start with whitepage that leads to some trouble with empty
     navigators and problems to detect title page"""
-    root = str(testdir)
-
     pattern = '[rawmaker|groupme]*.yaml'
-    utila.copy_content(power.link(power.BACHELOR090_PDF), root, pattern=pattern)
-
+    utila.copy_content(
+        power.link(power.BACHELOR090_PDF),
+        testdir.tmpdir,
+        pattern=pattern,
+    )
     jobs = 5
     cmd = f'-j{jobs} --all'
     tests.run(cmd, monkeypatch=monkeypatch)
