@@ -30,10 +30,10 @@ def parse(raw: str) -> iamraw.BibliographyReference:
     splitted = split(raw)
     if not splitted:
         return None
-    number, content_ = splitted
-    parsed = content(content_)
+    number, text = splitted
+    parsed = content(text)
     if not parsed:
-        utila.error(f'could not parse reference:number `{content_}`')
+        utila.debug(f'could not parse reference:number `{text}`')
         return None
     parsed.reference = f'[{number}]'
     return parsed
