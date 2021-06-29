@@ -46,7 +46,9 @@ SPLITTER = re.compile(
         (\d{1,4})
     \]
     [ ]{0,4}
-""", re.X | re.DOTALL)
+    """,
+    re.X | re.DOTALL,
+)
 
 
 def split(raw: str) -> tuple:
@@ -81,7 +83,9 @@ PATTERN = re.compile(
     (?P<year>\d{4})
     [ ]{0,3}
     \.{0,1}
-    """, re.X | re.DOTALL)
+    """,
+    re.X | re.DOTALL,
+)
 
 
 def content(
