@@ -101,19 +101,25 @@ def content(
     BibliographyReference(title='Computer Vision'...year=2002,...)
     """
     parsed = PATTERN.search(raw)
-    if not parsed:
-        return None
-    authors = parsed['authors']
-    authors = authors.replace('and', ' ')
-    authors = german.authors(authors)
-    authors = german.authors_decide(authors)
-    year = int(parsed['year'])
+    if parsed:
+        authors = parsed['authors']
+        authors = authors.replace('and', ' ')
+        authors = german.authors(authors)
+        authors = german.authors_decide(authors)
+        year = int(parsed['year'])
+        middle = parsed['middle']
+        raw = utila.extract_match(parsed)
+    else:
+        # backup strategy
+        authors, middle = search_author(raw)
+        if not authors:
+            return None
+        year = None
     result = iamraw.BibliographyReference(
         authors=authors,
         year=year,
-        raw=utila.extract_match(parsed),
+        raw=raw,
     )
-    middle = parsed['middle']
     if middle:
         try:
             title, middle = middle.split('.', maxsplit=1)
@@ -124,3 +130,26 @@ def content(
             result.title = title
         result.data = middle.strip()
     return result
+
+
+def search_author(raw: str):
+    """\
+    >>> search_author('N. Jakob, S. H. Weber, M. C. Müller, I. Gurevych, „Beyond the stars: exploiting free-text“')
+    ([Person(name='Jakob', firstname='N.',...ing free-text“')
+    """
+    # TODO: HACK Y COLLECTOR
+    possible_endings = utila.findindex(raw, ' ')
+    best = []
+    for index in possible_endings:
+        text = raw[0:index].replace(',', ';')
+        authors = german.authors(text)
+        authors = [item[0].split() for item in authors]
+        authors = german.authors_decide(authors)
+        # remove noperson
+        authors = [item for item in authors if isinstance(item, iamraw.Person)]
+        if len(authors) > len(best):
+            best = authors
+    for item in best:
+        raw = raw.replace(item.raw, '')
+    raw = raw.strip(',;: ')
+    return best, raw
