@@ -17,6 +17,11 @@ Morphological Watersheds. Pattern Recognition, 29(10):1673 – 1687, 1996.
 [3] W. Bailer, F. Höller, A. Messina, D. Airola, P. Schallauer, and M.
 Hausenblas. State of the Art of Content Analysis Tools for Video, Audio
 and Speech. Technical report, Presto Space, 3 2005.
+
+>>> len(content('R. Chougule, D. Rajpathak, P. Bandyopadhyay, „An integrated based-reasoning“, '
+... 'Computers in Industry, Bd. 62, Nr. 7, S. 742–754, 2011, issn: 0166-3615.').authors)
+3
+
 """
 
 import re
@@ -69,12 +74,12 @@ PATTERN = re.compile(
     r"""^
     (?P<authors>
         (
-            (\w\.[ ]{0,3}){1,2}        # short first name
-            \w{2,}                     # last name
-            (\,|\.){0,1}               # optional separator between authors
-            ([ ]{0,3}and[ ]{0,3}){0,1} # optional and before last author
+            (\w\.[ ]{0,3}){1,2}             # short first name
+            \w{2,}                          # last name
+            (\,|\.){0,1}                    # optional separator between authors
+            ([ ]{0,3}\band\b[ ]{0,3}){0,1}  # optional and before last author
             [ ]{0,3}
-        ){1,}                          # more than one author
+        ){1,}                               # more than one author
     )
     [ ]{0,3}
     (?P<middle>.+?)
@@ -103,7 +108,7 @@ def content(
     parsed = PATTERN.search(raw)
     if parsed:
         authors = parsed['authors']
-        authors = authors.replace('and', ' ')
+        authors = re.sub(r'\band\b', ' ', authors)
         authors = german.authors(authors)
         authors = german.authors_decide(authors)
         year = int(parsed['year'])
