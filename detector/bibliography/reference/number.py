@@ -140,8 +140,13 @@ def content(
 
 
 def improve_raw(authors: str) -> str:
+    """\
+    >>> improve_raw('Grunwald Armin; Gerhard Banse; Christopher Coenen und Leonhard Hennen')
+    'Grunwald Armin; Gerhard Banse; Christopher Coenen ; Leonhard Hennen'
+    """
     separator = ',' if authors.count(',') >= authors.count(';') else ';'
-    authors = re.sub(r'\band\b', f' {separator} ', authors)
+    authors = re.sub(r'\band\b', f'{separator}', authors)
+    authors = re.sub(r'\bund\b', f'{separator}', authors)
     authors = authors.strip(',; ')
     return authors
 
