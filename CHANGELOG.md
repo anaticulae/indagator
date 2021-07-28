@@ -2,6 +2,21 @@
 
 Every noteable change is logged here.
 
+## v0.24.0
+
+### Feature
+
+* replace and/und with separator (60f7cbc5eb4a)
+* improve bib number parser (503626232939)
+* merge multiple NoPerson's (a5f563f33841)
+* add quotes extractor (b953d8f20967)
+* add strategy to search authors (afca0e44b67b)
+* reduce verbosity (2ed6f93b4c14)
+
+### Fix
+
+* do not hand `and` in authors as separator (190f423762c2)
+
 ## v0.23.0
 
 ### Feature
