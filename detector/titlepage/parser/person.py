@@ -54,6 +54,12 @@ def parse(raw: str) -> iamraw.Person:
 
 
 def parse_pattern(raw: str) -> iamraw.Person:
+    """\
+    >>> parse_pattern('Gutachter: Prof. em. Dr.-Ing. Dr.-Ing. E.h. Herbert Reichl, TU Berlin').raw
+    'Gutachter: Prof. em. Dr.-Ing. Dr.-Ing. E.h. Herbert Reichl'
+    >>> parse_pattern('Gutachter: Prof. Dr.-Ing. Dr. sc. techn. Klaus-Dieter Lang, TU Berlin').raw
+    'Gutachter: Prof. Dr.-Ing. Dr. sc. techn. Klaus-Dieter Lang'
+    """
     parsed = re.search(PATTERN, raw, re.X)
     if not parsed:
         return None
@@ -206,6 +212,7 @@ EXAMINER = '|'.join([
     r'Erstgutachter(in)?',
     r'Betreuung',
     r'Gutachter(in)?',
+    r'Vorsitzende(r)?',
     r'Hochschullehrer(in)?',
     r'Zweitgutachter(in)?',
     # [\s|:] to avoid confusing 'Prof. Dr. Theo Wil'
@@ -216,7 +223,7 @@ EXAMINER = '|'.join([
     r'^',
 ])
 PERSON_TITLE = create_person_title_pattern()
-PERSON_NAME = r'(?P<fname>([A-Z]\.[ ]?|\w+[ ]?){1,5})[ ](?P<name>[\w|-]+)'
+PERSON_NAME = r'(?P<fname>([A-Z]\.[ ]?|\w+(-|\ )?){1,5})[ ](?P<name>[\w|-]+)'
 
 # pattern can be spread over more than one line
 PATTERN = rf"""
@@ -328,6 +335,7 @@ EXAMINERS = (
     iamraw.AcademicTitle.DR,
     iamraw.AcademicTitle.EXAMINIER,
     iamraw.AcademicTitle.PROF,
+    iamraw.PROF_DR,
 )
 
 
