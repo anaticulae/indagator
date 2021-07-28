@@ -177,6 +177,7 @@ def create_with_title_pattern():
         r'Zweitprüfer(in)?',
         r'Primary Supervisor',
         r'Secondary Supervisor',
+        r'vorgelegt von Diplom-Ingenieur',
         r'vorgelegt von',
         r'angefertigt von',
         r'by',

@@ -94,6 +94,7 @@ def bachelor109(titlepage: iamraw.TitlePage):
 
 def diss143(titlepage: iamraw.TitlePage):
     assert titlepage
+    assert titlepage.author
     assert titlepage.examiner
     assert len(titlepage.examiner) == 4
 
