@@ -214,9 +214,9 @@ def select_authors(matched):
     authors: str = matched['authors']
     # backup strategy for solving typos
     authors = authors.replace(':', '.')
-    authors = german.authors(authors)
+    authors = german.authors(authors, verbose=True)
     # decide non person authors
-    authors = german.authors_decide(authors)
+    authors = german.authors_decide(*authors)
     return authors
 
 
