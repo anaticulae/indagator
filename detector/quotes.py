@@ -31,7 +31,7 @@ SINGLE = '‘’‚'
 DOUBLE = '„“”'
 
 
-def count_quotation_error(quotation, lang=None) -> int:
+def count_quotation_error(quotation, lang=None) -> int:  # pylint:disable=W0613
     failure = 0
     start, end = quotation[0], quotation[-1]
     if end == '„':
