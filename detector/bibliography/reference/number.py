@@ -30,6 +30,8 @@ import german
 import iamraw
 import utila
 
+import detector.quotes
+
 
 def parse(raw: str) -> iamraw.BibliographyReference:
     splitted = split(raw)
@@ -108,7 +110,7 @@ def content(
     parsed = PATTERN.search(raw)
     if parsed:
         authors = parsed['authors']
-        authors = re.sub(r'\band\b', ' ', authors)
+        authors = improve_raw(authors)
         authors = german.authors(authors)
         authors = german.authors_decide(authors)
         year = int(parsed['year'])
@@ -137,19 +139,27 @@ def content(
     return result
 
 
+def improve_raw(authors: str) -> str:
+    separator = ',' if authors.count(',') >= authors.count(';') else ';'
+    authors = re.sub(r'\band\b', f' {separator} ', authors)
+    authors = authors.strip(',; ')
+    return authors
+
+
 def search_author(raw: str):
     """\
     >>> search_author('N. Jakob, S. H. Weber, M. C. Müller, I. Gurevych, „Beyond the stars: exploiting free-text“')
     ([Person(name='Jakob', firstname='N.',...ing free-text“')
     """
+    removed = detector.quotes.before_first_quote(raw)
     # TODO: HACK Y COLLECTOR
-    possible_endings = utila.findindex(raw, ' ')
+    possible_endings = utila.findindex(removed, ' ')
     best = []
     for index in possible_endings:
-        text = raw[0:index].replace(',', ';')
+        text = removed[0:index].replace(',', ';')
         authors = german.authors(text)
         authors = [item[0].split() for item in authors]
-        authors = german.authors_decide(authors)
+        authors: list = german.authors_decide(authors)
         # remove noperson
         authors = [item for item in authors if isinstance(item, iamraw.Person)]
         if len(authors) > len(best):

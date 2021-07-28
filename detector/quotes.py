@@ -52,12 +52,11 @@ def first_quote(text: str) -> int:
     return first
 
 
-def remove_quotes(text: str, starting: int = 15) -> str:
+def before_first_quote(text: str, starting: int = 15) -> str:
     parsed = collect_quotations(text)
     if not parsed:
         return text
-    if first_quote(text) < starting:
+    first = first_quote(text)
+    if first < starting:
         return text
-    for quote, _, __ in parsed:
-        text = text.replace(quote, ' ', count=1)
-    return text
+    return text[0:first]
