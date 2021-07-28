@@ -197,11 +197,12 @@ bearb. Aufl.. Mannheim et al.: Dudenverlag. (Der Duden Bd. 1)
 """.split('\n\n')
 
 
+# yapf:disable
 @pytest.mark.parametrize('text, title, authors, pages, year, publisher', [
     pytest.param(
         LONGTEXT_NOPERSON[0],
         None,
-        [iamraw.NoPerson(confidence=None, raw='Deutsche Norm DIN 1422 Teil 1')],
+        [iamraw.NoPerson(confidence=None, raw='Deutsche Norm DIN 1422, Teil 1')],
         None,
         1983,
         None,
@@ -217,6 +218,7 @@ bearb. Aufl.. Mannheim et al.: Dudenverlag. (Der Duden Bd. 1)
         id='duden2004',
     ),
 ])
+# yapf:enable
 def test_parse_freeand_noperson(text, title, authors, pages, year, publisher):  # pylint:disable=W0613
     extracted = freeand.parse_longtext(text)
     assert extracted
