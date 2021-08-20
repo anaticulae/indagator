@@ -37,10 +37,10 @@ def test_parse_master116_page23():
 
 
 def test_parse_docu09():
-    content = formulas(source=power.DOCU09_PDF, page=0)
+    content = formulas(source=power.DOCU009_PDF, page=0)
     assert not content
 
 
 def test_parse_docu07():
-    content = formulas(source=power.DOCU07_PDF, page=0)
+    content = formulas(source=power.DOCU007_PDF, page=0)
     assert not content

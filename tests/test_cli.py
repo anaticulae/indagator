@@ -26,9 +26,9 @@ def test_detector_misc(cmd, monkeypatch, capsys):
 
 
 @pytest.mark.parametrize('source', [
-    pytest.param(power.DOCU07_PDF, id='howto_pyporting'),
-    pytest.param(power.DOCU09_PDF, id='pyporting'),
-    pytest.param(power.DOCU27_PDF, id='restructured'),
+    pytest.param(power.DOCU007_PDF, id='howto_pyporting'),
+    pytest.param(power.DOCU009_PDF, id='pyporting'),
+    pytest.param(power.DOCU027_PDF, id='restructured'),
 ])
 @utilatest.longrun
 def test_detector_run_work(source, testdir, monkeypatch, capsys):

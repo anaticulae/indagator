@@ -24,15 +24,15 @@ import detector.titlepage.strategy
 
 
 @utilatest.longrun
-@utilatest.requires(power.DOCU07_PDF, folder='oneline')
+@utilatest.requires(power.DOCU007_PDF, folder='oneline')
 def test_titlepage_parser():
     extracted = detector.feature.titlepage.work(
         iamraw.path.text(
-            power.link(power.DOCU07_PDF),
+            power.link(power.DOCU007_PDF),
             prefix='oneline',
         ),
         iamraw.path.textposition(
-            power.link(power.DOCU07_PDF),
+            power.link(power.DOCU007_PDF),
             prefix='oneline',
         ),
     )

@@ -28,7 +28,7 @@ RESOURCES = [
     (power.MASTER116_PDF, '0:25,97,98,99,100'),
     (power.MASTER098_PDF, None),
     (power.MASTER075_PDF, None),
-    (power.DOCU27_PDF, None),
+    (power.DOCU027_PDF, None),
     (power.DISS266_PDF, '0,212:251'),
     (power.BACHELOR090_PDF, '0:5,84:90'),
     (power.MASTER110_PDF, '90:110'),
@@ -41,8 +41,8 @@ RESOURCES = [
     (power.BACHELOR109_PDF, '0:5,70:80'),
     (power.MASTER072_PDF, '0:10'),
     (power.BACHELOR063_PDF, '0:9,59:62'),
-    (power.DOCU07_PDF, None),
-    (power.DOCU09_PDF, None),
+    (power.DOCU007_PDF, None),
+    (power.DOCU009_PDF, None),
     (power.BACHELOR128_PDF, '96:103'),
     (power.HOME050_PDF, '0:10'),
     (power.BACHELOR241_PDF, '0:10'),
@@ -60,11 +60,11 @@ RESOURCES = [
 ]
 
 RESOURCES_NOTITLE = [
-    power.DOCU07_PDF,
+    power.DOCU007_PDF,
     power.MASTER078_PDF,
     power.MASTER072_PDF,
-    power.DOCU09_PDF,
-    power.DOCU27_PDF,
+    power.DOCU009_PDF,
+    power.DOCU027_PDF,
 ]
 
 
