@@ -15,7 +15,6 @@ import utilatest
 
 import detector.path
 import tests
-import tests.resources
 
 
 def bachelor37(titlepage: iamraw.TitlePage):
