@@ -97,8 +97,9 @@ def parse_person_after(raw: str) -> iamraw.Person:
 
 
 def parse_person_without_title(raw: str) -> iamraw.Person:
-    """Parse `Person`s without any academic title. In general, this is
-    the author of the document.
+    """Parse `Person`s without any academic title.
+
+    In general, this is the author of the document.
 
     Hint:
         Examiner must have an academic title, but in some thesis this is not
@@ -108,17 +109,16 @@ def parse_person_without_title(raw: str) -> iamraw.Person:
     matched = re.search(PERSON_WITHOUT_TITLE_PATTERN, raw)
     if not matched:
         return None
+    # TODO: SUPPORT SINGLE NAME?
+    # TODO: LINT TO VERIFY PRE AND SUR NAME
+    # TODO: REMOVE , after improving regex
+    names = matched['names'].replace(',', '')
     try:
-        # TODO: SUPPORT SINGLE NAME?
-        # TODO: LINT TO VERIFY PRE AND SUR NAME
-        # TODO: REMOVE , after improving regex
-        names = matched['names'].replace(',', '')
         firstname, name = names.rsplit(' ', maxsplit=1)
     except ValueError:
-        utila.error(f'could not split: {matched["names"]}; {matched}')
+        utila.debug(f'could not split: {matched["names"]}; {matched}')
         return None
     firstname, name = firstname.strip(), name.strip()
-
     title = author_or_examiner(raw)
     result = iamraw.Person(
         title=title,

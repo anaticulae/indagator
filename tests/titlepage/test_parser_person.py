@@ -9,6 +9,8 @@
 
 import iamraw
 import pytest
+import utila
+import utilatest
 
 import detector.titlepage.parser.person
 
@@ -217,11 +219,13 @@ Zweitprüfer: *
 
 
 def test_detector_parser_person_regression(capsys):
-    """The regex matches `Erstprüfer:\n\nZweitprüfer` and fails to
-    extract name."""
+    r"""The regex matches `Erstprüfer:\n\nZweitprüfer` and fails to
+    extract name.
+    """
+    parse_person_without_title = detector.titlepage.parser.person.parse_person_without_title
     # TODO: SOLVE BY BETTER REGEX APPROACH
-    parsed = detector.titlepage.parser.person.parse_person_without_title(
-        BROKEN_INPUT)
+    with utila.level_temp(utila.Level.DEBUG):
+        parsed = parse_person_without_title(BROKEN_INPUT)
     assert not parsed, str(parsed)
-    _, stderr = capsys.readouterr()
-    assert '[ERROR]' in stderr  # TODO: REMOVE LATER
+    stdout = utilatest.stdout(capsys)
+    assert 'could not split' in stdout
