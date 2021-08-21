@@ -55,6 +55,7 @@ def check_master78(titlepage: iamraw.TitlePage):
     assert university == 'Technische Universität Darmstadt', str(university)
     # ensure that author is parsed
     assert titlepage.author
+    assert titlepage.thesis, 'check Dokotorarbeit skipped by figure'
 
 
 def check_116_pages(titlepage: iamraw.TitlePage):
