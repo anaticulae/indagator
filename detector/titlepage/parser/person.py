@@ -31,6 +31,8 @@ import iamraw
 import iamraw.title
 import utila
 
+PERSON_LENGTH_MAX = 70  # TODO: HOLY VALUE
+
 
 def parse(raw: str) -> iamraw.Person:
     """Parse `Person` out of name line
@@ -134,8 +136,8 @@ def parse_person_without_title(raw: str) -> iamraw.Person:
 
 @utila.profile('persons')
 def parse_all(
-        items: list,
-        person_length_max: int = 70,  # TODO: HOLY VALUE
+    items: list,
+    person_length_max: int = PERSON_LENGTH_MAX,
 ) -> list:
     """Parse title content to extract a list of Persons.
 
