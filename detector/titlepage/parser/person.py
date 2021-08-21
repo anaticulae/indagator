@@ -106,27 +106,30 @@ def parse_person_without_title(raw: str) -> iamraw.Person:
         so. Therefore we have to mark it later as an error.
     """
     raw = raw.strip()
-    matched = re.search(PERSON_WITHOUT_TITLE_PATTERN, raw)
-    if not matched:
+    matches = re.finditer(PERSON_WITHOUT_TITLE_PATTERN, raw)
+    if not matches:
         return None
-    # TODO: SUPPORT SINGLE NAME?
-    # TODO: LINT TO VERIFY PRE AND SUR NAME
-    # TODO: REMOVE , after improving regex
-    names = matched['names'].replace(',', '')
-    try:
-        firstname, name = names.rsplit(' ', maxsplit=1)
-    except ValueError:
-        utila.debug(f'could not split: {matched["names"]}; {matched}')
-        return None
-    firstname, name = firstname.strip(), name.strip()
-    title = author_or_examiner(raw)
-    result = iamraw.Person(
-        title=title,
-        name=name,
-        firstname=firstname,
-        raw=utila.extract_match(matched),
-    )
-    return result
+    for matched in matches:
+        # TODO: SUPPORT SINGLE NAME?
+        # TODO: LINT TO VERIFY PRE AND SUR NAME
+        # TODO: REMOVE , after improving regex
+        # TODO: PARSE AND SELECT BEST?
+        names = matched['names'].replace(',', '')
+        try:
+            firstname, name = names.rsplit(' ', maxsplit=1)
+        except ValueError:
+            utila.debug(f'could not split: {matched["names"]}; {matched}')
+            continue
+        firstname, name = firstname.strip(), name.strip()
+        title = author_or_examiner(raw)
+        result = iamraw.Person(
+            title=title,
+            name=name,
+            firstname=firstname,
+            raw=utila.extract_match(matched),
+        )
+        return result
+    return None
 
 
 @utila.profile('persons')
@@ -189,8 +192,8 @@ def create_with_title_pattern():
     preamble = '(' + '|'.join(preamble) + ')'  # pylint:disable=R0204
     between = r'[:]?[\s ]{0,8}'
     name = r'(?P<names>(\w{3,}(\,|\.)?[ ]{0,5}){1,5})\b'
-    pattern = '^' + preamble + between + name +'$'
-    pattern = re.compile(pattern, , re.IGNORECASE | re.M)
+    pattern = '^' + preamble + between + name + '$'
+    pattern = re.compile(pattern, re.I | re.M)
     return pattern
 
 
