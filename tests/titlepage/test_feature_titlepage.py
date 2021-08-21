@@ -49,7 +49,7 @@ def check_72_pages(titlepage: iamraw.TitlePage):
     assert deparment == 'Geisteswissenschaften', str(deparment)
 
 
-def check_78_pages(titlepage: iamraw.TitlePage):
+def check_master78(titlepage: iamraw.TitlePage):
     assert titlepage.thesis.typ == iamraw.DocumentType.MASTER
 
     university = titlepage.institution.university
@@ -95,7 +95,7 @@ def check_bachelor90(titlepage: iamraw.TitlePage):
     ),
     pytest.param(
         power.MASTER078_PDF,
-        check_78_pages,
+        check_master78,
         id='master78',
     ),
     pytest.param(
@@ -103,10 +103,12 @@ def check_bachelor90(titlepage: iamraw.TitlePage):
         check_116_pages,
         id='master116',
     ),
-    pytest.param(power.BACHELOR090_PDF,
-                 check_bachelor90,
-                 id='bachelor90',
-                 marks=pytest.mark.xfail(reason='improve title page parser')),
+    pytest.param(
+        power.BACHELOR090_PDF,
+        check_bachelor90,
+        id='bachelor90',
+        marks=pytest.mark.xfail(reason='improve title page parser'),
+    ),
 ])
 @utilatest.longrun
 def test_detector_feature_titlepage_complete(
@@ -116,12 +118,12 @@ def test_detector_feature_titlepage_complete(
     monkeypatch,
 ):
     """Intergration test to ensure that rawmaker -> detector works correctly."""
-    root = str(testdir)
+    # run rawmaker
     cmd = (f'rawmaker -i {source} --pages=0:5 '
            f'{detector.feature.titlepage.RAWMAKER_CONFIGURATION}')
     utila.run(cmd)
-
-    cmd = f'-i {root} --titlepage'
+    # run detector
+    cmd = f'-i {testdir.tmpdir} --titlepage'
     utilatest.run_command(
         cmd,
         process=detector.cli.PROCESS,
@@ -129,10 +131,10 @@ def test_detector_feature_titlepage_complete(
         success=True,
         monkeypatch=monkeypatch,
     )
-    resultpath = detector.path.titlepage_detected(root)
+    resultpath = detector.path.titlepage_detected(testdir.tmpdir)
     titlepage: iamraw.TitlePage = serializeraw.load_titlepage(resultpath)
     assert titlepage
-
+    # validate result
     checker(titlepage)
 
 
