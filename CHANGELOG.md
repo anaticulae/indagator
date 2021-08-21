@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.25.0
+
+### Feature
+
+* extend person start pattern (f2e4ec8191f6)
+* detect more than the first result (f30e053fcc2f)
+* add line start and end limit (0e1abdd4effe)
+* add student prefix (222d6de401af)
+* improve persons parser (20aeb20dfee2)
+
 ## v0.24.0
 
 ### Feature
