@@ -33,19 +33,19 @@ class TitleParserState(enum.Enum):
     NO_TITLE = enum.auto()
 
 
-NO_TITLES = {
-    'ABSCHLUSSBERICHT',
-    'BACHELORARBEIT',
-    'BERICHT',
-    'DISSERTATION',
-    'DOKTORARBEIT',
-    'DOKTORTHESIS',
-    'MASTERARBEIT',
-    'PRAKTIKUM',
-    'PROJEKTPRAKTIKUM',
-    'STUDIENARBEIT',
-    'THESIS',
-}
+NO_TITLES = utila.splitlines("""
+ABSCHLUSSBERICHT
+BACHELORARBEIT
+BERICHT
+DISSERTATION
+DOKTORARBEIT
+DOKTORTHESIS
+MASTERARBEIT
+PRAKTIKUM
+PROJEKTPRAKTIKUM
+STUDIENARBEIT
+THESIS
+""")
 
 
 @utila.profile('title')
@@ -65,12 +65,9 @@ def parse(textnavigator: texmex.PageTextNavigator) -> str:
     """
     merged = merge(textnavigator)
     sizes = determine_sizes(merged)
-
     if len(sizes) <= 2:
         return TitleParserState.NOT_ENOUGH_LINES
-
     sizes = sorted(sizes, reverse=True)
-
     detected_size = sizes[0][0]
     next_size = sizes[1][0]
     # Title size must be 20% greater
@@ -79,20 +76,16 @@ def parse(textnavigator: texmex.PageTextNavigator) -> str:
                f'detected({detected_size}) next({next_size})')
         utila.info(msg)
         return TitleParserState.NOT_ENOUGH_DISTANCE
-
     if detected_size < MIN_TITLE_FONT_SIZE:
         return TitleParserState.TITLE_TO_SMALL
-
     # TODO: ITER THROW POTENTIAL TITLES AND RUN TOP VERIFICATION
     title = sizes[0][1].replace(utila.NEWLINE, ' ')
     title = title.strip()
-    if title.upper() in NO_TITLES:
+    if title.lower() in NO_TITLES:
         # bachelor
         return TitleParserState.NO_TITLE
-
     if len(title.split()) < MIN_TITLE_WORD_COUNT:
         return TitleParserState.TITLE_TO_SHORT
-
     return title
 
 
