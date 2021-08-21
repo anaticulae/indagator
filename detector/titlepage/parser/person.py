@@ -186,7 +186,7 @@ def create_with_title_pattern():
         r'by',
         r'Name, Vorname',
         r'Referent(in)?',
-        # r'von', # TODO: exclude von in `title`
+        r'von',  # TODO: exclude von in `title`
     ]
     preamble = [fr'(?P<t{index}>{item})' for index, item in enumerate(preamble)]
     preamble = '(' + '|'.join(preamble) + ')'  # pylint:disable=R0204
