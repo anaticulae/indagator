@@ -14,7 +14,7 @@ Global vs Local Optimization
 
 1. Run equal text line distance optimization
 2. TODO: Merge to a single navigator and run optimization
-3. Run seperate optimization for every single page
+3. Run separate optimization for every single page
 
 """
 

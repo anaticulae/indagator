@@ -342,8 +342,8 @@ EXAMINERS = (
 
 
 def order_persons(persons: list) -> typing.Tuple[iamraw.Person, iamraw.Persons]:
-    """Sort persons by academical rank and return the lowester rang as author
-    and the rest as examier.
+    """Sort persons by academical rang and return the lowest rang as
+    author and the rest as examiner.
 
     Args:
         persons(Persons): list to order

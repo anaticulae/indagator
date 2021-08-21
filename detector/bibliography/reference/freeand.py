@@ -113,9 +113,9 @@ AND = r"""
         (?P<simpleyear>\d{4})[ ]{0,2}[a-z]{0,1}[ ]{0,2}:    # see wessels 2007, TODO: DIRTY
         \){0,1}
     )
-    [ ]{0,5}                      # remove trailing whitespaces
+    [ ]{0,5}                      # remove trailing white spaces
     [:\.]{0,1}                    # remove dot or colon
-    [ ]{0,5}                      # remove trailing whitespaces
+    [ ]{0,5}                      # remove trailing white spaces
     (?P<content>.+)
 """
 

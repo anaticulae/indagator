@@ -101,9 +101,8 @@ def merge(items):
         return []
     # remove `white space lines`
     # empty lines produces a problem, cause there have the length zero.
-    # this zero lengths produces an error in textsize calculation.
+    # this zero lengths produces an error in text size calculation.
     items = [item for item in items if item.text]
-
     max_distance = 20  # TODO HOLY VALUE
     max_font_distance = 0.5  # TODO HOLY VALUE
     merged = [[items[0]]]

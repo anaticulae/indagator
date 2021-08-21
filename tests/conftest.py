@@ -23,7 +23,7 @@ WORKER = 4
 
 # Put long documents first! If we have the long documents at the end, the
 # scheduler gets hungry in the end and runs with low cpu load.
-# NOTE: This schedule is orderd by the required runtime on my computer.
+# NOTE: This schedule is ordered by the required runtime on my computer.
 RESOURCES = [
     (power.MASTER116_PDF, '0:25,97,98,99,100'),
     (power.MASTER098_PDF, None),

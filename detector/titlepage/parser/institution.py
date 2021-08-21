@@ -102,7 +102,7 @@ INSTITUTE = [
 ]
 
 DEPARTMENT = [
-    # TODO: Think about chaning in parser, special character?
+    # TODO: Think about chaining in parser, special character?
     # 2 different minus signs
     'Fakultat I –',
     'Fakultat I -',
@@ -134,7 +134,7 @@ COURSES = [
     'Studiengang',
 ]
 
-# TODO: Load from dictonary
+# TODO: Load from dictionary
 UNIVERSITIES = [
     'Duale Hochschule Baden-Würtemberg',
     'Freie Universität Berlin',
@@ -153,12 +153,12 @@ UNIVERSITIES = [
 
 
 def find_institution(raw) -> str:
-    """Check that `institution` is in UNIVERSITIES dictonary.
+    """Check that `institution` is in UNIVERSITIES dictionary.
 
     Args:
         raw(str): page text content
     Returns:
-        None if `institution` is in dictonary else collected
+        None if `institution` is in dictionary else collected
 
     TODO: Use difflib to improve collecting approach
     """

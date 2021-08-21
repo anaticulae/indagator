@@ -70,7 +70,6 @@ def check_116_pages(titlepage: iamraw.TitlePage):
     expected_title = ('Modellierung und Simulation eines hybriden '
                       'Lokomotivantriebs mit elektrischem Stufenlosgetriebe')
     assert utila.normalize_whitespaces(titlepage.title) == expected_title
-
     # TODO: Activate later
     author = iamraw.Person(
         'Fahrendholz',
@@ -117,7 +116,7 @@ def test_detector_feature_titlepage_complete(
     testdir,
     monkeypatch,
 ):
-    """Intergration test to ensure that rawmaker -> detector works correctly."""
+    """Integration test to ensure that rawmaker -> detector works correctly."""
     # run rawmaker
     cmd = (f'rawmaker -i {source} --pages=0:5 '
            f'{detector.feature.titlepage.RAWMAKER_CONFIGURATION}')

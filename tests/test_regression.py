@@ -17,7 +17,7 @@ import tests
 @utilatest.longrun
 @utilatest.requires(power.BACHELOR090_PDF)
 def test_regression_detector(testdir, monkeypatch):
-    """Start with whitepage that leads to some trouble with empty
+    """Start with white page that leads to some trouble with empty
     navigators and problems to detect title page"""
     pattern = '[rawmaker|groupme]*.yaml'
     utila.copy_content(

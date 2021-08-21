@@ -37,7 +37,7 @@ def judge(pages: list) -> list:
             invalid += 1
     # determine invalid ratio
     ratio = invalid / counted
-    # use greather instead of greather equal to pass zero findings with
+    # use greater instead of greater equal to pass zero findings with
     # ration 0.0 and allowed ratio of 0.0
     if ratio > INVALID_MAX(counted):
         # invalid result
