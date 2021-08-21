@@ -188,8 +188,9 @@ def create_with_title_pattern():
     preamble = [fr'(?P<t{index}>{item})' for index, item in enumerate(preamble)]
     preamble = '(' + '|'.join(preamble) + ')'  # pylint:disable=R0204
     between = r'[:]?[\s ]{0,8}'
-    name = r'(?P<names>(\w+(\,|\.)?[ ]{0,5}){1,5})\b'
-    pattern = re.compile(preamble + between + name, re.IGNORECASE)
+    name = r'(?P<names>(\w{3,}(\,|\.)?[ ]{0,5}){1,5})\b'
+    pattern = '^' + preamble + between + name +'$'
+    pattern = re.compile(pattern, , re.IGNORECASE | re.M)
     return pattern
 
 
