@@ -30,10 +30,10 @@ class TitleParserState(enum.Enum):
     NOT_ENOUGH_DISTANCE = enum.auto()
     TITLE_TO_SMALL = enum.auto()
     TITLE_TO_SHORT = enum.auto()
-    TITLE_BLACKLIST = enum.auto()
+    NO_TITLE = enum.auto()
 
 
-TITLE_BLACKLIST = {
+NO_TITLES = {
     'ABSCHLUSSBERICHT',
     'BACHELORARBEIT',
     'BERICHT',
@@ -86,9 +86,9 @@ def parse(textnavigator: texmex.PageTextNavigator) -> str:
     # TODO: ITER THROW POTENTIAL TITLES AND RUN TOP VERIFICATION
     title = sizes[0][1].replace(utila.NEWLINE, ' ')
     title = title.strip()
-    if title.upper() in TITLE_BLACKLIST:
+    if title.upper() in NO_TITLES:
         # bachelor
-        return TitleParserState.TITLE_BLACKLIST
+        return TitleParserState.NO_TITLE
 
     if len(title.split()) < MIN_TITLE_WORD_COUNT:
         return TitleParserState.TITLE_TO_SHORT
