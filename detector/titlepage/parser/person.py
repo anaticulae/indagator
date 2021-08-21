@@ -277,23 +277,24 @@ def valid_title(title: str) -> bool:
     return True
 
 
-TITLE_INVALID = {
-    'geb.',
-}
+TITLE_INVALID = utila.splitlines("""
+GEB.
+""")
 
 AUTHOR_INTRO = utila.splitlines("""
-angefertigt
-autor
-verfasser
-vorgelegt
+VON
+ANGEFERTIGT
+AUTOR
+VERFASSER
+VORGELEGT
 """)
 
 EXAMINER_INTRO = utila.splitlines("""
-betreuer
-gutachter
-prüfer
-referent
-supervisor
+BETREUER
+GUTACHTER
+PRÜFER
+REFERENT
+SUPERVISOR
 """)
 
 
