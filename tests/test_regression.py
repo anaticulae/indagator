@@ -11,6 +11,8 @@ import power
 import utila
 import utilatest
 
+import tests
+
 
 @utilatest.longrun
 @utilatest.requires(power.BACHELOR090_PDF)
