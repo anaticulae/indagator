@@ -66,7 +66,7 @@ def parse_pattern(raw: str) -> iamraw.Person:
     title = extract_title(parsed)
     if not title:
         return None
-    title = merge_title(title)
+    title = iamraw.AcademicTitle.merges(title)
     name, firstname = parsed['name'], parsed['fname']
     raw = utila.extract_match(parsed)
     person = iamraw.Person(title=title, name=name, firstname=firstname, raw=raw)
@@ -85,7 +85,7 @@ def parse_person_after(raw: str) -> iamraw.Person:
     title = extract_title(parsed)
     if not title:
         return None
-    title = merge_title(title)
+    title = iamraw.AcademicTitle.merges(title)
     name, firstname = parsed['name'], parsed['fname']
     if name.lower() in ('master', 'of', 'science'):
         # skip false positive detection
@@ -313,18 +313,6 @@ def author_or_examiner(raw: str) -> iamraw.AcademicTitle:
     if any(item in raw for item in EXAMINER_INTRO):
         return iamraw.AcademicTitle.EXAMINIER
     return iamraw.AcademicTitle.NO_TITLE
-
-
-def merge_title(items) -> iamraw.AcademicTitle:
-    # TODO: REPLACE WITH IAMRAW CODE
-    if not items:
-        return None
-    result = items[0]
-    for item in items:
-        if not item:
-            continue
-        result |= item
-    return result
 
 
 def lookbehind(rest):
