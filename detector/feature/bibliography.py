@@ -28,10 +28,8 @@ def work(
     else:
         # analyze all pages
         pageslist = [None]
-
     if len(pageslist) > 1:
         utila.log(f'more than one potential bib section: {len(pageslist)}')
-
     result = []
     for selected in pageslist:
         textnavigators = serializeraw.ptcn_fromfile(
@@ -48,17 +46,15 @@ def work(
             headerfooterpath,
             pages=selected,
         )
-
         extracted = detector.bibliography.strategy.extracts(
             textnavigators,
             onelines,
         )
         result.append(extracted)
-
     # select best bib ref
     best = utila.longest(result)
     # remove None items
     best = [utila.notnone(page) for page in best]
-
+    # dump result
     dumped = serializeraw.dump_bibliography_reference(best)
     return dumped
