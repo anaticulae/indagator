@@ -6,12 +6,17 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+"""\
+>>> parse('   vorgelegt von   Thomas Helmer  ')
+Person(name='Helmer', firstname='Thomas'...STUDENT...raw='vorgelegt von   Thomas Helmer')
+"""
 
 import re
 
 import iamraw
 import utila
 
+import detector.titlepage.parser.persons.person
 import detector.titlepage.parser.persons.utils
 
 
@@ -52,24 +57,16 @@ def parse(raw: str) -> iamraw.Person:
 
 
 def create_with_title_pattern():
-    # TODO: Keep attention to the list below. Refactor later
+    positions = utila.splitlines(
+        detector.titlepage.parser.persons.person.PERSONS,
+        lowers=False,
+    )
+    # TODO: REMOVE AFTER UPGRADING UTILA
+    positions = utila.notempty(positions)
     preamble = [
-        r'Erstprüfer(in)?',  # TODO: Remove this later
-        r'Autor(in)?',
-        r'Verfasser(in)?',
-        r'Zweitprüfer(in)?',
-        r'Primary Supervisor',
-        r'Secondary Supervisor',
-        r'vorgelegt von Diplom-Ingenieur',
-        r'vorgelegt von',
-        r'angefertigt von',
-        r'by',
-        r'Name, Vorname',
-        r'Referent(in)?',
-        r'von',  # TODO: exclude von in `title`
+        fr'(?P<t{index}>{item})' for index, item in enumerate(positions)
     ]
-    preamble = [fr'(?P<t{index}>{item})' for index, item in enumerate(preamble)]
-    preamble = '(' + '|'.join(preamble) + ')'  # pylint:disable=R0204
+    preamble: str = '(' + '|'.join(preamble) + ')'
     between = r'[:]?[\s ]{0,8}'
     name = r'(?P<names>(\w{3,}(\,|\.)?[ ]{0,5}){1,5})\b'
     pattern = '^' + preamble + between + name + '$'

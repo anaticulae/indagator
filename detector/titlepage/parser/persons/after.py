@@ -62,7 +62,7 @@ VORGELEGT
 # TODO: SUPPORT PARSING DOUBLE PRE NAME
 # TODO: VERIFY HERR/FRAU PATTERN
 # Parses: Examiner: Hemut Konrad, M.A.
-EXAMINER = detector.titlepage.parser.persons.person.EXAMINER
+EXAMINER = detector.titlepage.parser.persons.person.INTRO
 ACADEMIC_TITLE = r'(M\.[ ]?A\.?\B|DIPL\.[ ]PSYCH\.([ ]FH)?|\(?M\.[ ]?Sc\.\)?)'
 PATTERN_PERSON_AFTER = rf"""
     (?P<examiner>({EXAMINER})[:]?\s?)

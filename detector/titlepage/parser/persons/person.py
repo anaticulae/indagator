@@ -50,27 +50,46 @@ def create_person_title_pattern() -> str:
     return joined
 
 
-EXAMINER = '|'.join([
-    # it's important to limit parsing length to avoid very long running parsing
-    r'(\d\.\s?)?Betreuer(in)?[ ]{0,3}(extern)?',
-    r'Erstgutachter(in)?',
-    r'Betreuung',
-    r'Gutachter(in)?',
-    r'Vorsitzende(r)?',
-    r'Hochschullehrer(in)?',
-    r'Zweitgutachter(in)?',
-    # [\s|:] to avoid confusing 'Prof. Dr. Theo Wil'
-    r'(\w+\s?){1,4}?[\s|:]',
-    r'Primary Supervisor',
-    r'Secondary Supervisor',
-    r'Referent(in)?',
-    r'^',
-])
+EXAMINERS = r"""
+(\d\.\s?)?Betreuer(in)?[ ]{0,3}(extern)?
+Betreuung
+Erstgutachter(in)?
+Erstprüfer(in)?
+Gutachter(in)?
+Hochschullehrer(in)?
+Primary Supervisor
+Referent(in)?
+Secondary Supervisor
+Vorsitzende(r)?
+Zweitgutachter(in)?
+Zweitprüfer(in)?
+"""
+
+MAGICS = r"""
+(\w+\s?){1,4}?[\s|:]
+^
+"""
+
+AUTHORS = r"""
+Autor(in)?
+Name, Vorname
+Referent(in)?
+Verfasser(in)?
+angefertigt von
+by
+vorgelegt von Diplom-Ingenieur
+vorgelegt von
+von
+"""
+
+PERSONS = EXAMINERS + AUTHORS
+POSITIONS = utila.splitlines(PERSONS + MAGICS, lowers=False)
+INTRO = '|'.join(POSITIONS)
 PERSON_TITLE = create_person_title_pattern()
 PERSON_NAME = r'(?P<fname>([A-Z]\.[ ]?|\w+(-|\ )?){1,5})[ ](?P<name>[\w|-]+)'
 # pattern can be spread over more than one line
 PATTERN = rf"""
-    (?P<examiner>({EXAMINER})[:]?\s?)?
+    (?P<examiner>({INTRO})[:]?\s?)?
     ([ ]{0,4}(Herr|Frau)[ ]{0,4})?
     ({PERSON_TITLE}[ ]*)+\s?
     {PERSON_NAME}
