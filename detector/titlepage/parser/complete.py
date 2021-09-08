@@ -40,8 +40,9 @@ def parse(text: texmex.PageTextNavigator) -> iamraw.TitlePage:
     text = clean_text(text)
 
     if isinstance(title, str):
-        text.replace(title, '')
         result.title = title
+        # hide title to parse only once
+        text = text.replace(title, ' ******************** ')
     else:
         # TODO: check title error lstatus
         pass
