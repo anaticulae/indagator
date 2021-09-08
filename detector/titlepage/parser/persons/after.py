@@ -6,6 +6,15 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+r"""After
+=====
+
+>>> parse('Examiner: Hemut Konrad, M.A.')
+Person(name='Konrad', firstname='Hemut',...MASTER...raw='Examiner: Hemut Konrad, M.A.')
+
+DONT:
+>>> parse('vorgelegt von\nM. Sc.\nJakob Vinzenz Kirchner')
+"""
 
 import re
 
@@ -31,14 +40,23 @@ def parse(raw: str) -> iamraw.Person:
         return None
     title = iamraw.AcademicTitle.merges(title)
     name, firstname = parsed['name'], parsed['fname']
-    if name.lower() in ('master', 'of', 'science'):
+
+    if name.lower() in NONAME or firstname.lower() in NONAME:
         # skip false positive detection
         # Master of Science (M. Sc.)
         return None
     raw = utila.extract_match(parsed)
-    person = iamraw.Person(title=title, name=name, firstname=firstname, raw=raw)
-    return person
+    result = iamraw.Person(title=title, name=name, firstname=firstname, raw=raw)
+    return result
 
+
+NONAME = utila.splitlines("""\
+MASTER
+OF
+SCIENCE
+VON
+VORGELEGT
+""")
 
 # TODO: IMPROVE THIS
 # TODO: SUPPORT PARSING DOUBLE PRE NAME
