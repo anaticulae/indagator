@@ -6,6 +6,10 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+r"""\
+>>> parse('vorgelegt von\nM.Sc.\nJakob Vinzenz Kirchner')
+Person(name='Kirchner'...MASTER:...raw='vorgelegt von\nM.Sc.\nJakob Vinzenz Kirchner')
+"""
 
 import re
 
@@ -36,11 +40,11 @@ def parse(raw: str) -> iamraw.Person:
 
 
 def create_person_title_pattern() -> str:
-    keys = [
-        item.replace('.', r'\.').replace(' ', '[ ]')
-        for item in iamraw.AcademicTitle.keys()
-        if item
-    ]
+    keys = list(iamraw.AcademicTitle.keys())
+    # make regex able and insert optional white space to dots 'M.Sc.' and 'M. Sc.'
+    keys = [item.replace('.', r'\. {0,3}') for item in keys]
+    # convert whte spaces
+    keys = [item.replace(' ', '[ ]') for item in keys]
     result = (fr'(?P<t{index}>{item})[ ]?' for index, item in enumerate(keys))
     joined = '|'.join(result)
     return joined
