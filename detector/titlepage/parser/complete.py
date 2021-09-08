@@ -18,8 +18,8 @@ from detector.titlepage.parser import textblock_token
 from detector.titlepage.parser.date import parse as parse_date
 from detector.titlepage.parser.institution import parse as parse_institution
 from detector.titlepage.parser.matrikel import parse as parse_matrikel
-from detector.titlepage.parser.person import order_persons
-from detector.titlepage.parser.person import parse_all as parse_person_all
+from detector.titlepage.parser.persons.strategy import parse as parse_person_all
+from detector.titlepage.parser.persons.utils import order_persons
 from detector.titlepage.parser.thesis import parse as parse_thesis
 from detector.titlepage.parser.title import parse as parse_title
 

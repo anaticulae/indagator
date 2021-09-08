@@ -1,0 +1,54 @@
+# =============================================================================
+# C O P Y R I G H T
+# -----------------------------------------------------------------------------
+# Copyright (c) 2021 by Helmut Konrad Fahrendholz. All rights reserved.
+# This file is property of Helmut Konrad Fahrendholz. Any unauthorized copy,
+# use or distribution is an offensive act against international law and may
+# be prosecuted under federal law. Its content is company confidential.
+# =============================================================================
+
+import re
+
+import iamraw
+import iamraw.title
+import utila
+
+import detector.titlepage.parser.persons.person
+import detector.titlepage.parser.persons.utils
+
+
+def parse(raw: str) -> iamraw.Person:
+    """\
+    >>> parse('Betreuer extern :  Eduard  Wagner (M. Sc.)').title
+    <AcademicTitle.MASTER: 8>
+    """
+    raw = utila.normalize_whitespaces(raw)  # TODO: REMOVE LATER?
+    parsed = re.search(PATTERN_PERSON_AFTER, raw, re.VERBOSE | re.IGNORECASE)
+    if not parsed:
+        return None
+    title = detector.titlepage.parser.persons.utils.extract_title(parsed)
+    if not title:
+        return None
+    title = iamraw.AcademicTitle.merges(title)
+    name, firstname = parsed['name'], parsed['fname']
+    if name.lower() in ('master', 'of', 'science'):
+        # skip false positive detection
+        # Master of Science (M. Sc.)
+        return None
+    raw = utila.extract_match(parsed)
+    person = iamraw.Person(title=title, name=name, firstname=firstname, raw=raw)
+    return person
+
+
+# TODO: IMPROVE THIS
+# TODO: SUPPORT PARSING DOUBLE PRE NAME
+# TODO: VERIFY HERR/FRAU PATTERN
+# Parses: Examiner: Hemut Konrad, M.A.
+EXAMINER = detector.titlepage.parser.persons.person.EXAMINER
+ACADEMIC_TITLE = r'(M\.[ ]?A\.?\B|DIPL\.[ ]PSYCH\.([ ]FH)?|\(?M\.[ ]?Sc\.\)?)'
+PATTERN_PERSON_AFTER = rf"""
+    (?P<examiner>({EXAMINER})[:]?\s?)
+    ([ ]{0,4}(Herr|Frau)?[ ]{0,4})?
+    (?P<fname>(\w+[ ]?){1,5}?)[ ](?P<name>[\w|-]+)
+    [,]?[ ]{0,3}?(?P<t3>{ACADEMIC_TITLE})
+"""
