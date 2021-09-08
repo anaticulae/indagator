@@ -88,7 +88,16 @@ def check_bachelor90(titlepage: iamraw.TitlePage):
     assert titlepage.title == title
 
 
+def check_diss205(titlepage: iamraw.titlepage):
+    assert titlepage.author.name == 'Kirchner'
+
+
 @pytest.mark.parametrize('source, checker', [
+    pytest.param(
+        power.DISS205_PDF,
+        check_diss205,
+        id='diss205',
+    ),
     pytest.param(
         power.MASTER072_PDF,
         check_72_pages,
