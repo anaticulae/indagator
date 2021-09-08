@@ -34,14 +34,14 @@ def work(
 
     result = []
     for selected in pageslist:
-        textnavigators = serializeraw.create_pagetextcontentnavigators_fromfile(
+        textnavigators = serializeraw.ptcn_fromfile(
             text,
             textpositions,
             sizeandborderpath,
             headerfooterpath,
             pages=selected,
         )
-        onelines = serializeraw.create_pagetextcontentnavigators_fromfile(
+        onelines = serializeraw.ptcn_fromfile(
             oneline_text,
             oneline_textpositions,
             sizeandborderpath,

@@ -70,7 +70,7 @@ SELECTED_PAGES = (0, 1, 2, 3, 4)
 def work(text: str, textpositions: str, pages: tuple = None) -> str:
     # first five pages
     pages = pages if pages else SELECTED_PAGES
-    navigators = serializeraw.create_pagetextnavigators_fromfile(
+    navigators = serializeraw.ptn_fromfile(
         text,
         textpositions,
         pages=pages,

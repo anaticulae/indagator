@@ -23,7 +23,7 @@ def work(
     loaded = serializeraw.load_rawformulas(formula, pages=pages)
     # TODO: ADD SPECIAL ANALYSIS HERE
 
-    ptcns = serializeraw.create_pagetextcontentnavigators_fromfile(
+    ptcns = serializeraw.ptcn_fromfile(
         text,
         textpositions,
         sizeandborder,
