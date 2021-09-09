@@ -2,6 +2,18 @@
 
 Every noteable change is logged here.
 
+## v0.26.0
+
+### Feature
+
+* improve title page parser (33cf7f5542a4)
+* add more potential person intros (c046d47a550b)
+* add option white space in academic title (d2ddef3bad37)
+
+### Fix
+
+* improve person after parser (03ecdef2c5d8)
+
 ## v0.25.0
 
 ### Feature
