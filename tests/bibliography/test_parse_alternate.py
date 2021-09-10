@@ -65,3 +65,18 @@ PARAMETERS = [
 def test_parse_alternate_single(raw):
     parsed = detector.bibliography.layout.alternate.split_bibliography(raw)
     assert parsed
+
+
+EBD = """\
+— (2005a). ISO 10303-108:2005 - Industrial automation systems and integration Product data
+    representation and exchange - Part 108: Integrated application resource: Parameterization
+    and constraints for explicit geometric product models.
+"""
+
+
+def test_alternate_ebd():
+    parsed = detector.bibliography.layout.alternate.split_bibliography(EBD)
+    assert parsed
+    assert len(parsed.authors) == 1
+    # TODO: VERIFY EBENDIES FLAG
+    assert parsed.authors[0].raw == '—'
