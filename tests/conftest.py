@@ -26,9 +26,8 @@ WORKER = 4
 # NOTE: This schedule is ordered by the required runtime on my computer.
 RESOURCES = [
     (power.MASTER116_PDF, '0:25,97,98,99,100'),
-    (power.MASTER098_PDF, None),
-    (power.MASTER075_PDF, None),
-    (power.DOCU027_PDF, None),
+    power.MASTER098_PDF,
+    power.MASTER075_PDF,
     (power.DISS266_PDF, '0,212:251'),
     (power.BACHELOR090_PDF, '0:5,84:90'),
     (power.MASTER110_PDF, '90:110'),
@@ -36,19 +35,18 @@ RESOURCES = [
     (power.MASTER089_PDF, '68:82'),
     (power.ORDER107_PDF, '90:108'),
     (power.DISS272_PDF, '259:271'),
+    power.DOCU027_PDF,
     (power.BACHELOR111_PDF, '70:91'),
     (power.BACHELOR076_PDF, '0:5'),
     (power.BACHELOR109_PDF, '0:5,70:80'),
     (power.MASTER072_PDF, '0:10'),
     (power.BACHELOR063_PDF, '0:9,59:62'),
-    (power.DOCU007_PDF, None),
-    (power.DOCU009_PDF, None),
     (power.BACHELOR128_PDF, '96:103'),
     (power.HOME050_PDF, '0:10'),
     (power.BACHELOR241_PDF, '0:10'),
     (power.BACHELOR051_PDF, '0:10,40:52'),
-    (power.MASTER078_PDF, '0:5'),
     (power.DISS205_PDF, '0:5,177,181'),
+    (power.MASTER078_PDF, '0:5'),
     (power.BACHELOR037_PDF, '0:10,33:37'),
     (power.BACHELOR075_PDF, '70:74'),
     (power.DISS170_PDF, '0:10,150:163'),
@@ -58,6 +56,8 @@ RESOURCES = [
     (power.MASTER148_PDF, '109:113'),
     (power.MASTER083_PDF, '74:83'),
     (power.DISS143_PDF, '0:10'),
+    power.DOCU007_PDF,
+    power.DOCU009_PDF,
 ]
 
 RESOURCES_NOTITLE = [
