@@ -251,19 +251,7 @@ def invalid_title(title: str, title_min_length: int = TITLE_MIN_LENGTH) -> bool:
         return None
     if len(title) < title_min_length:
         return True
-    rate = char_rate(title)
+    rate = utila.char_rate(title)
     if rate < 0.7:
         return True
     return False
-
-
-ALPHA = 'abcdefghijklmnopqrstuvwxyz '
-
-
-def char_rate(text: str):
-    # TODO: MOVE
-    if not text:
-        return 0
-    text = text.lower()
-    selected = len([item for item in text if item in ALPHA])
-    return selected / len(text)
