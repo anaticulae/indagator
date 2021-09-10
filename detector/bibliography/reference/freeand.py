@@ -96,8 +96,13 @@ MONTH = r"""
 # TODO: REMOVE 4,5 HACK: WHEN SUPPORTING HIGHNOTE
 AND = r"""
     (?P<authors>
-        [A-Z,;:\(\)\.\-\&ÖÄÜß\d\'\/ ]{4,}?
-        [^\(\)\[\]]               # author does not ends with bracket
+        (
+            [A-Z,;:\(\)\.\-\&ÖÄÜß\d\'\/ ]{4,}?
+            [^\(\)\[\]]               # author does not ends with bracket
+        |
+            ^[–— ]{1,3}               # ebd. shortcut
+        |   ^Ebd\.?
+        )
     )
     (
         \(?(?P<oj>o\.j\.[ ]{0,3}[a-z]{0,1})\)?
@@ -128,7 +133,7 @@ BROKEN_BRACKETS = AND % (r'[\(\[]', MONTH, r'[\]\)]')
 """
 
 
-def parse_title(content: str) -> tuple:
+def parse_title(content: str) -> tuple:  # pylint:disable=R0911,R1260
     """Increase number of valid dots to parse long title with a lot of dots.
 
     >>> parse_title('Hrsg. von der Dudenredaktion. 23. neu bearb. Aufl..') # TODO: CHANGE LATER
@@ -154,9 +159,11 @@ def parse_title(content: str) -> tuple:
         if ' - ' in content:
             return content.split(' - ', maxsplit=1)
         return content, ''
-
     for maxdots in range(1, 5):
         splitted = content.split('. ', maxsplit=maxdots)
+        if len(splitted) == 1:
+            if invalid_title(content) is False:
+                return content, ''
         title, rest = '. '.join(splitted[:-1]), splitted[-1]
         if invalid_title(title) is False:  # None means no title given
             return title, rest
