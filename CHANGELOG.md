@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.27.0
+
+### Feature
+
+* add ebd person parser (369994c88cfb)
+
 ## v0.26.0
 
 ### Feature

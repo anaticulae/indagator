@@ -13,7 +13,7 @@ import detector.__patch__
 # public title configuration
 from detector.feature.titlepage import RAWMAKER_CONFIGURATION
 
-__version__ = '0.26.0'
+__version__ = '0.27.0'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
