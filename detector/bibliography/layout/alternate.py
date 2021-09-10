@@ -75,31 +75,26 @@ def extract(content) -> iamraw.BibliographyReferences:
     return result
 
 
-def split_bibliography(raw: str) -> iamraw.BibliographyReference:  # pylint:disable=R0911
+def split_bibliography(raw: str) -> iamraw.BibliographyReference:
     """\
     >>> split_bibliography('Vogel-Sprott,  M. (1997). Is behavioral  tolerance  '
     ... 'learned?  Alcohol Health & Research World, 21, 161-168.')
     BibliographyReference(...)
     """
+    strategies = (
+        detector.bibliography.reference.number.parse,
+        detector.bibliography.reference.tech.parse_single_row,
+        detector.bibliography.reference.freeand.parse_longtext_less_strict,
+        detector.bibliography.reference.tech.parse_longtext,
+        detector.bibliography.reference.magic.parse,
+        parse_last,
+    )
     raw = raw.strip()
     raw = utila.simplify_chars(raw)
-    matched = detector.bibliography.reference.number.parse(raw)
-    if matched:
-        return matched
-    matched = detector.bibliography.reference.tech.parse_single_row(raw)  # pylint:disable=R0204
-    if matched:
-        return matched
-    matched = detector.bibliography.reference.freeand.parse_longtext_less_strict(raw)  # yapf:disable
-    if matched:
-        return matched
-    matched = detector.bibliography.reference.tech.parse_longtext(raw)
-    if matched:
-        return matched
-    matched = detector.bibliography.reference.magic.parse(raw)
-    if matched:
-        return matched
-    matched = parse_last(raw)
-    if matched:
+    for strategy in strategies:
+        matched = strategy(raw)
+        if not matched:
+            continue
         return matched
     return None
 
