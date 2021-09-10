@@ -149,7 +149,7 @@ def parse_title(content: str) -> tuple:
         if title_link:
             title, rest = title_link
             return title, rest
-    if not '.' in content:
+    if '.' not in content:
         # TODO: ADD OTHER ALGO
         if ' - ' in content:
             return content.split(' - ', maxsplit=1)
