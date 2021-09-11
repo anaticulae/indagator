@@ -133,7 +133,7 @@ def numbers(content: str) -> iamraw.BibliographyReferences:
     result = []
     for item in re.finditer(NUMBER, content, re.VERBOSE):
         page, pageend, raw = extract_pages(item)
-        number = int(item['number'])
+        number = str(item['number'])
         reference = iamraw.BibliographyReference(
             page=page,
             pageend=pageend,
