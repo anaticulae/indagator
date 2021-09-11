@@ -61,7 +61,7 @@ def master78(titlepage: iamraw.TitlePage):
 
 def homework50(titlepage: iamraw.TitlePage):
     assert titlepage
-    assert titlepage.thesis.typ == iamraw.DocumentType.STUDY
+    assert titlepage.thesis.typ == iamraw.DocumentType.HOMEWORK
     assert titlepage.title == 'Implementierung eines Leistungsmesssystem auf dem MSP430'
     assert len(titlepage.examiner) == 3, titlepage.examiner
 

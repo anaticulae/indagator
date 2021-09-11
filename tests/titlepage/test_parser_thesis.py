@@ -25,7 +25,7 @@ import detector.titlepage.parser.thesis
     (
         'Promotion',
         iamraw.TitleThesisType(
-            iamraw.DocumentType.DOCTOR,
+            iamraw.DocumentType.DISS,
             'Promotion',
             'Promotion',
         ),
