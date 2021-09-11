@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.27.1
+
+### Fix
+
+* adjust data type (23dbf09d7a55)
+
 ## v0.27.0
 
 ### Feature
