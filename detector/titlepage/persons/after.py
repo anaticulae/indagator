@@ -42,14 +42,24 @@ def parse(raw: str) -> iamraw.Person:
         return None
     title = iamraw.AcademicTitle.merges(title)
     name, firstname = parsed['name'], parsed['fname']
-
-    if name.lower() in NONAME or firstname.lower() in NONAME:
+    if noname(name) or noname(firstname):
+        return None
         # skip false positive detection
         # Master of Science (M. Sc.)
-        return None
     raw = utila.extract_match(parsed)
     result = iamraw.Person(title=title, name=name, firstname=firstname, raw=raw)
     return result
+
+
+def noname(name: str):
+    name = name.lower()
+    if ' ' in name:
+        name = name.split()
+    if ' ' not in name:
+        name = [name]
+    if any(item in NONAME for item in name):
+        return True
+    return False
 
 
 NONAME = utila.splitlines("""\
@@ -58,6 +68,8 @@ OF
 SCIENCE
 VON
 VORGELEGT
+ON
+FACH
 """)
 
 # TODO: IMPROVE THIS
