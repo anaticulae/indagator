@@ -81,12 +81,23 @@ def parse(textnavigator: texmex.PageTextNavigator) -> str:
     # TODO: ITER THROW POTENTIAL TITLES AND RUN TOP VERIFICATION
     title = sizes[0][1].replace(utila.NEWLINE, ' ')
     title = title.strip()
-    if title.lower() in NO_TITLES:
+    if notitle(title):
         # bachelor
         return TitleParserState.NO_TITLE
     if len(title.split()) < MIN_TITLE_WORD_COUNT:
         return TitleParserState.TITLE_TO_SHORT
     return title
+
+
+def notitle(title) -> bool:
+    """\
+    >>> notitle('MASTERARBEIT / MASTER’S THESIS')
+    True
+    """
+    titles = title.strip().lower().split()
+    if any(item in NO_TITLES for item in titles):
+        return True
+    return False
 
 
 def merge(items):
