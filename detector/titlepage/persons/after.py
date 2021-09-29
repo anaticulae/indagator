@@ -11,6 +11,8 @@ r"""After
 
 >>> parse('Examiner: Hemut Konrad, M.A.')
 Person(name='Konrad', firstname='Hemut',...MASTER...raw='Examiner: Hemut Konrad, M.A.')
+>>> parse('verfasst von / submitted by Martin SCHRAMMEL, BSc')
+Person(name='SCHRAMMEL', firstname='Martin', title=...BSC...raw='submitted by Martin SCHRAMMEL, BSc')
 
 DONT:
 >>> parse('vorgelegt von\nM. Sc.\nJakob Vinzenz Kirchner')
@@ -78,6 +80,8 @@ FACH
 # Parses: Examiner: Hemut Konrad, M.A.
 EXAMINER = detector.titlepage.persons.person.INTRO
 TITLES = r'|'.join([
+    r'BSC',
+    r'MSC',
     r'\(?M\.[ ]?A\.?\B\)?',
     r'\(?B\.[ ]?SC\.?\B\)?',
     r'\(?DIPL\.[ ]PSYCH\.([ ]FH)?\)?',

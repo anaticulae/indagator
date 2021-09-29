@@ -79,6 +79,7 @@ angefertigt von
 by
 vorgelegt von Diplom-Ingenieur
 vorgelegt von
+submitted by
 von
 """
 
