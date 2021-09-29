@@ -63,7 +63,12 @@ VORGELEGT
 # TODO: VERIFY HERR/FRAU PATTERN
 # Parses: Examiner: Hemut Konrad, M.A.
 EXAMINER = detector.titlepage.persons.person.INTRO
-ACADEMIC_TITLE = r'(M\.[ ]?A\.?\B|DIPL\.[ ]PSYCH\.([ ]FH)?|\(?M\.[ ]?Sc\.\)?)'
+TITLES = r'|'.join([
+    r'M\.[ ]?A\.?\B',
+    r'DIPL\.[ ]PSYCH\.([ ]FH)?',
+    r'\(?M\.[ ]?Sc\.\)?',
+])
+ACADEMIC_TITLE = rf'({TITLES})'
 PATTERN_PERSON_AFTER = rf"""
     (?P<examiner>({EXAMINER})[:]?\s?)
     ([ ]{0,4}(Herr|Frau)?[ ]{0,4})?
