@@ -35,7 +35,7 @@ def parse(raw: str) -> iamraw.Person:
     parsed = re.search(PATTERN_PERSON_AFTER, raw, re.VERBOSE | re.IGNORECASE)
     if not parsed:
         return None
-    title = detector.titlepage.persons.utils.extract_title(parsed)
+    title = detector.titlepage.persons.utils.extract_titles(parsed['title'])
     if not title:
         return None
     title = iamraw.AcademicTitle.merges(title)
@@ -73,5 +73,5 @@ PATTERN_PERSON_AFTER = rf"""
     (?P<examiner>({EXAMINER})[:]?\s?)
     ([ ]{0,4}(Herr|Frau)?[ ]{0,4})?
     (?P<fname>(\w+[ ]?){1,5}?)[ ](?P<name>[\w|-]+)
-    [,]?[ ]{0,3}?(?P<t3>{ACADEMIC_TITLE})
+    [,]?[ ]{0,3}?(?P<title>{ACADEMIC_TITLE})
 """
