@@ -81,6 +81,50 @@ def extract_title(result: re.Match) -> list:
     return title
 
 
+MATCHES = {
+    'Prof.[-]{0,1} ?Dr.(-| )?Ing.': iamraw.PROF_DR,
+    r'B\.?Sc\.?': iamraw.AcademicTitle.BSC,
+    'Dipl.(-| )Ing.': iamraw.AcademicTitle.MASTER,
+    r'Dipl.-\w+': iamraw.AcademicTitle.MASTER,
+    'M.A.': iamraw.AcademicTitle.MASTER,
+    'M.Sc.': iamraw.AcademicTitle.MASTER,
+    'Dr.(-| )?(Ing.)?( ?(sc.|tech.|h.c.|E.h.)){0,5}': iamraw.AcademicTitle.DR,
+    # TODO: ADD GENERAL -/RULE?
+    'Prof.[-]{0,1} ?(em.)?': iamraw.AcademicTitle.PROF,
+    # minimum two chapters to distinguish from first names
+    r'[a-zA-Z\-]{2,}. ': iamraw.AcademicTitle.DR,
+    # see general pattern above
+    # 'Dr. rer. biol. hum.': AcademicTitle.DR,
+    # 'Dr. med.': AcademicTitle.DR,
+}
+PATTERN = '|'.join((fr'(?P<t{index}>{item})[ ]?' for index, item in enumerate(MATCHES)))  # yapf:disable
+
+
+def extract_titles(title: str) -> list:
+    """\
+    >>> extract_titles('BSC')
+    [<AcademicTitle.BSC: 4>]
+    """
+    result = re.match(PATTERN, title, flags=re.I)
+    if not result:
+        return None
+    title = []
+    for item in range(len(iamraw.AcademicTitle.keys())):
+        try:
+            parsed = result['t%d' % item]
+            if not parsed:
+                continue
+            if not valid_title(parsed):
+                continue
+        except (KeyError, IndexError):
+            # IndexError: no every group is used. For example only t3:master
+            continue
+        else:
+            matches = list(iamraw.title.MATCHES.values())
+            title.append(matches[item])
+    return title
+
+
 EXAMINERS = (
     iamraw.AcademicTitle.DR,
     iamraw.AcademicTitle.EXAMINIER,
