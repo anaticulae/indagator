@@ -98,6 +98,11 @@ def diss143(titlepage: iamraw.TitlePage):
     assert len(titlepage.examiner) == 4
 
 
+def master075(titlepage: iamraw.TitlePage):
+    assert titlepage
+    assert titlepage.author
+
+
 @pytest.mark.parametrize('source, check', [
     pytest.param(
         power.HOME050_PDF,
@@ -125,6 +130,7 @@ def diss143(titlepage: iamraw.TitlePage):
     pytest.param(power.MASTER098_PDF, master98, id='master98'),
     pytest.param(power.DISS170_PDF, diss170, id='diss170'),
     pytest.param(power.DISS143_PDF, diss143, id='diss143'),
+    pytest.param(power.MASTER075_PDF, master075, id='master075'),
 ])
 @utilatest.longrun
 def test_validate_titlepage_extractor(source, check, testdir, monkeypatch):
