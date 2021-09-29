@@ -22,8 +22,8 @@ import iamraw
 import iamraw.title
 import utila
 
-import detector.titlepage.parser.persons.person
-import detector.titlepage.parser.persons.utils
+import detector.titlepage.persons.person
+import detector.titlepage.persons.utils
 
 
 def parse(raw: str) -> iamraw.Person:
@@ -35,7 +35,7 @@ def parse(raw: str) -> iamraw.Person:
     parsed = re.search(PATTERN_PERSON_AFTER, raw, re.VERBOSE | re.IGNORECASE)
     if not parsed:
         return None
-    title = detector.titlepage.parser.persons.utils.extract_title(parsed)
+    title = detector.titlepage.persons.utils.extract_title(parsed)
     if not title:
         return None
     title = iamraw.AcademicTitle.merges(title)
@@ -62,7 +62,7 @@ VORGELEGT
 # TODO: SUPPORT PARSING DOUBLE PRE NAME
 # TODO: VERIFY HERR/FRAU PATTERN
 # Parses: Examiner: Hemut Konrad, M.A.
-EXAMINER = detector.titlepage.parser.persons.person.INTRO
+EXAMINER = detector.titlepage.persons.person.INTRO
 ACADEMIC_TITLE = r'(M\.[ ]?A\.?\B|DIPL\.[ ]PSYCH\.([ ]FH)?|\(?M\.[ ]?Sc\.\)?)'
 PATTERN_PERSON_AFTER = rf"""
     (?P<examiner>({EXAMINER})[:]?\s?)

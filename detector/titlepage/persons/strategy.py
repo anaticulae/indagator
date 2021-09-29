@@ -26,10 +26,10 @@ Examples:
 import iamraw
 import utila
 
-import detector.titlepage.parser.persons.after
-import detector.titlepage.parser.persons.notitle
-import detector.titlepage.parser.persons.person
-import detector.titlepage.parser.persons.utils
+import detector.titlepage.persons.after
+import detector.titlepage.persons.notitle
+import detector.titlepage.persons.person
+import detector.titlepage.persons.utils
 
 PERSON_LENGTH_MAX = 70  # TODO: HOLY VALUE
 
@@ -82,9 +82,9 @@ def parse_strategies(raw: str) -> iamraw.Person:
         Person if parsing was successful, else None
     """
     strategies = [
-        detector.titlepage.parser.persons.person,
-        detector.titlepage.parser.persons.after,
-        detector.titlepage.parser.persons.notitle,
+        detector.titlepage.persons.person,
+        detector.titlepage.persons.after,
+        detector.titlepage.persons.notitle,
     ]
     for strategy in strategies:
         parsed = strategy.parse(raw)

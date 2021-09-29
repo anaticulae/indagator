@@ -19,7 +19,7 @@ import detector.feature.titlepage
 import detector.path
 import detector.titlepage
 import detector.titlepage.parser.complete
-import detector.titlepage.parser.persons
+import detector.titlepage.persons
 import detector.titlepage.strategy
 
 

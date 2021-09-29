@@ -16,8 +16,8 @@ import re
 import iamraw
 import utila
 
-import detector.titlepage.parser.persons.person
-import detector.titlepage.parser.persons.utils
+import detector.titlepage.persons.person
+import detector.titlepage.persons.utils
 
 
 def parse(raw: str) -> iamraw.Person:
@@ -45,7 +45,7 @@ def parse(raw: str) -> iamraw.Person:
             utila.debug(f'could not split: {matched["names"]}; {matched}')
             continue
         firstname, name = firstname.strip(), name.strip()
-        title = detector.titlepage.parser.persons.utils.author_or_examiner(raw)
+        title = detector.titlepage.persons.utils.author_or_examiner(raw)
         result = iamraw.Person(
             title=title,
             name=name,
@@ -58,7 +58,7 @@ def parse(raw: str) -> iamraw.Person:
 
 def create_with_title_pattern():
     positions = utila.splitlines(
-        detector.titlepage.parser.persons.person.PERSONS,
+        detector.titlepage.persons.person.PERSONS,
         lowers=False,
     )
     # TODO: REMOVE AFTER UPGRADING UTILA

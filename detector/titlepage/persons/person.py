@@ -16,7 +16,7 @@ import re
 import iamraw
 import utila
 
-import detector.titlepage.parser.persons.utils
+import detector.titlepage.persons.utils
 
 
 def parse(raw: str) -> iamraw.Person:
@@ -29,7 +29,7 @@ def parse(raw: str) -> iamraw.Person:
     parsed = re.search(PATTERN, raw, re.X)
     if not parsed:
         return None
-    title = detector.titlepage.parser.persons.utils.extract_title(parsed)
+    title = detector.titlepage.persons.utils.extract_title(parsed)
     if not title:
         return None
     title = iamraw.AcademicTitle.merges(title)

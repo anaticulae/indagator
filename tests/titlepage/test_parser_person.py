@@ -10,9 +10,9 @@
 import iamraw
 import pytest
 
-import detector.titlepage.parser.persons.notitle
-import detector.titlepage.parser.persons.strategy
-import detector.titlepage.parser.persons.utils
+import detector.titlepage.persons.notitle
+import detector.titlepage.persons.strategy
+import detector.titlepage.persons.utils
 
 HELMUT = iamraw.Person(
     'Fahrendholz',
@@ -184,14 +184,14 @@ geb. in Berlin
     ),
 ])
 def test_detector_parser_parse_person(raw, expected):
-    parsed = detector.titlepage.parser.persons.strategy.parse_strategies(raw)
+    parsed = detector.titlepage.persons.strategy.parse_strategies(raw)
     assert parsed == expected, str(parsed)
 
 
 def test_detector_parser_person_order_person():
     persons = [KAHN, GOMEZ, HELMUT]
     expected = (HELMUT, [GOMEZ, KAHN])
-    current = detector.titlepage.parser.persons.utils.order_persons(persons)
+    current = detector.titlepage.persons.utils.order_persons(persons)
     assert current == expected, str(current)
 
 
@@ -203,7 +203,7 @@ def test_detector_parser_person_parse_person_without_title():
         firstname='Helmut Konrad',
         raw=raw.strip(),
     )
-    parsed = detector.titlepage.parser.persons.notitle.parse(raw)
+    parsed = detector.titlepage.persons.notitle.parse(raw)
     assert parsed == expected
 
 
@@ -221,5 +221,5 @@ def test_detector_parser_person_regression():
     r"""The regex matches `Erstprüfer:\n\nZweitprüfer` and fails to
     extract name.
     """
-    parsed = detector.titlepage.parser.persons.notitle.parse(BROKEN_INPUT)
+    parsed = detector.titlepage.persons.notitle.parse(BROKEN_INPUT)
     assert not parsed, str(parsed)

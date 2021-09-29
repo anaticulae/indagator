@@ -61,7 +61,7 @@ if __name__ == "__main__":
             'detector.formula',
             'detector.titlepage',
             'detector.titlepage.parser',
-            'detector.titlepage.parser.persons',
+            'detector.titlepage.persons',
         ],
         entry_points={
             'console_scripts': ['detector = detector.cli:main',],
