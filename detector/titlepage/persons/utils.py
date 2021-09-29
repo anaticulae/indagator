@@ -83,7 +83,7 @@ def extract_title(result: re.Match) -> list:
 
 MATCHES = {
     'Prof.[-]{0,1} ?Dr.(-| )?Ing.': iamraw.PROF_DR,
-    r'B\.?Sc\.?': iamraw.AcademicTitle.BSC,
+    r'B\.?[ ]?Sc\.?': iamraw.AcademicTitle.BSC,
     'Dipl.(-| )Ing.': iamraw.AcademicTitle.MASTER,
     r'Dipl.-\w+': iamraw.AcademicTitle.MASTER,
     'M.A.': iamraw.AcademicTitle.MASTER,

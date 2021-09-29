@@ -30,6 +30,8 @@ def parse(raw: str) -> iamraw.Person:
     """\
     >>> parse('Betreuer extern :  Eduard  Wagner (M. Sc.)').title
     <AcademicTitle.MASTER: 8>
+    >>> parse('Betreuer extern :  Eduard  Wagner (B. Sc.)').title
+    <AcademicTitle.BSC: 4>
     """
     raw = utila.normalize_whitespaces(raw)  # TODO: REMOVE LATER?
     parsed = re.search(PATTERN_PERSON_AFTER, raw, re.VERBOSE | re.IGNORECASE)
@@ -64,8 +66,9 @@ VORGELEGT
 # Parses: Examiner: Hemut Konrad, M.A.
 EXAMINER = detector.titlepage.persons.person.INTRO
 TITLES = r'|'.join([
-    r'M\.[ ]?A\.?\B',
-    r'DIPL\.[ ]PSYCH\.([ ]FH)?',
+    r'\(?M\.[ ]?A\.?\B\)?',
+    r'\(?B\.[ ]?SC\.?\B\)?',
+    r'\(?DIPL\.[ ]PSYCH\.([ ]FH)?\)?',
     r'\(?M\.[ ]?Sc\.\)?',
 ])
 ACADEMIC_TITLE = rf'({TITLES})'
