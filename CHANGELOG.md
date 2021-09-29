@@ -2,6 +2,22 @@
 
 Every noteable change is logged here.
 
+## v0.28.0
+
+### Feature
+
+* extend after pattern (34a4f5cd145f)
+* add title validator (d432fc4fe569)
+* add BSC as academic title (9ee2b0e8f7a8)
+* add brackets to title parser (7f15a676de38)
+* add persons title extractor (dc3adb305d6f)
+
+### Fix
+
+* reduce number of false positive detection (a5742c7f91e0)
+* replace with stars (b69f068457b3)
+* fix after academic title determiner (e7dcecc900a6)
+
 ## v0.27.1
 
 ### Fix
