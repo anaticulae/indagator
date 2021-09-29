@@ -87,7 +87,7 @@ MATCHES = {
     'Dipl.(-| )Ing.': iamraw.AcademicTitle.MASTER,
     r'Dipl.-\w+': iamraw.AcademicTitle.MASTER,
     'M.A.': iamraw.AcademicTitle.MASTER,
-    'M.Sc.': iamraw.AcademicTitle.MASTER,
+    r'M.[ ]?Sc.': iamraw.AcademicTitle.MASTER,
     'Dr.(-| )?(Ing.)?( ?(sc.|tech.|h.c.|E.h.)){0,5}': iamraw.AcademicTitle.DR,
     # TODO: ADD GENERAL -/RULE?
     'Prof.[-]{0,1} ?(em.)?': iamraw.AcademicTitle.PROF,
@@ -97,13 +97,15 @@ MATCHES = {
     # 'Dr. rer. biol. hum.': AcademicTitle.DR,
     # 'Dr. med.': AcademicTitle.DR,
 }
-PATTERN = '|'.join((fr'(?P<t{index}>{item})[ ]?' for index, item in enumerate(MATCHES)))  # yapf:disable
+PATTERN = '|'.join((fr'(?P<t{index}>\(?{item}\)?)[ ]?' for index, item in enumerate(MATCHES)))  # yapf:disable
 
 
 def extract_titles(title: str) -> list:
     """\
     >>> extract_titles('BSC')
-    [<AcademicTitle.BSC: 4>]
+    [<AcademicTitle.BSC:...>]
+    >>> extract_titles('(M. Sc.)')
+    [<AcademicTitle.MASTER:...>]
     """
     result = re.match(PATTERN, title, flags=re.I)
     if not result:
