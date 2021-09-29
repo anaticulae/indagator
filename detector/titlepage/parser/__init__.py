@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-from utila import NEWLINE
+import utila
 
 
 def textblock_token(text: str) -> list:
@@ -29,10 +29,10 @@ def textblock_token(text: str) -> list:
     for item in splitted:
         if item:
             current.append(item)
-        else:  # newline
-            if current:
-                result.append(NEWLINE.join(current))
-                current = []
+        elif current:
+            # newline
+            result.append(utila.NEWLINE.join(current))
+            current = []
     if current:
-        result.append(NEWLINE.join(current))
+        result.append(utila.NEWLINE.join(current))
     return result

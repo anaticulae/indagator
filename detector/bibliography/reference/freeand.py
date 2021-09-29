@@ -132,6 +132,8 @@ BROKEN_BRACKETS = AND % (r'[\(\[]', MONTH, r'[\]\)]')
 [NoPerson(confidence=None, raw='Deutsche Norm DIN 1421')]
 """
 
+NOTITLE = False
+
 
 def parse_title(content: str) -> tuple:  # pylint:disable=R0911,R1260
     """Increase number of valid dots to parse long title with a lot of dots.
@@ -147,7 +149,8 @@ def parse_title(content: str) -> tuple:  # pylint:disable=R0911,R1260
     try:
         title, rest = re.split(r'[\.\?\!][ ]', content, maxsplit=1)
         # TODO: INCLUDE SENTENCE SIGN
-        if invalid_title(title) is False:  # None means no title given
+        if invalid_title(title) == NOTITLE:
+            # None means no title given
             return title, rest
     except ValueError:
         title_link = title_with_link(content)
@@ -162,10 +165,10 @@ def parse_title(content: str) -> tuple:  # pylint:disable=R0911,R1260
     for maxdots in range(1, 5):
         splitted = content.split('. ', maxsplit=maxdots)
         if len(splitted) == 1:
-            if invalid_title(content) is False:
+            if invalid_title(content) == NOTITLE:
                 return content, ''
         title, rest = '. '.join(splitted[:-1]), splitted[-1]
-        if invalid_title(title) is False:  # None means no title given
+        if invalid_title(title) == NOTITLE:
             return title, rest
     return None
 
