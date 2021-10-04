@@ -126,6 +126,8 @@ def authors_raw(flat) -> str:
     pytest.param(power.MASTER083_PDF, '81', None, 2, id='master083last'),
     pytest.param(power.BACHELOR075_PDF, '70:75', None, 'bachelor075', id='bachelor75'),
     pytest.param(power.BACHELOR241_PDF, '239,240', None, 'bachelor241', id='bachelor241'),
+    pytest.param(power.DISS143_PDF, '131:143', None, 'diss143', id='diss143'),
+    pytest.param(power.DISS143_PDF, '131', None, 'diss143p131', id='diss143p131'),
 ])
 # yapf:enable
 @utilatest.longrun
