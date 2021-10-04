@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.28.1
+
+### Fix
+
+* do not parse author if no quotation mark is collected (c7698cf61667)
+
 ## v0.28.0
 
 ### Feature
