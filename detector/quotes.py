@@ -55,7 +55,7 @@ def first_quote(text: str) -> int:
 def before_first_quote(text: str, starting: int = 15) -> str:
     parsed = collect_quotations(text)
     if not parsed:
-        return text
+        return None
     first = first_quote(text)
     if first < starting:
         return text

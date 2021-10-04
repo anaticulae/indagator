@@ -34,6 +34,11 @@ import detector.quotes
 
 
 def parse(raw: str) -> iamraw.BibliographyReference:
+    """\
+    >>> parse('[1] Ahrens, Thomas ; Hanke, Hans-Joachim ; Scheel, Wolfgang: '
+    ... 'Baugruppentechnologie der Elektronik. 2., aktualisierte u. erw. Berlin '
+    ... ': Verl. Technik [u.a.], 1999 http://www.worldcat.org/oclc/634169319. – ISBN 3341012346')
+    """
     splitted = split(raw)
     if not splitted:
         return None
@@ -118,7 +123,10 @@ def content(
         raw = utila.extract_match(parsed)
     else:
         # backup strategy
-        authors, middle = search_author(raw)
+        try:
+            authors, middle = search_author(raw)
+        except TypeError:
+            return None
         if not authors:
             return None
         year = None
@@ -157,6 +165,8 @@ def search_author(raw: str):
     ([Person(name='Jakob', firstname='N.',...ing free-text“')
     """
     removed = detector.quotes.before_first_quote(raw)
+    if removed is None:
+        return None
     # TODO: HACK Y COLLECTOR
     possible_endings = utila.findindex(removed, ' ')
     best = []
