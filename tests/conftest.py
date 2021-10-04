@@ -78,6 +78,8 @@ def extract(resources):
         rawmaker_cleanup=False,
         formulero=False,
         pdfinfo=True,
+        codero=False,
+        figureo=False,
         pages=':',
         worker=WORKER,
         base=power.REPOSITORY,
