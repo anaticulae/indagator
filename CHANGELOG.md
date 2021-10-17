@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.28.2
+
+### Feature
+
+* replace with holy values (8b8859f2fca1)
+
 ## v0.28.1
 
 ### Fix
