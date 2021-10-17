@@ -61,11 +61,11 @@ RESOURCES = [
 ]
 
 RESOURCES_NOTITLE = [
-    power.DOCU007_PDF,
     power.MASTER078_PDF,
     power.MASTER072_PDF,
-    power.DOCU009_PDF,
     power.DOCU027_PDF,
+    power.DOCU009_PDF,
+    power.DOCU007_PDF,
 ]
 
 
