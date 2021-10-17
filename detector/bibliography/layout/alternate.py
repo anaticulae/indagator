@@ -21,6 +21,7 @@
     Recognition, 29(10):1673 – 1687, 1996.
 """
 
+import configo
 import geostrat
 import iamraw
 import texmex
@@ -31,9 +32,11 @@ import detector.bibliography.reference.magic
 import detector.bibliography.reference.number
 import detector.bibliography.reference.tech
 
-MIN_CONTENT_LENGTH = 15  # TODO: HOLY VALUE
-MIN_WORD_COUNT = 2  # TODO: HOLY VALUE
-ERROR_MAX_LEVEL = 0.25
+MIN_CONTENT_LENGTH = configo.HV_INT_PLUS(default=15)
+
+MIN_WORD_COUNT = configo.HV_INT_PLUS(default=2)
+
+ERROR_MAX_LEVEL = configo.HV_PERCENT_PLUS(default=25.0)
 
 
 def extracts(items: texmex.PageTextNavigators) -> iamraw.BibliographyReferences:

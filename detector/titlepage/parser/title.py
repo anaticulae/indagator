@@ -15,13 +15,13 @@ TODO: Introduce multiple extraction strategies
 import enum
 import math
 
+import configo
 import texmex
 import utila
 
-# TODO: HOLY VALUE
-MIN_TITLE_FONT_SIZE = 20
+MIN_TITLE_FONT_SIZE = configo.HV_FLOAT_PLUS(default=20.0)
 
-MIN_TITLE_WORD_COUNT = 4  # TODO: HOLY VALUE
+MIN_TITLE_WORD_COUNT = configo.HV_INT_PLUS(default=4)
 
 
 class TitleParserState(enum.Enum):
@@ -100,6 +100,10 @@ def notitle(title) -> bool:
     return False
 
 
+MERGE_DISTANCE_MAX = configo.HV_FLOAT_PLUS(default=20.0)
+FONT_DISTANCE_MAX = configo.HV_FLOAT_PLUS(default=0.5)
+
+
 def merge(items):
     if not items:
         return []
@@ -107,15 +111,13 @@ def merge(items):
     # empty lines produces a problem, cause there have the length zero.
     # this zero lengths produces an error in text size calculation.
     items = [item for item in items if item.text]
-    max_distance = 20  # TODO HOLY VALUE
-    max_font_distance = 0.5  # TODO HOLY VALUE
     merged = [[items[0]]]
     for item in items[1:]:
         last = merged[-1][-1]
         distance = item.bounding[1] - last.bounding[3]
         split = any([
-            distance > max_distance,
-            fontdistance(last, item) > max_font_distance
+            distance > MERGE_DISTANCE_MAX,
+            fontdistance(last, item) > FONT_DISTANCE_MAX
         ])
         if split:
             merged.append([item])

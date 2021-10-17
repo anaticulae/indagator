@@ -9,11 +9,12 @@
 
 import typing
 
+import configo
 import iamraw
 
 import detector.titlepage.parser.complete
 
-MIN_TITLEPAGE_RATING = 20  # TODO: HOLY VALUE
+MIN_TITLEPAGE_RATING = configo.HV_INT_PLUS(default=20)
 
 
 def select_best(pages: typing.List[iamraw.TitlePage]) -> iamraw.TitlePage:

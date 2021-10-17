@@ -23,6 +23,7 @@ Examples:
         Zweitgutachter: Dipl.-Medienberater Stephan Frühwirt
 """
 
+import configo
 import iamraw
 import utila
 
@@ -31,7 +32,7 @@ import detector.titlepage.persons.notitle
 import detector.titlepage.persons.person
 import detector.titlepage.persons.utils
 
-PERSON_LENGTH_MAX = 70  # TODO: HOLY VALUE
+PERSON_LENGTH_MAX = configo.HV_INT_PLUS(default=70)
 
 
 @utila.profile('persons')

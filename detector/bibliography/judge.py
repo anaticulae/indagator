@@ -13,7 +13,7 @@ import utila
 
 import detector.bibliography.utils
 
-TITLE_MIN_LENGTH = 10  # TODO: HOLY VALUE
+TITLE_MIN_LENGTH = configo.HV_INT_PLUS(default=10)
 
 INVALID_MAX = configo.HolyTable(
     items=[
