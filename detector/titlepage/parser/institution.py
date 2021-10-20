@@ -84,16 +84,6 @@ SELECTOR = {
     'Universität',
 }
 
-
-def words(raw):
-    result = raw
-    for item in [',', '.', '-', utila.NEWLINE]:
-        result = result.replace(item, ' ')
-    result = result.split()
-    result = [item.title() for item in result]
-    return result
-
-
 # Replace this approach due regex
 
 INSTITUTE = [
