@@ -10,11 +10,13 @@
 =========
 """
 
+import functools
 import re
 
 import utila
 
 
+@functools.lru_cache(maxsize=4098)
 def years(raw: str):
     """\
     >>> years('IEEE Joint, 2004, S. 113–117')

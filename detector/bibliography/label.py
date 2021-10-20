@@ -27,6 +27,7 @@ Number:
 """
 
 import contextlib
+import functools
 import re
 
 import iamraw
@@ -97,6 +98,7 @@ TECHNICAL_SPECIAL = r"""
 """ % (AUTHOR, PAGES)
 
 
+@functools.lru_cache(maxsize=4096)
 def parses(content: str) -> iamraw.BibliographyReferences:
     result = []
     for pattern in (TECHNICAL_SPECIAL, TECHNICAL):
@@ -129,6 +131,7 @@ NUMBER = r"""
 """ % PAGES
 
 
+@functools.lru_cache(maxsize=4096)
 def numbers(content: str) -> iamraw.BibliographyReferences:
     result = []
     for item in re.finditer(NUMBER, content, re.VERBOSE):

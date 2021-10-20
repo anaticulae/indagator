@@ -24,6 +24,7 @@ and Speech. Technical report, Presto Space, 3 2005.
 
 """
 
+import functools
 import re
 
 import german
@@ -33,6 +34,7 @@ import utila
 import detector.quotes
 
 
+@functools.lru_cache(maxsize=4096)
 def parse(raw: str) -> iamraw.BibliographyReference:
     """\
     >>> parse('[1] Ahrens, Thomas ; Hanke, Hans-Joachim ; Scheel, Wolfgang: '
@@ -63,6 +65,7 @@ SPLITTER = re.compile(
 )
 
 
+@functools.lru_cache(maxsize=4096)
 def split(raw: str) -> tuple:
     """\
     >>> split('[1] W. Abmayr. Einführung in die digitale')
@@ -100,6 +103,7 @@ PATTERN = re.compile(
 )
 
 
+@functools.lru_cache(maxsize=4096)
 def content(
     raw: str,
     title_length_min: int = 10,
@@ -147,6 +151,7 @@ def content(
     return result
 
 
+@functools.lru_cache(maxsize=4096)
 def improve_raw(authors: str) -> str:
     """\
     >>> improve_raw('Grunwald Armin; Gerhard Banse; Christopher Coenen und Leonhard Hennen')
@@ -159,6 +164,7 @@ def improve_raw(authors: str) -> str:
     return authors
 
 
+@functools.lru_cache(maxsize=4096)
 def search_author(raw: str):
     """\
     >>> search_author('N. Jakob, S. H. Weber, M. C. Müller, I. Gurevych, „Beyond the stars: exploiting free-text“')

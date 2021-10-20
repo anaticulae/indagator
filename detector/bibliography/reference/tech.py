@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import functools
+
 import german
 import iamraw
 import utila
@@ -16,6 +18,7 @@ import detector.bibliography.reference
 import detector.bibliography.reference.freeand
 
 
+@functools.lru_cache(maxsize=4096)
 def parse_single_row(content: str) -> iamraw.BibliographyReference:
     matched = detector.bibliography.label.parses(content)
     if not matched:
@@ -43,6 +46,7 @@ def parse_single_row(content: str) -> iamraw.BibliographyReference:
     return matched
 
 
+@functools.lru_cache(maxsize=4096)
 def parse_longtext(content: str) -> iamraw.BibliographyReference:
     content = utila.normalize_text(content)
     raw = content
@@ -91,6 +95,7 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
     return result
 
 
+@functools.lru_cache(maxsize=4096)
 def parse_first(content: str):
     """\
     >>> parse_first('Put People First. http://www.putpeoplefirst.org.uk/ (19.1.2015).')
@@ -107,6 +112,7 @@ def parse_first(content: str):
     return authors, rest
 
 
+@functools.lru_cache(maxsize=4096)
 def parse_title(rest: str) -> tuple:
     rest = rest.strip()
     if '.' in rest:
@@ -118,6 +124,7 @@ def parse_title(rest: str) -> tuple:
     return None
 
 
+@functools.lru_cache(maxsize=4096)
 def parse_publisher(rest: str):
     if not rest:
         return None

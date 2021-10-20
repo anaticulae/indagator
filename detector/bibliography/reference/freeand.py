@@ -38,6 +38,7 @@ Examples
 
 """
 
+import functools
 import re
 
 import german
@@ -45,6 +46,7 @@ import iamraw
 import utila
 
 
+@functools.lru_cache(maxsize=4098)
 def parse_longtext(
     content: str,
     pattern=None,
@@ -135,6 +137,7 @@ BROKEN_BRACKETS = AND % (r'[\(\[]', MONTH, r'[\]\)]')
 NOTITLE = False
 
 
+@functools.lru_cache(maxsize=4098)
 def parse_title(content: str) -> tuple:  # pylint:disable=R0911,R1260
     """Increase number of valid dots to parse long title with a lot of dots.
 
@@ -173,6 +176,7 @@ def parse_title(content: str) -> tuple:  # pylint:disable=R0911,R1260
     return None
 
 
+@functools.lru_cache(maxsize=4098)
 def parse_hyperlinks(content):
     hyperlinks = german.hyperlink(content)
     if hyperlinks:
@@ -183,6 +187,7 @@ def parse_hyperlinks(content):
     return hyperlinks, content
 
 
+@functools.lru_cache(maxsize=4098)
 def parse_pages(content):
     parsed = german.pages(content)
     if not parsed:
@@ -197,6 +202,7 @@ def parse_pages(content):
     return page, pageend, content
 
 
+@functools.lru_cache(maxsize=4098)
 def parse_accessed(content):
     accessed = german.accessed(content)
     if accessed:
@@ -230,6 +236,7 @@ def select_authors(matched):
     return authors
 
 
+@functools.lru_cache(maxsize=4098)
 def parse_longtext_less_strict(content: str) -> iamraw.BibliographyReference:
     for pattern in [NORMAL, BROKEN_BRACKETS]:
         parsed = parse_longtext(content, pattern=pattern)
@@ -242,6 +249,7 @@ def parse_longtext_less_strict(content: str) -> iamraw.BibliographyReference:
 TITLE_MIN_LENGTH = 10
 
 
+@functools.lru_cache(maxsize=4098)
 def title_with_link(text: str) -> str:
     """\
     >>> title_with_link('Zentrale Orte Raumordnungsprogramm (NÖ) https://www.ris.bka.gv.at/LRNI_1992062.pdf (25.01.2018)')
@@ -256,6 +264,7 @@ def title_with_link(text: str) -> str:
     return title, rest
 
 
+@functools.lru_cache(maxsize=4098)
 def invalid_title(title: str, title_min_length: int = TITLE_MIN_LENGTH) -> bool:
     if not title:
         return None
