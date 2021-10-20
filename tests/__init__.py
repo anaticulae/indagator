@@ -9,7 +9,6 @@
 
 import functools
 
-import utila
 import utilatest
 
 import detector
