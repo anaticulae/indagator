@@ -56,6 +56,11 @@ RESOURCES = [
     (power.MASTER148_PDF, '109:113'),
     (power.MASTER083_PDF, '74:83'),
     (power.DISS143_PDF, '0:10,131:143'),
+    genex.todo(
+        power.BACHELOR067_PDF,
+        pages='63:66',
+        rawmaker='--char_margin=1.1',
+    ),
     power.DOCU007_PDF,
     power.DOCU009_PDF,
 ]
