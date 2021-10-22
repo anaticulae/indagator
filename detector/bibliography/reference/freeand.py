@@ -200,7 +200,7 @@ def parse_pages(content):
 def parse_accessed(content):
     accessed = german.accessed(content)
     if accessed:
-        content = content.replace(accessed[0], '')
+        content = content.replace(accessed[1], '')
     return accessed, content
 
 
