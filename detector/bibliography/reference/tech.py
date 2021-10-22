@@ -29,8 +29,8 @@ def parse_single_row(content: str) -> iamraw.BibliographyReference:
         # Mostly a result of failure in layout grouping. This can
         # happen if a wrong layout grouping mechanism is used. This is not
         # a problem cause we have more than one strategy.
-        utila.debug('parses more than one reference, '
-                    f'skip tech result: {content}')
+        # utila.debug('parses more than one reference, '
+        #             f'skip tech result: {content}')
         return None
     matched: iamraw.BibliographyReference = matched[0]
     content = content.replace(matched.raw, '')
