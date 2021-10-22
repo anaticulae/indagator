@@ -56,6 +56,7 @@ if __name__ == "__main__":
             'detector',
             'detector.bibliography',
             'detector.bibliography.layout',
+            'detector.bibliography.machine',
             'detector.bibliography.reference',
             'detector.feature',
             'detector.formula',
