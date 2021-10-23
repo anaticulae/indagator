@@ -47,7 +47,27 @@ def reference(raw: str) -> iamraw.BibliographyReference:
         return None
     data = matched['data']
     result = iamraw.BibliographyReference(raw=raw)
-    result.authors = data.get('authors', None)
-    result.title = data.get('title', None)
-    result.hyperlink = data.get('hyperlink', None)
+    authors = data.get('authors', None)
+    if authors:
+        result.authors = german.authors_decide(german.authors(authors))
+    title = data.get('title', None)
+    if title:
+        if not isinstance(title, str):
+            title = title[0]
+        result.title = title.strip()
+    hyperlink = data.get('hyperlink', None)
+    if hyperlink:
+        result.hyperlink = hyperlink[0][1]
+    years = data.get('years')
+    if years:
+        result.year = years[0][0]
+    accessed = data.get('accessed')
+    if accessed:
+        result.accessed = accessed[0][0]
+    pagenumbers = data.get('pagenumbers')
+    if pagenumbers:
+        result.page, result.pageend = pagenumbers[0][0]
+    publisher = data.get('in-pattern')
+    if publisher:
+        result.publisher = publisher[0]
     return result
