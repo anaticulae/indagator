@@ -76,7 +76,7 @@ def parse_longtext(
         page=page,
         pageend=pageend,
         hyperlink=hyperlinks if hyperlinks else None,
-        accessed=accessed[1] if accessed else None,
+        accessed=accessed[0][1] if accessed else None,
         raw=raw,
     )
     return result
@@ -205,8 +205,8 @@ def parse_pages(content):
 @functools.lru_cache(maxsize=4098)
 def parse_accessed(content):
     accessed = german.accessed(content)
-    if accessed:
-        content = content.replace(accessed[1], '')
+    for access in accessed:
+        content = content.replace(access[1], '')
     return accessed, content
 
 
