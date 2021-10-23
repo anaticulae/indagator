@@ -2,6 +2,22 @@
 
 Every noteable change is logged here.
 
+## v0.29.0
+
+### Feature
+
+* disable column verification after improving results (15017c6430a7)
+* improve column detector (87f3f26b5487)
+* extend bib evaluation (5c4c84c14546)
+* add improved bib detector (84858c318e5f)
+* add improved bib parser (deacdde753fd)
+* disable debugging (38a0a07eb225)
+* using caching to reduce execution time (862b5eabaa52)
+
+### Fix
+
+* adjust after changing interface (d6d8dd679297)
+
 ## v0.28.2
 
 ### Feature
