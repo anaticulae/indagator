@@ -183,6 +183,7 @@ def parse_hyperlinks(content):
         for hyperlink in hyperlinks:
             content = content.replace(hyperlink, '')
     if len(hyperlinks) > 1:
+        # TODO: VERIFY THIS
         utila.debug(f'more than one link parsed: {content}')
     return hyperlinks, content
 

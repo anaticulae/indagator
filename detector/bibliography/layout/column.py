@@ -24,8 +24,6 @@ def extracts(navigators: texmex.PageTextNavigators):
             extracted = strategy(navigator)
             if not extracted:
                 continue
-            if detector.bibliography.layout.utils.invalid_title(extracted):
-                continue
             # update pdf page number
             for item in extracted:
                 item.raw_pdfpage = navigator.page
@@ -36,7 +34,11 @@ def extracts(navigators: texmex.PageTextNavigators):
 
 
 def extract(content: texmex.PageTextNavigator) -> iamraw.BibliographyReferences:
-    layouted = geostrat.parse(content, data_adjust=True)
+    layouted = geostrat.parse(
+        content,
+        column_elements_min=4,
+        data_adjust=True,
+    )
     if layouted is None:
         return None
     result = []
@@ -45,6 +47,9 @@ def extract(content: texmex.PageTextNavigator) -> iamraw.BibliographyReferences:
         # remove latex reference pattern [FCB87]
         reference = remove_bracket_angle(reference)
         raw = ' '.join(item.text.strip() for item in right)
+        if not raw.strip():
+            # no content in data column
+            continue
         parsed = detector.bibliography.machine.runtime.reference(raw)
         parsed.reference = reference
         result.append(parsed)
