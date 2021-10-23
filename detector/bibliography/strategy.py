@@ -26,7 +26,7 @@ def extracts(
     alternate = detector.bibliography.layout.alternate.extracts(text_oneline)
     vspace = detector.bibliography.layout.vspace.extracts(text_oneline)
 
-    column = detector.bibliography.judge.judge(column)
+    # column = detector.bibliography.judge.judge(column)
     alternate = detector.bibliography.judge.judge(alternate)
     vspace = detector.bibliography.judge.judge(vspace)
 

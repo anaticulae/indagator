@@ -44,6 +44,9 @@ def extract(content: texmex.PageTextNavigator) -> iamraw.BibliographyReferences:
     result = []
     for left, right in layouted:
         reference = left[0].text.strip()
+        if reference[0] != '[':
+            # TODO: VALIDATE PATTERN
+            continue
         # remove latex reference pattern [FCB87]
         reference = remove_bracket_angle(reference)
         raw = ' '.join(item.text.strip() for item in right)
@@ -54,7 +57,6 @@ def extract(content: texmex.PageTextNavigator) -> iamraw.BibliographyReferences:
         parsed.reference = reference
         result.append(parsed)
     return result
-
 
 
 def double_column(content: texmex.PageTextNavigator) -> iamraw.BibliographyReferences: # yapf:disable
