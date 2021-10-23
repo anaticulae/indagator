@@ -14,7 +14,7 @@ import utila
 
 import detector.bibliography.layout.utils
 import detector.bibliography.layout.vspace
-import detector.bibliography.reference.tech
+import detector.bibliography.machine.runtime
 
 
 def extracts(navigators: texmex.PageTextNavigators):
@@ -36,27 +36,20 @@ def extracts(navigators: texmex.PageTextNavigators):
 
 
 def extract(content: texmex.PageTextNavigator) -> iamraw.BibliographyReferences:
-    parsed = geostrat.dc_parse_page(content)
-    if parsed is None:
+    layouted = geostrat.parse(content, data_adjust=True)
+    if layouted is None:
         return None
     result = []
-    for item in parsed:
-        reference = item[0].strip()
+    for left, right in layouted:
+        reference = left[0].text.strip()
         # remove latex reference pattern [FCB87]
         reference = remove_bracket_angle(reference)
-        data = item[1].strip()
-        techref = detector.bibliography.reference.tech.parse_longtext(data)
-        if techref:
-            techref.reference = reference
-            techref.data = data
-            result.append(techref)
-        else:
-            result.append(
-                iamraw.BibliographyReference(
-                    reference=reference,
-                    data=data,
-                ))
+        raw = ' '.join(item.text.strip() for item in right)
+        parsed = detector.bibliography.machine.runtime.reference(raw)
+        parsed.reference = reference
+        result.append(parsed)
     return result
+
 
 
 def double_column(content: texmex.PageTextNavigator) -> iamraw.BibliographyReferences: # yapf:disable
