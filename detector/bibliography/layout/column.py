@@ -48,7 +48,6 @@ def extract(content: texmex.PageTextNavigator) -> iamraw.BibliographyReferences:
             # TODO: VALIDATE PATTERN
             continue
         # remove latex reference pattern [FCB87]
-        reference = remove_bracket_angle(reference)
         raw = ' '.join(item.text.strip() for item in right)
         if not raw.strip():
             # no content in data column
@@ -70,19 +69,3 @@ def double_column(content: texmex.PageTextNavigator) -> iamraw.BibliographyRefer
         parsed = detector.bibliography.layout.vspace.extracts([navigator])
         result.extend(utila.flatten(parsed))
     return result
-
-
-def remove_bracket_angle(reference: str) -> str:
-    """Remove bracket angle at start and end of `reference`.
-
-    >>> remove_bracket_angle('[TM12]')
-    'TM12'
-    >>> remove_bracket_angle('DSB')
-    'DSB'
-    """
-    reference = reference.strip()
-    if reference[0] == '[':
-        reference = reference[1:]
-    if reference[-1] == ']':
-        reference = reference[0:-1]
-    return reference
