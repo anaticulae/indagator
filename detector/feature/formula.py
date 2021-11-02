@@ -13,16 +13,15 @@ import utila
 
 
 def work(
-    formula: str,
+    formularaw: str,
     text: str,
     textpositions: str,
     sizeandborder: str,
     headerfooter: str,
     pages: tuple,
 ) -> str:
-    loaded = serializeraw.load_rawformulas(formula, pages=pages)
+    loaded = serializeraw.load_rawformulas(formularaw, pages=pages)
     # TODO: ADD SPECIAL ANALYSIS HERE
-
     ptcns = serializeraw.ptcn_fromfile(
         text,
         textpositions,
