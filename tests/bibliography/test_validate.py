@@ -153,6 +153,8 @@ def test_detector_bibliography_run(
         path = os.path.join(detector.ROOT, f'tests/bibliography/expected/{validate}')  # yapf:disable
         expected = utila.file_read(path).strip()
         raw = authors_raw(flat)
+        if raw != expected:
+            utila.file_create('baseline', raw)
         assert raw == expected
     elif isinstance(validate, int):
         assert len(flat) == validate
