@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import functools
 import os
 
 import power
@@ -89,17 +90,8 @@ def master91b(flat):
 
 
 def master148(flat):
-    raw = authors_raw(flat)
-    utila.log(raw)
     assert flat
     assert len(flat) == 85  # VALIDATED
-
-
-def authors_raw(flat) -> str:
-    items = [' ; '.join([item.raw for item in line.authors]) for line in flat]
-    items = [item.strip() for item in items]
-    raw = utila.NEWLINE.join(items)
-    return raw
 
 
 # yapf:disable
@@ -140,23 +132,42 @@ def test_detector_bibliography_run(
     testdir,
     monkeypatch,
 ):
-    source = power.link(source)
-    utilatest.fixture_requires(source)
-    cmd = f'-i {source} -o {testdir.tmpdir} --bibliography --pages={pages}'
-    tests.run(cmd, monkeypatch=monkeypatch)
-    # validate
-    outpath = detector.path.bibliography_detected(testdir.tmpdir)
-    loaded = serializeraw.load_bibliography_reference(outpath)
-    flat = utila.flatten(loaded)
-    assert len(flat) == expected or expected is None, str(loaded)
-    if isinstance(validate, str):
-        path = os.path.join(detector.ROOT, f'tests/bibliography/expected/{validate}')  # yapf:disable
-        expected = utila.file_read(path).strip()
-        raw = authors_raw(flat)
-        if raw != expected:
-            utila.file_create('baseline', raw)
-        assert raw == expected
-    elif isinstance(validate, int):
-        assert len(flat) == validate
-    elif validate:
-        validate(flat)
+
+    class BibCompare(utilatest.BaseLiner):
+
+        def __init__(self):
+            super().__init__(
+                program=functools.partial(tests.run, monkeypatch=monkeypatch),
+                step='bibliography',
+                source=source,
+                pages=pages,
+                workdir=testdir.tmpdir,
+                archive=os.path.join(
+                    detector.ROOT,
+                    'tests/bibliography/expected',
+                ),
+                loader=serializeraw.load_bibliography_reference,
+                index=validate,
+            )
+
+        def raw(self, value) -> str:
+            flat = utila.flatten(value)
+            items = [
+                utila.from_tuple(
+                    item=[item.raw for item in line.authors],
+                    separator=' ; ',
+                ) for line in flat
+            ]
+            items = [item.strip() for item in items]
+            result = utila.NEWLINE.join(items).strip()
+            return result
+
+        def backup(self, value):  # pylint:disable=R0201
+            flat = utila.flatten(value)
+            assert len(flat) == expected or expected is None
+            if isinstance(validate, int):
+                assert len(flat) == validate
+            elif validate:
+                validate(flat)
+
+    BibCompare().evaluate()
