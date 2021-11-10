@@ -120,6 +120,7 @@ def master148(flat):
     pytest.param(power.DISS143_PDF, '131:143', None, 'diss143', id='diss143'),
     pytest.param(power.DISS143_PDF, '131', None, 'diss143p131', id='diss143p131'),
     pytest.param(power.BACHELOR067_PDF, '63:66', None, 'bachelor067', id='bachelor067'),
+    pytest.param(power.DISS167_PDF, '140:167', None, 'diss167', id='diss167', marks=pytest.mark.xfail(reason='improve parser')),
 ])
 # yapf:enable
 @utilatest.longrun
