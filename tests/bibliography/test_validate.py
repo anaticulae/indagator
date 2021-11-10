@@ -91,7 +91,6 @@ def master91b(flat):
 
 def master148(flat):
     assert flat
-    assert len(flat) == 85  # VALIDATED
 
 
 # yapf:disable
@@ -109,7 +108,7 @@ def master148(flat):
     pytest.param(power.MASTER091B_PDF, '82:89', 85, master91b, id='master91b'), # VALIDATED BY HAND
     pytest.param(power.MASTER110_PDF, '104:109', 71, master110, id='master110'),
     pytest.param(power.MASTER116_PDF, '97,98,99,100', 46, master116, id='master116'), # VALIDATED BY HAND
-    pytest.param(power.MASTER148_PDF, '109:114', 38, master148, id='master148', marks=pytest.mark.xfail(reason='handle very bad bibs')), # VALIDATED BY HAND
+    pytest.param(power.MASTER148_PDF, '109:114', 38, master148, id='master148'), # VALIDATED BY HAND
     pytest.param(power.MASTER155_PDF, '75:85', 111, 'master155', id='master155'), # VALIDATED BY HAND 109
     pytest.param(power.DISS170_PDF, '150:163', None, diss170, id='diss170'),
     pytest.param(power.DISS266_PDF, '215:247', 427, None, id='diss266', marks=pytest.mark.xfail(reason='improve parser')), # VALIDATED BY HAND
