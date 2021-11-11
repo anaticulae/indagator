@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.29.2
+
+### Fix
+
+* skip empty left column (1fe41c3792ce)
+
 ## v0.29.1
 
 ### Feature
