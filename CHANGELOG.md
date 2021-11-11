@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.29.1
+
+### Feature
+
+* do not strip bracket angles (000178ff3be1)
+
 ## v0.29.0
 
 ### Feature
