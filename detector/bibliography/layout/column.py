@@ -43,6 +43,9 @@ def extract(content: texmex.PageTextNavigator) -> iamraw.BibliographyReferences:
         return None
     result = []
     for left, right in layouted:
+        if not left:
+            # TODO: INVESTIGATE WHY THIS CAN HAPPEN, SEE DISS264
+            continue
         reference = left[0].text.strip()
         if reference[0] != '[':
             # TODO: VALIDATE PATTERN
