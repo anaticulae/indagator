@@ -14,7 +14,7 @@ import iamraw
 
 import detector.titlepage.parser.complete
 
-MIN_TITLEPAGE_RATING = configo.HV_INT_PLUS(default=20)
+TITLEPAGE_RATING_MIN = configo.HV_INT_PLUS(default=20)
 
 
 def select_best(pages: typing.List[iamraw.TitlePage]) -> iamraw.TitlePage:
@@ -35,7 +35,7 @@ def select_best(pages: typing.List[iamraw.TitlePage]) -> iamraw.TitlePage:
     if current <= 0:
         # No valid title page detected
         return None
-    if current <= MIN_TITLEPAGE_RATING:
+    if current <= TITLEPAGE_RATING_MIN:
         # rating is to low
         # TODO: Handle different than no detection
         return None

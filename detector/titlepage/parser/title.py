@@ -19,9 +19,9 @@ import configo
 import texmex
 import utila
 
-MIN_TITLE_FONT_SIZE = configo.HV_FLOAT_PLUS(default=20.0)
+TITLE_FONT_SIZE_MIN = configo.HV_FLOAT_PLUS(default=20.0)
 
-MIN_TITLE_WORD_COUNT = configo.HV_INT_PLUS(default=4)
+TITLE_WORD_COUNT_MIN = configo.HV_INT_PLUS(default=4)
 
 
 class TitleParserState(enum.Enum):
@@ -61,7 +61,7 @@ def parse(textnavigator: texmex.PageTextNavigator) -> str:
     Requirements for font parsing:
         - require at least 2 lines
         - size(headline) 120% of next line
-        - title greater than `MIN_TITLE_FONT_SIZE`
+        - title greater than `TITLE_FONT_SIZE_MIN`
     """
     merged = merge(textnavigator)
     sizes = determine_sizes(merged)
@@ -76,7 +76,7 @@ def parse(textnavigator: texmex.PageTextNavigator) -> str:
                f'detected({detected_size}) next({next_size})')
         utila.info(msg)
         return TitleParserState.NOT_ENOUGH_DISTANCE
-    if detected_size < MIN_TITLE_FONT_SIZE:
+    if detected_size < TITLE_FONT_SIZE_MIN:
         return TitleParserState.TITLE_TO_SMALL
     # TODO: ITER THROW POTENTIAL TITLES AND RUN TOP VERIFICATION
     title = sizes[0][1].replace(utila.NEWLINE, ' ')
@@ -84,7 +84,7 @@ def parse(textnavigator: texmex.PageTextNavigator) -> str:
     if notitle(title):
         # bachelor
         return TitleParserState.NO_TITLE
-    if len(title.split()) < MIN_TITLE_WORD_COUNT:
+    if len(title.split()) < TITLE_WORD_COUNT_MIN:
         return TitleParserState.TITLE_TO_SHORT
     return title
 

@@ -247,7 +247,7 @@ def parse_longtext_less_strict(content: str) -> iamraw.BibliographyReference:
     return None
 
 
-TITLE_MIN_LENGTH = 10
+TITLE_LENGTH_MIN = 10
 
 
 @functools.lru_cache(maxsize=4098)
@@ -266,7 +266,7 @@ def title_with_link(text: str) -> str:
 
 
 @functools.lru_cache(maxsize=4098)
-def invalid_title(title: str, title_min_length: int = TITLE_MIN_LENGTH) -> bool:
+def invalid_title(title: str, title_min_length: int = TITLE_LENGTH_MIN) -> bool:
     if not title:
         return None
     if len(title) < title_min_length:

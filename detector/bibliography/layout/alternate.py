@@ -34,18 +34,18 @@ import detector.bibliography.reference.magic
 import detector.bibliography.reference.number
 import detector.bibliography.reference.tech
 
-MIN_CONTENT_LENGTH = configo.HV_INT_PLUS(default=15)
+CONTENT_LENGTH_MIN = configo.HV_INT_PLUS(default=15)
 
-MIN_WORD_COUNT = configo.HV_INT_PLUS(default=2)
+WORD_COUNT_MIN = configo.HV_INT_PLUS(default=2)
 
-ERROR_MAX_LEVEL = configo.HV_PERCENT_PLUS(default=25.0)
+ERROR_LEVEL_MAX = configo.HV_PERCENT_PLUS(default=25.0)
 
 
 def extracts(items: texmex.PageTextNavigators) -> iamraw.BibliographyReferences:
     result = []
     config = geostrat.ParserConfig(
-        min_content_length=MIN_CONTENT_LENGTH,
-        min_word_count=MIN_WORD_COUNT,
+        min_content_length=CONTENT_LENGTH_MIN,
+        min_word_count=WORD_COUNT_MIN,
     )
     try:
         parsed = geostrat.al_parse_pages(items, config=config)
@@ -57,7 +57,7 @@ def extracts(items: texmex.PageTextNavigators) -> iamraw.BibliographyReferences:
             continue
         error = len([item for item in extracted if not item])
         error_quote = error / len(extracted)
-        if error_quote >= ERROR_MAX_LEVEL:
+        if error_quote >= ERROR_LEVEL_MAX:
             continue
         # update pdf page number
         for item in extracted:

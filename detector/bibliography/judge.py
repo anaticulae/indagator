@@ -13,7 +13,7 @@ import utila
 
 import detector.bibliography.utils
 
-TITLE_MIN_LENGTH = configo.HV_INT_PLUS(default=10)
+TITLE_LENGTH_MIN = configo.HV_INT_PLUS(default=10)
 
 INVALID_MAX = configo.HolyTable(
     items=[
@@ -47,7 +47,7 @@ def judge(pages: list) -> list:
 
 def invalid_single(
     item: iamraw.BibliographyReference,
-    title_length_min: int = TITLE_MIN_LENGTH,
+    title_length_min: int = TITLE_LENGTH_MIN,
 ) -> bool:
     if item.title:
         if len(item.title) < title_length_min:
