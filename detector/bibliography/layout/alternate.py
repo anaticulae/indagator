@@ -105,13 +105,13 @@ def split_bibliography(raw: str) -> iamraw.BibliographyReference:
     return None
 
 
-MAGIC_LENGTH = 120
+MAGIC_LENGTH_MIN = configo.HV_INT_PLUS(default=120)
 
 
 @functools.lru_cache(maxsize=4096)
 def parse_last(raw: str) -> iamraw.BibliographyReference:
     # TODO: NOT VERY SMART
-    if len(raw) < MAGIC_LENGTH:
+    if len(raw) < MAGIC_LENGTH_MIN:
         return None
     content = raw
     year = detector.bibliography.reference.years(raw)
