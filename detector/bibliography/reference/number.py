@@ -56,9 +56,10 @@ def parse(raw: str) -> iamraw.BibliographyReference:
 SPLITTER = re.compile(
     r"""
     ^
-    \[
-        (\d{1,4})
-    \]
+    (?:
+        \[(\d{1,4})\]|       # [1] W. Abmayr.
+        (\d{1,4})\.          # 4. Guy, G.P., Thomas
+    )
     [ ]{0,4}
     """,
     re.X | re.DOTALL,
@@ -70,13 +71,18 @@ def split(raw: str) -> tuple:
     """\
     >>> split('[1] W. Abmayr. Einführung in die digitale')
     (1, 'W. Abmayr. Einführung in die digitale')
+    >>> split('4. Guy, G.P., Thomas, C.C., Thompson, T., Watson, M., Massetti, G.M.')
+    (4, 'Guy, G.P., Thomas, C.C., Thompson, T., Watson, M., Massetti, G.M.')
     """
     splitted = SPLITTER.split(raw)
-    if not splitted or len(splitted) <= 1:
-        # TODO: IS `not splitted` not REQUIRED?
+    if len(splitted) == 1:
+        # not splitted
         return None
-    number = int(splitted[1])
-    data = splitted[2]
+    try:
+        number = int(splitted[1])
+    except TypeError:
+        number = int(splitted[2])
+    data = splitted[3]
     return number, data
 
 
