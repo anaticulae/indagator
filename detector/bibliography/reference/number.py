@@ -35,6 +35,14 @@ import detector.quotes
 
 
 @functools.lru_cache(maxsize=4096)
+def nosplit(raw: str) -> iamraw.BibliographyReference:
+    parsed = content(raw)
+    if not parsed:
+        return None
+    return parsed
+
+
+@functools.lru_cache(maxsize=4096)
 def parse(raw: str) -> iamraw.BibliographyReference:
     """\
     >>> parse('[1] Ahrens, Thomas ; Hanke, Hans-Joachim ; Scheel, Wolfgang: '

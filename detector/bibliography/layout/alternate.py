@@ -88,7 +88,7 @@ def split_bibliography(raw: str) -> iamraw.BibliographyReference:
     BibliographyReference(...)
     """
     strategies = (
-        detector.bibliography.reference.number.parse,
+        detector.bibliography.reference.number.nosplit,
         detector.bibliography.reference.tech.parse_single_row,
         detector.bibliography.reference.freeand.parse_longtext_less_strict,
         detector.bibliography.reference.tech.parse_longtext,
@@ -97,10 +97,15 @@ def split_bibliography(raw: str) -> iamraw.BibliographyReference:
     )
     raw = raw.strip()
     raw = utila.simplify_chars(raw)
+    splitted = detector.bibliography.reference.number.split(raw)
+    if splitted:
+        raw = splitted[1]
     for strategy in strategies:
         matched = strategy(raw)
         if not matched:
             continue
+        if splitted and not matched.reference:
+            matched.reference = splitted[0]
         return matched
     return None
 
