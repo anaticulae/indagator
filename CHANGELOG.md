@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.29.3
+
+### Feature
+
+* split optional number at the front of the line (dccc12079198)
+* allow splitting number-dot-pattern at front (041424b5d6af)
+
 ## v0.29.2
 
 ### Fix
