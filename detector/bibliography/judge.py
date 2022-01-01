@@ -49,6 +49,10 @@ def invalid_single(
     item: iamraw.BibliographyReference,
     title_length_min: int = TITLE_LENGTH_MIN,
 ) -> bool:
+    if item.reference:
+        # if reference is detected this is a sign for good extraction
+        # TODO: VALIDATE REFERENCE HERE?
+        return False
     if item.title:
         if len(item.title) < title_length_min:
             return True
