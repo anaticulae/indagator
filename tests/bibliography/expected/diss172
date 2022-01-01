@@ -1,0 +1,202 @@
+A Practical Observability Primer.
+Christian Esposito ; Aniello Castiglione ; and Kim-Kwang
+Varun Chandola ; Arindam Banerjee ; and Vipin
+Nasrin Sultana ; Naveen Chilamkurti ; Wei Peng ; and Rabei
+Shenglin Zhang ; Ying Liu ; Dan Pei ; Yu Chen ; Xianping Qu ; Shimin Tao
+Ding Yuan ; Xin Zhuang ; Guilherme Renna Rodrigues ; Xu Zhao ; Yongle Zhang ; Pranay U Jain ; and Michael
+Olivier Crameri ; Nikola Knezevic ; Dejan Kostic ; Ricardo Bianchini ; and Willy
+S. Nedelkoski ; J. Bogatinovski ; A. Acker ; J. Cardoso ; O. Kao.
+Sasho Nedelkoski ; Jasmin Bogatinovski ; Alexander Acker ; Jorge Cardoso ; and Odej
+Accelerated Cloud
+Frank Doelitzscher ; Martin Knahl ; Christoph Reich ; and Nathan
+Guansong Pang Chunhua Shen ; Longbing Cao Anton van den Hengel. Deep Learning for Anomaly Detection
+Haryadi S Gunawi ; Mingzhe Hao ; Tanakorn Leesatapornwongsa ; Tiratat Patana-anake ; Thanh Do ; Jeffry Adityatama ; Kurnia J Eliazar ; Agung Laksono ; Jeffrey F Lukman ; Vincentius Martin
+Sasho Nedelkoski ; Jorge Cardoso ; and Odej
+Jonathan Sillito and Esdras Kutomi. Failures and Fixes
+C. Sridharan.
+Todd D. Jick. “Mixing Qualitative Quantitative Methods
+Sasho Nedelkoski ; Jorge Cardoso ; and Odej
+Sasho Nedelkoski ; Jasmin Bogatinovski ; Ajay Kumar Mandapati ; Soeren Becker ; Jorge Cardoso ; and Odej
+Domenico Cotroneo ; Luigi De Simone ; Pietro Liguori ; Roberto Natella ; and Nematollah
+Jieming Zhu ; Shilin He ; Jinyang Liu ; Zibin Zheng ; and Michael
+Xu Zhang ; Yong Xu ; Qingwei Lin ; Bo Qiao ; Hongyu Zhang ; Yingnong Dang ; Chunyu Xie ; Xinsheng Yang ; Qian Cheng
+Weibin Meng ; Ying Liu ; Yichen Zhu ; Shenglin Zhang ; Dan Pei ; Yuqing Liu ; Yihao Chen ; Ruizhi Zhang ; Shimin Tao
+Mojtaba Shahin ; Muhammad Ali Babar ; and Liming
+Geoffrey E Hinton
+Ian Goodfellow Yoshua Bengio and Aaron Courville. Deep Learning.
+William C Carter. “A time for reflection.” In
+J. C. Laprie.
+Ingo Weber ; Chao Li ; Len Bass ; Xiwei Xu ; and Liming
+Andrew S Tanenbaum Maarten Van Steen. Distributed Systems
+Charles Abrams
+
+Sam Newman. Building Microservices
+Mohammad Isam Malkawi. “The Art of Software Systems Development
+Florian Schmidt ; Anton Gulenko ; Marcel Wallschläger ; Alexander Acker ; Vincent Hennig ; Feng Liu ; and Odej
+Jakub Breier
+Liang Tang ; and Chang-Shing
+Feifei Li ; Guineng Zheng ; and Vivek
+Yong Yang Long Wang ; Jing Gu Ying Li. Transparently Capturing Request Execution Path for Anomaly Detection. 2020. arXiv
+J. Bogatinovski S. Nedelkoski ; J. Cardoso O. Kao.
+Yu Chen. “Anomaly Detection on Golden Signals.” In
+Four Golden Signals for Monitoring Distributed Systems. https
+Peter J Brockwell Richard A Davis and Stephen E Fienberg. Time Series
+Haowen Xu ; Wenxiao Chen ; Nengwen Zhao ; Zeyan Li ; Jiahao Bu ; Zhihan Li ; Ying Liu ; Youjian Zhao ; Dan Pei ; Yang Feng
+Ahmed E Hassan ; Daryl J Martin ; Parminder Flora ; Paul Mansfield ; and Dave
+Meiyappan Nagappan ; and Mladen
+
+Min Du Feifei Li. “Spell
+Yue Yuan ; Wenchang Shi
+Xiang Zhou ; Xin Peng ; Chao Ji ; Dewei Liu ; Qilin Xiang ; and Chuan
+An Ran Chen. “An Empirical Study on Leveraging Logs for Debugging Production Failures.” In
+Yongle Zhang ; Serguei Makarov ; Xiang Ren ; David Lion ; and Ding
+Xu Zhao ; Kirk Rodrigues ; Ding Yuan ; and Michael
+Lingfeng Bao ; Nimrod Busany ; David Lo ; and Shahar
+Jayashree Mohan ; Ashlie Martinez ; Soujanya Ponnapalli ; Pandian Raju ; and Vijay
+Paul Sarbanes
+Openstack. openstack ; osprofiler. url
+Jinyang Liu ; Jieming Zhu ; Shilin He ; Zibin Zheng ; and Michael
+Hossein Hamooni ; Biplob Debnath ; Jianwu Xu ; Hui Zhang ; Guofei Jiang ; and Abdullah
+
+Definition of AIOps (Artificial Intelligence for IT Operations) ; Gartner Information Technology Glossary. https
+Market Guide for AIOps Platforms. https
+IDC FutureScape. “Worldwide CIO Agenda 2019 Predictions.” In
+Shuyu Chen ; Zhen Zhou ; and Tianshu
+D Vrushali
+Chong Zhou
+Qiang Fu ; Shengqi YANG ; Jiang Li ; and Jian-Guang
+
+Sandeep Dalal
+Jasmin Bogatinovski ; Sasho Nedelkoski ; Johan Thordsson ; and Odej
+Yuan Meng ; Shenglin Zhang ; Yongqian Sun ; Ruru Zhang ; Zhilong Hu ; Yiyin Zhang ; Chenyang Jia ; Zhaogang Wang ; and Dan
+Stelios Sidiroglou ; Oren Laadan ; Carlos Perez ; Nicolas Viennot ; Jason Nieh ; and Angelos
+Eric M Dashofy ; Andre Van der Hoek ; and Richard
+Benoit Donnet ; Philippe Raoult ; Timur Friedman ; and Mark
+Benoit Donnet ; Timur Friedman ; and Mark
+Benoit Donnet
+
+Giuseppe Muntoni ; Jacopo Soldani ; and Antonio
+Charu C. Aggarwal. “Outlier Analysis.” In
+
+Frank E Grubbs. “Procedures for Detecting Outlying Observations in Samples.” In
+
+Lukas Ruff Jacob R. Kauffmann ; Robert A. Vandermeulen Gregoire Montavon ; Wojciech Samek Marius Kloft ; Thomas G. Dietterich and Klaus-Robert Müller. A Unifying Review of Deep and Shallow Anomaly Detection. 2020. arXiv
+James P Theiler
+Ingo Steinwart ; Don Hush ; and Clint
+Lukas Ruff ; Robert A Vandermeulen ; Nico Görnitz ; Alexander Binder ; Emmanuel Müller ; Klaus-Robert Müller ; and Marius Kloft. Deep Semi-Supervised Anomaly Detection. 2019. arXiv
+Lukas Ruff ; Yury Zemlyanskiy ; Robert Vandermeulen ; Thomas Schnake ; and Marius
+Raghavendra Chalapathy Sanjay Chawla. Deep Learning for Anomaly Detection
+Ian T Jolliffe
+Yoshua Bengio ; Aaron Courville ; and Pascal
+Wei Wang ; Yan Huang ; Yizhou Wang ; and Liang
+Mayu Sakurada
+Dan Hendrycks ; Mantas Mazeika ; Saurav Kadavath ; and Dawn
+Faruk Ahmed
+Yuki M. Asano Christian Rupprecht ; Andrea Vedaldi. A Critical Analysis of Self-Supervision or What We Can Learn from a Single Image. 2020. arXiv
+Guilherme O Campos ; Arthur Zimek ; Jörg Sander ; Ricardo JGB Campello ; Barbora Micenkova ; Erich Schubert ; Ira Assent ; and Michael
+Fei Tony Liu ; Kai Ming
+Markus M Breunig ; Hans-Peter Kriegel ; Raymond T Ng ; and Jörg
+Tomas Mikolov ; Ilya Sutskever ; Kai Chen ; Greg S Corrado ; and Jeff
+Ruoxi Jia ; and Dawn
+Suhas Kabinna ; Cor-Paul Bezemer ; Weiyi Shang ; Mark D Syer ; and Ahmed
+
+Zhi Chen ; Chang Liu ; Rajvardhan Oak ; and Dawn
+Lianping Chen. “Continuous Delivery
+Debra (Dallie) Sandilands. “Univariate Analysis.” In
+Yoni Yom Tov BEN SIMHON and Ira Cohen. Heuristic Inference of Topological Representation of Metric Relationships. US Patent App. 15 ; 002 260. 2016.
+Mohammad Braei Sebastian Wagner. Anomaly Detection in Univariate Time-series
+Meir Toledano ; Ira Cohen ; Yonatan Ben-Simhon ; and Inbal
+Jieming Zhu ; Zibin Zheng ; and Michael
+Ling Huang ; Armando Fox ; David Patterson ; and Michael
+Marco Fraccaro ; Soren Kaae Sonderby ; Ulrich Paquet ; and Ole
+S. Nedelkoski L. Thamsen ; I. Verbitskiy O. Kao.
+
+Friedrich Pukelsheim. “The Three Sigma Rule.” In
+Sergey Ioffe
+Albert Nuttall. “Some Windows with Very Good Sidelobe Behavior.” In
+Alexander Acker ; Florian Schmidt ; Anton Gulenko ; Reinhard Kietzmann ; and Odej
+Diederik P. Kingma
+Jinwon An Sungzoon Cho. “Variational Autoencoder-Based Anomaly Detection using Reconstruction Probability.” In
+Michael I Jordan ; Zoubin Ghahramani ; Tommi S Jaakkola ; and Lawrence
+Samuel R. Bowman ; Luke Vilnis ; Oriol Vinyals ; Andrew Dai ; Rafal Jozefowicz ; and Samy
+David E. Rumelhart ; Geoffrey E. Hinton ; and Ronald
+Sepp Hochreiter. “The Vanishing Gradient Problem During Learning Recurrent Neural Nets Problem Solutions.” In
+Sepp Hochreiter
+Bart Van Merrienboer ; Dzmitry Bahdanau ; and Yoshua
+Junyoung Chung ; Kyle Kastner ; Laurent Dinh ; Kratarth Goel ; Aaron C Courville ; and Yoshua
+Murray Rosenblatt. “A central limit theorem a strong mixing condition.” In
+Yann LeCun ; Yoshua Bengio
+Bendong Zhao ; Shangfeng Chen ; Junliang Liu
+
+Leo Breiman. “Random Forests.” In
+M˜ahesh V Joshi ; Ramesh C Agarwal ; and Vipin
+Mahesh V Joshi ; Ramesh C Agarwal ; and Vipin
+Nitesh V Chawla ; Nathalie Japkowicz ; and Aleksander
+Hendrik Fichtenberger ; Marc Gille ; Melanie Schmidt ; Chris Schwiegelshohn ; and Christian
+Tapas Kanungo ; David M Mount ; Nathan S Netanyahu ; Christine D Piatko ; Ruth Silverman ; and Angela
+Larry M Manevitz
+Pankaj Malhotra ; Lovekesh Vig ; Gautam Shroff ; and Puneet
+Pavel Filonov ; Andrey Lavrentyev ; and Artem
+Owen Vallis ; Jordan Hochenbaum ; and Arun
+Netflix. Netflix ; Surus.
+Kyle Hundman ; Valentino Constantinou ; Christopher Laporte ; Ian Colwell ; and Tom
+Dapeng Liu ; Youjian Zhao ; Haowen Xu ; Yongqian Sun ; Dan Pei ; Jiao Luo ; Xiaowei Jing ; and Mei
+Bo Zong ; Qi Song ; Martin Renqiang Min ; Wei Cheng ; Cristian Lumezanu ; Daeki Cho ; and Haifeng
+Daehyung Park ; Yuuna Hoshi ; and Charles
+Shilin He ; Jieming Zhu ; and Michael
+Juan Ramos et al. “Using TF ; IDF to Determine Word Relevance in Document Queries.” In
+Jieming Zhu ; Shilin He ; Jian Li ; and Michael
+Sasho Nedelkoski ; Harald Ott ; Jasmin Bogatinovski ; Alexander Acker ; and Odej
+Lingxue Zhu and Nikolay Laptev. “Deep and Confident Prediction for Time Series at Uber.” In
+Shaohan Huang ; Carol Fung ; Rong He ; Yining Zhao ; Hailong Yang
+Wilson L Taylor. ““Cloze procedure”
+Ashish Vaswani ; Noam Shazeer ; Niki Parmar ; Jakob Uszkoreit ; Llion Jones ; Aidan N Gomez ; Łukasz Kaiser ; and Illia
+Adam Oliner
+Alexandre B Tsybakov et al. “On Nonparametric Estimation of Density Level Sets.” In
+Edward Loper
+Ziming Zheng ; Wei Tang ; Zhiling Lan ; Rinku Gupta ; Narayan Desai ; Susan Coghlan ; and Daniel
+Laurens van der Maaten
+Large Scale
+Masayoshi Mizutani. “Incremental Mining of System Log Format.” In
+Keiichi Shima. “Length Matters
+Qiang Fu ; Jian-Guang Lou ; Yi Wang ; and Jiang
+Meiyappan Nagappan
+Animesh Nandi ; Atri Mandal ; Shubham Atreja ; Gargi B Dasgupta ; and Subhrajit
+Salma Messaoudi ; Annibale Panichella ; Domenico Bianculli ; Lionel Briand ; and Raimondas
+Zhen Ming Jiang ; Ahmed E Hassan ; Gilbert Hamann ; and Parminder
+Peter Bodik ; Moises Goldszmidt ; Armando Fox ; Dawn B Woodard ; and Hans
+Mike Chen ; Alice X Zheng ; Jim Lloyd ; Michael I Jordan ; and Eric
+Mostafa Farshchi ; Jean-Guy Schneider ; Ingo Weber ; and John
+Yinglung Liang ; Yanyong Zhang ; Hui Xiong ; and Ramendra
+X. Xu ; L. Zhu ; I. Weber ; L. Bass ; D. Sun.
+Jakub Breier
+Ke Zhang ; Jianwu Xu ; Martin Renqiang Min ; Guofei Jiang ; Konstantinos Pelechrinis
+R. Vinayakumar ; K. P. Soman
+Christophe Bertero ; Matthieu Roy ; Carla Sauvanaud ; and Gilles
+
+Antonio Pecchia ; Ingo Weber ; Marcello Cinque
+Timo Nolle ; Alexander Seeliger ; and Max
+Timo Nolle ; Stefan Luettgen ; Alexander Seeliger ; and Max
+Timo Nolle ; Stefan Luettgen ; Alexander Seeliger ; and Max
+Fareed Zandkarimi ; Jana-Rebeca Rehse ; Pouya Soudmand ; and Hartmut
+Ping Liu ; Haowen Xu ; Qianyu Ouyang ; Rui Jiao ; Zhekang Chen ; Shenglin Zhang ; Jiahai Yang ; Linlin Mo ; Jice Zeng ; Wenman Xue
+Jasmin Bogatinovski ; Sasho Nedelkoski
+Pascal Vincent ; Hugo Larochelle ; Isabelle Lajoie ; Yoshua Bengio ; and Pierre-Antoine
+Jacob Devlin ; Ming-Wei Chang ; Kenton Lee ; and Kristina Toutanova. BERT
+Michael Chow ; David Meisner ; Jason Flinn ; Daniel Peek ; and Thomas
+Zhiheng Huang ; and Kai
+Alok Shrivastwa ; Sunil Sarat ; Kevin Jackson ; Cody Bunch ; Egle Sigler ; and Tony Campbell. OpenStack
+Kolla-Ansible’s documentation. https
+Rally.
+Jasmin Bogatinovski
+Sasho Nedelkoski ; Mihail Bogojeski ; and Odej
+
+Mostafa Farshchi ; Jean-Guy Schneider ; Ingo Weber ; and John
+I. Weber S. Nepal L. Zhu.
+Yasuhiro Ikeda ; Keisuke Ishibashi ; Yuusuke Nakano ; Keishiro Watanabe ; and Ryoichi Kawahara. Anomaly Detection and Interpretation using Multimodal Autoencoder and Sparse Optimization. 2018. eprint
+Peter Zadrozny Raghu Kodali. Big Data Analytics Using Splunk
+
+
+
+Philip Tee
+Philip Tee
