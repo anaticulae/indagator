@@ -25,11 +25,17 @@ def extracts(
     column = detector.bibliography.layout.column.extracts(text)
     alternate = detector.bibliography.layout.alternate.extracts(text_oneline)
     vspace = detector.bibliography.layout.vspace.extracts(text_oneline)
-
+    # print result of un-judged extraction
+    utila.debug('judge data')
+    utila.debug(f'column:    {detector.bibliography.utils.count(column)}')
+    utila.debug(f'alternate: {detector.bibliography.utils.count(alternate)}')
+    utila.debug(f'vspace:    {detector.bibliography.utils.count(vspace)}')
+    utila.debug()
     # column = detector.bibliography.judge.judge(column)
     alternate = detector.bibliography.judge.judge(alternate)
     vspace = detector.bibliography.judge.judge(vspace)
-
+    # print judge result
+    utila.debug('judged')
     utila.debug(f'column:    {detector.bibliography.utils.count(column)}')
     utila.debug(f'alternate: {detector.bibliography.utils.count(alternate)}')
     utila.debug(f'vspace:    {detector.bibliography.utils.count(vspace)}')
