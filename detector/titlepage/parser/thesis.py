@@ -29,6 +29,10 @@ def parse(token: str) -> iamraw.TitleThesisType:
     return None
 
 
+# TODO: MOVE TO IAMRAW
+iamraw.titlepage.THESIS[iamraw.DocumentType.MASTER] |= {'Master[ ]{0,3}Thesis'}
+
+
 def construct_pattern():
     pattern = []
     for key, values in iamraw.titlepage.THESIS.items():
