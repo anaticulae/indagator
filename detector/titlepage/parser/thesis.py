@@ -7,19 +7,17 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import re
-
 import iamraw
 import utila
 
 
 def parse(token: str) -> iamraw.TitleThesisType:
     # support Bachelorarbeit and BACHELORARBEIT
-    collected = re.search(PATTERN, token, flags=re.IGNORECASE)
+    collected = PATTERN.search(token)
     if not collected:
         return None
-    # TODO: HOW TO HANDLE MULTIPLE COLLECTION, e.g. Master, Bachelor on the
-    # same page.
+    # TODO: HOW TO HANDLE MULTIPLE COLLECTION, e.g. Master, Bachelor on
+    # the same page.
     # TODO: ADD DIRECT IMPORT OF THESIS
     for item in iamraw.titlepage.THESIS:
         finding = collected[item.name]
@@ -34,15 +32,14 @@ def parse(token: str) -> iamraw.TitleThesisType:
 def construct_pattern():
     pattern = []
     for key, values in iamraw.titlepage.THESIS.items():
-        subpattern = '(?P<%s>(' % str(key.name)
-        # reverse to have the longer pattern in front, `Masterarbeit` before
-        # `Master`
+        subpattern = f'(?P<{key.name}>('
+        # reverse to have the longer pattern in front, `Masterarbeit`
+        # before `Master`
         subpattern += ('|'.join(sorted(values, reverse=True)))
         subpattern += '))'
         pattern.append(subpattern)
-
     result = '(' + ('|'.join(pattern)) + ')'
     return result
 
 
-PATTERN = construct_pattern()
+PATTERN = utila.compiles(construct_pattern())
