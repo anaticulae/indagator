@@ -103,6 +103,12 @@ def master075(titlepage: iamraw.TitlePage):
     assert titlepage.author
 
 
+def master099b(titlepage: iamraw.TitlePage):
+    assert titlepage
+    assert titlepage.author
+    assert titlepage.examiner
+
+
 @pytest.mark.parametrize('source, check', [
     pytest.param(
         power.HOME050_PDF,
@@ -131,6 +137,12 @@ def master075(titlepage: iamraw.TitlePage):
     pytest.param(power.DISS170_PDF, diss170, id='diss170'),
     pytest.param(power.DISS143_PDF, diss143, id='diss143'),
     pytest.param(power.MASTER075_PDF, master075, id='master075'),
+    pytest.param(
+        power.MASTER099B_PDF,
+        master099b,
+        id='master099b',
+        marks=pytest.mark.xfail(reason='require image detector'),
+    ),
 ])
 @utilatest.longrun
 def test_validate_titlepage_extractor(source, check, testdir, monkeypatch):
