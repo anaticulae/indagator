@@ -15,24 +15,14 @@ import setuptools
 
 ROOT = os.path.abspath(os.path.dirname(__file__))
 
-README = os.path.join(ROOT, 'README.md')
-VERSION = os.path.join(ROOT, 'detector/__init__.py')
-REQUIREMENTS = os.path.join(ROOT, "requirements.txt")
-REQUIREMENTS_DEV = os.path.join(ROOT, "requirements.dev")
-
-with open(README, mode='rt', encoding='utf8') as fp:
+with open(os.path.join(ROOT, 'README.md'), encoding='utf8') as fp:
     README = fp.read()
 
-with open(VERSION, mode='rt', encoding='utf8') as fp:
+with open(os.path.join(ROOT, 'detector/__init__.py'), encoding='utf8') as fp:
     VERSION = re.search(r'__version__ = \'(.*?)\'', fp.read()).group(1)
 
-with open(REQUIREMENTS, mode='rt', encoding='utf-8') as fp:
-    REQUIREMENTS = [line for line in fp.readlines() if line and '#' not in line]
-
-with open(REQUIREMENTS_DEV, mode='rt', encoding='utf-8') as fp:
-    REQUIREMENTS_DEV = [
-        line for line in fp.readlines() if line and '#' not in line
-    ]
+with open(os.path.join(ROOT, "requirements.txt"), encoding='utf8') as fp:
+    REQUIRES = [line for line in fp.readlines() if line and '#' not in line]
 
 if __name__ == "__main__":
     # allow setup.py to run from another directory
@@ -41,8 +31,7 @@ if __name__ == "__main__":
         author='Helmut Konrad Fahrendholz',
         author_email='info@checkitweg.de',
         description='bibi buh',
-        install_requires=REQUIREMENTS,
-        tests_require=REQUIREMENTS_DEV,
+        install_requires=REQUIRES,
         long_description=README,
         name='detector',
         platforms='any',
