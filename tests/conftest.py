@@ -58,6 +58,7 @@ RESOURCES = [
     (power.DISS143_PDF, '0:10,131:143'),
     (power.DISS167_PDF, '140:167'),
     (power.DISS172_PDF, '152:172'),
+    (power.DISS178_PDF, '166:170'),
     (power.MASTER099B_PDF, '0:5'),
     genex.todo(
         power.BACHELOR067_PDF,
