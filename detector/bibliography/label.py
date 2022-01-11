@@ -123,7 +123,7 @@ def parses(content: str) -> iamraw.BibliographyReferences:
 NUMBER = r"""
     \[
     [ ]{0,3}
-        (?P<number>\d+)
+        (?P<number>\d{1,4})
     [ ]{0,3}
         %s
     [ ]{0,3}
