@@ -16,6 +16,7 @@ import utila
 import detector.bibliography.label
 import detector.bibliography.reference
 import detector.bibliography.reference.freeand
+import detector.quotes
 
 
 @functools.lru_cache(maxsize=4096)
@@ -48,6 +49,10 @@ def parse_single_row(content: str) -> iamraw.BibliographyReference:
 
 @functools.lru_cache(maxsize=4096)
 def parse_longtext(content: str) -> iamraw.BibliographyReference:
+    """\
+    >>> parse_longtext('Todd D. Jick. “Mixing Qualitative and Quantitative Methods: Triangulation in Action.” In: AdministrativeScienceQuarterly 24 (1979), pp. 602– 611.')
+    BibliographyReference(title='“Mixing...authors=[Person(name='Todd', firstname='D. Jick.'...raw_pdfpage=None)
+    """
     content = utila.normalize_text(content)
     raw = content
     parsed = parse_first(content)
@@ -101,6 +106,12 @@ def parse_first(content: str):
     >>> parse_first('Put People First. http://www.putpeoplefirst.org.uk/ (19.1.2015).')
     ('Put People First. ', 'http://www.putpeoplefirst.org.uk/ (19.1.2015).')
     """
+    authors = detector.quotes.before_first_quote(content, starting=5)
+    if authors:
+        if len(authors) <= content.find(':'):
+            # quote starts before first collon
+            rest = content.replace(authors, '')
+            return authors, rest
     try:
         authors, rest = content.split(':', maxsplit=1)
     except ValueError:
