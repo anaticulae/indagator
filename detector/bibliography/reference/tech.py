@@ -116,6 +116,9 @@ def parse_first(content: str):
         authors, rest = content.split(':', maxsplit=1)
     except ValueError:
         return None
+    if len(authors) > 160:  # TODO: HOLY VALUE
+        # WAY TO LONG
+        return None
     for token in 'https http'.split():
         if authors.endswith(token):
             rest = f'{token}:{rest}'
