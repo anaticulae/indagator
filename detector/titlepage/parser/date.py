@@ -37,7 +37,7 @@ def parse(raw: str) -> iamraw.TitleDate:
     simple_alpha_date_month_first = functools.partial(
         simple_alpha_date,
         month=german.MONTH,
-        pattern=SIMPLE_ALPHA_DATE_MONTH_FIRST,
+        pattern=ALPHA_DATE_MONTH_FIRST,
     )
     pattern = [
         location_comma_day_month_year,
@@ -78,13 +78,13 @@ SIMPLE_DATE = utila.compiles(r"""
     (?P<year>\d{4})
 """)
 
-SIMPLE_ALPHA_DATE = r'(?P<day>\d{1,2})([\.|,])[ ]' + MONTH_GROUP + r'[ ](?P<year>\d{4})'
-SIMPLE_ALPHA_DATE_MONTH_FIRST = MONTH_GROUP + r'[ ](?P<day>\d{1,2})([\.|,])[ ](?P<year>\d{4})'
+ALPHA_DATE = r'(?P<day>\d{1,2})([\.|,])[ ]' + MONTH_GROUP + r'[ ](?P<year>\d{4})'
+ALPHA_DATE_MONTH_FIRST = MONTH_GROUP + r'[ ](?P<day>\d{1,2})([\.|,])[ ](?P<year>\d{4})'
 
-SIMPLE_MONTH_YEAR = utila.compiles(MONTH_GROUP + r'[ ](?P<year>\d{4})')
+MONTH_YEAR = utila.compiles(MONTH_GROUP + r'[ ](?P<year>\d{4})')
 
-LOCATION_COMMA_DAY_MONTH_YEAR = utila.compiles(
-    r'(?P<location>\w+),[ ](den[ ]){0,1}(%s)' % SIMPLE_ALPHA_DATE)
+LOCATION_COMMA_ALPHADATE = utila.compiles(
+    r'(?P<location>\w+),[ ](den[ ]){0,1}(%s)' % ALPHA_DATE)
 
 
 def simple_date(raw):
@@ -120,7 +120,7 @@ def simple_alpha_date(  # pylint:disable=R0914
     raw,
     reduce: int = 0,
     month=None,
-    pattern=SIMPLE_ALPHA_DATE,
+    pattern=ALPHA_DATE,
 ):
     """\
     >>> simple_alpha_date('Abgabedatum: 15. Jan 2010 ')
@@ -154,7 +154,7 @@ def simple_month_year_date(raw):
     >>> simple_month_year_date('Juli 2003 ')
     TitleDate(year=2003, month=7, day=None, location=None, valid=True, raw='Juli 2003')
     """
-    parsed = SIMPLE_MONTH_YEAR.search(raw)
+    parsed = MONTH_YEAR.search(raw)
     if not parsed:
         return None
     result = iamraw.TitleDate(
@@ -175,7 +175,7 @@ def location_comma_day_month_year(raw: str) -> iamraw.TitleDate:
     >>> location_comma_day_month_year('Berlin, 39. April 2016')
     TitleDate(year=2016, month=4, day=39, location='Berlin', valid=False, raw='Berlin, 39. April 2016')
     """
-    parsed = LOCATION_COMMA_DAY_MONTH_YEAR.search(raw)
+    parsed = LOCATION_COMMA_ALPHADATE.search(raw)
     if not parsed:
         return None
     result = iamraw.TitleDate(**extract_data(
