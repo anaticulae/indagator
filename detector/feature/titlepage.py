@@ -49,6 +49,9 @@ Requirements - "Wissenschaftliches Arbeiten" - Manuel Rene Theisen:
    + Termin der Abgabe/Einreichung
 """
 
+import collections
+
+import picture
 import serializeraw
 import texmex
 import utila
@@ -67,7 +70,12 @@ RAWMAKER_CONFIGURATION = (
 SELECTED_PAGES = (0, 1, 2, 3, 4)
 
 
-def work(text: str, textpositions: str, pages: tuple = None) -> str:
+def work(
+    text: str,
+    textpositions: str,
+    *images: list,
+    pages: tuple = None,
+) -> str:
     # first five pages
     pages = pages if pages else SELECTED_PAGES
     navigators = serializeraw.ptn_fromfile(
@@ -75,23 +83,70 @@ def work(text: str, textpositions: str, pages: tuple = None) -> str:
         textpositions,
         pages=pages,
     )
+    images = load_images(images, pages=pages)
+    images = convert_images(images)
 
-    parsed = parse_titlepages(navigators, pages)
+    parsed = parse_titlepages(navigators, images, pages)
     best = detector.titlepage.strategy.select_best(parsed)
 
     dumped = serializeraw.dump_titlepage(best)
     return dumped
 
 
-def parse_titlepages(navigators: texmex.PageTextNavigators, pages=None):
+def parse_titlepages(
+    navigators: texmex.PageTextNavigators,
+    images: dict,
+    pages=None,
+):
     pages = pages if pages else SELECTED_PAGES
     result = []
     for page in pages:
         navigator = utila.select_page(navigators, page=page)
+        images = utila.select_page(images, page=page) if images else None
         if navigator is None:
             # white page
             parsed = None
         else:
-            parsed = detector.titlepage.parser.complete.parse(navigator)
+            parsed = detector.titlepage.parser.complete.parse(
+                navigator,
+                images=images,
+            )
         result.append(parsed)
+    return result
+
+
+def load_images(images, pages: tuple = None) -> dict:
+    images = serializeraw.load_image_infos_fromfiles(
+        images,
+        pages=pages,
+        skip_hidden=True,
+        path_append=True,
+    )
+    if not images:
+        return {}
+    result = collections.defaultdict(list)
+    for page in images:
+        for image in page.content:
+            path = image[1]
+            # TODO: TRY OTHER FILE EXT?
+            path = utila.rreplace(path, '.yaml', '.png')
+            if utila.exists(path):
+                result[page.page].append(picture.imageload(path))
+                continue
+    result: dict = dict(result)
+    return result
+
+
+def convert_images(images: dict) -> dict:
+    result = {}
+    for page, values in images.items():
+        converted = []
+        for image in values:
+            detected = picture.detect(image)
+            if not detected:
+                continue
+            converted.append(detected.text)
+        if not converted:
+            continue
+        result[page] = converted
     return result

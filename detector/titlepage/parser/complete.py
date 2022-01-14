@@ -24,21 +24,26 @@ from detector.titlepage.persons.strategy import parse as parse_person_all
 from detector.titlepage.persons.utils import order_persons
 
 
-def parse(text: texmex.PageTextNavigator) -> iamraw.TitlePage:
+def parse(
+    text: texmex.PageTextNavigator,
+    images: list = None,
+) -> iamraw.TitlePage:
     """Extract `TitlePage` out of tile page data
 
     Args:
         text(PageTextNavigator): content of potential title page
+        images(list): list with detected ocr text
     Returns:
         extracted TitlePage
     """
     assert isinstance(text, texmex.PageTextNavigator), type(text)
     result = iamraw.TitlePage(pageraw=text.page)
-
     title = parse_title(text)
-
     text = clean_text(text)
-
+    if images:
+        # append text content from ocr
+        images: str = utila.NEWLINE.join(images)
+        text = f'{images}\n{text}'
     if isinstance(title, str):
         result.title = title
         # hide title to parse only once
@@ -46,12 +51,9 @@ def parse(text: texmex.PageTextNavigator) -> iamraw.TitlePage:
     else:
         # TODO: check title error lstatus
         pass
-
     result.institution, text = parse_institution(text)
     parsed = textblock_token(text)
-
     result = run_simple(result, parsed)
-
     # run complex parsing
     persons, _ = parse_person_all(parsed)
     if persons:

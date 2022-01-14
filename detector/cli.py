@@ -38,6 +38,7 @@ WORKPLAN = [
         inputs=[
             ResultFile('rawmaker', 'oneline_text_text'),
             ResultFile('rawmaker', 'oneline_text_positions'),
+            utila.Pattern(name='rawmaker__images_images/*', ext='yaml'),
         ],
         output=('detected',),
     ),
