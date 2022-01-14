@@ -7,7 +7,10 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import re
+
 import iamraw
+import sdata
 import utila
 
 
@@ -114,31 +117,9 @@ FIELD = [
     'Fach',
 ]
 
-UNIVERSITY = [
-    'Hochschule',
-    'Universität',
-]
-
 COURSES = [
     'Studiengang:',
     'Studiengang',
-]
-
-# TODO: Load from dictionary
-UNIVERSITIES = [
-    'Duale Hochschule Baden-Würtemberg',
-    'Freie Universität Berlin',
-    'Hochschule für Technik und Wirtschaft Berlin',
-    'Humboldt-Universität zu Berlin',
-    'Katholische Hochschule Nordrhein-Westfalen',
-    'Ludwig-Maximilians-Universität München'
-    'Suchtakademie Berlin-Brandenburg',
-    'Technische Universita\xA8t Berlin',  # TODO: INVESTIGATE HERE
-    'Technische Universität Berlin',
-    'Technische Universität Darmstadt',
-    'Universität Bielefeld',
-    'Universität Hamburg',
-    'Universität Münster',
 ]
 
 
@@ -155,18 +136,25 @@ def find_institution(raw) -> str:
     raw = replace_special_chars(raw)
     splitted = raw.split(',')
     splitted = utila.flatten([item.split(utila.NEWLINE) for item in splitted])
-    # TODO require better lookup technology with hashing
-    collected = [
-        item for item in UNIVERSITIES
-        if any(test for test in splitted if item in test)
-    ]
+    # improve collection
+    splitted = [shrink_institution(item) for item in splitted]
+    collected = [item for item in splitted if sdata.rate_institution(item)]
     if not collected:
         return None, raw
-    assert len(collected) == 1, 'More than one institution is collected'
+    assert len(collected) == 1, f'More than one institution: {collected}'
     collected = collected[0]
-
     rest = raw.replace(collected, '')
     return collected, rest
+
+
+def shrink_institution(name: str) -> str:
+    """\
+    >>> shrink_institution('an der Hochschule für Technik und Wirtschaft Berlin ')
+    'Hochschule für Technik und Wirtschaft Berlin'
+    """
+    name = name.strip()
+    name = re.sub(r'(^|[ ])an[ ]der[ ]', '', name)
+    return name
 
 
 def replace_special_chars(raw: str) -> str:
