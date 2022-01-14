@@ -109,6 +109,12 @@ def master099b(titlepage: iamraw.TitlePage):
     assert titlepage.examiner
 
 
+def master063(titlepage: iamraw.TitlePage):
+    # assert titlepage.author
+    assert titlepage.examiner
+    assert titlepage.institution
+
+
 @pytest.mark.parametrize('source, check', [
     pytest.param(
         power.HOME050_PDF,
@@ -137,6 +143,7 @@ def master099b(titlepage: iamraw.TitlePage):
     pytest.param(power.DISS170_PDF, diss170, id='diss170'),
     pytest.param(power.DISS143_PDF, diss143, id='diss143'),
     pytest.param(power.MASTER075_PDF, master075, id='master075'),
+    pytest.param(power.MASTER063_PDF, master063, id='master063'),
     pytest.param(
         power.MASTER099B_PDF,
         master099b,
