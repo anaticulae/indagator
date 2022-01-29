@@ -65,7 +65,7 @@ def detection(raw, items, remove: bool = True):
                 result.append(prepared)
             else:
                 result.append(chunk.strip())
-            raw.replace(chunk, '')
+            raw.replace(chunk, '*' * len(chunk))
     # make results unique
     result = utila.make_unique(result)
     return result, raw
