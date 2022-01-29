@@ -45,23 +45,18 @@ def parse(raw: str) -> iamraw.Institution:
     return result, raw
 
 
-def detection(raw, items, remove: bool = True):
-    if isinstance(items, str):
-        items = [items]
-    # FIRST DRAFT
-
-    splitted = raw.split(',')
-    splitted = utila.flatten([item.split(utila.NEWLINE) for item in splitted])
-    splitted = [item for item in splitted if item]  # remove empty items
-
+def detection(raw, patterns, remove: bool = True):
+    if isinstance(patterns, str):
+        patterns = [patterns]
+    lines = prepare(raw)
     result = []
-    for item in items:
-        for chunk in splitted:
-            if not item in chunk:
+    for pattern in patterns:
+        for chunk in lines:
+            if not pattern in chunk:
                 continue
             if remove:
                 # use words after `collector` as the result
-                prepared = chunk.split(item)[1].strip()
+                prepared = chunk.split(pattern)[1].strip()
                 result.append(prepared)
             else:
                 result.append(chunk.strip())
@@ -69,6 +64,14 @@ def detection(raw, items, remove: bool = True):
     # make results unique
     result = utila.make_unique(result)
     return result, raw
+
+
+def prepare(text: str) -> list:
+    # FIRST DRAFT
+    splitted = text.split(',')
+    splitted = utila.flatten([item.split(utila.NEWLINE) for item in splitted])
+    splitted = [item for item in splitted if item]  # remove empty items
+    return splitted
 
 
 SELECTOR = {
