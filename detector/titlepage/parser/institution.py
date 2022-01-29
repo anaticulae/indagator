@@ -16,6 +16,10 @@ import utila
 
 @utila.profile('institution')
 def parse(raw: str) -> iamraw.Institution:
+    """\
+    >>> parse('Fakultät I – Geisteswissenschaften')
+    (Institution(...department='Geisteswissenschaften'..., 'Fakultät I – Geisteswissenschaften')
+    """
     university = find_institution(raw)
     if university:
         university, raw = university
@@ -44,69 +48,70 @@ def parse(raw: str) -> iamraw.Institution:
     return result, raw
 
 
-def detection(raw, patterns, remove: bool = True):
-    if isinstance(patterns, str):
-        patterns = [patterns]
+def detection(raw, pattern, remove: bool = True):
     lines = prepare(raw)
     result = []
-    for pattern in patterns:
-        for chunk in lines:
-            if not pattern in chunk:
+    for line in lines:
+        searched = pattern.search(line)
+        if not searched:
+            continue
+        matched = searched[0]
+        if remove:
+            # use words after `collector` as the result
+            prepared = line.split(matched)[1].strip()
+            if not prepared:
+                # do not store empty value in result; see Fakultät IV
+                # which matches completely and give no data
                 continue
-            if remove:
-                # use words after `collector` as the result
-                prepared = chunk.split(pattern)[1].strip()
-                result.append(prepared)
-            else:
-                result.append(chunk.strip())
-            raw.replace(chunk, '*' * len(chunk))
+            result.append(prepared)
+        else:
+            result.append(line.strip())
+        raw.replace(line, '*' * len(line))
     # make results unique
     result = utila.make_unique(result)
     return result, raw
 
 
-def prepare(text: str) -> list:
-    # FIRST DRAFT
-    splitted = text.split(',')
-    splitted = utila.flatten([item.split(utila.NEWLINE) for item in splitted])
-    splitted = [item for item in splitted if item]  # remove empty items
-    return splitted
+INSTITUTE = utila.compiles(r"""
+(
+    INSTITUT(E)?[ ]{0,3}
+    (FÜR|FOR){0,1}
+)
+""")
 
+DEPARTMENT = utila.compiles(r"""
+(
+    (
+        FACULTY|
+        FAKULT(A|Ä)T
+    )
+    [ ]{0,4}
+    (
+        OF|
+        (IV|I|II|III|IIII|V|VI|VII|VIII|VIIII|IX|X)|
+        \d{1,2}
+    )
+    [ ]{0,4}
+    [-–]?           # 2 different minus signs
+    [ ]{0,4}
+)
+""")
 
-# Replace this approach due regex
+FIELD = utila.compiles(r"""
+(
+    DEPARTMENT[ ]{0,4}(OF)?|
+    FACHBEREICH|
+    FACHGEBIET|
+    FACH
+)
+""")
 
-INSTITUTE = [
-    'Institut für ',
-    'Institut',
-]
-
-DEPARTMENT = [
-    # TODO: Think about chaining in parser, special character?
-    # 2 different minus signs
-    'Fakultat I –',
-    'Fakultat I -',
-    'Fakultat I ',
-    'Fakultat',
-    'Fakultät I –',
-    'Fakultät I -',
-    'Fakultät I ',
-    'Fakultät',
-    'Faculty of',
-    'Faculty',
-]
-
-FIELD = [
-    'Fachgebiet',
-    'Fachbereich',
-    'Department of',
-    'Department',
-    'Fach',
-]
-
-COURSES = [
-    'Studiengang:',
-    'Studiengang',
-]
+COURSES = utila.compiles(r"""
+(
+    STUDIENGANG\:?|
+    COURSE(S)?\:?
+)
+""")
 
 
 def find_institution(raw) -> str:
@@ -116,12 +121,8 @@ def find_institution(raw) -> str:
         raw(str): page text content
     Returns:
         None if `institution` is in dictionary else collected
-
-    TODO: Use difflib to improve collecting approach
     """
-    raw = replace_special_chars(raw)
-    splitted = raw.split(',')
-    splitted = utila.flatten([item.split(utila.NEWLINE) for item in splitted])
+    splitted = prepare(raw)
     # improve collection
     splitted = [shrink_institution(item) for item in splitted]
     collected = [item for item in splitted if sdata.rate_institution(item)]
@@ -153,6 +154,10 @@ def prepare(text: str) -> list:
 
 
 def replace_special_chars(raw: str) -> str:
+    """\
+    >>> replace_special_chars('¨Ullo')
+    'Üllo'
+    """
     raw = raw.replace('¨A', 'Ä')
     raw = raw.replace('¨O', 'Ö')
     raw = raw.replace('¨U', 'Ü')

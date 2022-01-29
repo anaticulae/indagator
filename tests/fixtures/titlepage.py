@@ -10,7 +10,7 @@
 import iamraw
 
 FIRST = """
-Faktultät IV
+Fakultät IV
 Institut für gute Getränke
 
 Modellierung und Simulation eines hybriden Lokomotivantriebs
@@ -33,7 +33,7 @@ Berlin, 19. April 2016
 
 FIRST_INSTITUTION = iamraw.Institution(
     courseofstudies=None,
-    department='IV',
+    department=None,
     field='Trinken und Essen',
     institute='gute Getränke',
     university='Technische Universität Berlin',
