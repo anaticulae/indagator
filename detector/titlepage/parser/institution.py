@@ -74,22 +74,6 @@ def prepare(text: str) -> list:
     return splitted
 
 
-SELECTOR = {
-    'Akademisch',
-    'College',
-    'Erlangung',
-    'Fachbereich',
-    'Fachgebiet',
-    'Faktultät',
-    'Grad',
-    'Grades',
-    'Hochschule',
-    'Institut für',
-    'Institut',
-    'Studiengang',
-    'Universität',
-}
-
 # Replace this approach due regex
 
 INSTITUTE = [
