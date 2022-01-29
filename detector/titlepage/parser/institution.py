@@ -30,7 +30,6 @@ def parse(raw: str) -> iamraw.Institution:
         else:
             parsed = None
         results.append(parsed)
-
     department, institute, field, courses = results  # pylint:disable=W0632
     result = iamraw.Institution(
         courseofstudies=courses,
@@ -145,7 +144,19 @@ def shrink_institution(name: str) -> str:
     return name
 
 
+def prepare(text: str) -> list:
+    text = replace_special_chars(text)
+    splitted = text.split(',')
+    splitted = utila.flatten([item.split(utila.NEWLINE) for item in splitted])
+    splitted = [item for item in splitted if item]  # remove empty items
+    return splitted
+
+
 def replace_special_chars(raw: str) -> str:
+    raw = raw.replace('¨A', 'Ä')
+    raw = raw.replace('¨O', 'Ö')
+    raw = raw.replace('¨U', 'Ü')
     raw = raw.replace('¨a', 'ä')
+    raw = raw.replace('¨o', 'ö')
     raw = raw.replace('¨u', 'ü')
     return raw
