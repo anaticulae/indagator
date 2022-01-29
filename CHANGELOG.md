@@ -2,6 +2,32 @@
 
 Every noteable change is logged here.
 
+## v0.30.0
+
+### Feature
+
+* use regex to improve institution parser (07d82331920e)
+* improve text preparation (206f652e4a5a)
+* use improved institution parser (c559f1901e73)
+* use picture to convert text in images to normal text (b3e6229cf153)
+* skip very long possible authors (b329bcc78325)
+* split quote before colon if possible (6fb8dcbab017)
+* add strategy with database lookup (c3b1627fca02)
+* allow space inside doc type def (cce66b2aa490)
+* do not skip bibs with detected reference (47e5787c8c73)
+* increase debugging information (990596e88949)
+
+### Fix
+
+* do not create ghost pattern (4617f57bd576)
+* allow more than one institution (61e3bdd73fcb)
+* avoid regex attack (1060ac95d248)
+
+### Documentation
+
+* adjust modules path (6aa86459cdd7)
+* Happy New Year! (f1780600dae6)
+
 ## v0.29.3
 
 ### Feature
