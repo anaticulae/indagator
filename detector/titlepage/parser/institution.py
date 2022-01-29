@@ -141,7 +141,8 @@ def find_institution(raw) -> str:
     collected = [item for item in splitted if sdata.rate_institution(item)]
     if not collected:
         return None, raw
-    assert len(collected) == 1, f'More than one institution: {collected}'
+    if len(collected) > 1:
+        utila.error(f'More than one institution: {collected}')
     collected = collected[0]
     rest = raw.replace(collected, '')
     return collected, rest
