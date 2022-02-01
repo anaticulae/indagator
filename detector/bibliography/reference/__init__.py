@@ -22,7 +22,7 @@ def years(raw: str):
     >>> years('IEEE Joint, 2004, S. 113–117')
     ('2004', 2004)
     """
-    pattern = r'(?P<year>\d{4})'
+    pattern = r'(?P<year>(19|20)\d{2})'
     matched = re.search(pattern, raw, re.VERBOSE)
     if not matched:
         return None
