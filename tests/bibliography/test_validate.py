@@ -96,16 +96,16 @@ def master148(flat):
 # yapf:disable
 @pytest.mark.parametrize('source, pages, expected, validate', [
     pytest.param(power.ORDER107_PDF, '104:108', 31, 'order107', id='order107'), # VALIDATED BY HAND
-    pytest.param(power.BACHELOR051_PDF, '42:46', 37, bachelor51, id='bachelor51'),
-    pytest.param(power.BACHELOR056_PDF, '49:53', 32, 'bachelor056', id='bachelor56'), # VALIDATED BY HAND
-    pytest.param(power.BACHELOR063_PDF, '59', 'bachelor063', 'bachelor063', id='bachelor63'),
-    pytest.param(power.BACHELOR090_PDF, '84:89', 52, bachelor90, id='bachelor90'),
+    pytest.param(power.BACHELOR051_PDF, '42:46', 37, bachelor51, id='bachelor051'),
+    pytest.param(power.BACHELOR056_PDF, '49:53', 32, 'bachelor056', id='bachelor056'), # VALIDATED BY HAND
+    pytest.param(power.BACHELOR063_PDF, '59', 'bachelor063', 'bachelor063', id='bachelor063'),
+    pytest.param(power.BACHELOR090_PDF, '84:89', 52, bachelor90, id='bachelor090'),
     pytest.param(power.BACHELOR109_PDF, '72:79', 98, 'bachelor109', id='bachelor109'),
     pytest.param(power.BACHELOR111_PDF, '85:87', 18, 'bachelor111', id='bachelor111'), # VALIDATED BY HAND
     pytest.param(power.BACHELOR128_PDF, '96:103', None, bachelor128, id='bachelor128'),
-    pytest.param(power.MASTER075_PDF, '70', 18, master75, id='master75'), # VALIDATED BY HAND
-    pytest.param(power.MASTER089_PDF, '70:81', 149, 'master089', id='master89'), # VALIDATED BY HAND
-    pytest.param(power.MASTER091B_PDF, '82:89', 85, master91b, id='master91b'), # VALIDATED BY HAND
+    pytest.param(power.MASTER075_PDF, '70', 18, master75, id='master075'), # VALIDATED BY HAND
+    pytest.param(power.MASTER089_PDF, '70:81', 149, 'master089', id='master089'), # VALIDATED BY HAND
+    pytest.param(power.MASTER091B_PDF, '82:89', 85, master91b, id='master091b'), # VALIDATED BY HAND
     pytest.param(power.MASTER110_PDF, '104:109', 71, master110, id='master110'),
     pytest.param(power.MASTER116_PDF, '97,98,99,100', 46, master116, id='master116'), # VALIDATED BY HAND
     pytest.param(power.MASTER148_PDF, '109:114', 38, master148, id='master148'), # VALIDATED BY HAND
@@ -115,7 +115,7 @@ def master148(flat):
     pytest.param(power.DISS272_PDF, '259:271', None, diss272, id='diss272'),
     pytest.param(power.MASTER083_PDF, '75:82', None, 'master083', id='master083'),
     pytest.param(power.MASTER083_PDF, '81', 'master083last', 'master083last', id='master083last'),
-    pytest.param(power.BACHELOR075_PDF, '70:75', None, 'bachelor075', id='bachelor75'),
+    pytest.param(power.BACHELOR075_PDF, '70:75', None, 'bachelor075', id='bachelor075'),
     pytest.param(power.BACHELOR241_PDF, '239,240', None, 'bachelor241', id='bachelor241'),
     pytest.param(power.DISS143_PDF, '131:143', None, 'diss143', id='diss143'),
     pytest.param(power.DISS143_PDF, '131', None, 'diss143p131', id='diss143p131'),
