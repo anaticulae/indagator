@@ -165,14 +165,26 @@ class BibCompare(utilatest.BaseLiner):
 
     def raw(self, value) -> str:
         flat = utila.flatten(value)
-        items = [
+        authors = [
             utila.from_tuple(
                 item=[item.raw for item in line.authors],
                 separator=' ; ',
             ) for line in flat
         ]
-        items = [item.strip() for item in items]
-        result = utila.NEWLINE.join(items).strip()
+        authors = [item.strip() for item in authors]
+        titles = [
+            '    ' +
+            utila.normalize_whitespaces(item.title) if item.title else ''
+            for item in flat
+        ]
+        connected = []
+        for author, title in zip(authors, titles):
+            if not any((author, title)):
+                continue
+            connected.append(author)
+            connected.append(title)
+            connected.append('')
+        result = utila.NEWLINE.join(connected).strip()
         return result
 
     def evaluate(self):
