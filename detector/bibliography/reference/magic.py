@@ -36,8 +36,9 @@ def parse(raw: str) -> iamraw.BibliographyReference:
             collected.append(token)
             continue
         break
+    if not collected:
+        return None
     collected: str = ', '.join(collected)
-
     authors = german.authors(collected)
     if authors == [['']]:
         # HACK: remove empty authors
