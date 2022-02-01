@@ -47,6 +47,11 @@ def parse_single_row(content: str) -> iamraw.BibliographyReference:
     return matched
 
 
+def ghost_strip(text, pattern, count: int = 1):
+    text = text.replace(pattern, '*' * len(pattern), count)
+    return text
+
+
 @functools.lru_cache(maxsize=4096)
 def parse_longtext(content: str) -> iamraw.BibliographyReference:
     """\
@@ -70,7 +75,7 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
     authors = german.authors_decide(authors)
     page = german.pages(rest)
     if page:
-        rest = rest.replace(page[0], '')
+        rest = ghost_strip(rest, page[0])
     year = detector.bibliography.reference.years(rest)
     access, rest = detector.bibliography.reference.freeand.parse_accessed(rest)
     if year:
