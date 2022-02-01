@@ -98,7 +98,7 @@ def master148(flat):
     pytest.param(power.ORDER107_PDF, '104:108', 31, 'order107', id='order107'), # VALIDATED BY HAND
     pytest.param(power.BACHELOR051_PDF, '42:46', 37, bachelor51, id='bachelor51'),
     pytest.param(power.BACHELOR056_PDF, '49:53', 32, 'bachelor056', id='bachelor56'), # VALIDATED BY HAND
-    pytest.param(power.BACHELOR063_PDF, '59', 12, 'bachelor063', id='bachelor63', marks=pytest.mark.xfail(reason='improve name detector')),
+    pytest.param(power.BACHELOR063_PDF, '59', 'bachelor063', 'bachelor063', id='bachelor63'),
     pytest.param(power.BACHELOR090_PDF, '84:89', 52, bachelor90, id='bachelor90'),
     pytest.param(power.BACHELOR109_PDF, '72:79', 98, 'bachelor109', id='bachelor109'),
     pytest.param(power.BACHELOR111_PDF, '85:87', 18, 'bachelor111', id='bachelor111'), # VALIDATED BY HAND
@@ -114,7 +114,7 @@ def master148(flat):
     pytest.param(power.DISS266_PDF, '215:247', 427, None, id='diss266', marks=pytest.mark.xfail(reason='improve parser')), # VALIDATED BY HAND
     pytest.param(power.DISS272_PDF, '259:271', None, diss272, id='diss272'),
     pytest.param(power.MASTER083_PDF, '75:82', None, 'master083', id='master083'),
-    pytest.param(power.MASTER083_PDF, '81', None, 2, id='master083last'),
+    pytest.param(power.MASTER083_PDF, '81', 'master083last', 'master083last', id='master083last'),
     pytest.param(power.BACHELOR075_PDF, '70:75', None, 'bachelor075', id='bachelor75'),
     pytest.param(power.BACHELOR241_PDF, '239,240', None, 'bachelor241', id='bachelor241'),
     pytest.param(power.DISS143_PDF, '131:143', None, 'diss143', id='diss143'),
@@ -134,42 +134,59 @@ def test_detector_bibliography_run(
     testdir,
     monkeypatch,
 ):
+    BibCompare(
+        source,
+        pages,
+        expected,
+        validate,
+        testdir,
+        monkeypatch,
+    ).evaluate()
 
-    class BibCompare(utilatest.BaseLiner):
 
-        def __init__(self):
-            super().__init__(
-                program=functools.partial(tests.run, monkeypatch=monkeypatch),
-                step='bibliography',
-                source=source,
-                pages=pages,
-                workdir=testdir.tmpdir,
-                archive=os.path.join(
-                    detector.ROOT,
-                    'tests/bibliography/expected',
-                ),
-                loader=serializeraw.load_bibliography_reference,
-                index=validate,
-            )
+class BibCompare(utilatest.BaseLiner):
 
-        def raw(self, value) -> str:
-            flat = utila.flatten(value)
-            items = [
-                utila.from_tuple(
-                    item=[item.raw for item in line.authors],
-                    separator=' ; ',
-                ) for line in flat
-            ]
-            items = [item.strip() for item in items]
-            result = utila.NEWLINE.join(items).strip()
-            return result
+    def __init__(self, source, pages, expected, validate, testdir, monkeypatch):
+        super().__init__(
+            program=functools.partial(tests.run, monkeypatch=monkeypatch),
+            step='bibliography',
+            source=source,
+            pages=pages,
+            workdir=testdir.tmpdir,
+            archive=os.path.join(
+                detector.ROOT,
+                'tests/bibliography/expected',
+            ),
+            loader=serializeraw.load_bibliography_reference,
+            index=validate if isinstance(validate, str) else None,
+        )
+        self.numbers = expected
+        self.validate = validate
 
-        def backup(self, value):  # pylint:disable=R0201
-            flat = utila.flatten(value)
-            assert len(flat) == expected or expected is None
-            if isinstance(validate, int):
-                assert len(flat) == validate
-            elif validate:
-                validate(flat)
+    def raw(self, value) -> str:
+        flat = utila.flatten(value)
+        items = [
+            utila.from_tuple(
+                item=[item.raw for item in line.authors],
+                separator=' ; ',
+            ) for line in flat
+        ]
+        items = [item.strip() for item in items]
+        result = utila.NEWLINE.join(items).strip()
+        return result
 
-    BibCompare().evaluate()
+    def evaluate(self):
+        super().evaluate()
+        flat = utila.flatten(self.load())
+        if isinstance(self.numbers, int):
+            assert len(flat) == self.numbers
+        if callable(self.validate):
+            self.validate(flat)
+
+    def backup(self, value):
+        flat = utila.flatten(value)
+        assert len(flat) == self.numbers or self.numbers is None
+        if isinstance(self.numbers, int):
+            assert len(flat) == self.numbers
+        elif self.validate:
+            self.validate(flat)
