@@ -105,11 +105,22 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
     return result
 
 
+FIRST_SPLIT = utila.compiles(r"""
+(
+    \((19|20)\d{2}\)|
+    (https|http)\:|
+    \:
+)
+""")
+
+
 @functools.lru_cache(maxsize=4096)
 def parse_first(content: str):
     """\
     >>> parse_first('Put People First. http://www.putpeoplefirst.org.uk/ (19.1.2015).')
     ('Put People First. ', 'http://www.putpeoplefirst.org.uk/ (19.1.2015).')
+    >>> parse_first('Koch, Stefan (Hg.) (2008): Customer')
+    ('Koch, Stefan (Hg.) ', '(2008): Customer')
     """
     authors = detector.quotes.before_first_quote(content, starting=5)
     if authors:
@@ -117,17 +128,16 @@ def parse_first(content: str):
             # quote starts before first collon
             rest = content.replace(authors, '')
             return authors, rest
-    try:
-        authors, rest = content.split(':', maxsplit=1)
-    except ValueError:
+    detected = FIRST_SPLIT.search(content)
+    if not detected:
         return None
+    authors, rest = content[:detected.start()], content[detected.start():]
+    rest = rest[1:] if rest[0] == ':' else rest
     if len(authors) > 160:  # TODO: HOLY VALUE
         # WAY TO LONG
         return None
-    for token in 'https http'.split():
-        if authors.endswith(token):
-            rest = f'{token}:{rest}'
-            authors = authors[:-len(token)]
+    if not rest or len(rest) < 30:
+        return None
     return authors, rest
 
 
