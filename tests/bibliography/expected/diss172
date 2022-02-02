@@ -91,9 +91,6 @@ Andrew S Tanenbaum Maarten Van Steen. Distributed Systems
 Charles Abrams
 
 
-
-    Tim Jungnickel. “On the Feasibility of Multi-Leader Replication in the Early Tiers.” PhD thesis.
-
 Sam Newman. Building Microservices
     Designing Fine-Grained Systems
 
@@ -112,8 +109,8 @@ Liang Tang ; and Chang-Shing
 Feifei Li ; Guineng Zheng ; and Vivek
     Min Du, , , Srikumar
 
-Yong Yang Long Wang ; Jing Gu Ying Li. Transparently Capturing Request Execution Path for Anomaly Detection. 2020. arXiv
-    2001
+o.A.
+    NO TITLE
 
 J. Bogatinovski S. Nedelkoski ; J. Cardoso O. Kao.
     “Self-Supervised Anomaly Detection from Distributed Traces
@@ -135,9 +132,6 @@ Ahmed E Hassan ; Daryl J Martin ; Parminder Flora ; Paul Mansfield ; and Dave
 
 Meiyappan Nagappan ; and Mladen
     Kesheng Wu, A Vouk
-
-
-    Zhen Ming Jiang. Automated Analysis of Load Testing Results. Queen’s University (Canada),
 
 Min Du Feifei Li.
     “Spell: Streaming Parsing of System Event Logs
@@ -175,8 +169,8 @@ Jinyang Liu ; Jieming Zhu ; Shilin He ; Zibin Zheng ; and Michael
 Hossein Hamooni ; Biplob Debnath ; Jianwu Xu ; Hui Zhang ; Guofei Jiang ; and Abdullah
 
 
-
-    Benjamin H. Sigelman, Luiz Andre Barroso, Mike Burrows, Pat Stephenson, Manoj Plakal, Donald Beaver, Saul Jaspan, and Chandan Shanbhag. Dapper, a Large-Scale Distributed Systems Tracing Infrastructure. Tech. rep. Google, Inc.,
+o.A.
+    Benjamin H. Sigelman, Luiz Andre Barroso, Mike Burrows, Pat Stephenson, Manoj Plakal, Donald Beaver, Saul Jaspan, and Chandan Shanbhag. Dapper, a Large
 
 Definition of AIOps (Artificial Intelligence for IT Operations) - Gartner Information Technology Glossary. https
     / / www
@@ -199,8 +193,8 @@ Chong Zhou
 Qiang Fu ; Shengqi YANG ; Jiang Li ; and Jian-Guang
     Ye XU, , Lou
 
-
-    Noam A Fraenkel, Guy Goldstein, Ido Sarig, and Refael Haddad. Root Cause Analysis of Server System Performance Degradations. US Patent 6,738,933. May
+o.A.
+    NO TITLE
 
 Sandeep Dalal
     and Rajender Singh Chhillar
@@ -226,8 +220,8 @@ Benoit Donnet ; Timur Friedman ; and Mark
 Benoit Donnet
     and Timur Friedman
 
-
-    Alexander Keller. Methods and Apparatus for Topology Discovery and Representation of Distributed Applications and Services. US Patent 7,240,325.
+o.A.
+    NO TITLE
 
 Giuseppe Muntoni ; Jacopo Soldani ; and Antonio
 
@@ -235,14 +229,8 @@ Giuseppe Muntoni ; Jacopo Soldani ; and Antonio
 Charu C. Aggarwal.
     “Outlier Analysis
 
-
-    Douglas M Hawkins. Identification of Outliers. Vol. 11. Springer,
-
 Frank E Grubbs.
     “Procedures for Detecting Outlying Observations in Samples
-
-
-    Nico Görnitz. One-Class Classification in the Presence of Point, Collective, and Contextual Anomalies.
 
 o.A.
     Lukas Ruff, Jacob R. Kauffmann, Robert A. Vandermeulen, Gregoire Montavon, Wojciech Samek, Marius Kloft, Thomas G. Dietterich, and Klaus
@@ -280,8 +268,8 @@ Dan Hendrycks ; Mantas Mazeika ; Saurav Kadavath ; and Dawn
 Faruk Ahmed
     and Aaron Courville
 
-Yuki M. Asano Christian Rupprecht ; Andrea Vedaldi. A Critical Analysis of Self-Supervision or What We Can Learn from a Single Image. 2020. arXiv
-    1904
+o.A.
+    Yuki M. Asano, Christian Rupprecht, and Andrea Vedaldi. A Critical Analysis of Self
 
 Guilherme O Campos ; Arthur Zimek ; Jörg Sander ; Ricardo JGB Campello ; Barbora Micenkova ; Erich Schubert ; Ira Assent ; and Michael
 
@@ -301,9 +289,6 @@ Ruoxi Jia ; and Dawn
 Suhas Kabinna ; Cor-Paul Bezemer ; Weiyi Shang ; Mark D Syer ; and Ahmed
 
 
-
-    Wei Xu. “System Problem Detection by Mining Console Logs.” PhD thesis. UC Berkeley,
-
 Zhi Chen ; Chang Liu ; Rajvardhan Oak ; and Dawn
     Min Du, , , , Song
 
@@ -313,8 +298,8 @@ Lianping Chen.
 Debra (Dallie) Sandilands.
     “Univariate Analysis
 
-002 260. 2016.
-    Yoni Yom Tov BEN SIMHON and Ira Cohen. Heuristic Inference of Topological Representation of Metric Relationships. US Patent App. 15/002,260.
+o.A.
+    NO TITLE
 
 Mohammad Braei Sebastian Wagner. Anomaly Detection in Univariate Time-series
     A Survey on the State-of-the-Art
@@ -334,8 +319,8 @@ Marco Fraccaro ; Soren Kaae Sonderby ; Ulrich Paquet ; and Ole
 S. Nedelkoski L. Thamsen ; I. Verbitskiy O. Kao.
     “Multilayer Active Learning for Efficient Learning and Resource Usage in Distributed IoT Architectures
 
-
-    Sasho Nedelkoski and Jorge Cardoso. Apparatus and method for detecting an anomaly among successive events and computer program product therefor. Approved by the European Patent Office, WO2020125929A1,
+o.A.
+    NO TITLE
 
 Friedrich Pukelsheim.
     “The Three Sigma Rule
@@ -384,9 +369,6 @@ Yann LeCun ; Yoshua Bengio
 
 Bendong Zhao ; Shangfeng Chen ; Junliang Liu
     Huanzhang Lu, , , and Dongya Wu
-
-
-    Antonio Gulli and Sujit Pal. Deep learning with Keras. Packt Publishing Ltd,
 
 Leo Breiman.
     “Random Forests
@@ -523,9 +505,6 @@ R. Vinayakumar ; K. P. Soman
 Christophe Bertero ; Matthieu Roy ; Carla Sauvanaud ; and Gilles
 
 
-
-    Timo Nolle. “Process Learning for Autonomous Process Anomaly Correction.” PhD thesis.
-
 Antonio Pecchia ; Ingo Weber ; Marcello Cinque
 
 
@@ -545,7 +524,7 @@ Ping Liu ; Haowen Xu ; Qianyu Ouyang ; Rui Jiao ; Zhekang Chen ; Shenglin Zhang 
 
 
 Jasmin Bogatinovski ; Sasho Nedelkoski
-    , and Jorge Cardoso. Distributed Trace Anomaly Detection with Self-Attention based Deep Learning. Filled in European Patent Office, 9014694.
+    and Jorge Cardoso. Distributed Trace Anomaly Detection with Self-Attention based Deep Learning. Filled in European Patent Office, 9014694.
 
 Pascal Vincent ; Hugo Larochelle ; Isabelle Lajoie ; Yoshua Bengio ; and Pierre-Antoine
 
@@ -574,9 +553,6 @@ Jasmin Bogatinovski
 Sasho Nedelkoski ; Mihail Bogojeski ; and Odej
 
 
-
-    James Turnbull. Monitoring with Prometheus. Turnbull Press,
-
 Mostafa Farshchi ; Jean-Guy Schneider ; Ingo Weber ; and John
 
 
@@ -589,17 +565,14 @@ o.A.
 Peter Zadrozny Raghu Kodali. Big Data Analytics Using Splunk
     Deriving Operational Intelligence from Social Media, Machine Data, Existing Data Warehouses, and Other Real-Time Streaming Sources
 
+o.A.
+    NO TITLE
 
-    Jyoti Bansal and Bhaskar Sunkara. Automatic Capture of Diagnostic Data Based on Transaction Behavior Learning. US Patent 8,938,533.
-
-
-    Jyoti Bansal and Bhaskar Sunkara. Monitoring Distributed Web Application Transactions. US Patent 9,167,028.
-
-
-    Jyoti Bansal and Bhaskar Sunkara. Conducting a Diagnostic Session for Monitored Business Transactions. US Patent 9,015,317.
+o.A.
+    NO TITLE
 
 Philip Tee
-    , Robert Duncan Harper, and Charles Mike Silvey. System for Decomposing Events from Managed Infrastructures Using a Topology Proximity Engine, Graph Topologies, and K-Means Clustering. US Patent 9,529,890.
+    Robert Duncan Harper, and Charles Mike Silvey. System for Decomposing Events from Managed Infrastructures Using a Topology Proximity Engine, Graph Topologies, and K-Means Clustering. US Patent 9,529,890.
 
 Philip Tee
-    , Robert Duncan Harper, Charles Mike Silvey, Andrew John Leonard, and Jeffrey Ellison Townsend. Alert Dashboard System and Method from Event Clustering. US Patent 9,607,074.
+    Robert Duncan Harper, Charles Mike Silvey, Andrew John Leonard, and Jeffrey Ellison Townsend. Alert Dashboard System and Method from Event Clustering. US Patent 9,607,074.

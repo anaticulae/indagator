@@ -70,12 +70,12 @@ def master116(flat):
 
 def diss170(flat):
     # 11+11+11+12+11+11+11+11+11+13+11+13+5
-    assert len(flat) == 146  # change to 142!
+    assert len(flat) == 145  # change to 142!
 
 
 def diss272(flat):
     # 11 11 11 9 10 11 11 11 12 11 12 3 = 124
-    assert len(flat) == 120  # TODO: CHANGES LATER
+    assert len(flat) == 116  # TODO: CHANGES LATER
 
 
 def bachelor128(flat):
@@ -106,7 +106,7 @@ def master148(flat):
     pytest.param(power.MASTER075_PDF, '70', 18, master75, id='master075'), # VALIDATED BY HAND
     pytest.param(power.MASTER089_PDF, '70:81', 149, 'master089', id='master089'), # VALIDATED BY HAND
     pytest.param(power.MASTER091B_PDF, '82:89', 85, master91b, id='master091b'), # VALIDATED BY HAND
-    pytest.param(power.MASTER110_PDF, '104:109', 71, master110, id='master110'),
+    pytest.param(power.MASTER110_PDF, '104:109', 70, master110, id='master110'),
     pytest.param(power.MASTER116_PDF, '97,98,99,100', 46, master116, id='master116'), # VALIDATED BY HAND
     pytest.param(power.MASTER148_PDF, '109:114', 38, master148, id='master148'), # VALIDATED BY HAND
     pytest.param(power.MASTER155_PDF, '75:85', 111, 'master155', id='master155'), # VALIDATED BY HAND 109
