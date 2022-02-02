@@ -34,7 +34,7 @@ def parse_single_row(content: str) -> iamraw.BibliographyReference:
         #             f'skip tech result: {content}')
         return None
     matched: iamraw.BibliographyReference = matched[0]
-    content = content.replace(matched.raw, '')
+    content = content.replace(matched.raw, '').strip()
     detected = detector.bibliography.reference.tech.parse_longtext(content)
     if not detected:
         # no further information detected
@@ -57,6 +57,8 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
     """\
     >>> parse_longtext('Todd D. Jick. “Mixing Qualitative and Quantitative Methods: Triangulation in Action.” In: AdministrativeScienceQuarterly 24 (1979), pp. 602– 611.')
     BibliographyReference(title='“Mixing...authors=[Person(name='Todd', firstname='D. Jick.'...raw_pdfpage=None)
+    >>> parse_longtext('Koch, Stefan (Hg.) (2008): Customer & supplier relationship management. Beziehungsmanagement ;')
+    BibliographyReference(title='Customer & supplier relationship management'...year=2008...)
     """
     content = utila.normalize_text(content)
     raw = content
@@ -64,11 +66,13 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
     if not parsed:
         return None
     authors, rest = parsed
+    access, rest = detector.bibliography.reference.freeand.parse_accessed(rest)
+    year, rest = parse_year(rest)
     try:
         title, rest = parse_title(rest)
     except TypeError:
         return None
-    title = title.strip()
+    title = title.strip(' :,;')
     authors = authors.strip()
     authors = german.authors(authors)
     # disable non person authors
@@ -76,13 +80,6 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
     page = german.pages(rest)
     if page:
         rest = ghost_strip(rest, page[0])
-    year = detector.bibliography.reference.years(rest)
-    access, rest = detector.bibliography.reference.freeand.parse_accessed(rest)
-    if year:
-        # remove year from right to left
-        rest = ' '.join(rest.rsplit(year[0], maxsplit=1))
-        # remove fragment from year splitter, TODO: remove later!
-        rest = rest.replace('( )', '').strip()
     # TODO: ADD PUBLISHER EXTRACTOR
     rest = rest.strip()
     hyperlinks, rest = detector.bibliography.reference.freeand.parse_hyperlinks(
@@ -91,18 +88,37 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
     result = iamraw.BibliographyReference(
         authors=authors,
         title=title,
-        raw=raw,
         publisher=publisher,
         hyperlink=hyperlinks,
         accessed=access,
+        year=year,
+        raw=raw,
     )
     if page:
         result.page = page[1][0]
         if len(page[1]) == 2:
             result.pageend = page[1][1]
-    if year:
-        result.year = year[1]
     return result
+
+
+def parse_year(text: str) -> tuple:
+    """\
+    >>> parse_year('(2008): Customer & supplier')
+    (2008, 'Customer & supplier')
+    >>> parse_year('(2013): Columbia Newsblaster: ')
+    (2013, 'Columbia Newsblaster')
+    """
+    year = detector.bibliography.reference.years(text)
+    if year is None:
+        return None, text
+    # remove year from right to left
+    pattern = f'({year[0]})'
+    text = text.replace(pattern, '')
+    # remove fragment from year splitter, TODO: remove later!
+    text = text.replace('( )', '').strip()
+    text = text.replace('()', '').strip()
+    text = text.strip(':,; ')
+    return year[1], text
 
 
 FIRST_SPLIT = utila.compiles(r"""
@@ -119,8 +135,8 @@ def parse_first(content: str):
     """\
     >>> parse_first('Put People First. http://www.putpeoplefirst.org.uk/ (19.1.2015).')
     ('Put People First. ', 'http://www.putpeoplefirst.org.uk/ (19.1.2015).')
-    >>> parse_first('Koch, Stefan (Hg.) (2008): Customer')
-    ('Koch, Stefan (Hg.) ', '(2008): Customer')
+    >>> parse_first('Koch, Stefan (Hg.) (2008): Customer a little bit longer')
+    ('Koch, Stefan (Hg.) ', '(2008): Customer a little bit longer')
     """
     authors = detector.quotes.before_first_quote(content, starting=5)
     if authors:
