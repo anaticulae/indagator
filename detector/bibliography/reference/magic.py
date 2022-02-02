@@ -23,23 +23,30 @@ import iamraw
 
 @functools.lru_cache(maxsize=4096)
 def parse(raw: str) -> iamraw.BibliographyReference:
+    """\
+    >>> parse('Bergsträsser, Gotthelf, Einführung in die semitischen Sprachen, München: Max Hueber Verlag 1963.')
+    BibliographyReference(title='Einführung in die semitischen Sprachen...authors=[Person(name='Bergsträsser', firstname='Gotthelf'...)
+    """
     raw = raw.strip()
     rest = raw
     splitted = raw.split(',')
-    splitted = [item.strip() for item in splitted]
+    # splitted: ['Bergsträsser', ' Gotthelf', ' Einführung in die
+    # semitischen Sprachen', ' München: Max Hueber Verlag 1963.']
     collected = []
     for token in splitted:
-        if token.count(' ') <= 1:
+        if token.strip().count(' ') <= 1:
             collected.append(token)
             continue
         if '/' in token:
             collected.append(token)
             continue
+
         break
+    # collected: ['Bergsträsser', ' Gotthelf']
     if not collected:
         return None
-    collected: str = ', '.join(collected)
-    authors = german.authors(collected)
+    collected: str = ','.join(collected)
+    authors, authors_raw = german.authors(collected, verbose=True)
     if authors == [['']]:
         # HACK: remove empty authors
         return None
@@ -48,9 +55,10 @@ def parse(raw: str) -> iamraw.BibliographyReference:
     year_raw = re.search(r'(\d{4})\.$', raw)
     year = int(year_raw[1]) if year_raw else None
 
-    rest = rest.replace(collected, '')
+    rest = rest.replace(authors_raw, '')
     if year_raw:
         rest = rest.replace(year_raw[0], '').strip()
+    rest = rest.strip(';:, ')
     title = rest.strip() if rest.strip() else None
     if not title or not year:
         return None
