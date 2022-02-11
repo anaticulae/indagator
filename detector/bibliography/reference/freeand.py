@@ -67,6 +67,7 @@ def parse_longtext(
         return None
     title, rest = parsed_title
     page, pageend, rest = parse_pages(rest)
+    title = title.strip(' :,;')
     result = iamraw.BibliographyReference(
         authors=authors,
         number=number,
