@@ -120,8 +120,9 @@ def parse_year(text: str) -> tuple:
     (2008, 'Customer & supplier')
     >>> parse_year('(2013): Columbia Newsblaster: ')
     (2013, 'Columbia Newsblaster')
-    >>> parse_year('(17.7.2006): Du bist das Netz! http://www.spiegel.de/spiegel/print/d47602985.html (Stand: 15.7.2014).')
-    (2006, 'Du bist das Netz! http://www.spiegel.de/spiegel/print/d47602985.html (Stand: 15.7.2014).')
+    >>> parse_year('(17.7.2006): Du bist das Netz! http://www.spiegel.de/'
+    ... 'spiegel/print/d47602985.html (Stand: 15.7.2014).')
+    (2006, 'Du bist das Netz! http://www.spiegel.de/...html (Stand: 15.7.2014).')
     """
     # 1. Try to detect complex date
     dates = german.dates_master(text, verbose=True, sort=False)
