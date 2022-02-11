@@ -68,6 +68,9 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
     >>> parse_longtext('Koch, Stefan (Hg.) (2008): Customer & supplier '
     ... 'relationship management. Beziehungsmanagement ;')
     BibliographyReference(title='Customer & supplier relationship management'...year=2008...)
+    >>> parse_longtext('HORNIG, Frank (17.7.2006): Du bist das Netz! '
+    ... 'http://www.spiegel.de/spiegel/print/d47602985.html (Stand: 15.7.2014).')
+    BibliographyReference(title='Du bist das Netz!  (Stand: 15',...authors=[Person(...raw='HORNIG Frank')]...)
     """
     content = utila.normalize_text(content)
     raw = content
@@ -117,8 +120,25 @@ def parse_year(text: str) -> tuple:
     (2008, 'Customer & supplier')
     >>> parse_year('(2013): Columbia Newsblaster: ')
     (2013, 'Columbia Newsblaster')
+    >>> parse_year('(17.7.2006): Du bist das Netz! http://www.spiegel.de/spiegel/print/d47602985.html (Stand: 15.7.2014).')
+    (2006, 'Du bist das Netz! http://www.spiegel.de/spiegel/print/d47602985.html (Stand: 15.7.2014).')
     """
-    year = detector.bibliography.reference.years(text)
+    # 1. Try to detect complex date
+    dates = german.dates_master(text, verbose=True, sort=False)
+    if dates:
+        year_first = dates[0][1], dates[0][0][0]
+    else:
+        year_first = None
+    year_second = detector.bibliography.reference.years(text)
+    if year_first and year_second:
+        if text.find(year_first[0]) <= text.find(year_second[0]):
+            year = year_first
+        else:
+            year = year_second
+    elif year_first:
+        year = year_first
+    else:
+        year = year_second
     if year is None:
         return None, text
     # remove year from right to left
