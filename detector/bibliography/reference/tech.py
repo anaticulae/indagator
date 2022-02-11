@@ -6,6 +6,12 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+"""\
+>>> parse_longtext('JOHNSON, Bobbie (11.1.2010): Privacy no longer a social '
+... 'norm, says Facebook founder. http://www.theguardian.com/technology/2010'
+... '/jan/11/facebook-privacy (Stand: 15.7.2014). ')
+BibliographyReference(title='Privacy no longer a social norm, says Facebook founder'...)
+"""
 
 import functools
 
@@ -70,6 +76,9 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
         return None
     authors, rest = parsed
     access, rest = detector.bibliography.reference.freeand.parse_accessed(rest)
+    # hyperlink is a very strong pattern
+    hyperlinks, rest = detector.bibliography.reference.freeand.parse_hyperlinks(
+        rest)
     year, rest = parse_year(rest)
     try:
         title, rest = parse_title(rest)
@@ -85,8 +94,6 @@ def parse_longtext(content: str) -> iamraw.BibliographyReference:
         rest = ghost_strip(rest, page[0])
     # TODO: ADD PUBLISHER EXTRACTOR
     rest = rest.strip()
-    hyperlinks, rest = detector.bibliography.reference.freeand.parse_hyperlinks(
-        rest)
     publisher = parse_publisher(rest)
     result = iamraw.BibliographyReference(
         authors=authors,
