@@ -133,7 +133,8 @@ def parse_year(text: str) -> tuple:
 
 FIRST_SPLIT = utila.compiles(r"""
 (
-    \((19|20)\d{2}\)|
+    \((19|20)\d{2}\)|                    # year
+    \((\d{1,4}\.\d{1,2}\.\d{1,4})\)\:?|  # date
     (https|http)\:|
     \:
 )
@@ -147,6 +148,8 @@ def parse_first(content: str):
     ('Put People First. ', 'http://www.putpeoplefirst.org.uk/ (19.1.2015).')
     >>> parse_first('Koch, Stefan (Hg.) (2008): Customer a little bit longer')
     ('Koch, Stefan (Hg.) ', '(2008): Customer a little bit longer')
+    >>> parse_first('HORNIG, Frank (17.7.2006): Du bist das Netz! ')
+    ('HORNIG, Frank ', '(17.7.2006): Du bist das Netz! ')
     """
     authors = detector.quotes.before_first_quote(content, starting=5)
     if authors:
