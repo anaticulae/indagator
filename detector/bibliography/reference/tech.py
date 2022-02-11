@@ -55,9 +55,12 @@ def ghost_strip(text, pattern, count: int = 1):
 @functools.lru_cache(maxsize=4096)
 def parse_longtext(content: str) -> iamraw.BibliographyReference:
     """\
-    >>> parse_longtext('Todd D. Jick. “Mixing Qualitative and Quantitative Methods: Triangulation in Action.” In: AdministrativeScienceQuarterly 24 (1979), pp. 602– 611.')
+    >>> parse_longtext('Todd D. Jick. “Mixing Qualitative and Quantitative '
+    ... 'Methods: Triangulation in Action.” In: AdministrativeScienceQuarterly '
+    ... '24 (1979), pp. 602– 611.')
     BibliographyReference(title='“Mixing...authors=[Person(name='Todd', firstname='D. Jick.'...raw_pdfpage=None)
-    >>> parse_longtext('Koch, Stefan (Hg.) (2008): Customer & supplier relationship management. Beziehungsmanagement ;')
+    >>> parse_longtext('Koch, Stefan (Hg.) (2008): Customer & supplier '
+    ... 'relationship management. Beziehungsmanagement ;')
     BibliographyReference(title='Customer & supplier relationship management'...year=2008...)
     """
     content = utila.normalize_text(content)
