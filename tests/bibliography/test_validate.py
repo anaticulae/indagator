@@ -123,6 +123,7 @@ def master148(flat):
     pytest.param(power.DISS167_PDF, '140:167', None, 'diss167', id='diss167'),
     pytest.param(power.DISS172_PDF, '152:172', None, 'diss172', id='diss172'),
     pytest.param(power.DISS178_PDF, '166:170', None, 'diss178', id='diss178'),
+    pytest.param(power.MASTER072_PDF, '65:71', None, 'master072', id='master072'),
 ])
 # yapf:enable
 @utilatest.longrun
