@@ -11,8 +11,6 @@ r"""\
 Person(name='Kirchner'...MASTER:...raw='vorgelegt von\nM.Sc.\nJakob Vinzenz Kirchner')
 """
 
-import re
-
 import iamraw
 import utila
 
@@ -26,7 +24,7 @@ def parse(raw: str) -> iamraw.Person:
     >>> parse('Gutachter: Prof. Dr.-Ing. Dr. sc. techn. Klaus-Dieter Lang, TU Berlin').raw
     'Gutachter: Prof. Dr.-Ing. Dr. sc. techn. Klaus-Dieter Lang'
     """
-    parsed = re.search(PATTERN, raw, re.X)
+    parsed = PATTERN.search(raw)
     if not parsed:
         return None
     title = detector.titlepage.persons.utils.extract_title(parsed)
@@ -89,9 +87,9 @@ INTRO = '|'.join(POSITIONS)
 PERSON_TITLE = create_person_title_pattern()
 PERSON_NAME = r'(?P<fname>([A-Z]\.[ ]?|\w+(-|\ )?){1,5})[ ](?P<name>[\w|-]{3,})'
 # pattern can be spread over more than one line
-PATTERN = rf"""
+PATTERN = utila.compiles(rf"""
     (?P<examiner>({INTRO})[:]?\s?)?
     ([ ]{0,4}(Herr|Frau)[ ]{0,4})?
     ({PERSON_TITLE}[ ]*)+\s?
     {PERSON_NAME}
-"""
+""")
