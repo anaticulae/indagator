@@ -102,14 +102,14 @@ def parse_titlepages(
     result = []
     for page in pages:
         navigator = utila.select_page(navigators, page=page)
-        images = utila.select_page(images, page=page) if images else None
+        selected = utila.select_page(images, page=page) if images else None
         if navigator is None:
             # white page
             parsed = None
         else:
             parsed = detector.titlepage.parser.complete.parse(
                 navigator,
-                images=images,
+                images=selected,
             )
         result.append(parsed)
     return result
