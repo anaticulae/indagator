@@ -55,7 +55,7 @@ Erstgutachter(in)?
 Erstprüfer(in)?
 Gutachter(in)?
 Hochschullehrer(in)?
-Primary Supervisor
+Primary[ ]Supervisor
 Referent(in)?
 Secondary Supervisor
 Vorsitzende(r)?
@@ -70,14 +70,14 @@ MAGICS = r"""
 
 AUTHORS = r"""
 Autor(in)?
-Name, Vorname
+Name,[ ]Vorname
 Referent(in)?
 Verfasser(in)?
-angefertigt von
+angefertigt[ ]von
 by
-vorgelegt von Diplom-Ingenieur
-vorgelegt von
-submitted by
+vorgelegt[ ]von[ ]Diplom-Ingenieur
+vorgelegt[ ]von
+submitted[ ]by
 von
 """
 
