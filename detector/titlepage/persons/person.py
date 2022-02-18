@@ -87,7 +87,7 @@ PERSONS = EXAMINERS + AUTHORS
 POSITIONS = utila.splitlines(PERSONS + MAGICS, lowers=False)
 INTRO = '|'.join(POSITIONS)
 PERSON_TITLE = create_person_title_pattern()
-PERSON_NAME = r'(?P<fname>([A-Z]\.[ ]?|\w+(-|\ )?){1,5})[ ](?P<name>[\w|-]+)'
+PERSON_NAME = r'(?P<fname>([A-Z]\.[ ]?|\w+(-|\ )?){1,5})[ ](?P<name>[\w|-]{3,})'
 # pattern can be spread over more than one line
 PATTERN = rf"""
     (?P<examiner>({INTRO})[:]?\s?)?
