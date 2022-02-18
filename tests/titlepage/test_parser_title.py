@@ -14,13 +14,13 @@ from tests.titlepage.example import TEXT_TITLE
 from tests.titlepage.example import new_textnavgiator
 
 
-def test_detector_parse_title(new_textnavgiator):  # pylint:disable=W0621
+def test_parse_title(new_textnavgiator):  # pylint:disable=W0621
     textnavigator = new_textnavgiator
     parsed = parse(textnavigator)
     assert parsed == TEXT_TITLE, parsed
 
 
-def test_detector_parse_title_empty(new_textnavgiator):  # pylint:disable=W0621
+def test_parse_title_empty(new_textnavgiator):  # pylint:disable=W0621
     empty_textnavigator = new_textnavgiator
     empty_textnavigator.data.clear()
 

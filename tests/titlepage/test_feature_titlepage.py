@@ -121,7 +121,7 @@ def check_diss205(titlepage: iamraw.titlepage):
     ),
 ])
 @utilatest.longrun
-def test_detector_feature_titlepage_complete(
+def test_feature_titlepage_complete(
     source,
     checker,
     testdir,
@@ -156,7 +156,7 @@ def parse_titlepages(path: str, pages: tuple = None):
 
 @utilatest.longrun
 @utilatest.requires(power.MASTER072_PDF)
-def test_detector_feature_titlepage_select_best():
+def test_feature_titlepage_select_best():
     parsed = parse_titlepages(power.link(power.MASTER072_PDF), pages=None)
     best = detector.titlepage.strategy.select_best(parsed)
     assert best == parsed[0], str(best)
@@ -167,7 +167,7 @@ def test_detector_feature_titlepage_select_best():
 #     pytest.param(item, id=os.path.split(item)[1])
 #     for item in tr.NO_TITLE_GENERATED
 # ])
-# def test_detector_feature_titlepage_select_best_no_titlepage(source):
+# def test_feature_titlepage_select_best_no_titlepage(source):
 #     pages = tuple(range(20))
 #     parsed = parse_titlepages(source, pages=pages)
 #     best = detector.titlepage.select_best(parsed)
@@ -185,7 +185,7 @@ def test_detector_feature_titlepage_select_best():
 #     range(45, 50),
 # ])
 # @utilatest.longrun
-# def test_detector_feature_titlepage_parse_titlepage_negative(pages):
+# def test_feature_titlepage_parse_titlepage_negative(pages):
 #     """Split pages to increase mutli-process-testing."""
 #     pages = tuple(pages)
 #     navigators = serializeraw.create_pagetextnavigators_frompath(

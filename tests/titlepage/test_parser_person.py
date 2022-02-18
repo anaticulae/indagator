@@ -183,19 +183,19 @@ geb. in Berlin
         id='multiline',
     ),
 ])
-def test_detector_parser_parse_person(raw, expected):
+def test_parser_parse_person(raw, expected):
     parsed = detector.titlepage.persons.strategy.parse_strategies(raw)
     assert parsed == expected, str(parsed)
 
 
-def test_detector_parser_person_order_person():
+def test_parser_person_order_person():
     persons = [KAHN, GOMEZ, HELMUT]
     expected = (HELMUT, [GOMEZ, KAHN])
     current = detector.titlepage.persons.utils.order_persons(persons)
     assert current == expected, str(current)
 
 
-def test_detector_parser_person_parse_person_without_title():
+def test_parser_person_parse_person_without_title():
     raw = '  Vorgelegt von    Helmut Konrad Fahrendholz   '
     expected = iamraw.Person(
         title=iamraw.AcademicTitle.STUDENT,
@@ -217,7 +217,7 @@ Zweitprüfer: *
 """
 
 
-def test_detector_parser_person_regression():
+def test_parser_person_regression():
     r"""The regex matches `Erstprüfer:\n\nZweitprüfer` and fails to
     extract name.
     """

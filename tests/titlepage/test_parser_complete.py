@@ -40,13 +40,13 @@ import tests.fixtures.titlepage
         id='fourth',
     ),
 ])
-def test_detector_parse_complete_title_page(page, expected):
+def test_parse_complete_title_page(page, expected):
     pcn = texmex.create_pagetextnavigator_fromstr(page)
     parsed = detector.titlepage.parser.complete.parse(pcn)
     assert parsed == expected, str(parsed)
 
 
-def test_detector_parser_complete_dump_and_load_titlepage():
+def test_parser_complete_dump_and_load_titlepage():
     current = iamraw.TitlePage()
 
     dumped = serializeraw.dump_titlepage(current)
