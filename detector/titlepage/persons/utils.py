@@ -63,33 +63,36 @@ def valid_title(title: str) -> bool:
 
 
 ACADEMIC_TITLES = utila.compiles(r"""
-\b
 (
-    # # PROF_DR
-    # (
-    #     Prof\.[-]?[ ]?Dr\.(-|[ ])?Ing\.
-    # )
-    # |
-    (?P<PROF>
-        Prof\.[-]?[ ]?(em\.)?
+    \b
+    (
+        # # PROF_DR
+        # (
+        #     Prof\.[-]?[ ]?Dr\.(-|[ ])?Ing\.
+        # )
+        # |
+        (?P<PROF>
+            Prof\.[-]?[ ]?(em\.)?
+        )
+        |
+        (?P<MASTER>
+            M\.A\.|
+            M\.[ ]?Sc\.|
+            Dipl\.(\-|[ ])(Ing\.|Oec\.)|
+            Dipl\.\-\w+
+        )
+        |
+        (?P<BSC>
+            B\.?[ ]?Sc\.?|
+            B\.A\.
+        )
+        |
+        (?P<DR>
+            Dr\.(-|[ ])?(Ing\.)?([ ]?(sc\.|tech\.|h\.c\.|E\.h\.)){0,5}|
+            [A-Z\-]{2,4}\.   # ???
+        )
     )
-    |
-    (?P<MASTER>
-        M\.A\.|
-        M\.[ ]?Sc\.|
-        Dipl\.(-|[ ])Ing\.|
-        Dipl\.\-\w+
-    )
-    |
-    (?P<BSC>
-        B\.?[ ]?Sc\.?|
-        B\.A\.
-    )
-    |
-    (?P<DR>
-        Dr\.(-|[ ])?(Ing\.)?([ ]?(sc\.|tech\.|h\.c\.|E\.h\.)){0,5}|
-        [A-Z\-]{2,4}\.   # ???
-    )
+    \s{0,3}
 )
 """)
 
