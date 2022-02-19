@@ -71,12 +71,12 @@ MAGICS = utila.splitlines(r"""
 
 AUTHORS = utila.splitlines(r"""
 Autor(in)?
-Name,[ ]Vorname
+Name\,[ ]Vorname
 Referent(in)?
 Verfasser(in)?
 angefertigt[ ]von
 by
-vorgelegt[ ]von[ ]Diplom-Ingenieur
+vorgelegt[ ]von[ ]Diplom\-Ingenieur
 vorgelegt[ ]von
 submitted[ ]by
 von
