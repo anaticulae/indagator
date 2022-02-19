@@ -38,17 +38,6 @@ def parse(raw: str) -> iamraw.Person:
     return person
 
 
-def create_person_title_pattern() -> str:
-    keys = list(iamraw.AcademicTitle.keys())
-    # make regex able and insert optional white space to dots 'M.Sc.' and 'M. Sc.'
-    keys = [item.replace('.', r'\. {0,3}') for item in keys]
-    # convert whte spaces
-    keys = [item.replace(' ', '[ ]') for item in keys]
-    result = (fr'(?P<t{index}>{item})[ ]?' for index, item in enumerate(keys))
-    joined = '|'.join(result)
-    return joined
-
-
 EXAMINERS = utila.splitlines(r"""
 (\d\.\s?)?Betreuer(in)?[ ]{0,3}(extern)?
 Betreuung
@@ -83,12 +72,11 @@ von
 """)
 
 INTRO = '|'.join(EXAMINERS | AUTHORS | MAGICS)
-PERSON_TITLE = create_person_title_pattern()
 PERSON_NAME = r'(?P<fname>([A-Z]\.[ ]?|\w+(-|\ )?){1,5})[ ](?P<name>[\w|-]{3,})'
 # pattern can be spread over more than one line
 PATTERN = utila.compiles(rf"""
     (?P<examiner>({INTRO})[:]?\s?)?
     ([ ]{0,4}(Herr|Frau)[ ]{0,4})?
-    ({PERSON_TITLE}[ ]*)+\s?
+    ({detector.titlepage.persons.utils.ACADEMIC_TITLES.pattern}[ ]*)+\s?
     {PERSON_NAME}
 """)
