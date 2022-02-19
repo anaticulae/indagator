@@ -57,12 +57,8 @@ def parse(raw: str) -> iamraw.Person:
 
 
 def create_with_title_pattern():
-    positions = utila.splitlines(
-        detector.titlepage.persons.person.PERSONS,
-        lowers=False,
-    )
-    # TODO: REMOVE AFTER UPGRADING UTILA
-    positions = utila.notempty(positions)
+    positions = (detector.titlepage.persons.person.EXAMINERS |
+                 detector.titlepage.persons.person.AUTHORS)
     preamble = [
         fr'(?P<t{index}>{item})' for index, item in enumerate(positions)
     ]

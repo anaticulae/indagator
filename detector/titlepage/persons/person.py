@@ -49,7 +49,7 @@ def create_person_title_pattern() -> str:
     return joined
 
 
-EXAMINERS = r"""
+EXAMINERS = utila.splitlines(r"""
 (\d\.\s?)?Betreuer(in)?[ ]{0,3}(extern)?
 Betreuung
 Erstgutachter(in)?
@@ -62,14 +62,14 @@ Secondary Supervisor
 Vorsitzende(r)?
 Zweitgutachter(in)?
 Zweitprüfer(in)?
-"""
+""")
 
-MAGICS = r"""
+MAGICS = utila.splitlines(r"""
 (\w+\s?){1,4}?[\s|:]
 ^
-"""
+""")
 
-AUTHORS = r"""
+AUTHORS = utila.splitlines(r"""
 Autor(in)?
 Name,[ ]Vorname
 Referent(in)?
@@ -80,11 +80,9 @@ vorgelegt[ ]von[ ]Diplom-Ingenieur
 vorgelegt[ ]von
 submitted[ ]by
 von
-"""
+""")
 
-PERSONS = EXAMINERS + AUTHORS
-POSITIONS = utila.splitlines(PERSONS + MAGICS, lowers=False)
-INTRO = '|'.join(POSITIONS)
+INTRO = '|'.join(EXAMINERS | AUTHORS | MAGICS)
 PERSON_TITLE = create_person_title_pattern()
 PERSON_NAME = r'(?P<fname>([A-Z]\.[ ]?|\w+(-|\ )?){1,5})[ ](?P<name>[\w|-]{3,})'
 # pattern can be spread over more than one line
