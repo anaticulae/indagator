@@ -97,7 +97,11 @@ MATCHES = {
     # 'Dr. rer. biol. hum.': AcademicTitle.DR,
     # 'Dr. med.': AcademicTitle.DR,
 }
-PATTERN = '|'.join((fr'(?P<t{index}>\(?{item}\)?)[ ]?' for index, item in enumerate(MATCHES)))  # yapf:disable
+PATTERN = utila.compiles(
+    '|'.join((fr'(?P<t{index}>\(?{item}\)?)[ ]?'
+              for index, item in enumerate(MATCHES))),
+    flags=re.I,
+)
 
 
 def extract_titles(title: str) -> list:
@@ -107,7 +111,7 @@ def extract_titles(title: str) -> list:
     >>> extract_titles('(M. Sc.)')
     [<AcademicTitle.MASTER:...>]
     """
-    result = re.match(PATTERN, title, flags=re.I)
+    result = PATTERN.match(title)
     if not result:
         return None
     title = []
