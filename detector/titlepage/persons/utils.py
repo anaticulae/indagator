@@ -8,7 +8,6 @@
 # =============================================================================
 
 import operator
-import re
 import typing
 
 import iamraw
@@ -63,45 +62,36 @@ def valid_title(title: str) -> bool:
     return True
 
 
-def extract_title(result: re.Match) -> list:
-    title = []
-    for item in range(len(iamraw.AcademicTitle.keys())):
-        try:
-            parsed = result['t%d' % item]
-            if not parsed:
-                continue
-            if not valid_title(parsed):
-                continue
-        except (KeyError, IndexError):
-            # IndexError: no every group is used. For example only t3:master
-            continue
-        else:
-            matches = list(iamraw.title.MATCHES.values())
-            title.append(matches[item])
-    return title
-
-
-MATCHES = {
-    'Prof.[-]{0,1} ?Dr.(-| )?Ing.': iamraw.PROF_DR,
-    r'B\.?[ ]?Sc\.?': iamraw.AcademicTitle.BSC,
-    'Dipl.(-| )Ing.': iamraw.AcademicTitle.MASTER,
-    r'Dipl.-\w+': iamraw.AcademicTitle.MASTER,
-    'M.A.': iamraw.AcademicTitle.MASTER,
-    r'M.[ ]?Sc.': iamraw.AcademicTitle.MASTER,
-    'Dr.(-| )?(Ing.)?( ?(sc.|tech.|h.c.|E.h.)){0,5}': iamraw.AcademicTitle.DR,
-    # TODO: ADD GENERAL -/RULE?
-    'Prof.[-]{0,1} ?(em.)?': iamraw.AcademicTitle.PROF,
-    # minimum two chapters to distinguish from first names
-    r'[a-zA-Z\-]{2,}. ': iamraw.AcademicTitle.DR,
-    # see general pattern above
-    # 'Dr. rer. biol. hum.': AcademicTitle.DR,
-    # 'Dr. med.': AcademicTitle.DR,
-}
-PATTERN = utila.compiles(
-    '|'.join((fr'(?P<t{index}>\(?{item}\)?)[ ]?'
-              for index, item in enumerate(MATCHES))),
-    flags=re.I,
+ACADEMIC_TITLES = utila.compiles(r"""
+\b
+(
+    # # PROF_DR
+    # (
+    #     Prof\.[-]?[ ]?Dr\.(-|[ ])?Ing\.
+    # )
+    # |
+    (?P<PROF>
+        Prof\.[-]?[ ]?(em\.)?
+    )
+    |
+    (?P<MASTER>
+        M\.A\.|
+        M\.[ ]?Sc\.|
+        Dipl\.(-|[ ])Ing\.|
+        Dipl\.\-\w+
+    )
+    |
+    (?P<BSC>
+        B\.?[ ]?Sc\.?|
+        B\.A\.
+    )
+    |
+    (?P<DR>
+        Dr\.(-|[ ])?(Ing\.)?([ ]?(sc\.|tech\.|h\.c\.|E\.h\.)){0,5}|
+        [A-Z\-]{2,4}\.   # ???
+    )
 )
+""")
 
 
 def extract_titles(title: str) -> list:
@@ -111,23 +101,17 @@ def extract_titles(title: str) -> list:
     >>> extract_titles('(M. Sc.)')
     [<AcademicTitle.MASTER:...>]
     """
-    result = PATTERN.match(title)
+    result = ACADEMIC_TITLES.finditer(title)
     if not result:
         return None
     title = []
-    for item in range(len(iamraw.AcademicTitle.keys())):
-        try:
-            parsed = result['t%d' % item]
-            if not parsed:
+    for item in result:
+        for key, value in item.groupdict().items():
+            if not value:
                 continue
-            if not valid_title(parsed):
+            if not valid_title(value):
                 continue
-        except (KeyError, IndexError):
-            # IndexError: no every group is used. For example only t3:master
-            continue
-        else:
-            matches = list(iamraw.title.MATCHES.values())
-            title.append(matches[item])
+            title.append(iamraw.AcademicTitle[key])
     return title
 
 

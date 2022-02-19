@@ -27,7 +27,8 @@ def parse(raw: str) -> iamraw.Person:
     parsed = PATTERN.search(raw)
     if not parsed:
         return None
-    title = detector.titlepage.persons.utils.extract_title(parsed)
+    title = detector.titlepage.persons.utils.extract_titles(
+        utila.extract_match(parsed))
     if not title:
         return None
     title = iamraw.AcademicTitle.merges(title)
