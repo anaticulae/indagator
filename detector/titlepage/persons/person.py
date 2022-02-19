@@ -19,10 +19,10 @@ import detector.titlepage.persons.utils
 
 def parse(raw: str) -> iamraw.Person:
     """\
-    >>> parse('Gutachter: Prof. em. Dr.-Ing. Dr.-Ing. E.h. Herbert Reichl, TU Berlin').raw
-    'Gutachter: Prof. em. Dr.-Ing. Dr.-Ing. E.h. Herbert Reichl'
-    >>> parse('Gutachter: Prof. Dr.-Ing. Dr. sc. techn. Klaus-Dieter Lang, TU Berlin').raw
-    'Gutachter: Prof. Dr.-Ing. Dr. sc. techn. Klaus-Dieter Lang'
+    >>> parse('Gutachter: Prof. em. Dr.-Ing. Dr.-Ing. E.h. Herbert Reichl, TU Berlin')
+    Person(name='Reichl',...'Gutachter: Prof. em. Dr.-Ing. Dr.-Ing. E.h. Herbert Reichl')
+    >>> parse('Gutachter: Prof. Dr.-Ing. Dr. sc. techn. Klaus-Dieter Lang, TU Berlin')
+    Person(name='Lang',...'Gutachter: Prof. Dr.-Ing. Dr. sc. techn. Klaus-Dieter Lang')
     >>> parse('BSC. Helmut Konrad Fahrendholz')
     Person(name='Fahrendholz'...'BSC. Helmut Konrad Fahrendholz')
     """
