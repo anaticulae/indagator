@@ -27,7 +27,7 @@ def order_persons(persons: list) -> typing.Tuple[iamraw.Person, iamraw.Persons]:
         return None
     # sort persons by title and name as a tiebraker
     persons = sorted(persons, key=operator.attrgetter('title', 'name'))
-    if persons[0].title in EXAMINERS:
+    if persons[0].title in EXAMINERS_TITLES:
         # author was not detected
         return None, persons
     if author_or_examiner(persons[0].raw) == iamraw.AcademicTitle.EXAMINIER:
@@ -115,7 +115,7 @@ def extract_titles(title: str) -> list:
     return title
 
 
-EXAMINERS = (
+EXAMINERS_TITLES = (
     iamraw.AcademicTitle.DR,
     iamraw.AcademicTitle.EXAMINIER,
     iamraw.AcademicTitle.PROF,
