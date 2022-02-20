@@ -2,6 +2,30 @@
 
 Every noteable change is logged here.
 
+## v0.31.0
+
+### Feature
+
+* add optional white space to academic title patter (a908de8cb7ff)
+* make regex more robust (8773daa50aad)
+* add improved title detector (1874c1fb2125)
+* strip title (5e631fe4e29e)
+* use complex pattern to support more cases (3e7b2f9f6237)
+* use date as first split also (5fde58773027)
+* move strong http pattern to the front (39eb77424bc6)
+* detect year inside brackets at bib start (66c96e1b7b50)
+* use improved regex splitter (49ee68b70647)
+* shrink possible year (89dc2404b4a1)
+* do not create ghost pattern (dc1ae19db274)
+
+### Fix
+
+* ensure that person parser runs fast enough (f334eb28cdd8)
+* set min name length to 3 (c0c8c45f2339)
+* adjust image selector (bd8429c0f6ea)
+* improve magic parser (d832268778ae)
+* skip empty selection (451c6f21041d)
+
 ## v0.30.0
 
 ### Feature
