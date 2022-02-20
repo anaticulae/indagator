@@ -4,3 +4,5 @@ name = bibi buh
 
 [releases]
 fail_on_finding = True
+[test]
+plugins = timeout

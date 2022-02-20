@@ -11,6 +11,7 @@ import iamraw
 import pytest
 
 import detector.titlepage.persons.notitle
+import detector.titlepage.persons.person
 import detector.titlepage.persons.strategy
 import detector.titlepage.persons.utils
 
@@ -223,3 +224,16 @@ def test_parser_person_regression():
     """
     parsed = detector.titlepage.persons.notitle.parse(BROKEN_INPUT)
     assert not parsed, str(parsed)
+
+
+LONGRUN = """\
+Nils Backhaus     Emotionales n-back-Paradigma
+Abkürzungsverzeichnis
+Abb.        Abbildung
+"""
+
+
+@pytest.mark.timeout(2, method="thread")
+def test_person_parser_timeout():
+    """Regression test for a long running example."""
+    assert not detector.titlepage.persons.person.parse(LONGRUN)
