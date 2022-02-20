@@ -74,11 +74,10 @@ von
 """)
 
 INTRO = '|'.join(EXAMINERS | AUTHORS | MAGICS)
-PERSON_NAME = r'(?P<fname>([A-Z]\.[ ]?|\w+(-|\ )?){1,5})[ ](?P<name>[\w|-]{3,})'
 # pattern can be spread over more than one line
 PATTERN = utila.compiles(rf"""
     (?P<examiner>({INTRO})[:]?\s?)?
     ([ ]{0,4}(Herr|Frau)[ ]{0,4})?
-    ({detector.titlepage.persons.utils.ACADEMIC_TITLES.pattern})+\s?
-    {PERSON_NAME}
+""" + detector.titlepage.persons.utils.ACADEMIC_TITLES.pattern + r"""+\s?
+    (?P<fname>([A-Z]\.[ ]?|\w+(-|\ )?){1,5})[ ](?P<name>[\w|\-]{3,})
 """)
