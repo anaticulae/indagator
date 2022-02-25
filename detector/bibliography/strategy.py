@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import elements
 import iamraw
 import serializeraw
 import texmex
@@ -62,7 +63,21 @@ def run(  # pylint:disable=R0914
     # remove None items
     without_empty = [utila.notnone(page) for page in best]
     references = utila.flatten(without_empty)
-    result = iamraw.BibliographyTable(references=references)
+    headline, pdfpages = None, None
+    if references:
+        pdfpages = tuple(sorted({item.raw_pdfpage for item in references}))
+        headline = search_headline(
+            oneline_text,
+            oneline_textpositions,
+            sizeandborderpath,
+            headerfooterpath,
+            page=pdfpages[0],
+        )
+    result = iamraw.BibliographyTable(
+        headline=headline,
+        references=references,
+        pdfpages=pdfpages,
+    )
     return result
 
 
@@ -104,3 +119,35 @@ def extracts(
         count_best = value
         best = selected
     return best
+
+
+def search_headline(
+    text: str,
+    textpositions: str,
+    sizeandborderpath: str,
+    headerfooterpath: str,
+    page: int = None,
+) -> str:
+    """Search bibliography headline to signal the user to use
+    Bibliography or References.
+    """
+    textnavigator = serializeraw.ptcn_fromfile(
+        text,
+        textpositions,
+        sizeandborderpath,
+        headerfooterpath,
+        pages=page,
+    )[0]
+    for line in textnavigator[0:8]:
+        line: str = line.text.strip()
+        headline = elements.parse_headline(line)
+        if headline is None:
+            continue
+        headline = headline[0]
+        if not utila.verysimilar(
+                current=headline,
+                expected=elements.BIBLIOGRAPHY,
+        ):
+            continue
+        return headline
+    return None
