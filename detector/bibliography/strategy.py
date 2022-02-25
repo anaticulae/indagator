@@ -23,8 +23,8 @@ import detector.bibliography.utils
 def run(  # pylint:disable=R0914
     text: str,
     textpositions: str,
-    sizeandborderpath: str,
-    headerfooterpath: str,
+    sizeandborder: str,
+    headerfooter: str,
     oneline_text: str,
     oneline_textpositions: str,
     pages: tuple = None,
@@ -42,15 +42,15 @@ def run(  # pylint:disable=R0914
         textnavigators = serializeraw.ptcn_fromfile(
             text,
             textpositions,
-            sizeandborderpath,
-            headerfooterpath,
+            sizeandborder,
+            headerfooter,
             pages=selected,
         )
         onelines = serializeraw.ptcn_fromfile(
             oneline_text,
             oneline_textpositions,
-            sizeandborderpath,
-            headerfooterpath,
+            sizeandborder,
+            headerfooter,
             pages=selected,
         )
         extracted = extracts(
@@ -69,8 +69,8 @@ def run(  # pylint:disable=R0914
         headline = search_headline(
             oneline_text,
             oneline_textpositions,
-            sizeandborderpath,
-            headerfooterpath,
+            sizeandborder,
+            headerfooter,
             page=pdfpages[0],
         )
     result = iamraw.BibliographyTable(
@@ -124,8 +124,8 @@ def extracts(
 def search_headline(
     text: str,
     textpositions: str,
-    sizeandborderpath: str,
-    headerfooterpath: str,
+    sizeandborder: str,
+    headerfooter: str,
     page: int = None,
 ) -> str:
     """Search bibliography headline to signal the user to use
@@ -134,8 +134,8 @@ def search_headline(
     textnavigator = serializeraw.ptcn_fromfile(
         text,
         textpositions,
-        sizeandborderpath,
-        headerfooterpath,
+        sizeandborder,
+        headerfooter,
         pages=page,
     )[0]
     for line in textnavigator[0:8]:

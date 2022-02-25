@@ -15,8 +15,8 @@ import detector.bibliography.strategy
 def work(
     text: str,
     textpositions: str,
-    sizeandborderpath: str,
-    headerfooterpath: str,
+    sizeandborder: str,
+    headerfooter: str,
     oneline_text: str,
     oneline_textpositions: str,
     pages: tuple = None,
@@ -24,8 +24,8 @@ def work(
     best = detector.bibliography.strategy.run(
         text,
         textpositions,
-        sizeandborderpath=sizeandborderpath,
-        headerfooterpath=headerfooterpath,
+        sizeandborder=sizeandborder,
+        headerfooter=headerfooter,
         oneline_text=oneline_text,
         oneline_textpositions=oneline_textpositions,
         pages=pages,
