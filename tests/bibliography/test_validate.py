@@ -202,3 +202,13 @@ class BibCompare(utilatest.BaseLiner):
             assert len(flat) == self.numbers
         elif self.validate:
             self.validate(flat)
+
+
+@utilatest.requires(power.BACHELOR037_PDF)
+def test_bib_headline_bachelor037(testdir, monkeypatch):
+    source = power.link(power.BACHELOR037_PDF)
+    cmd = f'-i {source} -o {testdir.tmpdir} --pages=33 --bib'
+    tests.run(cmd, monkeypatch=monkeypatch)
+    table = serializeraw.load_bibliography_reference(content=testdir.tmpdir)
+    assert table.headline == 'Literaturangaben'
+    assert table.pdfpages == (33,)
