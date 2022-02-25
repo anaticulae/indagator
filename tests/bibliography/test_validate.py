@@ -165,18 +165,17 @@ class BibCompare(utilatest.BaseLiner):
         self.validate = validate
 
     def raw(self, value) -> str:
-        flat = utila.flatten(value)
         authors = [
             utila.from_tuple(
                 item=[item.raw for item in line.authors],
                 separator=' ; ',
-            ) for line in flat
+            ) for line in value
         ]
         authors = [item.strip() for item in authors]
         titles = [
             '    ' +
             utila.normalize_whitespaces(item.title) if item.title else ''
-            for item in flat
+            for item in value
         ]
         connected = []
         for author, title in zip(authors, titles):
@@ -190,7 +189,7 @@ class BibCompare(utilatest.BaseLiner):
 
     def evaluate(self):
         super().evaluate()
-        flat = utila.flatten(self.load())
+        flat = self.load().references
         if isinstance(self.numbers, int):
             assert len(flat) == self.numbers
         if callable(self.validate):

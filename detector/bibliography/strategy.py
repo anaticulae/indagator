@@ -27,7 +27,7 @@ def run(  # pylint:disable=R0914
     oneline_text: str,
     oneline_textpositions: str,
     pages: tuple = None,
-) -> list:
+) -> iamraw.BibliographyTable:
     # ensure to have connected pages
     if pages:
         pageslist = utila.groupby_diff(pages)
@@ -60,7 +60,9 @@ def run(  # pylint:disable=R0914
     # select best bib ref
     best = utila.longest(parts)
     # remove None items
-    result = [utila.notnone(page) for page in best]
+    without_empty = [utila.notnone(page) for page in best]
+    references = utila.flatten(without_empty)
+    result = iamraw.BibliographyTable(references=references)
     return result
 
 
