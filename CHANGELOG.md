@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.32.0
+
+### Feature
+
+* add headline and pages to BibliographyTable (76407fc49b2e)
+* use bib table (3abc311a8678)
+
 ## v0.31.0
 
 ### Feature
