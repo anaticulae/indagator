@@ -49,13 +49,15 @@ def test_parse_bibliography_hurenkind():
     assert len(parsed) == expected, str(parsed)
 
 
-ALTERNATE = """\
-Adloff, Frank: Zivilgesellschaft – Theorie und politische Praxis. \
-Frankfurt/Main: Campus Verlag, 2005.
+# yapf:disable
+ALTERNATE = utila.splitlines("""\
+Adloff, Frank: Zivilgesellschaft – Theorie und politische Praxis.
+ Frankfurt/Main: Campus Verlag, 2005.
 
-Aktion Demenz e.V.: Eine Kommune auf dem Weg: Arnsberg. \
-(unveröffentlichtes Material)
-""".split('\n\n')
+Aktion Demenz e.V.: Eine Kommune auf dem Weg: Arnsberg.
+ (unveröffentlichtes Material)
+""", pattern='\n\n')
+# yapf:enable
 PARAMETERS = [
     pytest.param(item, id=utilatest.simple(item)) for item in ALTERNATE
 ]
