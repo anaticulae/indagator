@@ -8,7 +8,6 @@
 # =============================================================================
 
 import serializeraw
-import utila
 
 import detector.bibliography.strategy
 
@@ -22,39 +21,15 @@ def work(
     oneline_textpositions: str,
     pages: tuple = None,
 ) -> str:
-    # ensure to have connected pages
-    if pages:
-        pageslist = utila.groupby_diff(pages)
-    else:
-        # analyze all pages
-        pageslist = [None]
-    if len(pageslist) > 1:
-        utila.log(f'more than one potential bib section: {len(pageslist)}')
-    result = []
-    for selected in pageslist:
-        textnavigators = serializeraw.ptcn_fromfile(
-            text,
-            textpositions,
-            sizeandborderpath,
-            headerfooterpath,
-            pages=selected,
-        )
-        onelines = serializeraw.ptcn_fromfile(
-            oneline_text,
-            oneline_textpositions,
-            sizeandborderpath,
-            headerfooterpath,
-            pages=selected,
-        )
-        extracted = detector.bibliography.strategy.extracts(
-            textnavigators,
-            onelines,
-        )
-        result.append(extracted)
-    # select best bib ref
-    best = utila.longest(result)
-    # remove None items
-    best = [utila.notnone(page) for page in best]
+    best = detector.bibliography.strategy.run(
+        text,
+        textpositions,
+        sizeandborderpath=sizeandborderpath,
+        headerfooterpath=headerfooterpath,
+        oneline_text=oneline_text,
+        oneline_textpositions=oneline_textpositions,
+        pages=pages,
+    )
     # dump result
     dumped = serializeraw.dump_bibliography_reference(best)
     return dumped
