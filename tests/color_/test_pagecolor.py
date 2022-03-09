@@ -7,8 +7,18 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utilatest
+import power
 
-import color
+import color.pagecolor
 
-run, fail = utilatest.create_cli_runner(color)
+
+def test_colors():
+    source = power.MASTER031_PDF
+    colors = color.pagecolor.colors(
+        source,
+        pages=0,
+    )
+    assert len(colors) == 1
+    firstpage = colors[0]
+    expected = 1191 * 1684  # DPI dependent
+    assert len(firstpage) == expected

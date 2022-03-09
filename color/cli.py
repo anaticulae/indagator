@@ -7,8 +7,9 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import color
 import utila
+
+import color
 
 # TODO: MOVE TO SEPARATE PROJECT
 
