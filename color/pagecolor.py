@@ -60,8 +60,8 @@ def rgb2int(red, green, blue) -> int:
     """\
     >>> rgb2int(255, 255, 255)
     16777215
-    >>> int2rgb(rgb2int(128, 128, 128))
-    (128, 128, 128)
+    >>> int2rgb(rgb2int(244, 25, 139))
+    (244, 25, 139)
     """
     return red << 16 | green << 8 | blue
 
