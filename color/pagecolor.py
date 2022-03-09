@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import collections
+
 import ghost
 import PIL.Image
 import utila
@@ -37,3 +39,40 @@ def determine_color(path: str) -> list:
     with PIL.Image.open(path, formats=('png',)) as loaded:
         data = list(loaded.getdata())
     return data
+
+
+def histogram(data: list, count_min: int = 50) -> list:
+    counter = collections.defaultdict(int)
+    for item in data:
+        counter[rgb(*item)] += 1
+    result = []
+    for key, value in counter.items():
+        result.append((rgb2int(key), value))
+    result.sort(
+        key=lambda x: x[1],
+        reverse=True,
+    )
+    result = [item for item in result if item[1] >= count_min]
+    return result
+
+
+def rgb(red, green, blue) -> int:
+    """\
+    >>> rgb(255, 255, 255)
+    16777215
+    >>> rgb2int(rgb(128, 128, 128))
+    (128, 128, 128)
+    """
+    return red << 16 | green << 8 | blue
+
+
+def rgb2int(value) -> tuple:
+    """\
+    >>> rgb2int(16777215)
+    (255, 255, 255)
+    """
+    return (
+        255 & value >> 16,
+        255 & value >> 8,
+        255 & value,
+    )

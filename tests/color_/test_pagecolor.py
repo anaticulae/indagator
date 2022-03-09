@@ -22,3 +22,16 @@ def test_colors():
     firstpage = colors[0]
     expected = 1191 * 1684  # DPI dependent
     assert len(firstpage) == expected
+
+
+def test_histogram():
+    source = power.MASTER031_PDF
+    detected = color.pagecolor.colors(
+        source,
+        pages=0,
+    )
+    histogram = color.pagecolor.histogram(
+        detected[0],
+        count_min=50,
+    )
+    assert len(histogram) == 18
