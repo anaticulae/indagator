@@ -35,6 +35,7 @@ def main():
             description=DESCRIPTION,
             multiprocessed=True,
             name=color.PROCESS,
+            pages=True,
             singleinput=True,
             version=color.__version__,
         ),
