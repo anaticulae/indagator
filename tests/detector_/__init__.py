@@ -7,19 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
 import utilatest
 
-import tests
+import detector
 
-
-@utilatest.requires(power.BACHELOR056_PDF)
-def test_unconnected_pages(testdir, monkeypatch, capsys):
-    source = power.link(power.BACHELOR056_PDF)
-    pages = '1,2,3,6,7,8'  # invalid pages input
-
-    command = f'-i {source} -o {testdir.tmpdir} --bibliography --pages={pages}'
-    tests.run(command, monkeypatch=monkeypatch)
-
-    stdout = utilatest.stdout(capsys)
-    assert 'more than one potential bib section' in stdout
+run, fail = utilatest.create_cli_runner(detector)

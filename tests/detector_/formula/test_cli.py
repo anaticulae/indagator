@@ -14,7 +14,7 @@ import utila
 import utilatest
 
 import detector.path
-import tests
+import tests.detector_
 
 
 @pytest.mark.xfail(reason='???')
@@ -22,7 +22,7 @@ import tests
 def test_formula_cli_master116_page22(testdir, monkeypatch):
     source = power.link(power.MASTER116_PDF)
     command = f'-i {source}  --formula --pages=22'
-    tests.run(command, monkeypatch=monkeypatch)
+    tests.detector_.run(command, monkeypatch=monkeypatch)
 
     formulas = detector.path.formula_detected(testdir.tmpdir)
     formulas = serializeraw.load_formulas(formulas)

@@ -8,23 +8,18 @@
 # =============================================================================
 
 import power
-import utila
 import utilatest
 
-import tests
+import tests.detector_
 
 
-@utilatest.longrun
-@utilatest.requires(power.BACHELOR090_PDF)
-def test_regression_detector(testdir, monkeypatch):
-    """Start with white page that leads to some trouble with empty
-    navigators and problems to detect title page"""
-    pattern = '[rawmaker|groupme]*.yaml'
-    utila.copy_content(
-        power.link(power.BACHELOR090_PDF),
-        testdir.tmpdir,
-        pattern=pattern,
-    )
-    jobs = 5
-    cmd = f'-j{jobs} --all'
-    tests.run(cmd, monkeypatch=monkeypatch)
+@utilatest.requires(power.BACHELOR056_PDF)
+def test_unconnected_pages(testdir, monkeypatch, capsys):
+    source = power.link(power.BACHELOR056_PDF)
+    pages = '1,2,3,6,7,8'  # invalid pages input
+
+    command = f'-i {source} -o {testdir.tmpdir} --bibliography --pages={pages}'
+    tests.detector_.run(command, monkeypatch=monkeypatch)
+
+    stdout = utilatest.stdout(capsys)
+    assert 'more than one potential bib section' in stdout

@@ -8,7 +8,6 @@
 # =============================================================================
 
 import functools
-import os
 
 import power
 import pytest
@@ -17,13 +16,13 @@ import utila
 import utilatest
 
 import detector.path
-import tests
+import tests.detector_
 
-
-def file_load(name):
-    path = os.path.join(detector.ROOT, f'tests/bibliography/expected/{name}')
-    loaded = utila.file_read(path)
-    return loaded
+ARCHIVE = utila.join(
+    detector.ROOT,
+    'tests/detector_/bibliography/expected',
+    exist=True,
+)
 
 
 def bachelor51(flat):
@@ -149,15 +148,13 @@ class BibCompare(utilatest.BaseLiner):
 
     def __init__(self, source, pages, expected, validate, testdir, monkeypatch):
         super().__init__(
-            program=functools.partial(tests.run, monkeypatch=monkeypatch),
+            program=functools.partial(tests.detector_.run,
+                                      monkeypatch=monkeypatch),
             step='bibliography',
             source=source,
             pages=pages,
             workdir=testdir.tmpdir,
-            archive=os.path.join(
-                detector.ROOT,
-                'tests/bibliography/expected',
-            ),
+            archive=ARCHIVE,
             loader=serializeraw.load_bibliography_reference,
             index=validate if isinstance(validate, str) else None,
         )
@@ -208,7 +205,7 @@ class BibCompare(utilatest.BaseLiner):
 def test_bib_headline_bachelor037(testdir, monkeypatch):
     source = power.link(power.BACHELOR037_PDF)
     cmd = f'-i {source} -o {testdir.tmpdir} --pages=33 --bib'
-    tests.run(cmd, monkeypatch=monkeypatch)
+    tests.detector_.run(cmd, monkeypatch=monkeypatch)
     table = serializeraw.load_bibliography_reference(content=testdir.tmpdir)
     assert table.headline == 'Literaturangaben'
     assert table.pdfpages == (33,)

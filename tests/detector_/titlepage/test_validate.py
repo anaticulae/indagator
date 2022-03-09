@@ -14,7 +14,7 @@ import serializeraw
 import utilatest
 
 import detector.path
-import tests
+import tests.detector_
 
 
 def bachelor37(titlepage: iamraw.TitlePage):
@@ -157,7 +157,7 @@ def test_validate_titlepage_extractor(source, check, testdir, monkeypatch):
     utilatest.fixture_requires(source)
     cmd = f'-i {source} -o {testdir.tmpdir} --title --page=0'
 
-    tests.run(cmd, monkeypatch=monkeypatch)
+    tests.detector_.run(cmd, monkeypatch=monkeypatch)
 
     source = detector.path.titlepage_detected(testdir.tmpdir)
     titlepage = serializeraw.load_titlepage(source)

@@ -11,7 +11,7 @@ import power
 import pytest
 import utilatest
 
-import tests
+import tests.detector_
 
 
 @pytest.mark.usefixtures('testdir')
@@ -21,7 +21,7 @@ import tests
 ])
 def test_misc(cmd, monkeypatch, capsys):
     """Run help and version command to reach basic test coverage"""
-    tests.run(cmd, monkeypatch=monkeypatch)
+    tests.detector_.run(cmd, monkeypatch=monkeypatch)
     utilatest.write_capsys(capsys)
 
 
@@ -36,5 +36,5 @@ def test_run_work(source, testdir, monkeypatch, capsys):
     utilatest.fixture_requires(source)
     cmd = f'-i {source} -o {testdir.tmpdir}'
     with utilatest.increased_filecount(testdir.tmpdir, mindiff=3, maxdiff=3):
-        tests.run(cmd, monkeypatch=monkeypatch)
+        tests.detector_.run(cmd, monkeypatch=monkeypatch)
     utilatest.write_capsys(capsys)

@@ -10,10 +10,10 @@
 import pytest
 
 import detector.titlepage.parser.institution
-from tests.fixtures.titlepage import FIRST
-from tests.fixtures.titlepage import FIRST_INSTITUTION
-from tests.fixtures.titlepage import SECOND
-from tests.fixtures.titlepage import SECOND_INSTITUTION
+from tests.detector_.fixtures.titlepage import FIRST
+from tests.detector_.fixtures.titlepage import FIRST_INSTITUTION
+from tests.detector_.fixtures.titlepage import SECOND
+from tests.detector_.fixtures.titlepage import SECOND_INSTITUTION
 
 
 @pytest.mark.parametrize('example, expected', [

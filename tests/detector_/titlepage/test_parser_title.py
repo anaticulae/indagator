@@ -10,8 +10,8 @@
 from detector.titlepage.parser.title import TitleParserState
 from detector.titlepage.parser.title import parse
 # pylint:disable=W0611
-from tests.titlepage.example import TEXT_TITLE
-from tests.titlepage.example import new_textnavgiator
+from tests.detector_.titlepage.example import TEXT_TITLE
+from tests.detector_.titlepage.example import new_textnavgiator
 
 
 def test_parse_title(new_textnavgiator):  # pylint:disable=W0621

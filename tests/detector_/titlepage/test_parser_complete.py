@@ -14,29 +14,29 @@ import texmex
 
 import detector.feature.titlepage
 import detector.titlepage.parser.complete
-import tests
-import tests.fixtures.titlepage
+import tests.detector_
+import tests.detector_.fixtures.titlepage
 
 
 @pytest.mark.parametrize('page, expected', [
     pytest.param(
-        tests.fixtures.titlepage.FIRST,
-        tests.fixtures.titlepage.FIRST_EXPECTED,
+        tests.detector_.fixtures.titlepage.FIRST,
+        tests.detector_.fixtures.titlepage.FIRST_EXPECTED,
         id='first',
     ),
     pytest.param(
-        tests.fixtures.titlepage.SECOND,
-        tests.fixtures.titlepage.SECOND_EXPECTED,
+        tests.detector_.fixtures.titlepage.SECOND,
+        tests.detector_.fixtures.titlepage.SECOND_EXPECTED,
         id='second',
     ),
     pytest.param(
-        tests.fixtures.titlepage.THIRD,
-        tests.fixtures.titlepage.THIRD_EXPECTED,
+        tests.detector_.fixtures.titlepage.THIRD,
+        tests.detector_.fixtures.titlepage.THIRD_EXPECTED,
         id='third',
     ),
     pytest.param(
-        tests.fixtures.titlepage.FOURTH,
-        tests.fixtures.titlepage.FOURTH_EXPECTED,
+        tests.detector_.fixtures.titlepage.FOURTH,
+        tests.detector_.fixtures.titlepage.FOURTH_EXPECTED,
         id='fourth',
     ),
 ])
