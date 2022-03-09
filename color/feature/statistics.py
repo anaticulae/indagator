@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import iamraw
 import utila
 
 import color.pagecolor
@@ -40,3 +41,22 @@ def dump_statistics(colors: list) -> str:
         result.append(raw)
     dumped = utila.yaml_dump(result)
     return dumped
+
+
+def load_statistics(content: str) -> iamraw.PageContents:
+    loaded = utila.yaml_load(
+        content,
+        fname='color__statistics_statistics',
+    )
+    result = []
+    for page in loaded:
+        data = [
+            utila.parse_tuple(item, length=2, typ=int)
+            for item in page['content']
+        ]
+        data = [(color.pagecolor.rgb2int(item[0]), item[1]) for item in data]
+        result.append(iamraw.PageContent(
+            page=int(page['page']),
+            content=data,
+        ))
+    return result
