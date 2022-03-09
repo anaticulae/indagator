@@ -22,21 +22,22 @@ def work(path: str, pages: tuple = None) -> str:
 def determine_statistics(path: str, pages: tuple = None) -> list:
     result = []
     colors = color.pagecolor.colors(path, pages=pages)
-    for page in colors:
-        current = color.pagecolor.histogram(page)
-        result.append(current)
+    for page, content in enumerate(colors):
+        current = color.pagecolor.histogram(content)
+        result.append(iamraw.PageContent(page=page, content=current))
     return result
 
 
 def dump_statistics(colors: list) -> str:
     result = []
-    for page, content in enumerate(colors):
+    for page in colors:
         content = [
-            f'{color.pagecolor.rgb2int(*item[0])} {item[1]}' for item in content
+            f'{color.pagecolor.rgb2int(*item[0])} {item[1]}'
+            for item in page.content
         ]
         raw = dict(
-            page=page,
             content=content,
+            page=page.page,
         )
         result.append(raw)
     dumped = utila.yaml_dump(result)
