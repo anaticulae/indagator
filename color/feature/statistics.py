@@ -32,7 +32,7 @@ def dump_statistics(colors: list) -> str:
     result = []
     for page, content in enumerate(colors):
         content = [
-            f'{color.pagecolor.rgb(*item[0])} {item[1]}' for item in content
+            f'{color.pagecolor.rgb2int(*item[0])} {item[1]}' for item in content
         ]
         raw = dict(
             page=page,
@@ -54,7 +54,7 @@ def load_statistics(content: str) -> iamraw.PageContents:
             utila.parse_tuple(item, length=2, typ=int)
             for item in page['content']
         ]
-        data = [(color.pagecolor.rgb2int(item[0]), item[1]) for item in data]
+        data = [(color.pagecolor.int2rgb(item[0]), item[1]) for item in data]
         result.append(iamraw.PageContent(
             page=int(page['page']),
             content=data,

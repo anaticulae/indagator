@@ -44,10 +44,10 @@ def determine_color(path: str) -> list:
 def histogram(data: list, count_min: int = 50) -> list:
     counter = collections.defaultdict(int)
     for item in data:
-        counter[rgb(*item)] += 1
+        counter[rgb2int(*item)] += 1
     result = []
     for key, value in counter.items():
-        result.append((rgb2int(key), value))
+        result.append((int2rgb(key), value))
     result.sort(
         key=lambda x: x[1],
         reverse=True,
@@ -56,19 +56,19 @@ def histogram(data: list, count_min: int = 50) -> list:
     return result
 
 
-def rgb(red, green, blue) -> int:
+def rgb2int(red, green, blue) -> int:
     """\
-    >>> rgb(255, 255, 255)
+    >>> rgb2int(255, 255, 255)
     16777215
-    >>> rgb2int(rgb(128, 128, 128))
+    >>> int2rgb(rgb2int(128, 128, 128))
     (128, 128, 128)
     """
     return red << 16 | green << 8 | blue
 
 
-def rgb2int(value) -> tuple:
+def int2rgb(value) -> tuple:
     """\
-    >>> rgb2int(16777215)
+    >>> int2rgb(16777215)
     (255, 255, 255)
     """
     return (
