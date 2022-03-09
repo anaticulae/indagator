@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.33.0
+
+### Feature
+
+* add method to load extracted colors (c56d8a98b014)
+* add statistics runner (f5f8c4f0c4bd)
+* add method to determine histogram (c58bcce5c896)
+* add method to detect colors of a pdf page (a6f8faaea23b)
+* add pdf color detector (6b4154cf2e7f)
+
 ## v0.32.0
 
 ### Feature
