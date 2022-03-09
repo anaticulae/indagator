@@ -6,12 +6,3 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
-
-[project]
-short = detector
-name = bibi buh
-source = color
-    detector
-
-[test]
-plugins = timeout

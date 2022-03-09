@@ -7,11 +7,9 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-[project]
-short = detector
-name = bibi buh
-source = color
-    detector
+import detector
 
-[test]
-plugins = timeout
+__version__ = detector.__version__
+
+ROOT = detector.ROOT
+PROCESS = 'color'

@@ -7,11 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-[project]
-short = detector
-name = bibi buh
-source = color
-    detector
 
-[test]
-plugins = timeout
+def work(path: str, pages: tuple = None) -> str:
+    print(path)
+    return ''

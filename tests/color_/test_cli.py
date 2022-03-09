@@ -7,11 +7,18 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-[project]
-short = detector
-name = bibi buh
-source = color
-    detector
+import pytest
+import utilatest
 
-[test]
-plugins = timeout
+import tests.color_
+
+
+@pytest.mark.usefixtures('testdir')
+@pytest.mark.parametrize('cmd', [
+    ['--help'],
+    ['--version'],
+])
+def test_color_cli(cmd, monkeypatch, capsys):
+    """Run help and version command to reach basic test coverage"""
+    tests.color_.run(cmd, monkeypatch=monkeypatch)
+    utilatest.write_capsys(capsys)

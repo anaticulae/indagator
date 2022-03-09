@@ -42,6 +42,8 @@ if __name__ == "__main__":
             'Programming Language :: Python :: 3.8',
         ],
         packages=[
+            'color',
+            'color.feature',
             'detector',
             'detector.bibliography',
             'detector.bibliography.layout',
@@ -54,6 +56,9 @@ if __name__ == "__main__":
             'detector.titlepage.persons',
         ],
         entry_points={
-            'console_scripts': ['detector = detector.cli:main'],
+            'console_scripts': [
+                'color = color.cli:main',
+                'detector = detector.cli:main',
+            ],
         },
     )

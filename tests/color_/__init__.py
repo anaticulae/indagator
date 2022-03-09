@@ -7,11 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-[project]
-short = detector
-name = bibi buh
-source = color
-    detector
+import color
+import utilatest
 
-[test]
-plugins = timeout
+run, fail = utilatest.create_cli_runner(color)
