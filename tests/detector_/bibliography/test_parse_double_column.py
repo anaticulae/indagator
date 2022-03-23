@@ -29,6 +29,7 @@ def test_parse_bibliography_bachelor63_page59():
     assert len(parsed) == 12, str(parsed)
 
 
+@utilatest.longrun
 @utilatest.requires(power.BACHELOR037_PDF)
 def test_parse_bibliography_bachelor37():
     pages = (33,)

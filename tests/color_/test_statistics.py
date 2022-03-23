@@ -8,11 +8,13 @@
 # =============================================================================
 
 import power
+import utilatest
 
 import color.feature.statistics
 import tests.color_
 
 
+@utilatest.longrun
 def test_statistics_master031(testdir, monkeypatch):
     source = power.MASTER031_PDF
     cmd = f'-i {source} -o {testdir.tmpdir} --pages=0:10'
