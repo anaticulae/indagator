@@ -34,6 +34,16 @@ WORKPLAN = [
         output=('detected',),
     ),
     step(
+        'index',
+        inputs=[
+            ResultFile('rawmaker', 'text_text'),
+            ResultFile('rawmaker', 'text_positions'),
+            ResultFile('rawmaker', 'border_pages'),
+            ResultFile('groupme', 'footer_footerheader'),
+        ],
+        output=('detected',),
+    ),
+    step(
         'titlepage',
         inputs=[
             ResultFile('rawmaker', 'oneline_text_text'),

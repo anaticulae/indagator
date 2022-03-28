@@ -35,6 +35,6 @@ def test_run_work(source, testdir, monkeypatch, capsys):
     source = power.link(source)
     utilatest.fixture_requires(source)
     cmd = f'-i {source} -o {testdir.tmpdir}'
-    with utilatest.increased_filecount(testdir.tmpdir, mindiff=3, maxdiff=3):
+    with utilatest.increased_filecount(testdir.tmpdir, mindiff=4, maxdiff=4):
         tests.detector_.run(cmd, monkeypatch=monkeypatch)
     utilatest.write_capsys(capsys)

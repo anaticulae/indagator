@@ -51,6 +51,7 @@ if __name__ == "__main__":
             'detector.bibliography.reference',
             'detector.feature',
             'detector.formula',
+            'detector.index',
             'detector.titlepage',
             'detector.titlepage.parser',
             'detector.titlepage.persons',
