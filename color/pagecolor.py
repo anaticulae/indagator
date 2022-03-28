@@ -16,7 +16,7 @@ import utila
 import color
 
 
-def colors(source: str, pages: tuple = None) -> list:
+def colors(source: str, pages: tuple = None) -> 'yields':
     tmpdir = utila.tmpdir(root=color.ROOT)
     ghost.pdfwrite(
         source=source,
@@ -31,8 +31,8 @@ def colors(source: str, pages: tuple = None) -> list:
         include='png',
     )
     files.sort(key=lambda x: str(utila.file_name(x)).zfill(4))
-    result = [determine_color(path) for path in files]
-    return result
+    for path in files:
+        yield determine_color(path)
 
 
 def determine_color(path: str) -> list:

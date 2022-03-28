@@ -14,10 +14,10 @@ import color.pagecolor
 
 def test_colors():
     source = power.MASTER031_PDF
-    colors = color.pagecolor.colors(
+    colors = list(color.pagecolor.colors(
         source,
         pages=0,
-    )
+    ))
     assert len(colors) == 1
     firstpage = colors[0]
     expected = 1191 * 1684  # DPI dependent
@@ -26,10 +26,10 @@ def test_colors():
 
 def test_histogram():
     source = power.MASTER031_PDF
-    detected = color.pagecolor.colors(
+    detected = list(color.pagecolor.colors(
         source,
         pages=0,
-    )
+    ))
     histogram = color.pagecolor.histogram(
         detected[0],
         count_min=50,
