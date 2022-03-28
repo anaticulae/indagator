@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.34.0
+
+### Feature
+
+* add index detector (66b1c4d5d015)
+
 ## v0.33.0
 
 ### Feature
