@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.34.1
+
+### Fix
+
+* rename cli to avoid conflict with windows color option (d3ccb5d5989e)
+
 ## v0.34.0
 
 ### Feature
