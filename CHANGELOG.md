@@ -332,8 +332,6 @@ Every noteable change is logged here.
 
 * extend interface documentation (7a48fd533472)
 
-## v0.13.1
-
 ## v0.13.0
 
 ### Feature
@@ -355,8 +353,6 @@ Every noteable change is logged here.
 
 * add page follows to tech label parser (bfb9bedd5e6e)
 * add page shortcut to tech label parser (e4e8b79bec48)
-
-## v0.12.1
 
 ## v0.12.0
 
@@ -397,8 +393,6 @@ Every noteable change is logged here.
 * reduce min length of valid author (187823023706)
 * detect fewer false positive freeand bib (51b17cfb6796)
 
-## v0.11.1
-
 ## v0.11.0
 
 ### Feature
@@ -408,8 +402,6 @@ Every noteable change is logged here.
 * extend bib decider strategy (b28b477560b3)
 * add vspace strategy (7b19870b811f)
 * improve parser due using page text content (00d837112533)
-
-## v0.10.1
 
 ## v0.10.0
 
@@ -422,27 +414,17 @@ Every noteable change is logged here.
 * convert raw formula to formula (92f81a76bcd7)
 * add method to determine path to extracted formula (829e5da6e0a6)
 
-## v0.9.1
-
 ## v0.9.0
 
 ### Feature
 
 * extend person parser (ea0d2a04d5bd)
 
-## v0.8.5
-
-## v0.8.4
-
 ## v0.8.3
 
 ### Fix
 
 * fix link to package description (2427db197684)
-
-## v0.8.2
-
-## v0.8.1
 
 ## v0.8.0
 
@@ -453,12 +435,6 @@ Every noteable change is logged here.
 ### Documentation
 
 * fix outdated interface documentation (98b97e29e4a6)
-
-## v0.7.3
-
-## v0.7.2
-
-## v0.7.1
 
 ## v0.7.0
 
@@ -476,16 +452,6 @@ Every noteable change is logged here.
 
 * extend university list (bc33db0e90b0)
 
-## v0.5.6
-
-## v0.5.5
-
-## v0.5.4
-
-## v0.5.3
-
-## v0.5.2
-
 ## v0.5.1
 
 ### Fix
@@ -498,8 +464,6 @@ Every noteable change is logged here.
 
 * add formula extraction step (f35628da7c73)
 
-## v0.4.2
-
 ## v0.4.1
 
 ### Fix
@@ -511,8 +475,6 @@ Every noteable change is logged here.
 ### Feature
 
 * change default behavior for bib grouping (5a58ded93a5b)
-
-## v0.3.1
 
 ## v0.3.0
 
@@ -547,8 +509,6 @@ Every noteable change is logged here.
 
 * store correct raw content (fa9c34c177eb)
 
-## v0.1.1
-
 ## v0.1.0
 
 ### Feature
@@ -556,4 +516,3 @@ Every noteable change is logged here.
 * move code from hey project v2.9.0 (65b006884343)
 
 ## v0.0.0 Initial release
-
