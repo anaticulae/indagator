@@ -58,7 +58,7 @@ if __name__ == "__main__":
         ],
         entry_points={
             'console_scripts': [
-                'color = color.cli:main',
+                'colors = color.cli:main',
                 'detector = detector.cli:main',
             ],
         },

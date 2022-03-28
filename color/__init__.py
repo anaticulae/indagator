@@ -12,4 +12,4 @@ import detector
 __version__ = detector.__version__
 
 ROOT = detector.ROOT
-PROCESS = 'color'
+PROCESS = 'colors'
