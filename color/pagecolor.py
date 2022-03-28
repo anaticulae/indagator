@@ -46,6 +46,7 @@ def histogram(data: list, count_min: int = 50) -> list:
     for item in data:
         counter[rgb2int(*item)] += 1
     result = []
+    # TODO: CONVERT THE RESULT ONLY
     for key, value in counter.items():
         result.append((int2rgb(key), value))
     result.sort(
