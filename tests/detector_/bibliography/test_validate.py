@@ -81,6 +81,7 @@ def bachelor128(flat):
     assert flat
     # 51: Validated by hand
     assert len(flat) == 47
+    assert all(isinstance(item.year, (int)) for item in flat if item.year)
 
 
 def master91b(flat):

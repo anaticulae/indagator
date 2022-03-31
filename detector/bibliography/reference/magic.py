@@ -40,7 +40,6 @@ def parse(raw: str) -> iamraw.BibliographyReference:
         if '/' in token:
             collected.append(token)
             continue
-
         break
     # collected: ['Bergsträsser', ' Gotthelf']
     if not collected:
@@ -51,10 +50,8 @@ def parse(raw: str) -> iamraw.BibliographyReference:
         # HACK: remove empty authors
         return None
     authors = german.authors_decide(authors)
-
     year_raw = re.search(r'(\d{4})\.$', raw)
     year = int(year_raw[1]) if year_raw else None
-
     rest = rest.replace(authors_raw, '')
     if year_raw:
         rest = rest.replace(year_raw[0], '').strip()

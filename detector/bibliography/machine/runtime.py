@@ -60,7 +60,7 @@ def reference(raw: str) -> iamraw.BibliographyReference:
         result.hyperlink = hyperlink[0][1]
     years = data.get('years')
     if years:
-        result.year = years[0][0]
+        result.year = int(years[0][0])
     accessed = data.get('accessed')
     if accessed:
         result.accessed = accessed[0][0]

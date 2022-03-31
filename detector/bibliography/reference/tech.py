@@ -149,7 +149,7 @@ def parse_year(text: str) -> tuple:
     text = text.replace('( )', '').strip()
     text = text.replace('()', '').strip()
     text = text.strip(':,; ')
-    return year[1], text
+    return int(year[1]), text
 
 
 FIRST_SPLIT = utila.compiles(r"""
