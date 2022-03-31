@@ -2,6 +2,19 @@
 
 Every noteable change is logged here.
 
+## v0.35.0
+
+### Feature
+
+* use real holy values (44dd22d6e9d6)
+* improve speed due using PIL native methods (74ed3932fb45)
+* use generator approach to reduce amount of memory (7e31f4ba7144)
+
+### Fix
+
+* convert year to int (efacd378e47c)
+* convert empty string to none (fbed351868c6)
+
 ## v0.34.1
 
 ### Fix
