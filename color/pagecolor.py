@@ -7,11 +7,18 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import configo
 import ghost
 import PIL.Image
 import utila
 
 import color
+
+PDF_DPI_MAX = configo.HV_INT_PLUS(default=144)
+
+COLORS_COUNT_MAX = configo.HV_INT_PLUS(default=1024 * 10)
+
+HISTOGRAM_COUNT = configo.HV_INT_PLUS(default=50)
 
 
 def colors(source: str, pages: tuple = None) -> 'yields':
@@ -21,7 +28,7 @@ def colors(source: str, pages: tuple = None) -> 'yields':
         pages=pages,
         root=tmpdir,
         formats='png16m',
-        dpi=144,
+        dpi=PDF_DPI_MAX,
     )
     files = utila.file_list(
         tmpdir,
@@ -35,11 +42,14 @@ def colors(source: str, pages: tuple = None) -> 'yields':
 
 def determine_color(path: str) -> list:
     with PIL.Image.open(path, formats=('png',)) as loaded:
-        data = loaded.getcolors(1024 * 10)
+        data = loaded.getcolors(COLORS_COUNT_MAX)
     return data
 
 
-def histogram(data: list, count_min: int = 50) -> list:
+def histogram(
+    data: list,
+    count_min: int = HISTOGRAM_COUNT,
+) -> list:
     result = [(item[1], item[0]) for item in data if item[0] >= count_min]
     result.sort(
         key=lambda x: x[1],
