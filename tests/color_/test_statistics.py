@@ -8,9 +8,9 @@
 # =============================================================================
 
 import power
+import serializeraw
 import utilatest
 
-import color.feature.statistics
 import tests.color_
 
 
@@ -19,5 +19,5 @@ def test_statistics_master031(testdir, monkeypatch):
     source = power.MASTER031_PDF
     cmd = f'-i {source} -o {testdir.tmpdir} --pages=0:10'
     tests.color_.run(cmd, monkeypatch=monkeypatch)
-    loaded = color.feature.statistics.load_statistics(content=testdir.tmpdir)
+    loaded = serializeraw.load_color_statistics(content=testdir.tmpdir)
     assert len(loaded) == 10
