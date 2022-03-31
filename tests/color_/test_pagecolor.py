@@ -13,6 +13,7 @@ import color.pagecolor
 
 
 def test_colors():
+    """Extract list of rgb colors with color count."""
     source = power.MASTER031_PDF
     colors = list(color.pagecolor.colors(
         source,
@@ -20,7 +21,7 @@ def test_colors():
     ))
     assert len(colors) == 1
     firstpage = colors[0]
-    expected = 1191 * 1684  # DPI dependent
+    expected = 569  # different colors
     assert len(firstpage) == expected
 
 

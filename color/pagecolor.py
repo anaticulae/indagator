@@ -7,8 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import collections
-
 import ghost
 import PIL.Image
 import utila
@@ -37,23 +35,16 @@ def colors(source: str, pages: tuple = None) -> 'yields':
 
 def determine_color(path: str) -> list:
     with PIL.Image.open(path, formats=('png',)) as loaded:
-        data = list(loaded.getdata())
+        data = loaded.getcolors(1024 * 10)
     return data
 
 
 def histogram(data: list, count_min: int = 50) -> list:
-    counter = collections.defaultdict(int)
-    for item in data:
-        counter[rgb2int(*item)] += 1
-    result = []
-    # TODO: CONVERT THE RESULT ONLY
-    for key, value in counter.items():
-        result.append((int2rgb(key), value))
+    result = [(item[1], item[0]) for item in data if item[0] >= count_min]
     result.sort(
         key=lambda x: x[1],
         reverse=True,
     )
-    result = [item for item in result if item[1] >= count_min]
     return result
 
 
