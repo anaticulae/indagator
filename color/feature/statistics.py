@@ -9,6 +9,7 @@
 
 import iamraw
 import serializeraw
+import utila
 
 import color.pagecolor
 
@@ -23,6 +24,10 @@ def determine_statistics(path: str, pages: tuple = None) -> list:
     result = []
     colors = color.pagecolor.colors(path, pages=pages)
     for page, content in enumerate(colors):
+        if color is None:
+            utila.error(f'could not determine colors: {path} {page}, '
+                        'may increase number of colors in histogram')
+            continue
         current = color.pagecolor.histogram(content)
         result.append(iamraw.PageContent(page=page, content=current))
     return result

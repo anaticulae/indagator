@@ -50,6 +50,8 @@ def histogram(
     data: list,
     count_min: int = HISTOGRAM_COUNT,
 ) -> list:
+    if not data:
+        return []
     result = [(item[1], item[0]) for item in data if item[0] >= count_min]
     result.sort(
         key=lambda x: x[1],
