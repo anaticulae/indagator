@@ -16,7 +16,7 @@ import color
 
 PDF_DPI_MAX = configo.HV_INT_PLUS(default=144)
 
-COLORS_COUNT_MAX = configo.HV_INT_PLUS(default=1024 * 10)
+COLORS_COUNT_MAX = configo.HV_INT_PLUS(default=1024 * 100)
 
 HISTOGRAM_COUNT = configo.HV_INT_PLUS(default=50)
 
