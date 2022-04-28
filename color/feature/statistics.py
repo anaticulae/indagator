@@ -23,11 +23,13 @@ def work(path: str, pages: tuple = None) -> str:
 def determine_statistics(path: str, pages: tuple = None) -> list:
     result = []
     colors = color.pagecolor.colors(path, pages=pages)
-    for page, content in enumerate(colors):
+    pagenumbers = utila.PageGenerator(pages=pages)
+    for content in colors:
+        pagenumber = next(pagenumbers)
         if color is None:
-            utila.error(f'could not determine colors: {path} {page}, '
+            utila.error(f'could not determine colors: {path} {pagenumber}, '
                         'may increase number of colors in histogram')
             continue
         current = color.pagecolor.histogram(content)
-        result.append(iamraw.PageContent(page=page, content=current))
+        result.append(iamraw.PageContent(page=pagenumber, content=current))
     return result
