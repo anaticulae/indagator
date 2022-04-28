@@ -61,7 +61,7 @@ def extract(
         vspace_max = MAXDISTANCE
     grouped = texmex.group_linedistances_complex(
         navigator,
-        max_distance=vspace_max,
+        distance_max=vspace_max,
     )
     grouped = [[navigator[item] for item in group] for group in grouped]
     result = detector.bibliography.layout.alternate.extract(grouped)
