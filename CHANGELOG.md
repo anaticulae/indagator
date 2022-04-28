@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.35.1
+
+### Feature
+
+* increase colors to pass book173 example (580ab9dd6d5c)
+
+### Fix
+
+* do not fail on too few colors (c9e5e2c25432)
+
 ## v0.35.0
 
 ### Feature
