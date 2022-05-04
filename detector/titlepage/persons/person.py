@@ -66,6 +66,7 @@ Name\,[ ]Vorname
 Referent(in)?
 Verfasser(in)?
 angefertigt[ ]von
+eingereicht[ ]von
 by
 vorgelegt[ ]von[ ]Diplom\-Ingenieur
 vorgelegt[ ]von
