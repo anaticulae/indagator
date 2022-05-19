@@ -109,7 +109,7 @@ def master148(flat):
     pytest.param(power.DISS143_PDF, '131:143', None, 'diss143', id='diss143'),
     pytest.param(power.DISS148_PDF, '137:146', None, 'diss148', id='diss148'),
     pytest.param(power.DISS167_PDF, '140:167', None, 'diss167', id='diss167'),
-    pytest.param(power.DISS170_PDF, '150:163', None, diss170, id='diss170'),
+    pytest.param(power.DISS170_PDF, '150:163', None, 'diss170', id='diss170'),
     pytest.param(power.DISS172_PDF, '152:172', None, 'diss172', id='diss172'),
     pytest.param(power.DISS178_PDF, '166:170', None, 'diss178', id='diss178'),
     pytest.param(power.DISS266_PDF, '215:247', 427, None, id='diss266', marks=pytest.mark.xfail(reason='improve parser')), # VALIDATED BY HAND
@@ -123,7 +123,7 @@ def master148(flat):
     pytest.param(power.MASTER110_PDF, '104:109', 70, master110, id='master110'),
     pytest.param(power.MASTER116_PDF, '97,98,99,100', 46, master116, id='master116'), # VALIDATED BY HAND
     pytest.param(power.MASTER148_PDF, '109:114', 38, master148, id='master148', marks=pytest.mark.xfail(reason='improve parser')), # VALIDATED BY HAND
-    pytest.param(power.MASTER155_PDF, '75:85', 111, 'master155', id='master155'), # VALIDATED BY HAND 109
+    pytest.param(power.MASTER155_PDF, '75:85', None, 'master155', id='master155'), # VALIDATED BY HAND 109
     pytest.param(power.ORDER107_PDF, '104:108', 31, 'order107', id='order107'), # VALIDATED BY HAND
 ])
 # yapf:enable

@@ -33,8 +33,8 @@ Accelerated Cloud
 Frank Doelitzscher ; Martin Knahl ; Christoph Reich ; and Nathan
 
 
-Guansong Pang Chunhua Shen ; Longbing Cao Anton van den Hengel. Deep Learning for Anomaly Detection
-    A Review
+o.A.
+    NO TITLE
 
 Haryadi S Gunawi ; Mingzhe Hao ; Tanakorn Leesatapornwongsa ; Tiratat Patana-anake ; Thanh Do ; Jeffry Adityatama ; Kurnia J Eliazar ; Agung Laksono ; Jeffrey F Lukman ; Vincentius Martin
 
@@ -74,9 +74,6 @@ Mojtaba Shahin ; Muhammad Ali Babar ; and Liming
 
 Geoffrey E Hinton
     and Ruslan R Salakhutdinov
-
-Ian Goodfellow Yoshua Bengio and Aaron Courville. Deep Learning.
-
 
 William C Carter.
     “A time for reflection
@@ -120,11 +117,11 @@ J. Bogatinovski S. Nedelkoski ; J. Cardoso O. Kao.
 Yu Chen.
     “Anomaly Detection on Golden Signals
 
-Four Golden Signals for Monitoring Distributed Systems. https
-    / / blog
+o.A.
+    NO TITLE
 
-Peter J Brockwell Richard A Davis and Stephen E Fienberg. Time Series
-    Theory and Methods
+o.A.
+    NO TITLE
 
 Haowen Xu ; Wenxiao Chen ; Nengwen Zhao ; Zeyan Li ; Jiahao Bu ; Zhihan Li ; Ying Liu ; Youjian Zhao ; Dan Pei ; Yang Feng
 
@@ -162,9 +159,6 @@ Jayashree Mohan ; Ashlie Martinez ; Soujanya Ponnapalli ; Pandian Raju ; and Vij
 Paul Sarbanes
     and Michael Oxley
 
-Openstack. openstack ; osprofiler. url
-    osprofiler
-
 Jinyang Liu ; Jieming Zhu ; Shilin He ; Zibin Zheng ; and Michael
     Pinjia He, , R Lyu
 
@@ -174,11 +168,11 @@ Hossein Hamooni ; Biplob Debnath ; Jianwu Xu ; Hui Zhang ; Guofei Jiang ; and Ab
 o.A.
     Benjamin H. Sigelman, Luiz Andre Barroso, Mike Burrows, Pat Stephenson, Manoj Plakal, Donald Beaver, Saul Jaspan, and Chandan Shanbhag. Dapper, a Large
 
-Definition of AIOps (Artificial Intelligence for IT Operations) - Gartner Information Technology Glossary. https
-    / / www
+o.A.
+    NO TITLE
 
-Market Guide for AIOps Platforms. https
-    / / www
+o.A.
+    NO TITLE
 
 IDC FutureScape.
     “Worldwide CIO Agenda 2019 Predictions
@@ -229,7 +223,7 @@ Giuseppe Muntoni ; Jacopo Soldani ; and Antonio
 
 
 Charu C. Aggarwal.
-    “Outlier Analysis
+    “Outlier Analysis.” In: Data Mining. Springer. 2015
 
 Frank E Grubbs.
     “Procedures for Detecting Outlying Observations in Samples
@@ -249,8 +243,8 @@ o.A.
 Lukas Ruff ; Yury Zemlyanskiy ; Robert Vandermeulen ; Thomas Schnake ; and Marius
 
 
-Raghavendra Chalapathy Sanjay Chawla. Deep Learning for Anomaly Detection
-    A Survey
+o.A.
+    NO TITLE
 
 Ian T Jolliffe
     and Jorge Cadima
@@ -298,7 +292,7 @@ Lianping Chen.
     “Continuous Delivery: Huge Benefits, But Challenges Too
 
 Debra (Dallie) Sandilands.
-    “Univariate Analysis
+    “Univariate Analysis.” In: Encyclopedia of Quality of Life and Well-Being Research. Ed. by Alex C. Michalos. Dordrecht: Springer Netherlands
 
 o.A.
     NO TITLE
@@ -373,7 +367,7 @@ Bendong Zhao ; Shangfeng Chen ; Junliang Liu
     Huanzhang Lu, , , and Dongya Wu
 
 Leo Breiman.
-    “Random Forests
+    “Random Forests.” In: Machine Learning 45.1
 
 M˜ahesh V Joshi ; Ramesh C Agarwal ; and Vipin
 
@@ -400,9 +394,6 @@ Pavel Filonov ; Andrey Lavrentyev ; and Artem
 
 
 Owen Vallis ; Jordan Hochenbaum ; and Arun
-
-
-Netflix. Netflix ; Surus.
 
 
 Kyle Hundman ; Valentino Constantinou ; Christopher Laporte ; Ian Colwell ; and Tom
@@ -542,12 +533,6 @@ Zhiheng Huang ; and Kai
 
 Alok Shrivastwa ; Sunil Sarat ; Kevin Jackson ; Cody Bunch ; Egle Sigler ; and Tony Campbell. OpenStack
     Building a Cloud Environment
-
-Kolla-Ansible’s documentation. https
-    / / docs
-
-Rally.
-
 
 Jasmin Bogatinovski
     and Sasho Nedelkoski
