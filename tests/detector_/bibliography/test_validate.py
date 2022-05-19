@@ -163,27 +163,7 @@ class BibCompare(utilatest.BaseLiner):
         self.validate = validate
 
     def raw(self, value) -> str:
-        authors = [
-            utila.from_tuple(
-                item=[item.raw for item in line.authors],
-                separator=' ; ',
-            ) for line in value
-        ]
-        authors = [item.strip() for item in authors]
-        titles = [
-            '    ' +
-            utila.normalize_whitespaces(item.title) if item.title else ''
-            for item in value
-        ]
-        connected = [f'strategy:{value.__strategy__}\n']
-        for author, title in zip(authors, titles):
-            if not any((author, title)):
-                continue
-            connected.append(author)
-            connected.append(title)
-            connected.append('')
-        result = utila.NEWLINE.join(connected).strip()
-        return result
+        return bibtable_raw(value)
 
     def evaluate(self):
         super().evaluate()
@@ -200,6 +180,29 @@ class BibCompare(utilatest.BaseLiner):
             assert len(flat) == self.numbers
         elif self.validate:
             self.validate(flat)
+
+
+def bibtable_raw(value: list) -> str:
+    authors = [
+        utila.from_tuple(
+            item=[item.raw for item in line.authors],
+            separator=' ; ',
+        ) for line in value
+    ]
+    authors = [item.strip() for item in authors]
+    titles = [
+        '    ' + utila.normalize_whitespaces(item.title) if item.title else ''
+        for item in value
+    ]
+    connected = [f'strategy:{value.__strategy__}\n']
+    for author, title in zip(authors, titles):
+        if not any((author, title)):
+            continue
+        connected.append(author)
+        connected.append(title)
+        connected.append('')
+    result = utila.NEWLINE.join(connected).strip()
+    return result
 
 
 @utilatest.requires(power.BACHELOR037_PDF)
