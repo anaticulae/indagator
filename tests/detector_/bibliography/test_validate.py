@@ -107,6 +107,7 @@ def master148(flat):
     pytest.param(power.BACHELOR241_PDF, '239,240', None, 'bachelor241', id='bachelor241'),
     pytest.param(power.DISS143_PDF, '131', None, 'diss143p131', id='diss143p131'),
     pytest.param(power.DISS143_PDF, '131:143', None, 'diss143', id='diss143'),
+    pytest.param(power.DISS148_PDF, '137:146', None, 'diss148', id='diss148'),
     pytest.param(power.DISS167_PDF, '140:167', None, 'diss167', id='diss167'),
     pytest.param(power.DISS170_PDF, '150:163', None, diss170, id='diss170'),
     pytest.param(power.DISS172_PDF, '152:172', None, 'diss172', id='diss172'),
