@@ -52,9 +52,9 @@ def run(  # pylint:disable=R0914
         )
         parts.append(extracted)
     # select best bib ref
-    best = utila.longest(parts)
+    best = utila.longest(parts, key=lambda x: x[0])
     # remove None items
-    without_empty = [utila.notnone(page) for page in best]
+    without_empty = [utila.notnone(page) for page in best[0]]
     references = utila.flatten(without_empty)
     headline, pdfpages = None, None
     if references:
@@ -71,6 +71,7 @@ def run(  # pylint:disable=R0914
         references=references,
         pdfpages=pdfpages,
     )
+    result.__strategy__ = best[1]
     return result
 
 
@@ -102,16 +103,17 @@ def extracts(
     count_alternate = detector.bibliography.utils.count(alternate) * 0.7
     count_vspace = detector.bibliography.utils.count(vspace) * 0.5
 
-    count_best, best = count_column, column
-    for value, selected in [
-        (count_alternate, alternate),
-        (count_vspace, vspace),
+    count_best, best, best_strategy = count_column, column, 'column'
+    for value, selected, strategy in [
+        (count_alternate, alternate, 'alternate'),
+        (count_vspace, vspace, 'vspace'),
     ]:
         if value < count_best:
             continue
         count_best = value
         best = selected
-    return best
+        best_strategy = strategy
+    return best, best_strategy
 
 
 def search_headline(
