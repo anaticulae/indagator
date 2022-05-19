@@ -29,14 +29,7 @@ def run(  # pylint:disable=R0914
     oneline_textpositions: str,
     pages: tuple = None,
 ) -> iamraw.BibliographyTable:
-    # ensure to have connected pages
-    if pages:
-        pageslist = utila.groupby_diff(pages)
-    else:
-        # analyze all pages
-        pageslist = [None]
-    if len(pageslist) > 1:
-        utila.log(f'more than one potential bib section: {len(pageslist)}')
+    pageslist = prepare_pages(pages)
     parts = []
     for selected in pageslist:
         textnavigators = serializeraw.ptcn_fromfile(
@@ -151,3 +144,14 @@ def search_headline(
             continue
         return headline
     return None
+
+
+def prepare_pages(pages) -> list:
+    # analyze all pages
+    pageslist = [None]
+    # ensure to have connected pages
+    if pages:
+        pageslist = utila.groupby_diff(pages)
+    if len(pageslist) > 1:
+        utila.log(f'more than one potential bib section: {len(pageslist)}')
+    return pageslist
