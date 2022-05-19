@@ -18,7 +18,8 @@ import tests.detector_
 @utilatest.requires(power.BACHELOR090_PDF)
 def test_regression_detector(testdir, monkeypatch):
     """Start with white page that leads to some trouble with empty
-    navigators and problems to detect title page"""
+    navigators and problems to detect title page.
+    """
     pattern = '[rawmaker|groupme]*.yaml'
     utila.copy_content(
         power.link(power.BACHELOR090_PDF),
