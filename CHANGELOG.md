@@ -2,6 +2,18 @@
 
 Every noteable change is logged here.
 
+## v0.36.0
+
+### Feature
+
+* extend bib parser (6ca9538b48b6)
+* add strategy name to bib result (e1912a9c124b)
+* extend person pattern (3dd06c68bf02)
+
+### Fix
+
+* adjust page number for non zero page start (f623a1aef5dd)
+
 ## v0.35.1
 
 ### Feature
