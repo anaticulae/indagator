@@ -175,7 +175,7 @@ class BibCompare(utilatest.BaseLiner):
             utila.normalize_whitespaces(item.title) if item.title else ''
             for item in value
         ]
-        connected = []
+        connected = [f'strategy:{value.__strategy__}\n']
         for author, title in zip(authors, titles):
             if not any((author, title)):
                 continue
