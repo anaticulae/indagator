@@ -123,6 +123,8 @@ def parse_year(text: str) -> tuple:
     >>> parse_year('(17.7.2006): Du bist das Netz! http://www.spiegel.de/'
     ... 'spiegel/print/d47602985.html (Stand: 15.7.2014).')
     (2006, 'Du bist das Netz! http://www.spiegel.de/...html (Stand: 15.7.2014).')
+    >>> parse_year('2003. An overview of commercially')
+    (2003, 'An overview of commercially')
     """
     # 1. Try to detect complex date
     dates = german.dates_master(text, verbose=True, sort=False)
@@ -145,6 +147,7 @@ def parse_year(text: str) -> tuple:
     # remove year from right to left
     pattern = f'({year[0]})'
     text = text.replace(pattern, '')
+    text = text.replace(f'{year[0]}.', '')
     # remove fragment from year splitter, TODO: remove later!
     text = text.replace('( )', '').strip()
     text = text.replace('()', '').strip()
@@ -155,6 +158,7 @@ def parse_year(text: str) -> tuple:
 FIRST_SPLIT = utila.compiles(r"""
 (
     \((19|20)\d{2}\)|                    # year
+    (19\d{2}|20[012]\d)\.|               # year.
     \((\d{1,4}\.\d{1,2}\.\d{1,4})\)\:?|  # date
     (https|http)\:|
     \:
@@ -194,7 +198,7 @@ def parse_first(content: str):
 @functools.lru_cache(maxsize=4096)
 def parse_title(rest: str) -> tuple:
     rest = rest.strip()
-    if '.' in rest:
+    if rest.find('.') > 20:  # TODO: TITLE MIN LENGTH
         return rest.split('.', maxsplit=1)
     if ';' in rest:
         return rest.split(';', maxsplit=1)

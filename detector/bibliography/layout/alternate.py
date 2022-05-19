@@ -86,6 +86,8 @@ def split_bibliography(raw: str) -> iamraw.BibliographyReference:
     >>> split_bibliography('Vogel-Sprott,  M. (1997). Is behavioral  tolerance  '
     ... 'learned?  Alcohol Health & Research World, 21, 161-168.')
     BibliographyReference(...)
+    >>> split_bibliography('Alaee, M. 2003. An overview of in different countries/regions and 29, 6, 683â€“689.')
+    BibliographyReference(title='An overview of...)
     """
     strategies = (
         detector.bibliography.reference.number.nosplit,
