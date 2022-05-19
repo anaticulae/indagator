@@ -24,8 +24,8 @@ def run(
     ptcns = serializeraw.ptcn_fromfile(
         text=text,
         textpositions=textpositions,
-        sizeandborderpath=sizeandborder,
-        headerfooterpath=headerfooter,
+        sizeandborder=sizeandborder,
+        headerfooter=headerfooter,
         pages=pages,
     )
     extracted = extract_pages(ptcns)
