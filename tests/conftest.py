@@ -83,7 +83,6 @@ def extract(resources):
         destination=power.generated(),
         groupme=True,
         sections=True,
-        pdfinfo=True,
         pages=':',
         worker=WORKER,
         base=power.REPOSITORY,
