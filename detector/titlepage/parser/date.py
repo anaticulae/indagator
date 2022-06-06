@@ -84,7 +84,7 @@ ALPHA_DATE_MONTH_FIRST = MONTH_GROUP + r'[ ](?P<day>\d{1,2})([\.|,])[ ](?P<year>
 MONTH_YEAR = utila.compiles(MONTH_GROUP + r'[ ](?P<year>\d{4})')
 
 LOCATION_COMMA_ALPHADATE = utila.compiles(
-    r'(?P<location>\w+),[ ](den[ ]){0,1}(%s)' % ALPHA_DATE)
+    r'(?P<location>\w{3,75}),[ ](den[ ]){0,1}(%s)' % ALPHA_DATE)
 
 
 def simple_date(raw):

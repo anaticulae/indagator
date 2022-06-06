@@ -79,7 +79,7 @@ ACADEMIC_TITLES = utila.compiles(r"""
             M\.A\.|
             M\.[ ]?Sc\.|
             Dipl\.(\-|[ ])(Ing\.|Oec\.)|
-            Dipl\.\-\w+
+            Dipl\.\-\w{5,50}
         )
         |
         (?P<BSC>

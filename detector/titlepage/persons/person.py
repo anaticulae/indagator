@@ -56,7 +56,7 @@ Zweitprüfer(in)?
 """)
 
 MAGICS = utila.splitlines(r"""
-(\w+\s?){1,4}?[\s|:]
+(\w{2,150}\s?){1,4}?[\s|:]
 ^
 """)
 
