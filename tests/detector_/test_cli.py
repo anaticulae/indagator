@@ -16,8 +16,8 @@ import tests.detector_
 
 @pytest.mark.usefixtures('testdir')
 @pytest.mark.parametrize('cmd', [
-    ['--help'],
-    ['--version'],
+    '--help',
+    '--version',
 ])
 def test_misc(cmd, monkeypatch, capsys):
     """Run help and version command to reach basic test coverage"""

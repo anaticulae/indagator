@@ -15,8 +15,8 @@ import tests.color_
 
 @pytest.mark.usefixtures('testdir')
 @pytest.mark.parametrize('cmd', [
-    ['--help'],
-    ['--version'],
+    '--help',
+    '--version',
 ])
 def test_color_cli(cmd, monkeypatch, capsys):
     """Run help and version command to reach basic test coverage"""
