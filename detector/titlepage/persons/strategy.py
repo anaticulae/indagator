@@ -68,7 +68,7 @@ def parse(
                     rest = area[1]
                     continue
                 continue
-            rest.append(line.replace(parsed.raw, '*' * len(parsed.raw)))
+            rest.append(utila.ghost_replace(line, pattern=parsed.raw))
             persons.append(parsed)
     # remove double parsed authors
     persons = utila.make_unique(persons)  # TODO: REMOVE LATER
@@ -101,6 +101,6 @@ def lookbehind(rest):
     parsed = parse_strategies(complete)
     if not parsed:
         return None
-    complete = complete.replace(parsed.raw, '*' * len(parsed.raw))
+    complete = utila.ghost_replace(text=complete, pattern=parsed.raw)
     rest = [item for item in complete.splitlines() if item.strip()]
     return parsed, rest
