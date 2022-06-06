@@ -56,7 +56,8 @@ def parse(
             if len(line) > person_length_max:
                 rest.append(line)
                 continue
-            parsed = parse_strategies(line)
+            with utila.profile(line):
+                parsed = parse_strategies(line)
             if not parsed:
                 rest.append(line)
                 # check area to parse more than one line
