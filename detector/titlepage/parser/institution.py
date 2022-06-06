@@ -18,7 +18,7 @@ import utila
 def parse(raw: str) -> iamraw.Institution:
     """\
     >>> parse('Fakultät I – Geisteswissenschaften')
-    (Institution(...department='Geisteswissenschaften'..., 'Fakultät I – Geisteswissenschaften')
+    (Institution(...department='Geisteswissenschaften'...,...************')
     """
     university = find_institution(raw)
     if university:
@@ -66,7 +66,7 @@ def detection(raw, pattern, remove: bool = True):
             result.append(prepared)
         else:
             result.append(line.strip())
-        raw.replace(line, '*' * len(line))
+        raw = utila.ghost_replace(raw, line)
     # make results unique
     result = utila.make_unique(result)
     return result, raw
