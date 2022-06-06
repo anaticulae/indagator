@@ -37,7 +37,6 @@ def test_titlepage_parser():
         ),
     )
     assert extracted
-
     # ensure that result is converted to yaml
     assert isinstance(extracted, str), type(extracted)
 
