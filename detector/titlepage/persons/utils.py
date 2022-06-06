@@ -72,6 +72,7 @@ ACADEMIC_TITLES = utila.compiles(r"""
         # )
         # |
         (?P<PROF>
+            (Univ\.[-]?)?[ ]?
             Prof\.[-]?[ ]?(em\.)?
         )
         |
