@@ -53,5 +53,4 @@ from detector.titlepage.parser.date import parse
     ])
 def test_parse_date(raw, expected):
     parsed = parse(raw)
-
     assert parsed == expected, str(parsed)
