@@ -24,7 +24,7 @@ import detector.titlepage.strategy
 
 
 @utilatest.longrun
-@utilatest.requires(power.DOCU007_PDF, folder='oneline')
+@utilatest.requires(power.DOCU007_PDF)
 def test_titlepage_parser():
     extracted = detector.feature.titlepage.work(
         iamraw.path.text(
