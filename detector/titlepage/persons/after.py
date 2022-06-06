@@ -18,8 +18,6 @@ DONT:
 >>> parse('vorgelegt von\nM. Sc.\nJakob Vinzenz Kirchner')
 """
 
-import re
-
 import iamraw
 import iamraw.title
 import utila
@@ -36,7 +34,7 @@ def parse(raw: str) -> iamraw.Person:
     <AcademicTitle.BSC: 4>
     """
     raw = utila.normalize_whitespaces(raw)  # TODO: REMOVE LATER?
-    parsed = re.search(PATTERN_PERSON_AFTER, raw, re.VERBOSE | re.IGNORECASE)
+    parsed = PATTERN_PERSON_AFTER.search(raw)
     if not parsed:
         return None
     title = detector.titlepage.persons.utils.extract_titles(parsed['title'])
@@ -88,9 +86,9 @@ TITLES = r'|'.join([
     r'\(?M\.[ ]?Sc\.\)?',
 ])
 ACADEMIC_TITLE = rf'({TITLES})'
-PATTERN_PERSON_AFTER = rf"""
+PATTERN_PERSON_AFTER = utila.compiles(rf"""
     (?P<examiner>({EXAMINER})[:]?\s?)
     ([ ]{0,4}(Herr|Frau)?[ ]{0,4})?
     (?P<fname>(\w+[ ]?){1,5}?)[ ](?P<name>[\w|-]+)
     [,]?[ ]{0,3}?(?P<title>{ACADEMIC_TITLE})
-"""
+""")
