@@ -22,18 +22,6 @@ ResultFile = lambda producer, name: RF(producer=producer, name=name)  # pylint:d
 
 WORKPLAN = [
     step(
-        'bibliography',
-        inputs=[
-            ResultFile('rawmaker', 'text_text'),
-            ResultFile('rawmaker', 'text_positions'),
-            ResultFile('rawmaker', 'border_pages'),
-            ResultFile('groupme', 'footer_footerheader'),
-            ResultFile('rawmaker', 'oneline_text_text'),
-            ResultFile('rawmaker', 'oneline_text_positions'),
-        ],
-        output=('detected',),
-    ),
-    step(
         'index',
         inputs=[
             ResultFile('rawmaker', 'text_text'),
