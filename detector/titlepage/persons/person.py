@@ -80,5 +80,5 @@ PATTERN = utila.compiles(rf"""
     (?P<examiner>({INTRO})[:]?\s?)?
     ([ ]{0,4}(Herr|Frau)[ ]{0,4})?
 """ + detector.titlepage.persons.utils.ACADEMIC_TITLES.pattern + r"""+\s?
-    (?P<fname>([A-Z]\.[ ]?|\w+(-|\ )?){1,5})[ ](?P<name>[\w|\-]{3,})
+    (?P<fname>([A-Z]\.[ ]?|\w{3,}(-|\ )?){1,5})[ ](?P<name>[\w|\-]{3,})
 """)

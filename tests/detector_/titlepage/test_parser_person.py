@@ -231,9 +231,14 @@ Nils Backhaus     Emotionales n-back-Paradigma
 Abkürzungsverzeichnis
 Abb.        Abbildung
 """
+SECOND = 'Studienkennzahl lt. Studienblatt /'
 
 
 @pytest.mark.timeout(2, method="thread")
-def test_person_parser_timeout():
+@pytest.mark.parametrize('source', [
+    pytest.param(LONGRUN, id='longrun'),
+    pytest.param(SECOND, id='second'),
+])
+def test_person_parser_timeout(source):
     """Regression test for a long running example."""
-    assert not detector.titlepage.persons.person.parse(LONGRUN)
+    assert not detector.titlepage.persons.person.parse(source)
