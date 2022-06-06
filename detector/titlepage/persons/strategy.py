@@ -76,7 +76,7 @@ def parse(
 
 
 def parse_strategies(raw: str) -> iamraw.Person:
-    """Parse `Person` out of name line
+    """Parse `Person` out of name line.
 
     Args:
         raw(str): raw parsing text
