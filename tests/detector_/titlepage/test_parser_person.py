@@ -10,6 +10,7 @@
 import iamraw
 import pytest
 
+import detector.titlepage.persons.after
 import detector.titlepage.persons.notitle
 import detector.titlepage.persons.person
 import detector.titlepage.persons.strategy
@@ -242,3 +243,9 @@ SECOND = 'Studienkennzahl lt. Studienblatt /'
 def test_person_parser_timeout(source):
     """Regression test for a long running example."""
     assert not detector.titlepage.persons.person.parse(source)
+
+
+def test_person_after():
+    ba_after = 'verfasst von / submitted by Claudia Ziegler, BA'
+    parsed = detector.titlepage.persons.after.parse(ba_after)
+    assert parsed.raw == ba_after

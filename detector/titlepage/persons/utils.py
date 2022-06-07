@@ -80,12 +80,14 @@ ACADEMIC_TITLES = utila.compiles(r"""
             M\.A\.|
             M\.[ ]?Sc\.|
             Dipl\.(\-|[ ])(Ing\.|Oec\.)|
-            Dipl\.\-\w{5,50}
+            Dipl\.\-\w{5,50}|
+            MA\b
         )
         |
         (?P<BSC>
             B\.?[ ]?Sc\.?|
-            B\.A\.
+            B\.A\.|
+            BA\b
         )
         |
         (?P<DR>
@@ -104,6 +106,10 @@ def extract_titles(title: str) -> list:
     [<AcademicTitle.BSC:...>]
     >>> extract_titles('(M. Sc.)')
     [<AcademicTitle.MASTER:...>]
+    >>> extract_titles('MA')
+    [<AcademicTitle.MASTER: 8>]
+    >>> extract_titles('BA')
+    [<AcademicTitle.BSC: 4>]
     """
     result = ACADEMIC_TITLES.finditer(title)
     if not result:

@@ -12,7 +12,7 @@ r"""After
 >>> parse('Examiner: Hemut Konrad, M.A.')
 Person(name='Konrad', firstname='Hemut',...MASTER...raw='Examiner: Hemut Konrad, M.A.')
 >>> parse('verfasst von / submitted by Martin SCHRAMMEL, BSc')
-Person(name='SCHRAMMEL', firstname='Martin', title=...BSC...raw='submitted by Martin SCHRAMMEL, BSc')
+Person(name='SCHRAMMEL', firstname='Martin', title=...BSC...raw='verfasst von / submitted by Martin SCHRAMMEL, BSc')
 
 DONT:
 >>> parse('vorgelegt von\nM. Sc.\nJakob Vinzenz Kirchner')
@@ -32,12 +32,15 @@ def parse(raw: str) -> iamraw.Person:
     <AcademicTitle.MASTER: 8>
     >>> parse('Betreuer extern :  Eduard  Wagner (B. Sc.)').title
     <AcademicTitle.BSC: 4>
+    >>> parse('verfasst von Claudia Ziegler, BA')
+    Person(name='Ziegler', firstname='Claudia'...BSC..., raw='verfasst von Claudia Ziegler, BA')
     """
     raw = utila.normalize_whitespaces(raw)  # TODO: REMOVE LATER?
     parsed = PATTERN_PERSON_AFTER.search(raw)
     if not parsed:
         return None
-    title = detector.titlepage.persons.utils.extract_titles(parsed['title'])
+    title = parsed['title']
+    title = detector.titlepage.persons.utils.extract_titles(title)
     if not title:
         return None
     title = iamraw.AcademicTitle.merges(title)
@@ -78,8 +81,10 @@ FACH
 # Parses: Examiner: Hemut Konrad, M.A.
 EXAMINER = detector.titlepage.persons.person.INTRO
 TITLES = r'|'.join([
-    r'BSC',
-    r'MSC',
+    r'BA\b',
+    r'MA\b',
+    r'BSC\b',
+    r'MSC\b',
     r'\(?M\.[ ]?A\.?\B\)?',
     r'\(?B\.[ ]?SC\.?\B\)?',
     r'\(?DIPL\.[ ]PSYCH\.([ ]FH)?\)?',

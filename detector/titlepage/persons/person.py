@@ -68,6 +68,8 @@ Verfasser(in)?
 angefertigt[ ]von
 eingereicht[ ]von
 by
+verfasst[ ]{1,3}von[ ]{1,3}[/][ ]{1,3}submitted[ ]{1,3}by
+verfasst[ ]{1,3}von[ ]
 vorgelegt[ ]von[ ]Diplom\-Ingenieur
 vorgelegt[ ]von
 submitted[ ]by
