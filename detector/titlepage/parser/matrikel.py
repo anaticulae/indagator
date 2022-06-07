@@ -33,6 +33,8 @@ def parse(raw: str) -> iamraw.Matrikel:
 
     >>> parse('(Student No. 532196)')
     Matrikel(number=532196, intro='Student No.', raw='Student No. 532196')
+    >>> parse('B.Sc. Helmut Konrad Fahrendholz 321240')
+    Matrikel(number=321240, intro='', raw='321240')
 
     Args:
         raw(str): raw text of title page
@@ -45,11 +47,10 @@ def parse(raw: str) -> iamraw.Matrikel:
         return None
     intro = result['intro']
     number = int(result['number'])
-    raw = utila.extract_match(result).strip()  # TODO: remove after fixing regex
     matrikel = iamraw.Matrikel(
         number=number,
         intro=intro,
-        raw=raw,
+        raw=result[0].strip(),
     )
     return matrikel
 
