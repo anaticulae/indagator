@@ -35,6 +35,8 @@ def parse(raw: str) -> iamraw.Matrikel:
     Matrikel(number=532196, intro='Student No.', raw='Student No. 532196')
     >>> parse('B.Sc. Helmut Konrad Fahrendholz 321240')
     Matrikel(number=321240, intro='', raw='321240')
+    >>> parse('A 066 673')
+    Matrikel(number='A 066 673', intro='', raw='A 066 673')
 
     Args:
         raw(str): raw text of title page
@@ -46,7 +48,10 @@ def parse(raw: str) -> iamraw.Matrikel:
     if not result:
         return None
     intro = result['intro']
-    number = int(result['number'])
+    try:
+        number = int(result['number'])
+    except ValueError:
+        number = result['number']
     matrikel = iamraw.Matrikel(
         number=number,
         intro=intro,
@@ -68,6 +73,7 @@ MATRIKEL = utila.compiles(r"""
     )
     \s{0,4}
     (?P<number>
-        \d{4,10}                # number contains from 4 to 10 digits
+        \d{4,10} |                # number contains from 4 to 10 digits
+        A[ ]{1,3}\d{3}[ ]{1,3}\d{3}         # A 066 673
     )
 """)
