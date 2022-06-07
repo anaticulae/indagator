@@ -65,7 +65,7 @@ MATRIKEL = utila.compiles(r"""
         )?
         [:,]?
     )
-    \s?
+    \s{0,4}
     (?P<number>
         \d{4,10}                # number contains from 4 to 10 digits
     )
