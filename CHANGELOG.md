@@ -2,6 +2,26 @@
 
 Every noteable change is logged here.
 
+## v0.38.0
+
+### Feature
+
+* add another pattern (68883547cab9)
+* make parser more robust (21cd3608e811)
+* extend person after parser (cf73609386e8)
+* extend prof person parser (c8f1e7d71a37)
+* profile persons parser (6e43363b263a)
+
+### Fix
+
+* fix raw replace (e27e603b1c06)
+* shrink regex runtime (abc4482de7dc)
+* reduce regex runtime (0215b026f2fe)
+
+### Documentation
+
+* add another format (f4b7bf7bef96)
+
 ## v0.37.0
 
 ## v0.36.0
