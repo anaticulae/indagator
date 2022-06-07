@@ -24,8 +24,6 @@ not contains a matrikel-number-intro.
 
 """
 
-import re
-
 import iamraw
 import utila
 
@@ -42,23 +40,28 @@ def parse(raw: str) -> iamraw.Matrikel:
         parsed `Matrikel` or None if nothing matched
     """
     raw = raw.strip()
-    result = re.search(PATTERN, raw)
+    result = MATRIKEL.search(raw)
     if not result:
         return None
     intro = result['intro']
     number = int(result['number'])
     raw = utila.extract_match(result).strip()  # TODO: remove after fixing regex
-    matrikel = iamraw.Matrikel(number=number, intro=intro, raw=raw)
+    matrikel = iamraw.Matrikel(
+        number=number,
+        intro=intro,
+        raw=raw,
+    )
     return matrikel
 
 
 INTRO = [
     '',
     r'Matrikel-Nr\.',
-    r'Student No\.',
+    r'Student[ ]No\.',
     'Matrikelnummer',
-    'vorgelegt von',
+    'vorgelegt[ ]von',
 ]
 
-PATTERN = r'(?P<intro>(' + '|'.join(INTRO) + r')?[:,]?)\s?'
-PATTERN += r'(?P<number>\d{4,10})'  # number contains from 4 to 10 digits
+MATRIKEL = r'(?P<intro>(' + '|'.join(INTRO) + r')?[:,]?)\s?'
+MATRIKEL += r'(?P<number>\d{4,10})'  # number contains from 4 to 10 digits
+MATRIKEL = utila.compiles(MATRIKEL)
