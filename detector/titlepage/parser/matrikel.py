@@ -15,6 +15,7 @@ Matrikel numbers can have different formats:
     Matrikel-Nr. 1024577
     vorgelegt von: 321240
     16348
+    A 066 673
     ...
 
 There are two parts, the intro, which leads to the number e.g.
