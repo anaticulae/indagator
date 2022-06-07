@@ -54,14 +54,19 @@ def parse(raw: str) -> iamraw.Matrikel:
     return matrikel
 
 
-INTRO = [
-    '',
-    r'Matrikel-Nr\.',
-    r'Student[ ]No\.',
-    'Matrikelnummer',
-    'vorgelegt[ ]von',
-]
-
-MATRIKEL = r'(?P<intro>(' + '|'.join(INTRO) + r')?[:,]?)\s?'
-MATRIKEL += r'(?P<number>\d{4,10})'  # number contains from 4 to 10 digits
-MATRIKEL = utila.compiles(MATRIKEL)
+MATRIKEL = utila.compiles(r"""
+    (?P<intro>
+        (
+            |
+            Matrikel-Nr\.|
+            Student[ ]No\.|
+            Matrikelnummer|
+            vorgelegt[ ]von
+        )?
+        [:,]?
+    )
+    \s?
+    (?P<number>
+        \d{4,10}                # number contains from 4 to 10 digits
+    )
+""")
