@@ -75,13 +75,13 @@ MONTH_GROUP = r'(?P<month>%s)' % german.MONTH_REGEX[1:-1]
 SIMPLE_DATE = utila.compiles(r"""
     (?P<day>\d{1,2})\.
     (?P<month>\d{1,2})\.
-    (?P<year>\d{4})
+    (?P<year>(20[012]\d|1[789]\d\d))
 """)
 
-ALPHA_DATE = r'(?P<day>\d{1,2})([\.|,])[ ]' + MONTH_GROUP + r'[ ](?P<year>\d{4})'
-ALPHA_DATE_MONTH_FIRST = MONTH_GROUP + r'[ ](?P<day>\d{1,2})([\.|,])[ ](?P<year>\d{4})'
+ALPHA_DATE = r'(?P<day>\d{1,2})([\.|,])[ ]' + MONTH_GROUP + r'[ ](?P<year>(20[012]\d|1[789]\d\d))'
+ALPHA_DATE_MONTH_FIRST = MONTH_GROUP + r'[ ](?P<day>\d{1,2})([\.|,])[ ](?P<year>(20[012]\d|1[789]\d\d))'
 
-MONTH_YEAR = utila.compiles(MONTH_GROUP + r'[ ](?P<year>\d{4})')
+MONTH_YEAR = utila.compiles(MONTH_GROUP + r'[ ](?P<year>(20[012]\d|1[789]\d\d))') # yapf:disable
 
 LOCATION_COMMA_ALPHADATE = utila.compiles(
     r'(?P<location>\w{3,75}),[ ](den[ ]){0,1}(%s)' % ALPHA_DATE)
