@@ -58,7 +58,7 @@ def parse(raw: str) -> iamraw.TitleDate:
     return parsed[0]
 
 
-def validate_date(year, month, day):
+def validate_date(year: int, month: int, day: int) -> bool:
     """\
     >>> validate_date(2010, 8, 25)
     True
