@@ -15,9 +15,9 @@ import tests.detector_
 
 
 @utilatest.requires(power.BOOK173_PDF)
-def test_index_book173(testdir, monkeypatch):
+def test_index_book173(td, mp):
     source = power.link(power.BOOK173_PDF)
     command = f'-i {source}  --index --pages=164:173'
-    tests.detector_.run(command, monkeypatch=monkeypatch)
-    index = serializeraw.load_index(testdir.tmpdir)
+    tests.detector_.run(command, mp=mp)
+    index = serializeraw.load_index(td.tmpdir)
     assert len(index) == 810

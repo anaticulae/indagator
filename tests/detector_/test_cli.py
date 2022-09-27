@@ -19,9 +19,9 @@ import tests.detector_
     '--help',
     '--version',
 ])
-def test_misc(cmd, monkeypatch, capsys):
+def test_misc(cmd, mp, capsys):
     """Run help and version command to reach basic test coverage"""
-    tests.detector_.run(cmd, monkeypatch=monkeypatch)
+    tests.detector_.run(cmd, mp=mp)
     utilatest.write_capsys(capsys)
 
 
@@ -31,10 +31,10 @@ def test_misc(cmd, monkeypatch, capsys):
     pytest.param(power.DOCU027_PDF, id='docu027'),
 ])
 @utilatest.longrun
-def test_run_work(source, testdir, monkeypatch, capsys):
+def test_run_work(source, td, mp, capsys):
     source = power.link(source)
     utilatest.fixture_requires(source)
-    cmd = f'-i {source} -o {testdir.tmpdir}'
-    with utilatest.increased_filecount(testdir.tmpdir, mindiff=3, maxdiff=3):
-        tests.detector_.run(cmd, monkeypatch=monkeypatch)
+    cmd = f'-i {source} -o {td.tmpdir}'
+    with utilatest.increased_filecount(td.tmpdir, mindiff=3, maxdiff=3):
+        tests.detector_.run(cmd, mp=mp)
     utilatest.write_capsys(capsys)

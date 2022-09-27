@@ -15,9 +15,9 @@ import tests.color_
 
 
 @utilatest.longrun
-def test_statistics_master031(testdir, monkeypatch):
+def test_statistics_master031(td, mp):
     source = power.MASTER031_PDF
-    cmd = f'-i {source} -o {testdir.tmpdir} --pages=0:10'
-    tests.color_.run(cmd, monkeypatch=monkeypatch)
-    loaded = serializeraw.load_color_statistics(content=testdir.tmpdir)
+    cmd = f'-i {source} -o {td.tmpdir} --pages=0:10'
+    tests.color_.run(cmd, mp=mp)
+    loaded = serializeraw.load_color_statistics(content=td.tmpdir)
     assert len(loaded) == 10

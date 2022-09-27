@@ -34,28 +34,28 @@ RESOURCES = [pytest.param(item, id=utila.file_name(item)) for item in RESOURCES]
 @pytest.mark.parametrize('source', RESOURCES)
 def test_validate_titlepage(
     source,
-    testdir,
-    monkeypatch,
+    td,
+    mp,
 ):
     TitleCompare(
         source,
-        testdir,
-        monkeypatch,
+        td,
+        mp,
     ).evaluate()
 
 
 class TitleCompare(utilatest.BaseLiner):
 
-    def __init__(self, source, testdir, monkeypatch):
+    def __init__(self, source, td, mp):
         super().__init__(
             program=functools.partial(
                 tests.detector_.run,
-                monkeypatch=monkeypatch,
+                mp=mp,
             ),
             step='titlepage',
             pages=':',
             source=source,
-            workdir=testdir.tmpdir,
+            workdir=td.tmpdir,
             archive=ARCHIVE,
             loader=serializeraw.load_titlepage,
         )

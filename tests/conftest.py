@@ -10,6 +10,8 @@
 import genex
 import power
 import pytest
+from utilatest import mp  # pylint:disable=W0611
+from utilatest import td  # pylint:disable=W0611
 
 import detector
 
@@ -59,12 +61,11 @@ RESOURCES_NOTITLE = [
 def extract(resources):
     genex.extract(
         resources,
-        destination=power.generated(),
+        dest=power.generated(),
         groupme='--pagenumbers --footer',
         sections=True,
         pages=':',
         worker=WORKER,
-        base=power.REPOSITORY,
     )
 
 

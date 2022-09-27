@@ -18,7 +18,7 @@ import tests.color_
     '--help',
     '--version',
 ])
-def test_color_cli(cmd, monkeypatch, capsys):
+def test_color_cli(cmd, mp, capsys):
     """Run help and version command to reach basic test coverage"""
-    tests.color_.run(cmd, monkeypatch=monkeypatch)
+    tests.color_.run(cmd, mp=mp)
     utilatest.write_capsys(capsys)

@@ -19,12 +19,12 @@ import tests.detector_
 
 @pytest.mark.xfail(reason='???')
 @utilatest.requires(power.MASTER116_PDF)
-def test_formula_cli_master116_page22(testdir, monkeypatch):
+def test_formula_cli_master116_page22(td, mp):
     source = power.link(power.MASTER116_PDF)
     command = f'-i {source}  --formula --pages=22'
-    tests.detector_.run(command, monkeypatch=monkeypatch)
+    tests.detector_.run(command, mp=mp)
 
-    formulas = detector.path.formula_detected(testdir.tmpdir)
+    formulas = detector.path.formula_detected(td.tmpdir)
     formulas = serializeraw.load_formulas(formulas)
     formulas = utila.select_content(formulas, page=22)
 

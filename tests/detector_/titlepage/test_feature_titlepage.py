@@ -123,8 +123,8 @@ def check_diss205(titlepage: iamraw.titlepage):
 def test_feature_titlepage_complete(
     source,
     checker,
-    testdir,
-    monkeypatch,
+    td,
+    mp,
 ):
     """Integration test to ensure that rawmaker -> detector works correctly."""
     # run rawmaker
@@ -132,15 +132,15 @@ def test_feature_titlepage_complete(
            f'{detector.feature.titlepage.RAWMAKER_CONFIGURATION}')
     utila.run(cmd)
     # run detector
-    cmd = f'-i {testdir.tmpdir} --titlepage'
+    cmd = f'-i {td.tmpdir} --titlepage'
     utilatest.run_command(
         cmd,
         process=detector.cli.PROCESS,
         main=detector.cli.main,
-        success=True,
-        monkeypatch=monkeypatch,
+        expect=True,
+        mp=mp,
     )
-    resultpath = detector.path.titlepage_detected(testdir.tmpdir)
+    resultpath = detector.path.titlepage_detected(td.tmpdir)
     titlepage: iamraw.TitlePage = serializeraw.load_titlepage(resultpath)
     assert titlepage
     # validate result
