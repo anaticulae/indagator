@@ -23,11 +23,8 @@ ARCHIVE = utila.join(
     'tests/detector_/titlepage/expected',
     exist=True,
 )
-RESOURCES = [
-    item[0] if isinstance(item, tuple) else item
-    for item in tests.conftest.RESOURCES
-]
-RESOURCES = [pytest.param(item, id=utila.file_name(item)) for item in RESOURCES]
+
+RESOURCES = utilatest.test_resources(tests.conftest.RESOURCES)
 
 
 @utilatest.longrun
