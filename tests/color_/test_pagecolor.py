@@ -10,8 +10,10 @@
 import power
 
 import color.pagecolor
+import tests
 
 
+@tests.ghost
 def test_colors():
     """Extract list of rgb colors with color count."""
     source = power.MASTER031_PDF
@@ -25,6 +27,7 @@ def test_colors():
     assert len(firstpage) == expected
 
 
+@tests.ghost
 def test_histogram():
     source = power.MASTER031_PDF
     detected = list(color.pagecolor.colors(

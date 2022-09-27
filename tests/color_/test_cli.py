@@ -10,9 +10,11 @@
 import pytest
 import utilatest
 
+import tests
 import tests.color_
 
 
+@tests.ghost
 @pytest.mark.usefixtures('testdir')
 @pytest.mark.parametrize('cmd', [
     '--help',

@@ -11,9 +11,11 @@ import power
 import serializeraw
 import utilatest
 
+import tests
 import tests.color_
 
 
+@tests.ghost
 @utilatest.longrun
 def test_statistics_master031(td, mp):
     source = power.MASTER031_PDF

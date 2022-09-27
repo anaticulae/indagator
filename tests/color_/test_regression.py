@@ -11,9 +11,11 @@ import power
 import serializeraw
 import utilatest
 
+import tests
 import tests.color_
 
 
+@tests.ghost
 @utilatest.nightly
 def test_large_pdf(td, mp):
     source = power.MASTER193_PDF
@@ -23,6 +25,7 @@ def test_large_pdf(td, mp):
     assert len(loaded) == 193
 
 
+@tests.ghost
 def test_book173_nocolor(td, mp):
     """Number of possible color in histogram was to low.
 
@@ -35,6 +38,7 @@ def test_book173_nocolor(td, mp):
     assert len(loaded) == 1
 
 
+@tests.ghost
 def test_non_zero_pagestart(td, mp):
     """Ensure that first page does not always start with zero.
 

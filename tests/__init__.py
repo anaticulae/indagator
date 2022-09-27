@@ -6,3 +6,8 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+
+import ghost as gs
+import pytest
+
+ghost = pytest.mark.skipif(not gs.HAS_GHOST, reason='install ghost')
