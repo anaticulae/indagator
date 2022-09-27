@@ -62,7 +62,8 @@ def extract(resources):
     genex.extract(
         resources,
         dest=power.generated(),
-        groupme='--pagenumbers --footer',
+        pagenumber=True,
+        footnote=True,
         sections=True,
         pages=':',
         worker=WORKER,
