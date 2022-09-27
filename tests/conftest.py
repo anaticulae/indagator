@@ -61,7 +61,6 @@ RESOURCES_NOTITLE = [
 def extract(resources):
     genex.extract(
         resources,
-        dest=power.generated(),
         pagenumber=True,
         footnote=True,
         sections=True,
