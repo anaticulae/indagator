@@ -10,6 +10,7 @@
 import genex
 import power
 import pytest
+import utilatest
 from utilatest import mp  # pylint:disable=W0611
 from utilatest import td  # pylint:disable=W0611
 
@@ -20,8 +21,6 @@ pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
 power.setup(detector.ROOT)
 
 PACKAGE = detector.PACKAGE
-
-WORKER = 4
 
 RESOURCES = [
     (power.BACHELOR037_PDF, '0:10'),
@@ -48,6 +47,8 @@ RESOURCES = [
     power.DOCU007_PDF,
     power.DOCU009_PDF,
 ]
+
+WORKER = utilatest.worker_count(6, onci=len(RESOURCES))
 
 RESOURCES_NOTITLE = [
     power.DOCU007_PDF,
