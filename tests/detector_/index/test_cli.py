@@ -9,6 +9,7 @@
 
 import power
 import serializeraw
+import utila
 import utilatest
 
 import tests.detector_
@@ -20,4 +21,4 @@ def test_index_book173(td, mp):
     command = f'-i {source}  --index --pages=164:173'
     tests.detector_.run(command, mp=mp)
     index = serializeraw.load_index(td.tmpdir)
-    assert len(index) == 810
+    assert utila.near(len(index), expected=810, diff=25)
