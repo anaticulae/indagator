@@ -2,6 +2,28 @@
 
 Every noteable change is logged here.
 
+## v0.39.0 (2022-09-28)
+
+### Feature
+
+* shrink year parser (c26f28749c3d)
+
+### Documentation
+
+* extend interface documentation (b5042a7f3263)
+
+### Chore
+
+* use image with opengl (a9e1d3985907)
+* add generator step (6b98bc1fe496)
+* do not use too many worker (0ad4a4da55aa)
+* increase worker count on ci (a58ea2751907)
+* remove default value (0ed8ee4ccd14)
+* add missing test data generator (8b72d1333b1f)
+* add Jenkinsfile (30f6b92d698c)
+* upgrade requirements.txt (f071889cca20)
+* upgrade requirements.txt (c9d3e9eed695)
+
 ## v0.38.0
 
 ### Feature
