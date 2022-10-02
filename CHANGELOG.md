@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.39.2 (2022-10-02)
+
+### Chore
+
+* adjust worker count (a07efec0b3a9)
+
 ## v0.39.1 (2022-10-02)
 
 ### Fix
