@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.39.1 (2022-10-02)
+
+### Fix
+
+* skip step if ghost is not installed (8e6bcd8135ca)
+
+### Chore
+
+* upgrade requirements.txt (f6fb70db0cbf)
+
 ## v0.39.0 (2022-09-28)
 
 ### Feature
