@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import ghost
 import iamraw
 import serializeraw
 import utila
@@ -15,7 +16,11 @@ import color.pagecolor
 
 
 def work(path: str, pages: tuple = None) -> str:
-    result = determine_statistics(path, pages=pages)
+    result = []
+    if ghost.HAS_GHOST:
+        result = determine_statistics(path, pages=pages)
+    else:
+        utila.error('install ghost to run `color`')
     dumped = serializeraw.dump_color_statistics(result)
     return dumped
 
