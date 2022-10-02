@@ -71,7 +71,7 @@ def extract(resources):
 
 
 def extract_notitle(resources):
-    worker = len(RESOURCES_NOTITLE)
+    worker = len(resources)
     genex.extract_removepages(
         resources,
         removepages='0',
