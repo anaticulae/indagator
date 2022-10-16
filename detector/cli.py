@@ -8,46 +8,39 @@
 # =============================================================================
 
 import utila
-from utila import ResultFile as RF
-from utila import create_step as step
-from utila import featurepack
 
-from detector import PROCESS
-from detector import ROOT
-from detector import __version__
+import detector
 
 DESCRIPTION = ''
 
-ResultFile = lambda producer, name: RF(producer=producer, name=name)  # pylint:disable=C0103
-
 WORKPLAN = [
-    step(
+    utila.create_step(
         'index',
         inputs=[
-            ResultFile('rawmaker', 'text_text'),
-            ResultFile('rawmaker', 'text_positions'),
-            ResultFile('rawmaker', 'border_pages'),
-            ResultFile('groupme', 'footer_footerheader'),
+            utila.ResultFile('rawmaker', 'text_text'),
+            utila.ResultFile('rawmaker', 'text_positions'),
+            utila.ResultFile('rawmaker', 'border_pages'),
+            utila.ResultFile('groupme', 'footer_footerheader'),
         ],
         output=('detected',),
     ),
-    step(
+    utila.create_step(
         'titlepage',
         inputs=[
-            ResultFile('rawmaker', 'oneline_text_text'),
-            ResultFile('rawmaker', 'oneline_text_positions'),
+            utila.ResultFile('rawmaker', 'oneline_text_text'),
+            utila.ResultFile('rawmaker', 'oneline_text_positions'),
             utila.Pattern(name='rawmaker__images_images/*', ext='yaml'),
         ],
         output=('detected',),
     ),
-    step(
+    utila.create_step(
         'formula',
         inputs=[
-            ResultFile('rawmaker', 'formula_formula'),
-            ResultFile('rawmaker', 'oneline_text_text'),
-            ResultFile('rawmaker', 'oneline_text_positions'),
-            ResultFile('rawmaker', 'border_pages'),
-            ResultFile('groupme', 'footer_footerheader'),
+            utila.ResultFile('rawmaker', 'formula_formula'),
+            utila.ResultFile('rawmaker', 'oneline_text_text'),
+            utila.ResultFile('rawmaker', 'oneline_text_positions'),
+            utila.ResultFile('rawmaker', 'border_pages'),
+            utila.ResultFile('groupme', 'footer_footerheader'),
         ],
         output=('formula',),
     ),
@@ -55,16 +48,16 @@ WORKPLAN = [
 
 
 def main():
-    featurepack(
+    utila.featurepack(
         workplan=WORKPLAN,
-        root=ROOT,
+        root=detector.ROOT,
         featurepackage='detector.feature',
         config=utila.FeaturePackConfig(
             description=DESCRIPTION,
             multiprocessed=True,
-            name=PROCESS,
+            name=detector.PROCESS,
             pages=True,
             singleinput=False,  # require result folder, ignore single pdf file
-            version=__version__,
+            version=detector.__version__,
         ),
     )
