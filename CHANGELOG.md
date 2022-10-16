@@ -2,6 +2,18 @@
 
 Every noteable change is logged here.
 
+## v0.39.3 (2022-10-16)
+
+### Chore
+
+* do not lock resources (bc699c39490d)
+* publish resources if all fails (c3d17708a2a0)
+* add pipe library (63c3bfecd7cf)
+* convert nightly to all (77408ac9ffaf)
+* upgrade requirements.txt (ee6e737d2fd6)
+* upgrade baw (a1e566bc0473)
+* do not run in privileged mode (49477a5f25fe)
+
 ## v0.39.2 (2022-10-02)
 
 ### Chore
