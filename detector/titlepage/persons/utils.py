@@ -8,13 +8,12 @@
 # =============================================================================
 
 import operator
-import typing
 
 import iamraw
 import utila
 
 
-def order_persons(persons: list) -> typing.Tuple[iamraw.Person, iamraw.Persons]:
+def order_persons(persons: list) -> 'tuple[iamraw.Person, iamraw.Persons]':
     """Sort persons by academical rang and return the lowest rang as
     author and the rest as examiner.
 

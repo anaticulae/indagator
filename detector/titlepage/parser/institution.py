@@ -26,7 +26,7 @@ def parse(raw: str) -> iamraw.Institution:
     results = []
     for item in [DEPARTMENT, INSTITUTE, FIELD, COURSES]:
         parsed, raw = detection(raw, item)
-        if parsed:
+        if parsed:  # pylint:disable=W0160
             # TODO: Investigate here
             # assert len(parsed) == 1, str(parsed)
             # select first one, more then one institut is possible

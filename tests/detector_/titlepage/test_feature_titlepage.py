@@ -135,7 +135,7 @@ def test_feature_titlepage_complete(
     cmd = f'-i {td.tmpdir} --titlepage'
     utilatest.run_command(
         cmd,
-        process=detector.cli.PROCESS,
+        process=detector.PROCESS,
         main=detector.cli.main,
         expect=True,
         mp=mp,

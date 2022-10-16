@@ -103,7 +103,7 @@ def parse_titlepages(
     for page in pages:
         navigator = utila.select_page(navigators, page=page)
         selected = utila.select_page(images, page=page) if images else None
-        if navigator is None:
+        if navigator is None:  # pylint:disable=W0160
             # white page
             parsed = None
         else:
