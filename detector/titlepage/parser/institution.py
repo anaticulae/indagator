@@ -68,7 +68,7 @@ def detection(raw, pattern, remove: bool = True):
             result.append(line.strip())
         raw = utila.ghost_replace(raw, line)
     # make results unique
-    result = utila.make_unique(result)
+    result = utila.unique(result)
     return result, raw
 
 
@@ -148,7 +148,7 @@ def shrink_institution(name: str) -> str:
 def prepare(text: str) -> list:
     text = replace_special_chars(text)
     splitted = text.split(',')
-    splitted = utila.flatten([item.split(utila.NEWLINE) for item in splitted])
+    splitted = utila.flat([item.split(utila.NEWLINE) for item in splitted])
     splitted = [item for item in splitted if item]  # remove empty items
     return splitted
 

@@ -126,7 +126,7 @@ def new_fontstore():
 
 @pytest.fixture
 def new_textnavgiator():
-    navigators = texmex.create_pagetextnavigators(
+    navigators = texmex.create_ptns(
         serializeraw.load_document(TEXT, pages=0),  # just load the first page
         serializeraw.load_textpositions(TEXT_POSITION, pages=0),
     )

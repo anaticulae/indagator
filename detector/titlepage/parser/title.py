@@ -49,11 +49,11 @@ THESIS
 
 
 @utila.profile('title')
-def parse(textnavigator: texmex.PageTextNavigator) -> str:
+def parse(textnavigator: texmex.PTN) -> str:
     """Parse hugest text line as title.
 
     Args:
-        textnavigator(PageTextNavigator): given page to analyze text content
+        textnavigator(PTN): given page to analyze text content
     Returns:
         parsed title if properties matches to given rules
         If not, return `TitleParserState` to indicate the problem

@@ -25,18 +25,18 @@ from detector.titlepage.persons.utils import order_persons
 
 
 def parse(
-    text: texmex.PageTextNavigator,
+    text: texmex.PTN,
     images: list = None,
 ) -> iamraw.TitlePage:
     """Extract `TitlePage` out of tile page data
 
     Args:
-        text(PageTextNavigator): content of potential title page
+        text(PTN): content of potential title page
         images(list): list with detected ocr text
     Returns:
         extracted TitlePage
     """
-    assert isinstance(text, texmex.PageTextNavigator), type(text)
+    assert isinstance(text, texmex.PTN), type(text)
     result = iamraw.TitlePage(pageraw=text.page)
     title = parse_title(text)
     text = clean_text(text)

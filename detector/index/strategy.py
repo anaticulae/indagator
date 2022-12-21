@@ -64,7 +64,7 @@ def extract_page(page, cat=None) -> iamraw.DocumentIndex:
     )
     if not parsed:
         return result
-    parsed = utila.flatten(parsed)
+    parsed = utila.flat(parsed)
     for line in parsed:
         text = line.text.strip()
         if len(text) == 1:

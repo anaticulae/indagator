@@ -58,9 +58,9 @@ def extract_formula(formula, navigator) -> iamraw.Formula:
     formula_bounding = formula.bounding
     lines = []
     for line, item in enumerate(navigator):
-        if utila.rectangle_inside(item.bounding, formula_bounding):
+        if utila.rect_inside(item.bounding, formula_bounding):
             lines.append(line)
-        elif utila.rectangle_inside(formula_bounding, item.bounding):
+        elif utila.rect_inside(formula_bounding, item.bounding):
             lines.append(line)
     lines = sorted(lines)
     # TODO: ADD NOT MATCHED HINT

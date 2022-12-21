@@ -148,7 +148,7 @@ def test_feature_titlepage_complete(
 
 
 def parse_titlepages(path: str, pages: tuple = None):
-    navigators = serializeraw.create_pagetextnavigators_frompath(path, pages=pages) # yapf:disable
+    navigators = serializeraw.ptn_frompath(path, pages=pages) # yapf:disable
     parsed = detector.feature.titlepage.parse_titlepages(navigators, pages)
     return parsed
 

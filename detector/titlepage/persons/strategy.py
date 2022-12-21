@@ -71,7 +71,7 @@ def parse(
             rest.append(utila.ghost_replace(line, pattern=parsed.raw))
             persons.append(parsed)
     # remove double parsed authors
-    persons = utila.make_unique(persons)  # TODO: REMOVE LATER
+    persons = utila.unique(persons)  # TODO: REMOVE LATER
     return persons, rest
 
 

@@ -14,7 +14,7 @@ import utilatest
 import tests.detector_
 
 
-@pytest.mark.usefixtures('testdir')
+@pytest.mark.usefixtures('td')
 @pytest.mark.parametrize('cmd', [
     '--help',
     '--version',

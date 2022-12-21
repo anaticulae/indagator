@@ -94,7 +94,7 @@ def work(
 
 
 def parse_titlepages(
-    navigators: texmex.PageTextNavigators,
+    navigators: texmex.PTNs,
     images: dict,
     pages=None,
 ):

@@ -16,7 +16,7 @@ import detector.formula.parser
 
 def formulas(source: str, page: int):
     utilatest.fixture_requires(power.link(source))
-    ptcn = serializeraw.create_pagetextcontentnavigators_frompath(
+    ptcn = serializeraw.ptcn_frompath(
         power.link(source),
         pages=(page,),
     )[0]
