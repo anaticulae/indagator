@@ -62,12 +62,14 @@ RESOURCES_NOTITLE = [
 def extract(resources):
     genex.extract(
         resources,
-        pagenumber=True,
         footnote=True,
-        sections=True,
-        pages=':',
-        worker=WORKER,
+        groupme='--hefopa',
+        headnote=True,
         lock=False,
+        pagenumber=True,
+        pages=':',
+        sections=True,
+        worker=WORKER,
     )
 
 
