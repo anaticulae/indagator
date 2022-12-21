@@ -2,6 +2,20 @@
 
 Every noteable change is logged here.
 
+## v0.40.0 (2022-12-21)
+
+### Feature
+
+* use modern data approach (1fdf8d61f712)
+
+### Chore
+
+* remove default behavior (7fea4932237b)
+* extend resource generator (858649cd637a)
+* use quick install (124d9b3ff2a3)
+* upgrade requirements.txt (a7eee54357e8)
+* upgrade pipeline (3ab9178ae163)
+
 ## v0.39.3 (2022-10-16)
 
 ### Chore
