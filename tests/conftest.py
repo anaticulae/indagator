@@ -67,7 +67,6 @@ def extract(resources):
         headnote=True,
         lock=False,
         pagenumber=True,
-        pages=':',
         sections=True,
         worker=WORKER,
     )
