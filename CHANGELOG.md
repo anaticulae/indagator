@@ -2,6 +2,20 @@
 
 Every noteable change is logged here.
 
+## v0.40.1 (2023-01-04)
+
+### Documentation
+
+* happy New Year! (b9b6d83bc905)
+
+### Chore
+
+* use new pre-release (8320749bd51f)
+* remove useless post step (4cec9780d232)
+* upgrade requirements.txt (6c9f31ec66da)
+* upgrade Jenkinsfile (04474dda2ea3)
+* upgrade pipe library (ebc967a4eb93)
+
 ## v0.40.0 (2022-12-21)
 
 ### Feature
