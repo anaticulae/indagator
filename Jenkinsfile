@@ -56,9 +56,6 @@ pipeline{
             steps{
                 sh 'baw --docken generate all'
             }
-            post{
-                always{script{publish.generated()}}
-            }
         }
         stage('all'){
             steps{
