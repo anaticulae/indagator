@@ -48,7 +48,7 @@ pipeline{
                 }
             }
         }
-        stage('pre-release'){
+        stage('pre'){
             steps{script{baw.pre()}}
         }
         stage('generate'){
