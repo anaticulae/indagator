@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v0.40.2 (2023-02-04)
+
+### Chore
+
+* shorten step name (b28c1aeef7d9)
+* add cov step (ddd2d229b45c)
+* use new pipeline steps (89aaefa1fc06)
+* upgrade requirements.txt (05ccd0cf0844)
+* upgrade pipe library (defbf551507d)
+* upgrade Jenkinsfile (ee07b79e3d60)
+
 ## v0.40.1 (2023-01-04)
 
 ### Documentation
