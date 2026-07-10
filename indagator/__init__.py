@@ -7,15 +7,16 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import importlib.metadata
 import os
 
 import indagator.__patch__
 # public title configuration
 from indagator.feature.titlepage import RAWMAKER_CONFIGURATION
 
-__version__ = '0.40.2'
+PACKAGE = 'indagator'
+__version__ = importlib.metadata.version(PACKAGE)
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
 PROCESS = 'detector'
-PACKAGE = 'detector'
