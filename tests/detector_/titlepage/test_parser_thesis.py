@@ -10,7 +10,7 @@
 import iamraw
 import pytest
 
-import detector.titlepage.parser.thesis
+import indagator.titlepage.parser.thesis
 
 
 @pytest.mark.parametrize('raw, expected', [
@@ -32,5 +32,5 @@ import detector.titlepage.parser.thesis
     ),
 ])
 def test_parse_thesis(raw, expected):
-    parsed = detector.titlepage.parser.thesis.parse(raw)
+    parsed = indagator.titlepage.parser.thesis.parse(raw)
     assert parsed == expected, str(parsed)

@@ -11,7 +11,7 @@ import power
 import serializeraw
 import utilatest
 
-import detector.formula.parser
+import indagator.formula.parser
 
 
 def formulas(source: str, page: int):
@@ -20,7 +20,7 @@ def formulas(source: str, page: int):
         power.link(source),
         pages=(page,),
     )[0]
-    parsed = detector.formula.parser.parse(ptcn)
+    parsed = indagator.formula.parser.parse(ptcn)
     content = parsed.content
     return content
 

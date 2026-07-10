@@ -10,7 +10,7 @@
 import configo
 import iamraw
 
-import detector.titlepage.parser.complete
+import indagator.titlepage.parser.complete
 
 TITLEPAGE_RATING_MIN = configo.HV_INT_PLUS(default=20)
 
@@ -18,7 +18,7 @@ TITLEPAGE_RATING_MIN = configo.HV_INT_PLUS(default=20)
 def select_best(pages: 'list[iamraw.TitlePage]') -> iamraw.TitlePage:
     pages = [
         item for item in pages
-        if detector.titlepage.parser.complete.valid_titlepage(item)
+        if indagator.titlepage.parser.complete.valid_titlepage(item)
     ]
     if not pages:
         # no valid page

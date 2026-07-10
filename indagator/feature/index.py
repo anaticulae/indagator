@@ -9,7 +9,7 @@
 
 import serializeraw
 
-import detector.index.strategy
+import indagator.index.strategy
 
 
 def work(
@@ -19,7 +19,7 @@ def work(
     headerfooter: str,
     pages: tuple = None,
 ) -> str:
-    extracted = detector.index.strategy.run(
+    extracted = indagator.index.strategy.run(
         text,
         textpositions,
         sizeandborder=sizeandborder,

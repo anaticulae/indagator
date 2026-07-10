@@ -56,8 +56,8 @@ import serializeraw
 import texmex
 import utila
 
-import detector.titlepage.parser.complete
-import detector.titlepage.strategy
+import indagator.titlepage.parser.complete
+import indagator.titlepage.strategy
 
 # TODO: MOVE TO MORE GENERAL POSITION
 # TODO: check 0.1, use a higher number?
@@ -87,7 +87,7 @@ def work(
     images = convert_images(images)
 
     parsed = parse_titlepages(navigators, images, pages)
-    best = detector.titlepage.strategy.select_best(parsed)
+    best = indagator.titlepage.strategy.select_best(parsed)
 
     dumped = serializeraw.dump_titlepage(best)
     return dumped
@@ -107,7 +107,7 @@ def parse_titlepages(
             # white page
             parsed = None
         else:
-            parsed = detector.titlepage.parser.complete.parse(
+            parsed = indagator.titlepage.parser.complete.parse(
                 navigator,
                 images=selected,
             )

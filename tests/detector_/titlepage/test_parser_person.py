@@ -10,11 +10,11 @@
 import iamraw
 import pytest
 
-import detector.titlepage.persons.after
-import detector.titlepage.persons.notitle
-import detector.titlepage.persons.person
-import detector.titlepage.persons.strategy
-import detector.titlepage.persons.utils
+import indagator.titlepage.persons.after
+import indagator.titlepage.persons.notitle
+import indagator.titlepage.persons.person
+import indagator.titlepage.persons.strategy
+import indagator.titlepage.persons.utils
 
 HELMUT = iamraw.Person(
     'Fahrendholz',
@@ -186,14 +186,14 @@ geb. in Berlin
     ),
 ])
 def test_parser_parse_person(raw, expected):
-    parsed = detector.titlepage.persons.strategy.parse_strategies(raw)
+    parsed = indagator.titlepage.persons.strategy.parse_strategies(raw)
     assert parsed == expected, str(parsed)
 
 
 def test_parser_person_order_person():
     persons = [KAHN, GOMEZ, HELMUT]
     expected = (HELMUT, [GOMEZ, KAHN])
-    current = detector.titlepage.persons.utils.order_persons(persons)
+    current = indagator.titlepage.persons.utils.order_persons(persons)
     assert current == expected, str(current)
 
 
@@ -205,7 +205,7 @@ def test_parser_person_parse_person_without_title():
         firstname='Helmut Konrad',
         raw=raw.strip(),
     )
-    parsed = detector.titlepage.persons.notitle.parse(raw)
+    parsed = indagator.titlepage.persons.notitle.parse(raw)
     assert parsed == expected
 
 
@@ -223,7 +223,7 @@ def test_parser_person_regression():
     r"""The regex matches `Erstprüfer:\n\nZweitprüfer` and fails to
     extract name.
     """
-    parsed = detector.titlepage.persons.notitle.parse(BROKEN_INPUT)
+    parsed = indagator.titlepage.persons.notitle.parse(BROKEN_INPUT)
     assert not parsed, str(parsed)
 
 
@@ -242,10 +242,10 @@ SECOND = 'Studienkennzahl lt. Studienblatt /'
 ])
 def test_person_parser_timeout(source):
     """Regression test for a long running example."""
-    assert not detector.titlepage.persons.person.parse(source)
+    assert not indagator.titlepage.persons.person.parse(source)
 
 
 def test_person_after():
     ba_after = 'verfasst von / submitted by Claudia Ziegler, BA'
-    parsed = detector.titlepage.persons.after.parse(ba_after)
+    parsed = indagator.titlepage.persons.after.parse(ba_after)
     assert parsed.raw == ba_after

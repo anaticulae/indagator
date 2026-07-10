@@ -14,7 +14,7 @@ Person(name='Kirchner'...MASTER:...raw='vorgelegt von\nM.Sc.\nJakob Vinzenz Kirc
 import iamraw
 import utila
 
-import detector.titlepage.persons.utils
+import indagator.titlepage.persons.utils
 
 
 def parse(raw: str) -> iamraw.Person:
@@ -29,7 +29,7 @@ def parse(raw: str) -> iamraw.Person:
     parsed = PATTERN.search(raw)
     if not parsed:
         return None
-    title = detector.titlepage.persons.utils.extract_titles(
+    title = indagator.titlepage.persons.utils.extract_titles(
         utila.extract_match(parsed))
     if not title:
         return None
@@ -81,6 +81,6 @@ INTRO = '|'.join(EXAMINERS | AUTHORS | MAGICS)
 PATTERN = utila.compiles(rf"""
     (?P<examiner>({INTRO})[:]?\s?)?
     ([ ]{0,4}(Herr|Frau)[ ]{0,4})?
-""" + detector.titlepage.persons.utils.ACADEMIC_TITLES.pattern + r"""+\s?
+""" + indagator.titlepage.persons.utils.ACADEMIC_TITLES.pattern + r"""+\s?
     (?P<fname>([A-Z]\.[ ]?|\w{3,}(-|\ )?){1,5})[ ](?P<name>[\w|\-]{3,})
 """)

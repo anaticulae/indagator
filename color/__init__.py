@@ -7,9 +7,9 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import detector
+import indagator
 
-__version__ = detector.__version__
+__version__ = indagator.__version__
 
-ROOT = detector.ROOT
+ROOT = indagator.ROOT
 PROCESS = 'colors'

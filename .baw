@@ -8,10 +8,10 @@
 # =============================================================================
 
 [project]
-short = detector
+short = indagator
 name = bibi buh
 source = color
-    detector
+    indagator
 
 [test]
 plugins = timeout

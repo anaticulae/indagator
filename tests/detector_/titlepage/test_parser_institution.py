@@ -9,7 +9,7 @@
 
 import pytest
 
-import detector.titlepage.parser.institution
+import indagator.titlepage.parser.institution
 from tests.detector_.fixtures.titlepage import FIRST
 from tests.detector_.fixtures.titlepage import FIRST_INSTITUTION
 from tests.detector_.fixtures.titlepage import SECOND
@@ -21,5 +21,5 @@ from tests.detector_.fixtures.titlepage import SECOND_INSTITUTION
     pytest.param(SECOND, SECOND_INSTITUTION, id='second'),
 ])
 def test_parser_institution_parse(example, expected):
-    parsed, _ = detector.titlepage.parser.institution.parse(example)
+    parsed, _ = indagator.titlepage.parser.institution.parse(example)
     assert parsed == expected, str(parsed)

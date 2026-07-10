@@ -22,8 +22,8 @@ import iamraw
 import iamraw.title
 import utila
 
-import detector.titlepage.persons.person
-import detector.titlepage.persons.utils
+import indagator.titlepage.persons.person
+import indagator.titlepage.persons.utils
 
 
 def parse(raw: str) -> iamraw.Person:
@@ -40,7 +40,7 @@ def parse(raw: str) -> iamraw.Person:
     if not parsed:
         return None
     title = parsed['title']
-    title = detector.titlepage.persons.utils.extract_titles(title)
+    title = indagator.titlepage.persons.utils.extract_titles(title)
     if not title:
         return None
     title = iamraw.AcademicTitle.merges(title)
@@ -79,7 +79,7 @@ FACH
 # TODO: SUPPORT PARSING DOUBLE PRE NAME
 # TODO: VERIFY HERR/FRAU PATTERN
 # Parses: Examiner: Hemut Konrad, M.A.
-EXAMINER = detector.titlepage.persons.person.INTRO
+EXAMINER = indagator.titlepage.persons.person.INTRO
 TITLES = r'|'.join([
     r'BA\b',
     r'MA\b',

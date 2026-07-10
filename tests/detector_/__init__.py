@@ -9,6 +9,6 @@
 
 import utilatest
 
-import detector
+import indagator
 
-run, fail = utilatest.create_cli_runner(detector)
+run, fail = utilatest.create_cli_runner(indagator)

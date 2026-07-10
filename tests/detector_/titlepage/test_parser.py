@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-from detector.titlepage.parser import textblock_token
+from indagator.titlepage.parser import textblock_token
 
 TEXT = """Hello
 My Name is Token

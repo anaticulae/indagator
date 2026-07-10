@@ -13,7 +13,7 @@ import serializeraw
 import utila
 import utilatest
 
-import detector.path
+import indagator.path
 import tests.detector_
 
 
@@ -24,7 +24,7 @@ def test_formula_cli_master116_page22(td, mp):
     command = f'-i {source}  --formula --pages=22'
     tests.detector_.run(command, mp=mp)
 
-    formulas = detector.path.formula_detected(td.tmpdir)
+    formulas = indagator.path.formula_detected(td.tmpdir)
     formulas = serializeraw.load_formulas(formulas)
     formulas = utila.select_content(formulas, page=22)
 

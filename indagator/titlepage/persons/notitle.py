@@ -16,8 +16,8 @@ import re
 import iamraw
 import utila
 
-import detector.titlepage.persons.person
-import detector.titlepage.persons.utils
+import indagator.titlepage.persons.person
+import indagator.titlepage.persons.utils
 
 
 def parse(raw: str) -> iamraw.Person:
@@ -45,7 +45,7 @@ def parse(raw: str) -> iamraw.Person:
             utila.debug(f'could not split: {matched["names"]}; {matched}')
             continue
         firstname, name = firstname.strip(), name.strip()
-        title = detector.titlepage.persons.utils.author_or_examiner(raw)
+        title = indagator.titlepage.persons.utils.author_or_examiner(raw)
         result = iamraw.Person(
             title=title,
             name=name,
@@ -57,8 +57,8 @@ def parse(raw: str) -> iamraw.Person:
 
 
 def create_with_title_pattern():
-    positions = (detector.titlepage.persons.person.EXAMINERS |
-                 detector.titlepage.persons.person.AUTHORS)
+    positions = (indagator.titlepage.persons.person.EXAMINERS |
+                 indagator.titlepage.persons.person.AUTHORS)
     preamble = [
         fr'(?P<t{index}>{item})' for index, item in enumerate(positions)
     ]

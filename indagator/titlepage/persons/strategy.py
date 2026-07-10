@@ -27,10 +27,10 @@ import configo
 import iamraw
 import utila
 
-import detector.titlepage.persons.after
-import detector.titlepage.persons.notitle
-import detector.titlepage.persons.person
-import detector.titlepage.persons.utils
+import indagator.titlepage.persons.after
+import indagator.titlepage.persons.notitle
+import indagator.titlepage.persons.person
+import indagator.titlepage.persons.utils
 
 PERSON_LENGTH_MAX = configo.HV_INT_PLUS(default=70)
 
@@ -84,9 +84,9 @@ def parse_strategies(raw: str) -> iamraw.Person:
         Person if parsing was successful, else None
     """
     strategies = [
-        detector.titlepage.persons.person,
-        detector.titlepage.persons.after,
-        detector.titlepage.persons.notitle,
+        indagator.titlepage.persons.person,
+        indagator.titlepage.persons.after,
+        indagator.titlepage.persons.notitle,
     ]
     for strategy in strategies:
         parsed = strategy.parse(raw)

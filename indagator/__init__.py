@@ -9,9 +9,9 @@
 
 import os
 
-import detector.__patch__
+import indagator.__patch__
 # public title configuration
-from detector.feature.titlepage import RAWMAKER_CONFIGURATION
+from indagator.feature.titlepage import RAWMAKER_CONFIGURATION
 
 __version__ = '0.40.2'
 

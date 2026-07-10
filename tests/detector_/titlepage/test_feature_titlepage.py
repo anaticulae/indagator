@@ -14,19 +14,19 @@ import serializeraw
 import utila
 import utilatest
 
-import detector.cli
-import detector.feature.titlepage
-import detector.path
-import detector.titlepage
-import detector.titlepage.parser.complete
-import detector.titlepage.persons
-import detector.titlepage.strategy
+import indagator.cli
+import indagator.feature.titlepage
+import indagator.path
+import indagator.titlepage
+import indagator.titlepage.parser.complete
+import indagator.titlepage.persons
+import indagator.titlepage.strategy
 
 
 @utilatest.longrun
 @utilatest.requires(power.DOCU007_PDF)
 def test_titlepage_parser():
-    extracted = detector.feature.titlepage.work(
+    extracted = indagator.feature.titlepage.work(
         iamraw.path.text(
             power.link(power.DOCU007_PDF),
             prefix='oneline',
@@ -129,18 +129,18 @@ def test_feature_titlepage_complete(
     """Integration test to ensure that rawmaker -> detector works correctly."""
     # run rawmaker
     cmd = (f'rawmaker -i {source} --pages=0:5 '
-           f'{detector.feature.titlepage.RAWMAKER_CONFIGURATION}')
+           f'{indagator.feature.titlepage.RAWMAKER_CONFIGURATION}')
     utila.run(cmd)
     # run detector
     cmd = f'-i {td.tmpdir} --titlepage'
     utilatest.run_command(
         cmd,
-        process=detector.PROCESS,
-        main=detector.cli.main,
+        process=indagator.PROCESS,
+        main=indagator.cli.main,
         expect=True,
         mp=mp,
     )
-    resultpath = detector.path.titlepage_detected(td.tmpdir)
+    resultpath = indagator.path.titlepage_detected(td.tmpdir)
     titlepage: iamraw.TitlePage = serializeraw.load_titlepage(resultpath)
     assert titlepage
     # validate result
@@ -149,7 +149,7 @@ def test_feature_titlepage_complete(
 
 def parse_titlepages(path: str, pages: tuple = None):
     navigators = serializeraw.ptn_frompath(path, pages=pages) # yapf:disable
-    parsed = detector.feature.titlepage.parse_titlepages(navigators, pages)
+    parsed = indagator.feature.titlepage.parse_titlepages(navigators, pages)
     return parsed
 
 
@@ -157,5 +157,5 @@ def parse_titlepages(path: str, pages: tuple = None):
 @utilatest.requires(power.MASTER072_PDF)
 def test_feature_titlepage_select_best():
     parsed = parse_titlepages(power.link(power.MASTER072_PDF), pages=None)
-    best = detector.titlepage.strategy.select_best(parsed)
+    best = indagator.titlepage.strategy.select_best(parsed)
     assert best == parsed[0], str(best)

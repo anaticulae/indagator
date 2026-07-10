@@ -14,12 +14,12 @@ import serializeraw
 import utila
 import utilatest
 
-import detector.path
+import indagator.path
 import tests.conftest
 import tests.detector_
 
 ARCHIVE = utila.join(
-    detector.ROOT,
+    indagator.ROOT,
     'tests/detector_/titlepage/expected',
     exist=True,
 )
@@ -58,7 +58,7 @@ class TitleCompare(utilatest.BaseLiner):
         )
 
     def load(self) -> str:
-        path = detector.path.titlepage_detected(self.workdir)
+        path = indagator.path.titlepage_detected(self.workdir)
         loaded = self.loader(path)
         return loaded
 

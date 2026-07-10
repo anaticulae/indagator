@@ -14,13 +14,13 @@ import utilatest
 from utilatest import mp  # pylint:disable=W0611
 from utilatest import td  # pylint:disable=W0611
 
-import detector
+import indagator
 
 pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
 
-power.setup(detector.ROOT)
+power.setup(indagator.ROOT)
 
-PACKAGE = detector.PACKAGE
+PACKAGE = indagator.PACKAGE
 
 RESOURCES = [
     (power.BACHELOR037_PDF, '0:10'),

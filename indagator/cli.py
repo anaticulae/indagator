@@ -9,7 +9,7 @@
 
 import utila
 
-import detector
+import indagator
 
 DESCRIPTION = ''
 
@@ -50,14 +50,14 @@ WORKPLAN = [
 def main():
     utila.featurepack(
         workplan=WORKPLAN,
-        root=detector.ROOT,
+        root=indagator.ROOT,
         featurepackage='detector.feature',
         config=utila.FeaturePackConfig(
             description=DESCRIPTION,
             multiprocessed=True,
-            name=detector.PROCESS,
+            name=indagator.PROCESS,
             pages=True,
             singleinput=False,  # require result folder, ignore single pdf file
-            version=detector.__version__,
+            version=indagator.__version__,
         ),
     )

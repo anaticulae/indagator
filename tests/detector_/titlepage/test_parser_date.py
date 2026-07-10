@@ -10,7 +10,7 @@
 import iamraw
 import pytest
 
-from detector.titlepage.parser.date import parse
+from indagator.titlepage.parser.date import parse
 
 
 @pytest.mark.parametrize(

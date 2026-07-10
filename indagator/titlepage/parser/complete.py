@@ -14,14 +14,14 @@ import iamraw
 import texmex
 import utila
 
-from detector.titlepage.parser import textblock_token
-from detector.titlepage.parser.date import parse as parse_date
-from detector.titlepage.parser.institution import parse as parse_institution
-from detector.titlepage.parser.matrikel import parse as parse_matrikel
-from detector.titlepage.parser.thesis import parse as parse_thesis
-from detector.titlepage.parser.title import parse as parse_title
-from detector.titlepage.persons.strategy import parse as parse_person_all
-from detector.titlepage.persons.utils import order_persons
+from indagator.titlepage.parser import textblock_token
+from indagator.titlepage.parser.date import parse as parse_date
+from indagator.titlepage.parser.institution import parse as parse_institution
+from indagator.titlepage.parser.matrikel import parse as parse_matrikel
+from indagator.titlepage.parser.thesis import parse as parse_thesis
+from indagator.titlepage.parser.title import parse as parse_title
+from indagator.titlepage.persons.strategy import parse as parse_person_all
+from indagator.titlepage.persons.utils import order_persons
 
 
 def parse(
