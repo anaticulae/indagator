@@ -7,11 +7,11 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilo
 
 
 def bibliography_detected(path: str, prefix: str = '') -> str:
-    return utila.pathconnector(
+    return utilo.pathconnector(
         path,
         'detector',
         'bibliography_detected',
@@ -20,7 +20,7 @@ def bibliography_detected(path: str, prefix: str = '') -> str:
 
 
 def titlepage_detected(path: str, prefix: str = '') -> str:
-    return utila.pathconnector(
+    return utilo.pathconnector(
         path,
         'detector',
         'titlepage_detected',
@@ -29,7 +29,7 @@ def titlepage_detected(path: str, prefix: str = '') -> str:
 
 
 def formula_detected(path: str, prefix: str = '') -> str:
-    return utila.pathconnector(
+    return utilo.pathconnector(
         path,
         'detector',
         'formula_formula',

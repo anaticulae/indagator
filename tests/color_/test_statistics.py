@@ -7,18 +7,18 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
+import hoverpower
 import serializeraw
-import utilatest
+import utilotest
 
 import tests
 import tests.color_
 
 
-@tests.ghost
-@utilatest.longrun
+@tests.ughost
+@utilotest.longrun
 def test_statistics_master031(td, mp):
-    source = power.MASTER031_PDF
+    source = hoverpower.MASTER031_PDF
     cmd = f'-i {source} -o {td.tmpdir} --pages=0:10'
     tests.color_.run(cmd, mp=mp)
     loaded = serializeraw.load_color_statistics(content=td.tmpdir)

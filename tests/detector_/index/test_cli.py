@@ -7,18 +7,18 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
+import hoverpower
 import serializeraw
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import tests.detector_
 
 
-@utilatest.requires(power.BOOK173_PDF)
+@utilotest.requires(hoverpower.BOOK173_PDF)
 def test_index_book173(td, mp):
-    source = power.link(power.BOOK173_PDF)
+    source = hoverpower.link(hoverpower.BOOK173_PDF)
     command = f'-i {source}  --index --pages=164:173'
     tests.detector_.run(command, mp=mp)
     index = serializeraw.load_index(td.tmpdir)
-    assert utila.near(len(index), expected=810, diff=25)
+    assert utilo.near(len(index), expected=810, diff=25)

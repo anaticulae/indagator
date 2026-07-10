@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilo
 
 import color
 
@@ -16,10 +16,10 @@ import color
 DESCRIPTION = ''
 
 WORKPLAN = [
-    utila.create_step(
+    utilo.create_step(
         'statistics',
         inputs=[
-            utila.Pattern('*', 'pdf'),
+            utilo.Pattern('*', 'pdf'),
         ],
         output=('statistics',),
     ),
@@ -27,11 +27,11 @@ WORKPLAN = [
 
 
 def main():
-    utila.featurepack(
+    utilo.featurepack(
         workplan=WORKPLAN,
         root=color.ROOT,
         featurepackage='color.feature',
-        config=utila.FeaturePackConfig(
+        config=utilo.FeaturePackConfig(
             description=DESCRIPTION,
             multiprocessed=True,
             name=color.PROCESS,

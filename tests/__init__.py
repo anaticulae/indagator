@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import ghost as gs
 import pytest
+import ughost as gs
 
-ghost = pytest.mark.skipif(not gs.HAS_GHOST, reason='install ghost')
+ughost = pytest.mark.skipif(not gs.HAS_GHOST, reason='install ughost')

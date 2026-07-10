@@ -54,7 +54,7 @@ import collections
 import picture
 import serializeraw
 import texmex
-import utila
+import utilo
 
 import indagator.titlepage.parser.complete
 import indagator.titlepage.strategy
@@ -101,8 +101,8 @@ def parse_titlepages(
     pages = pages if pages else SELECTED_PAGES
     result = []
     for page in pages:
-        navigator = utila.select_page(navigators, page=page)
-        selected = utila.select_page(images, page=page) if images else None
+        navigator = utilo.select_page(navigators, page=page)
+        selected = utilo.select_page(images, page=page) if images else None
         if navigator is None:  # pylint:disable=W0160
             # white page
             parsed = None
@@ -129,8 +129,8 @@ def load_images(images, pages: tuple = None) -> dict:
         for image in page.content:
             path = image[1]
             # TODO: TRY OTHER FILE EXT?
-            path = utila.rreplace(path, '.yaml', '.png')
-            if utila.exists(path):
+            path = utilo.rreplace(path, '.yaml', '.png')
+            if utilo.exists(path):
                 result[page.page].append(picture.imageload(path))
                 continue
     result: dict = dict(result)

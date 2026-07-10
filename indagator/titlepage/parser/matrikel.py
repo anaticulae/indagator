@@ -25,7 +25,7 @@ not contains a matrikel-number-intro.
 """
 
 import iamraw
-import utila
+import utilo
 
 
 def parse(raw: str) -> iamraw.Matrikel:
@@ -60,7 +60,7 @@ def parse(raw: str) -> iamraw.Matrikel:
     return matrikel
 
 
-MATRIKEL = utila.compiles(r"""
+MATRIKEL = utilo.compiles(r"""
     (?P<intro>
         (
             |

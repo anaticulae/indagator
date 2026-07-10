@@ -15,13 +15,13 @@ TODO: Introduce multiple extraction strategies
 import enum
 import math
 
-import configo
+import configos
 import texmex
-import utila
+import utilo
 
-TITLE_FONT_SIZE_MIN = configo.HV_FLOAT_PLUS(default=20.0)
+TITLE_FONT_SIZE_MIN = configos.HV_FLOAT_PLUS(default=20.0)
 
-TITLE_WORD_COUNT_MIN = configo.HV_INT_PLUS(default=4)
+TITLE_WORD_COUNT_MIN = configos.HV_INT_PLUS(default=4)
 
 
 class TitleParserState(enum.Enum):
@@ -33,7 +33,7 @@ class TitleParserState(enum.Enum):
     NO_TITLE = enum.auto()
 
 
-NO_TITLES = utila.splitlines("""
+NO_TITLES = utilo.splitlines("""
 ABSCHLUSSBERICHT
 BACHELORARBEIT
 BERICHT
@@ -48,7 +48,7 @@ THESIS
 """)
 
 
-@utila.profile('title')
+@utilo.profile('title')
 def parse(textnavigator: texmex.PTN) -> str:
     """Parse hugest text line as title.
 
@@ -74,12 +74,12 @@ def parse(textnavigator: texmex.PTN) -> str:
     if detected_size * 0.8 <= next_size:
         msg = ('title-detector: next following text font is to close: '
                f'detected({detected_size}) next({next_size})')
-        utila.info(msg)
+        utilo.info(msg)
         return TitleParserState.NOT_ENOUGH_DISTANCE
     if detected_size < TITLE_FONT_SIZE_MIN:
         return TitleParserState.TITLE_TO_SMALL
     # TODO: ITER THROW POTENTIAL TITLES AND RUN TOP VERIFICATION
-    title = sizes[0][1].replace(utila.NEWLINE, ' ')
+    title = sizes[0][1].replace(utilo.NEWLINE, ' ')
     title = title.strip()
     if notitle(title):
         # bachelor
@@ -100,8 +100,8 @@ def notitle(title) -> bool:
     return False
 
 
-MERGE_DISTANCE_MAX = configo.HV_FLOAT_PLUS(default=20.0)
-FONT_DISTANCE_MAX = configo.HV_FLOAT_PLUS(default=0.5)
+MERGE_DISTANCE_MAX = configos.HV_FLOAT_PLUS(default=20.0)
+FONT_DISTANCE_MAX = configos.HV_FLOAT_PLUS(default=0.5)
 
 
 def merge(items):

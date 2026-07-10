@@ -63,7 +63,7 @@ Every noteable change is logged here.
 
 ### Fix
 
-* skip step if ghost is not installed (8e6bcd8135ca)
+* skip step if ughost is not installed (8e6bcd8135ca)
 
 ### Chore
 
@@ -191,7 +191,7 @@ Every noteable change is logged here.
 * detect year inside brackets at bib start (66c96e1b7b50)
 * use improved regex splitter (49ee68b70647)
 * shrink possible year (89dc2404b4a1)
-* do not create ghost pattern (dc1ae19db274)
+* do not create ughost pattern (dc1ae19db274)
 
 ### Fix
 
@@ -218,7 +218,7 @@ Every noteable change is logged here.
 
 ### Fix
 
-* do not create ghost pattern (4617f57bd576)
+* do not create ughost pattern (4617f57bd576)
 * allow more than one institution (61e3bdd73fcb)
 * avoid regex attack (1060ac95d248)
 

@@ -7,20 +7,20 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import ghost
 import iamraw
 import serializeraw
-import utila
+import ughost
+import utilo
 
 import color.pagecolor
 
 
 def work(path: str, pages: tuple = None) -> str:
     result = []
-    if ghost.HAS_GHOST:
+    if ughost.HAS_GHOST:
         result = determine_statistics(path, pages=pages)
     else:
-        utila.error('install ghost to run `color`')
+        utilo.error('install ughost to run `color`')
     dumped = serializeraw.dump_color_statistics(result)
     return dumped
 
@@ -28,11 +28,11 @@ def work(path: str, pages: tuple = None) -> str:
 def determine_statistics(path: str, pages: tuple = None) -> list:
     result = []
     colors = color.pagecolor.colors(path, pages=pages)
-    pagenumbers = utila.PageGenerator(pages=pages)
+    pagenumbers = utilo.PageGenerator(pages=pages)
     for content in colors:
         pagenumber = next(pagenumbers)
         if color is None:
-            utila.error(f'could not determine colors: {path} {pagenumber}, '
+            utilo.error(f'could not determine colors: {path} {pagenumber}, '
                         'may increase number of colors in histogram')
             continue
         current = color.pagecolor.histogram(content)

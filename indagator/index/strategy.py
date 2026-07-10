@@ -7,11 +7,11 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import configo
+import configos
 import geostrat
 import iamraw
 import serializeraw
-import utila
+import utilo
 
 
 def run(
@@ -53,7 +53,7 @@ def extract_pages(ptcns) -> iamraw.DocumentIndex:
 #       for appendices, 34
 #       working, 70
 # Is handeld as a single column.
-COLUMN_DIFF_MAX = configo.HV_INT_PLUS(default=50)
+COLUMN_DIFF_MAX = configos.HV_INT_PLUS(default=50)
 
 
 def extract_page(page, cat=None) -> iamraw.DocumentIndex:
@@ -64,7 +64,7 @@ def extract_page(page, cat=None) -> iamraw.DocumentIndex:
     )
     if not parsed:
         return result
-    parsed = utila.flat(parsed)
+    parsed = utilo.flat(parsed)
     for line in parsed:
         text = line.text.strip()
         if len(text) == 1:
@@ -81,7 +81,7 @@ def extract_page(page, cat=None) -> iamraw.DocumentIndex:
     return result
 
 
-PAGES = utila.compiles(r"""
+PAGES = utilo.compiles(r"""
     ^
     (?P<TEXT>.{4,}?)
     (\,[ ]{0,2})

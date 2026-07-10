@@ -8,7 +8,7 @@
 # =============================================================================
 
 import iamraw
-import utila
+import utilo
 
 
 def parse(token: str) -> iamraw.TitleThesisType:
@@ -23,7 +23,7 @@ def parse(token: str) -> iamraw.TitleThesisType:
         finding = collected[item.name]
         if not finding:
             continue
-        raw = utila.extract_match(collected)
+        raw = utilo.extract_match(collected)
         return iamraw.TitleThesisType(item, finding, raw)
     assert 0, 'should not happen'
     return None
@@ -46,4 +46,4 @@ def construct_pattern():
     return result
 
 
-PATTERN = utila.compiles(construct_pattern())
+PATTERN = utilo.compiles(construct_pattern())

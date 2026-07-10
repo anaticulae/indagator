@@ -10,11 +10,11 @@
 import re
 
 import iamraw
-import sdata
-import utila
+import sdatum
+import utilo
 
 
-@utila.profile('institution')
+@utilo.profile('institution')
 def parse(raw: str) -> iamraw.Institution:
     """\
     >>> parse('Fakultät I – Geisteswissenschaften')
@@ -66,20 +66,20 @@ def detection(raw, pattern, remove: bool = True):
             result.append(prepared)
         else:
             result.append(line.strip())
-        raw = utila.ghost_replace(raw, line)
+        raw = utilo.ghost_replace(raw, line)
     # make results unique
-    result = utila.unique(result)
+    result = utilo.unique(result)
     return result, raw
 
 
-INSTITUTE = utila.compiles(r"""
+INSTITUTE = utilo.compiles(r"""
 (
     INSTITUT(E)?[ ]{0,3}
     (FÜR|FOR){0,1}
 )
 """)
 
-DEPARTMENT = utila.compiles(r"""
+DEPARTMENT = utilo.compiles(r"""
 (
     (
         FACULTY|
@@ -97,7 +97,7 @@ DEPARTMENT = utila.compiles(r"""
 )
 """)
 
-FIELD = utila.compiles(r"""
+FIELD = utilo.compiles(r"""
 (
     DEPARTMENT[ ]{0,4}(OF)?|
     FACHBEREICH|
@@ -106,7 +106,7 @@ FIELD = utila.compiles(r"""
 )
 """)
 
-COURSES = utila.compiles(r"""
+COURSES = utilo.compiles(r"""
 (
     STUDIENGANG\:?|
     COURSE(S)?\:?
@@ -125,11 +125,11 @@ def find_institution(raw) -> str:
     splitted = prepare(raw)
     # improve collection
     splitted = [shrink_institution(item) for item in splitted]
-    collected = [item for item in splitted if sdata.rate_institution(item)]
+    collected = [item for item in splitted if sdatum.rate_institution(item)]
     if not collected:
         return None, raw
     if len(collected) > 1:
-        utila.error(f'More than one institution: {collected}')
+        utilo.error(f'More than one institution: {collected}')
     collected = collected[0]
     rest = raw.replace(collected, '')
     return collected, rest
@@ -148,7 +148,7 @@ def shrink_institution(name: str) -> str:
 def prepare(text: str) -> list:
     text = replace_special_chars(text)
     splitted = text.split(',')
-    splitted = utila.flat([item.split(utila.NEWLINE) for item in splitted])
+    splitted = utilo.flat([item.split(utilo.NEWLINE) for item in splitted])
     splitted = [item for item in splitted if item]  # remove empty items
     return splitted
 

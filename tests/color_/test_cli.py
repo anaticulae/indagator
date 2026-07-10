@@ -8,13 +8,13 @@
 # =============================================================================
 
 import pytest
-import utilatest
+import utilotest
 
 import tests
 import tests.color_
 
 
-@tests.ghost
+@tests.ughost
 @pytest.mark.usefixtures('td')
 @pytest.mark.parametrize('cmd', [
     '--help',
@@ -23,4 +23,4 @@ import tests.color_
 def test_color_cli(cmd, mp, capsys):
     """Run help and version command to reach basic test coverage"""
     tests.color_.run(cmd, mp=mp)
-    utilatest.write_capsys(capsys)
+    utilotest.write_capsys(capsys)

@@ -7,17 +7,17 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
+import hoverpower
 import serializeraw
-import utilatest
+import utilotest
 
 import indagator.formula.parser
 
 
 def formulas(source: str, page: int):
-    utilatest.fixture_requires(power.link(source))
+    utilotest.fixture_requires(hoverpower.link(source))
     ptcn = serializeraw.ptcn_frompath(
-        power.link(source),
+        hoverpower.link(source),
         pages=(page,),
     )[0]
     parsed = indagator.formula.parser.parse(ptcn)
@@ -26,21 +26,21 @@ def formulas(source: str, page: int):
 
 
 def test_parse_master116_page24():
-    content = formulas(source=power.MASTER116_PDF, page=24)
+    content = formulas(source=hoverpower.MASTER116_PDF, page=24)
     assert len(content) == 12
 
 
 def test_parse_master116_page23():
-    content = formulas(source=power.MASTER116_PDF, page=23)
+    content = formulas(source=hoverpower.MASTER116_PDF, page=23)
     # TODO: merge multi line equations together
     assert len(content) == 17  # not correct, if changed, algo changed
 
 
 def test_parse_docu09():
-    content = formulas(source=power.DOCU009_PDF, page=0)
+    content = formulas(source=hoverpower.DOCU009_PDF, page=0)
     assert not content
 
 
 def test_parse_docu07():
-    content = formulas(source=power.DOCU007_PDF, page=0)
+    content = formulas(source=hoverpower.DOCU007_PDF, page=0)
     assert not content

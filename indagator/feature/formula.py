@@ -9,7 +9,7 @@
 
 import iamraw
 import serializeraw
-import utila
+import utilo
 
 
 def work(
@@ -31,7 +31,7 @@ def work(
     )
     result = []
     for page in loaded:
-        ptcn = utila.select_page(ptcns, page.page, default=[])
+        ptcn = utilo.select_page(ptcns, page.page, default=[])
         extracted = extract_page(page.page, page.content, ptcn)
         if not extracted:
             continue
@@ -58,9 +58,9 @@ def extract_formula(formula, navigator) -> iamraw.Formula:
     formula_bounding = formula.bounding
     lines = []
     for line, item in enumerate(navigator):
-        if utila.rect_inside(item.bounding, formula_bounding):
+        if utilo.rect_inside(item.bounding, formula_bounding):
             lines.append(line)
-        elif utila.rect_inside(formula_bounding, item.bounding):
+        elif utilo.rect_inside(formula_bounding, item.bounding):
             lines.append(line)
     lines = sorted(lines)
     # TODO: ADD NOT MATCHED HINT

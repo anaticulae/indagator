@@ -7,40 +7,40 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilo
 
 import indagator
 
 DESCRIPTION = ''
 
 WORKPLAN = [
-    utila.create_step(
+    utilo.create_step(
         'index',
         inputs=[
-            utila.ResultFile('rawmaker', 'text_text'),
-            utila.ResultFile('rawmaker', 'text_positions'),
-            utila.ResultFile('rawmaker', 'border_pages'),
-            utila.ResultFile('groupme', 'hefopa_result'),
+            utilo.ResultFile('rawmaker', 'text_text'),
+            utilo.ResultFile('rawmaker', 'text_positions'),
+            utilo.ResultFile('rawmaker', 'border_pages'),
+            utilo.ResultFile('groupme', 'hefopa_result'),
         ],
         output=('detected',),
     ),
-    utila.create_step(
+    utilo.create_step(
         'titlepage',
         inputs=[
-            utila.ResultFile('rawmaker', 'oneline_text_text'),
-            utila.ResultFile('rawmaker', 'oneline_text_positions'),
-            utila.Pattern(name='rawmaker__images_images/*', ext='yaml'),
+            utilo.ResultFile('rawmaker', 'oneline_text_text'),
+            utilo.ResultFile('rawmaker', 'oneline_text_positions'),
+            utilo.Pattern(name='rawmaker__images_images/*', ext='yaml'),
         ],
         output=('detected',),
     ),
-    utila.create_step(
+    utilo.create_step(
         'formula',
         inputs=[
-            utila.ResultFile('rawmaker', 'formula_formula'),
-            utila.ResultFile('rawmaker', 'oneline_text_text'),
-            utila.ResultFile('rawmaker', 'oneline_text_positions'),
-            utila.ResultFile('rawmaker', 'border_pages'),
-            utila.ResultFile('groupme', 'hefopa_result'),
+            utilo.ResultFile('rawmaker', 'formula_formula'),
+            utilo.ResultFile('rawmaker', 'oneline_text_text'),
+            utilo.ResultFile('rawmaker', 'oneline_text_positions'),
+            utilo.ResultFile('rawmaker', 'border_pages'),
+            utilo.ResultFile('groupme', 'hefopa_result'),
         ],
         output=('formula',),
     ),
@@ -48,11 +48,11 @@ WORKPLAN = [
 
 
 def main():
-    utila.featurepack(
+    utilo.featurepack(
         workplan=WORKPLAN,
         root=indagator.ROOT,
         featurepackage='detector.feature',
-        config=utila.FeaturePackConfig(
+        config=utilo.FeaturePackConfig(
             description=DESCRIPTION,
             multiprocessed=True,
             name=indagator.PROCESS,

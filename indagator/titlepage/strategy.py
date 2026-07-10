@@ -7,12 +7,12 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import configo
+import configos
 import iamraw
 
 import indagator.titlepage.parser.complete
 
-TITLEPAGE_RATING_MIN = configo.HV_INT_PLUS(default=20)
+TITLEPAGE_RATING_MIN = configos.HV_INT_PLUS(default=20)
 
 
 def select_best(pages: 'list[iamraw.TitlePage]') -> iamraw.TitlePage:

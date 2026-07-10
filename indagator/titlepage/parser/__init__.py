@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilo
 
 
 def textblock_token(text: str) -> list:
@@ -31,8 +31,8 @@ def textblock_token(text: str) -> list:
             current.append(item)
         elif current:
             # newline
-            result.append(utila.NEWLINE.join(current))
+            result.append(utilo.NEWLINE.join(current))
             current = []
     if current:
-        result.append(utila.NEWLINE.join(current))
+        result.append(utilo.NEWLINE.join(current))
     return result

@@ -12,7 +12,7 @@ Person(name='Kirchner'...MASTER:...raw='vorgelegt von\nM.Sc.\nJakob Vinzenz Kirc
 """
 
 import iamraw
-import utila
+import utilo
 
 import indagator.titlepage.persons.utils
 
@@ -30,17 +30,17 @@ def parse(raw: str) -> iamraw.Person:
     if not parsed:
         return None
     title = indagator.titlepage.persons.utils.extract_titles(
-        utila.extract_match(parsed))
+        utilo.extract_match(parsed))
     if not title:
         return None
     title = iamraw.AcademicTitle.merges(title)
     name, firstname = parsed['name'], parsed['fname']
-    raw = utila.extract_match(parsed)
+    raw = utilo.extract_match(parsed)
     person = iamraw.Person(title=title, name=name, firstname=firstname, raw=raw)
     return person
 
 
-EXAMINERS = utila.splitlines(r"""
+EXAMINERS = utilo.splitlines(r"""
 (\d\.\s?)?Betreuer(in)?[ ]{0,3}(extern)?
 Betreuung
 Erstgutachter(in)?
@@ -55,12 +55,12 @@ Zweitgutachter(in)?
 Zweitprüfer(in)?
 """)
 
-MAGICS = utila.splitlines(r"""
+MAGICS = utilo.splitlines(r"""
 (\w{2,150}\s?){1,4}?[\s|:]
 ^
 """)
 
-AUTHORS = utila.splitlines(r"""
+AUTHORS = utilo.splitlines(r"""
 Autor(in)?
 Name\,[ ]Vorname
 Referent(in)?
@@ -78,7 +78,7 @@ von
 
 INTRO = '|'.join(EXAMINERS | AUTHORS | MAGICS)
 # pattern can be spread over more than one line
-PATTERN = utila.compiles(rf"""
+PATTERN = utilo.compiles(rf"""
     (?P<examiner>({INTRO})[:]?\s?)?
     ([ ]{0,4}(Herr|Frau)[ ]{0,4})?
 """ + indagator.titlepage.persons.utils.ACADEMIC_TITLES.pattern + r"""+\s?

@@ -23,19 +23,19 @@ Examples:
         Zweitgutachter: Dipl.-Medienberater Stephan Frühwirt
 """
 
-import configo
+import configos
 import iamraw
-import utila
+import utilo
 
 import indagator.titlepage.persons.after
 import indagator.titlepage.persons.notitle
 import indagator.titlepage.persons.person
 import indagator.titlepage.persons.utils
 
-PERSON_LENGTH_MAX = configo.HV_INT_PLUS(default=70)
+PERSON_LENGTH_MAX = configos.HV_INT_PLUS(default=70)
 
 
-@utila.profile('persons')
+@utilo.profile('persons')
 def parse(
     items: list,
     person_length_max: int = PERSON_LENGTH_MAX,
@@ -56,22 +56,22 @@ def parse(
             if len(line) > person_length_max:
                 rest.append(line)
                 continue
-            with utila.profile(line):
+            with utilo.profile(line):
                 parsed = parse_strategies(line)
             if not parsed:
                 rest.append(line)
                 # check area to parse more than one line
-                # limit length of look behind to reduce computation power
+                # limit length of look behind to reduce computation hoverpower
                 area = lookbehind(rest[-3:])
                 if area is not None:
                     persons.append(area[0])
                     rest = area[1]
                     continue
                 continue
-            rest.append(utila.ghost_replace(line, pattern=parsed.raw))
+            rest.append(utilo.ghost_replace(line, pattern=parsed.raw))
             persons.append(parsed)
     # remove double parsed authors
-    persons = utila.unique(persons)  # TODO: REMOVE LATER
+    persons = utilo.unique(persons)  # TODO: REMOVE LATER
     return persons, rest
 
 
@@ -101,6 +101,6 @@ def lookbehind(rest):
     parsed = parse_strategies(complete)
     if not parsed:
         return None
-    complete = utila.ghost_replace(text=complete, pattern=parsed.raw)
+    complete = utilo.ghost_replace(text=complete, pattern=parsed.raw)
     rest = [item for item in complete.splitlines() if item.strip()]
     return parsed, rest

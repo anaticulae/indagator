@@ -9,10 +9,10 @@
 
 import re
 
-import elements
+import elementae
 import iamraw
 import texmex
-import utila
+import utilo
 
 from indagator.titlepage.parser import textblock_token
 from indagator.titlepage.parser.date import parse as parse_date
@@ -42,7 +42,7 @@ def parse(
     text = clean_text(text)
     if images:
         # append text content from ocr
-        images: str = utila.NEWLINE.join(images)
+        images: str = utilo.NEWLINE.join(images)
         text = f'{images}\n{text}'
     if isinstance(title, str):
         result.title = title
@@ -72,7 +72,7 @@ def run_simple(title, parsed):
     undecided = []
     # run single/simple parsing tasks
     for (sink, action) in STRATEGY:
-        with utila.profile(sink):
+        with utilo.profile(sink):
             for index, item in enumerate(parsed):
                 collected = action(item)
                 if not collected:
@@ -91,7 +91,7 @@ def run_simple(title, parsed):
 
 
 def clean_text(text: list) -> str:
-    text = utila.NEWLINE.join([item.text for item in text[:]])
+    text = utilo.NEWLINE.join([item.text for item in text[:]])
     # remove textual horizontal lines cause there slow down persons parsing
     text = re.sub(r'[\-\=\_]{5,}', '', text)
     return text
@@ -103,6 +103,6 @@ def valid_titlepage(titlepage: iamraw.TitlePage) -> bool:
     assert titlepage.title is None or titlepage.title.strip(
     ) == titlepage.title, f'invalid parsing result "{titlepage.title}"'
 
-    if elements.istoc(titlepage.title):
+    if elementae.istoc(titlepage.title):
         return False
     return True

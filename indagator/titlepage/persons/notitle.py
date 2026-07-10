@@ -14,7 +14,7 @@ Person(name='Helmer', firstname='Thomas'...STUDENT...raw='vorgelegt von   Thomas
 import re
 
 import iamraw
-import utila
+import utilo
 
 import indagator.titlepage.persons.person
 import indagator.titlepage.persons.utils
@@ -42,7 +42,7 @@ def parse(raw: str) -> iamraw.Person:
         try:
             firstname, name = names.rsplit(' ', maxsplit=1)
         except ValueError:
-            utila.debug(f'could not split: {matched["names"]}; {matched}')
+            utilo.debug(f'could not split: {matched["names"]}; {matched}')
             continue
         firstname, name = firstname.strip(), name.strip()
         title = indagator.titlepage.persons.utils.author_or_examiner(raw)
@@ -50,7 +50,7 @@ def parse(raw: str) -> iamraw.Person:
             title=title,
             name=name,
             firstname=firstname,
-            raw=utila.extract_match(matched),
+            raw=utilo.extract_match(matched),
         )
         return result
     return None

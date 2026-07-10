@@ -20,7 +20,7 @@ DONT:
 
 import iamraw
 import iamraw.title
-import utila
+import utilo
 
 import indagator.titlepage.persons.person
 import indagator.titlepage.persons.utils
@@ -35,7 +35,7 @@ def parse(raw: str) -> iamraw.Person:
     >>> parse('verfasst von Claudia Ziegler, BA')
     Person(name='Ziegler', firstname='Claudia'...BSC..., raw='verfasst von Claudia Ziegler, BA')
     """
-    raw = utila.normalize_whitespaces(raw)  # TODO: REMOVE LATER?
+    raw = utilo.normalize_whitespaces(raw)  # TODO: REMOVE LATER?
     parsed = PATTERN_PERSON_AFTER.search(raw)
     if not parsed:
         return None
@@ -49,7 +49,7 @@ def parse(raw: str) -> iamraw.Person:
         return None
         # skip false positive detection
         # Master of Science (M. Sc.)
-    raw = utila.extract_match(parsed)
+    raw = utilo.extract_match(parsed)
     result = iamraw.Person(title=title, name=name, firstname=firstname, raw=raw)
     return result
 
@@ -65,7 +65,7 @@ def noname(name: str):
     return False
 
 
-NONAME = utila.splitlines("""\
+NONAME = utilo.splitlines("""\
 MASTER
 OF
 SCIENCE
@@ -91,7 +91,7 @@ TITLES = r'|'.join([
     r'\(?M\.[ ]?Sc\.\)?',
 ])
 ACADEMIC_TITLE = rf'({TITLES})'
-PATTERN_PERSON_AFTER = utila.compiles(rf"""
+PATTERN_PERSON_AFTER = utilo.compiles(rf"""
     (?P<examiner>({EXAMINER})[:]?\s?)
     ([ ]{0,4}(Herr|Frau)?[ ]{0,4})?
     (?P<fname>(\w+[ ]?){1,5}?)[ ](?P<name>[\w|-]+)

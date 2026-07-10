@@ -8,7 +8,7 @@
 # =============================================================================
 
 import iamraw
-import utila
+import utilo
 
 
 def parse(ptcn) -> iamraw.PageContentFormula:
@@ -26,7 +26,7 @@ def parse(ptcn) -> iamraw.PageContentFormula:
 def extract_formula(line) -> iamraw.Formulas:
     # TODO: IMPROVE THIS VERY SIMPLE FORMULA CHECKER
     chars = [ord(char) for char in line.text]
-    maxchar = utila.maxs(chars)
+    maxchar = utilo.maxs(chars)
     # TODO: REPLACE WITH SINGLE FORMULA SIGN DETECTION
     ascii_only = maxchar < 12000
     if ascii_only:

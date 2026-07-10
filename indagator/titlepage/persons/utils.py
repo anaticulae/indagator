@@ -10,7 +10,7 @@
 import operator
 
 import iamraw
-import utila
+import utilo
 
 
 def order_persons(persons: list) -> 'tuple[iamraw.Person, iamraw.Persons]':
@@ -61,7 +61,7 @@ def valid_title(title: str) -> bool:
     return True
 
 
-ACADEMIC_TITLES = utila.compiles(r"""
+ACADEMIC_TITLES = utilo.compiles(r"""
 (
     \b
     (
@@ -131,7 +131,7 @@ EXAMINERS_TITLES = (
     iamraw.PROF_DR,
 )
 
-AUTHOR_INTRO = utila.splitlines("""
+AUTHOR_INTRO = utilo.splitlines("""
 VON
 ANGEFERTIGT
 AUTOR
@@ -139,7 +139,7 @@ VERFASSER
 VORGELEGT
 """)
 
-EXAMINER_INTRO = utila.splitlines("""
+EXAMINER_INTRO = utilo.splitlines("""
 BETREUER
 GUTACHTER
 PRÜFER
@@ -147,6 +147,6 @@ REFERENT
 SUPERVISOR
 """)
 
-TITLE_INVALID = utila.splitlines("""
+TITLE_INVALID = utilo.splitlines("""
 GEB.
 """)

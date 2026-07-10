@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import german
+import germania
 import iamraw
 
 
@@ -21,7 +21,7 @@ def parse(raw: str) -> iamraw.Person:
     # TODO:  ENABLE THIS STRATEGY
     # HINT: IN CURRENT STATE, THIS STRATEGY PRODUCES TO MANY FALSE
     # POSITIVE RESULTS
-    if not german.isperson(raw):
+    if not germania.isperson(raw):
         return None
     title = iamraw.AcademicTitle.NO_TITLE
     result = iamraw.Person(

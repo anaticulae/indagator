@@ -7,12 +7,12 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import hoverpower
 import iamraw
-import power
 import pytest
 import serializeraw
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import indagator.cli
 import indagator.feature.titlepage
@@ -23,16 +23,16 @@ import indagator.titlepage.persons
 import indagator.titlepage.strategy
 
 
-@utilatest.longrun
-@utilatest.requires(power.DOCU007_PDF)
+@utilotest.longrun
+@utilotest.requires(hoverpower.DOCU007_PDF)
 def test_titlepage_parser():
     extracted = indagator.feature.titlepage.work(
         iamraw.path.text(
-            power.link(power.DOCU007_PDF),
+            hoverpower.link(hoverpower.DOCU007_PDF),
             prefix='oneline',
         ),
         iamraw.path.textposition(
-            power.link(power.DOCU007_PDF),
+            hoverpower.link(hoverpower.DOCU007_PDF),
             prefix='oneline',
         ),
     )
@@ -70,7 +70,7 @@ def check_116_pages(titlepage: iamraw.TitlePage):
     )
     expected_title = ('Modellierung und Simulation eines hybriden '
                       'Lokomotivantriebs mit elektrischem Stufenlosgetriebe')
-    assert utila.normalize_whitespaces(titlepage.title) == expected_title
+    assert utilo.normalize_whitespaces(titlepage.title) == expected_title
     # TODO: Activate later
     author = iamraw.Person(
         'Fahrendholz',
@@ -93,33 +93,33 @@ def check_diss205(titlepage: iamraw.titlepage):
 
 @pytest.mark.parametrize('source, checker', [
     pytest.param(
-        power.DISS205_PDF,
+        hoverpower.DISS205_PDF,
         check_diss205,
         id='diss205',
     ),
     pytest.param(
-        power.MASTER072_PDF,
+        hoverpower.MASTER072_PDF,
         check_72_pages,
         id='master72',
     ),
     pytest.param(
-        power.MASTER078_PDF,
+        hoverpower.MASTER078_PDF,
         check_master78,
         id='master78',
     ),
     pytest.param(
-        power.MASTER116_PDF,
+        hoverpower.MASTER116_PDF,
         check_116_pages,
         id='master116',
     ),
     pytest.param(
-        power.BACHELOR090_PDF,
+        hoverpower.BACHELOR090_PDF,
         check_bachelor90,
         id='bachelor90',
         marks=pytest.mark.xfail(reason='improve title page parser'),
     ),
 ])
-@utilatest.longrun
+@utilotest.longrun
 def test_feature_titlepage_complete(
     source,
     checker,
@@ -130,10 +130,10 @@ def test_feature_titlepage_complete(
     # run rawmaker
     cmd = (f'rawmaker -i {source} --pages=0:5 '
            f'{indagator.feature.titlepage.RAWMAKER_CONFIGURATION}')
-    utila.run(cmd)
+    utilo.run(cmd)
     # run detector
     cmd = f'-i {td.tmpdir} --titlepage'
-    utilatest.run_command(
+    utilotest.run_command(
         cmd,
         process=indagator.PROCESS,
         main=indagator.cli.main,
@@ -153,9 +153,10 @@ def parse_titlepages(path: str, pages: tuple = None):
     return parsed
 
 
-@utilatest.longrun
-@utilatest.requires(power.MASTER072_PDF)
+@utilotest.longrun
+@utilotest.requires(hoverpower.MASTER072_PDF)
 def test_feature_titlepage_select_best():
-    parsed = parse_titlepages(power.link(power.MASTER072_PDF), pages=None)
+    parsed = parse_titlepages(hoverpower.link(hoverpower.MASTER072_PDF),
+                              pages=None)
     best = indagator.titlepage.strategy.select_best(parsed)
     assert best == parsed[0], str(best)

@@ -7,9 +7,9 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
+import hoverpower
 import pytest
-import utilatest
+import utilotest
 
 import tests.detector_
 
@@ -22,19 +22,19 @@ import tests.detector_
 def test_misc(cmd, mp, capsys):
     """Run help and version command to reach basic test coverage"""
     tests.detector_.run(cmd, mp=mp)
-    utilatest.write_capsys(capsys)
+    utilotest.write_capsys(capsys)
 
 
 @pytest.mark.parametrize('source', [
-    pytest.param(power.DOCU007_PDF, id='docu007'),
-    pytest.param(power.DOCU009_PDF, id='docu009'),
-    pytest.param(power.DOCU027_PDF, id='docu027'),
+    pytest.param(hoverpower.DOCU007_PDF, id='docu007'),
+    pytest.param(hoverpower.DOCU009_PDF, id='docu009'),
+    pytest.param(hoverpower.DOCU027_PDF, id='docu027'),
 ])
-@utilatest.longrun
+@utilotest.longrun
 def test_run_work(source, td, mp, capsys):
-    source = power.link(source)
-    utilatest.fixture_requires(source)
+    source = hoverpower.link(source)
+    utilotest.fixture_requires(source)
     cmd = f'-i {source} -o {td.tmpdir}'
-    with utilatest.increased_filecount(td.tmpdir, mindiff=3, maxdiff=3):
+    with utilotest.increased_filecount(td.tmpdir, mindiff=3, maxdiff=3):
         tests.detector_.run(cmd, mp=mp)
-    utilatest.write_capsys(capsys)
+    utilotest.write_capsys(capsys)

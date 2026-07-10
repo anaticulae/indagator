@@ -11,23 +11,23 @@ import functools
 
 import pytest
 import serializeraw
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import indagator.path
 import tests.conftest
 import tests.detector_
 
-ARCHIVE = utila.join(
+ARCHIVE = utilo.join(
     indagator.ROOT,
     'tests/detector_/titlepage/expected',
     exist=True,
 )
 
-RESOURCES = utilatest.test_resources(tests.conftest.RESOURCES)
+RESOURCES = utilotest.test_resources(tests.conftest.RESOURCES)
 
 
-@utilatest.longrun
+@utilotest.longrun
 @pytest.mark.parametrize('source', RESOURCES)
 def test_validate_titlepage(
     source,
@@ -41,7 +41,7 @@ def test_validate_titlepage(
     ).evaluate()
 
 
-class TitleCompare(utilatest.BaseLiner):
+class TitleCompare(utilotest.BaseLiner):
 
     def __init__(self, source, td, mp):
         super().__init__(
@@ -90,7 +90,7 @@ def rawtitle(value) -> str:
         matrikel=value.matrikel.number if value.matrikel else None,
         examiner=examiner,
     )
-    result = utila.dict_dump(data)
+    result = utilo.dict_dump(data)
     # remove trailing white spaces
     result: str = '\n'.join(item.rstrip() for item in result.splitlines())
     return result

@@ -18,9 +18,9 @@ TODO:
 import calendar
 import functools
 
-import german
+import germania
 import iamraw
-import utila
+import utilo
 
 
 def parse(raw: str) -> iamraw.TitleDate:
@@ -36,7 +36,7 @@ def parse(raw: str) -> iamraw.TitleDate:
     # Judge function to decide when having multiple results
     simple_alpha_date_month_first = functools.partial(
         simple_alpha_date,
-        month=german.MONTH,
+        month=germania.MONTH,
         pattern=ALPHA_DATE_MONTH_FIRST,
     )
     pattern = [
@@ -70,9 +70,9 @@ def validate_date(year: int, month: int, day: int) -> bool:
     return True
 
 
-MONTH_GROUP = r'(?P<month>%s)' % german.MONTH_REGEX[1:-1]  # pylint:disable=C0209
+MONTH_GROUP = r'(?P<month>%s)' % germania.MONTH_REGEX[1:-1]  # pylint:disable=C0209
 
-SIMPLE_DATE = utila.compiles(r"""
+SIMPLE_DATE = utilo.compiles(r"""
     (?P<day>\d{1,2})\.
     (?P<month>\d{1,2})\.
     (?P<year>(20[012]\d|1[789]\d\d))
@@ -81,9 +81,9 @@ SIMPLE_DATE = utila.compiles(r"""
 ALPHA_DATE = r'(?P<day>\d{1,2})([\.|,])[ ]' + MONTH_GROUP + r'[ ](?P<year>(20[012]\d|1[789]\d\d))'
 ALPHA_DATE_MONTH_FIRST = MONTH_GROUP + r'[ ](?P<day>\d{1,2})([\.|,])[ ](?P<year>(20[012]\d|1[789]\d\d))'
 
-MONTH_YEAR = utila.compiles(MONTH_GROUP + r'[ ](?P<year>(20[012]\d|1[789]\d\d))') # yapf:disable
+MONTH_YEAR = utilo.compiles(MONTH_GROUP + r'[ ](?P<year>(20[012]\d|1[789]\d\d))') # yapf:disable
 
-LOCATION_COMMA_ALPHADATE = utila.compiles(
+LOCATION_COMMA_ALPHADATE = utilo.compiles(
     r'(?P<location>\w{3,75}),[ ](den[ ]){0,1}(%s)' % ALPHA_DATE)  # pylint:disable=C0209
 
 
@@ -127,12 +127,12 @@ def simple_alpha_date(  # pylint:disable=R0914
     TitleDate(year=2010, month=1, day=15, location=None, valid=True, raw='15. Jan 2010')
     """
     if not month:
-        month = german.MONTH
+        month = germania.MONTH
     month_match = {reduce_word(item, reduce): item for item in month}
     changed_pattern = str(pattern)
     for key, value in month_match.items():
         changed_pattern = changed_pattern.replace(value, key)
-    parsed = utila.search(changed_pattern, raw)
+    parsed = utilo.search(changed_pattern, raw)
     if not parsed:
         return None
     result = iamraw.TitleDate(
@@ -141,7 +141,7 @@ def simple_alpha_date(  # pylint:disable=R0914
             parsed,
             values=dict(
                 day=int,
-                month=german.month,
+                month=germania.month,
                 year=int,
             ),
         ),
@@ -162,7 +162,7 @@ def simple_month_year_date(raw):
         **extract_data(
             parsed,
             values=dict(
-                month=german.month,
+                month=germania.month,
                 year=int,
             ),
         ),
@@ -183,7 +183,7 @@ def location_comma_day_month_year(raw: str) -> iamraw.TitleDate:
         values=dict(
             location=str,
             day=int,
-            month=german.month,
+            month=germania.month,
             year=int,
         ),
     ))
@@ -191,7 +191,7 @@ def location_comma_day_month_year(raw: str) -> iamraw.TitleDate:
     return result
 
 
-SEMESTER = utila.compiles(r"""
+SEMESTER = utilo.compiles(r"""
     (SOMMERSEMESTER|WINTERSEMESTER|SS|WS)
     [ ]{1,4}
     (?P<year>\d{2,4})
@@ -218,9 +218,9 @@ def semester_year(raw: str) -> iamraw.TitleDate:
 
 
 def extract_data(data, values: list) -> dict:
-    # TODO: MOVE TO UTILA
+    # TODO: MOVE TO utilo
     result = {
-        'raw': utila.extract_match(data),
+        'raw': utilo.extract_match(data),
     }
     for key, converter in values.items():
         result[key] = converter(data[key])

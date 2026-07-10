@@ -7,22 +7,22 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
-import utila
-import utilatest
+import hoverpower
+import utilo
+import utilotest
 
 import tests.detector_
 
 
-@utilatest.longrun
-@utilatest.requires(power.BACHELOR090_PDF)
+@utilotest.longrun
+@utilotest.requires(hoverpower.BACHELOR090_PDF)
 def test_regression_detector(td, mp):
     """Start with white page that leads to some trouble with empty
     navigators and problems to detect title page.
     """
     pattern = '[rawmaker|groupme]*.yaml'
-    utila.copy_content(
-        power.link(power.BACHELOR090_PDF),
+    utilo.copy_content(
+        hoverpower.link(hoverpower.BACHELOR090_PDF),
         td.tmpdir,
         pattern=pattern,
     )

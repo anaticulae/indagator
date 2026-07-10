@@ -7,16 +7,16 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import power
+import hoverpower
 
 import color.pagecolor
 import tests
 
 
-@tests.ghost
+@tests.ughost
 def test_colors():
     """Extract list of rgb colors with color count."""
-    source = power.MASTER031_PDF
+    source = hoverpower.MASTER031_PDF
     colors = list(color.pagecolor.colors(
         source,
         pages=0,
@@ -27,9 +27,9 @@ def test_colors():
     assert len(firstpage) == expected
 
 
-@tests.ghost
+@tests.ughost
 def test_histogram():
-    source = power.MASTER031_PDF
+    source = hoverpower.MASTER031_PDF
     detected = list(color.pagecolor.colors(
         source,
         pages=0,

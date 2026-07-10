@@ -7,35 +7,35 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import configo
-import ghost
+import configos
 import PIL.Image
-import utila
+import ughost
+import utilo
 
 import color
 
-PDF_DPI_MAX = configo.HV_INT_PLUS(default=144)
+PDF_DPI_MAX = configos.HV_INT_PLUS(default=144)
 
-COLORS_COUNT_MAX = configo.HV_INT_PLUS(default=1024 * 100)
+COLORS_COUNT_MAX = configos.HV_INT_PLUS(default=1024 * 100)
 
-HISTOGRAM_COUNT = configo.HV_INT_PLUS(default=50)
+HISTOGRAM_COUNT = configos.HV_INT_PLUS(default=50)
 
 
 def colors(source: str, pages: tuple = None) -> 'yields':
-    tmpdir = utila.tmpdir(root=color.ROOT)
-    ghost.pdfwrite(
+    tmpdir = utilo.tmpdir(root=color.ROOT)
+    ughost.pdfwrite(
         source=source,
         pages=pages,
         root=tmpdir,
         formats='png16m',
         dpi=PDF_DPI_MAX,
     )
-    files = utila.file_list(
+    files = utilo.file_list(
         tmpdir,
         absolute=True,
         include='png',
     )
-    files.sort(key=lambda x: str(utila.file_name(x)).zfill(4))
+    files.sort(key=lambda x: str(utilo.file_name(x)).zfill(4))
     for path in files:
         yield determine_color(path)
 
