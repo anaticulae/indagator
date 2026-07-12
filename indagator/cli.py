@@ -51,7 +51,7 @@ def main():
     utilo.featurepack(
         workplan=WORKPLAN,
         root=indagator.ROOT,
-        featurepackage='detector.feature',
+        featurepackage='indagator.feature',
         config=utilo.FeaturePackConfig(
             description=DESCRIPTION,
             multiprocessed=True,

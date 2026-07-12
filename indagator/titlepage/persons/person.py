@@ -76,7 +76,7 @@ submitted[ ]by
 von
 """)
 
-INTRO = '|'.join(EXAMINERS | AUTHORS | MAGICS)
+INTRO = '|'.join(EXAMINERS + AUTHORS + MAGICS)
 # pattern can be spread over more than one line
 PATTERN = utilo.compiles(rf"""
     (?P<examiner>({INTRO})[:]?\s?)?

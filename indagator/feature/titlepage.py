@@ -51,7 +51,7 @@ Requirements - "Wissenschaftliches Arbeiten" - Manuel Rene Theisen:
 
 import collections
 
-import picture
+import pictura
 import serializeraw
 import texmex
 import utilo
@@ -131,7 +131,7 @@ def load_images(images, pages: tuple = None) -> dict:
             # TODO: TRY OTHER FILE EXT?
             path = utilo.rreplace(path, '.yaml', '.png')
             if utilo.exists(path):
-                result[page.page].append(picture.imageload(path))
+                result[page.page].append(pictura.imageload(path))
                 continue
     result: dict = dict(result)
     return result
@@ -142,7 +142,7 @@ def convert_images(images: dict) -> dict:
     for page, values in images.items():
         converted = []
         for image in values:
-            detected = picture.detect(image)
+            detected = pictura.detect(image)
             if not detected:
                 continue
             converted.append(detected.text)

@@ -57,8 +57,8 @@ def parse(raw: str) -> iamraw.Person:
 
 
 def create_with_title_pattern():
-    positions = (indagator.titlepage.persons.person.EXAMINERS |
-                 indagator.titlepage.persons.person.AUTHORS)
+    positions = set(indagator.titlepage.persons.person.EXAMINERS +
+                    indagator.titlepage.persons.person.AUTHORS)
     preamble = [
         fr'(?P<t{index}>{item})' for index, item in enumerate(positions)
     ]
