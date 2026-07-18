@@ -44,6 +44,11 @@ dev = [
     "rawmaker==2.40.5",
     "sdatum==1.0.0",
     "utilotest==1.0.4",
+    "headnote==1.0.3",
+    "ibidem==1.0.2",
+    "pagenumber==1.0.0",
+    "groupmes==1.1.0",
+    "capita_ref==1.0.1"
 ]
 
 [project.urls]
