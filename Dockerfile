@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-FROM ghcr.io/anaticulae/baw:696994f
+FROM ghcr.io/anaticulae/baw:696994f-python
 
 ENV SHARED_TMP=/tmp/indagator/
 ENV HOVERPOWER_STORE=/var/workdir/hoverpower/repo
