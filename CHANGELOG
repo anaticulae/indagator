@@ -1,676 +1,2787 @@
-# Changelog
+# CHANGELOG
 
-Every noteable change is logged here.
+
+## v1.0.0 (2026-07-19)
+
+### Bug Fixes
+
+- **title**: Adjust package name
+  ([`e26b3b2`](https://github.com/anaticulae/indagator/commit/e26b3b2bae3e9dd655b8f67c8d97b3ffa4ac6137))
+
+### Chores
+
+- **docker**: Use gs environment
+  ([`8656b06`](https://github.com/anaticulae/indagator/commit/8656b06d2628b3247c86123b6e6366f67708643f))
+
+- **github**: Add .github
+  ([`3f6207e`](https://github.com/anaticulae/indagator/commit/3f6207e2db6f8364fd010d57b67dca3ef3e8c3be))
+
+- **project**: Adjust project name
+  ([`2c11d7d`](https://github.com/anaticulae/indagator/commit/2c11d7dc4677172c182368e43ee4940bf1fc5f8d))
+
+- **pyproject**: Add modern project layout
+  ([`d0e3eae`](https://github.com/anaticulae/indagator/commit/d0e3eaeb3d5e19c97907a68fd19c3dcc7c233da0))
+
+- **pyproject**: Add pictura
+  ([`beeadaa`](https://github.com/anaticulae/indagator/commit/beeadaa351fcc5a855330b209517160b2cbe631e))
+
+- **readme**: Adjust file names
+  ([`cb28223`](https://github.com/anaticulae/indagator/commit/cb282234be2f29b4197d354d8edb0dbe46cc09c6))
+
+- **requirements**: Add missing generators
+  ([`10a78aa`](https://github.com/anaticulae/indagator/commit/10a78aaa92d82626c5a52b52d60da7736d917d1d))
+
+- **requirements**: Remove outdated files
+  ([`f8e2f8f`](https://github.com/anaticulae/indagator/commit/f8e2f8fc3ff6519df59db07e24f0ba036f72f78f))
+
+- **requirements**: Upgrade pyproject.toml
+  ([`eb586e2`](https://github.com/anaticulae/indagator/commit/eb586e211b1701e6d79edecf766a606e0938c13f))
+
+### Refactoring
+
+- **linter**: Solver linter warnings
+  ([`c8c4177`](https://github.com/anaticulae/indagator/commit/c8c41770828581af3d916ef4836dda1c07ab98e1))
+
+- **packages**: Adjust package names
+  ([`3aed47c`](https://github.com/anaticulae/indagator/commit/3aed47c7a40b2f517bbfceceae38d680ec64f66c))
+
+### Testing
+
+- **title**: Adjust baseline
+  ([`c92975a`](https://github.com/anaticulae/indagator/commit/c92975a78c10a6022eda54f6ce47a0b0ef807b3b))
+
 
 ## v0.40.2 (2023-02-04)
 
-### Chore
+### Chores
 
-* shorten step name (b28c1aeef7d9)
-* add cov step (ddd2d229b45c)
-* use new pipeline steps (89aaefa1fc06)
-* upgrade requirements.txt (05ccd0cf0844)
-* upgrade pipe library (defbf551507d)
-* upgrade Jenkinsfile (ee07b79e3d60)
+- **Jenkins**: Add cov step
+  ([`ddd2d22`](https://github.com/anaticulae/indagator/commit/ddd2d229b45c8bd995bfac7c1130223b2bac77c2))
+
+- **Jenkins**: Shorten step name
+  ([`b28c1ae`](https://github.com/anaticulae/indagator/commit/b28c1aeef7d93ec76a284c6226b1f02a8f2fa03b))
+
+- **Jenkins**: Upgrade Jenkinsfile
+  ([`ee07b79`](https://github.com/anaticulae/indagator/commit/ee07b79e3d60665bd469b90acae5d369e9b0c4b8))
+
+- **Jenkins**: Upgrade pipe library
+  ([`defbf55`](https://github.com/anaticulae/indagator/commit/defbf551507dce16c7323e32708096320ee5ae62))
+
+- **Jenkins**: Use new pipeline steps
+  ([`89aaefa`](https://github.com/anaticulae/indagator/commit/89aaefa1fc0679c2053abd41addaa229232b6a96))
+
+- **requirements**: Upgrade requirements.txt
+  ([`05ccd0c`](https://github.com/anaticulae/indagator/commit/05ccd0cf0844b25a2bc37df13cf440119105ae2a))
+
 
 ## v0.40.1 (2023-01-04)
 
+### Chores
+
+- **Jenkins**: Remove useless post step
+  ([`4cec978`](https://github.com/anaticulae/indagator/commit/4cec9780d232f29df5e31500a9e3ee6bc71e213a))
+
+- **Jenkins**: Upgrade Jenkinsfile
+  ([`04474dd`](https://github.com/anaticulae/indagator/commit/04474dda2ea3727441af4ce93a0d09719163dc4b))
+
+- **Jenkins**: Upgrade pipe library
+  ([`ebc967a`](https://github.com/anaticulae/indagator/commit/ebc967a4eb93b3d34fa233219790c4bc5d8b5de8))
+
+- **Jenkins**: Use new pre-release
+  ([`8320749`](https://github.com/anaticulae/indagator/commit/8320749bd51f1595de84b726e9cae70ba728471e))
+
+- **requirements**: Upgrade requirements.txt
+  ([`6c9f31e`](https://github.com/anaticulae/indagator/commit/6c9f31ec66da7b872613a88ab16823ba672fe332))
+
 ### Documentation
 
-* happy New Year! (b9b6d83bc905)
+- **copyright**: Happy New Year!
+  ([`b9b6d83`](https://github.com/anaticulae/indagator/commit/b9b6d83bc905bb54129e411e3a32749205e268d6))
 
-### Chore
-
-* use new pre-release (8320749bd51f)
-* remove useless post step (4cec9780d232)
-* upgrade requirements.txt (6c9f31ec66da)
-* upgrade Jenkinsfile (04474dda2ea3)
-* upgrade pipe library (ebc967a4eb93)
 
 ## v0.40.0 (2022-12-21)
 
-### Feature
+### Chores
 
-* use modern data approach (1fdf8d61f712)
+- **Jenkins**: Upgrade pipeline
+  ([`3ab9178`](https://github.com/anaticulae/indagator/commit/3ab9178ae163aa4f526aacc2520ce2b61b35d19a))
 
-### Chore
+- **requirements**: Upgrade requirements.txt
+  ([`a7eee54`](https://github.com/anaticulae/indagator/commit/a7eee54357e8768dd8ddef2d00c7eb44330975d2))
 
-* remove default behavior (7fea4932237b)
-* extend resource generator (858649cd637a)
-* use quick install (124d9b3ff2a3)
-* upgrade requirements.txt (a7eee54357e8)
-* upgrade pipeline (3ab9178ae163)
+- **resources**: Extend resource generator
+  ([`858649c`](https://github.com/anaticulae/indagator/commit/858649cd637ae197b9d7d72de05bdc9c1968a993))
+
+- **resources**: Remove default behavior
+  ([`7fea493`](https://github.com/anaticulae/indagator/commit/7fea4932237bd6c79a011e557494fb3c4ec4fd42))
+
+- **setup**: Use quick install
+  ([`124d9b3`](https://github.com/anaticulae/indagator/commit/124d9b3ff2a386db3faa756eb76f77d62b4f1f8a))
+
+### Features
+
+- **cli**: Use modern data approach
+  ([`1fdf8d6`](https://github.com/anaticulae/indagator/commit/1fdf8d61f71227843dcadfac9400d9ec3c3b4841))
+
+### Refactoring
+
+- **replace**: Automated replacement
+  ([`8113bb1`](https://github.com/anaticulae/indagator/commit/8113bb1b6fc8af9b6673fd5438b0fec75c64410f))
+
 
 ## v0.39.3 (2022-10-16)
 
-### Chore
+### Chores
 
-* do not lock resources (bc699c39490d)
-* publish resources if all fails (c3d17708a2a0)
-* add pipe library (63c3bfecd7cf)
-* convert nightly to all (77408ac9ffaf)
-* upgrade requirements.txt (ee6e737d2fd6)
-* upgrade baw (a1e566bc0473)
-* do not run in privileged mode (49477a5f25fe)
+- **generator**: Do not lock resources
+  ([`bc699c3`](https://github.com/anaticulae/indagator/commit/bc699c39490deb34f6dee97cc538a70fb7584748))
+
+- **Jenkins**: Add pipe library
+  ([`63c3bfe`](https://github.com/anaticulae/indagator/commit/63c3bfecd7cf1bf5d92d11a4bea0fd5ee0673892))
+
+- **Jenkins**: Convert nightly to all
+  ([`77408ac`](https://github.com/anaticulae/indagator/commit/77408ac9ffaf92730bf0cbfbeccafea20dfff2e9))
+
+- **Jenkins**: Do not run in privileged mode
+  ([`49477a5`](https://github.com/anaticulae/indagator/commit/49477a5f25fe61c7daa6e1c761f3eda8e8493a97))
+
+- **Jenkins**: Publish resources if all fails
+  ([`c3d1770`](https://github.com/anaticulae/indagator/commit/c3d17708a2a02fa27ed8eaa43d428096e0d229da))
+
+- **Jenkins**: Upgrade baw
+  ([`a1e566b`](https://github.com/anaticulae/indagator/commit/a1e566bc0473d916fda6f035fc3624be2ef6c8a7))
+
+- **requirements**: Upgrade requirements.txt
+  ([`ee6e737`](https://github.com/anaticulae/indagator/commit/ee6e737d2fd6abdb106e7782111f885a724c86f2))
+
+### Refactoring
+
+- **cli**: Simplify code
+  ([`859c1f8`](https://github.com/anaticulae/indagator/commit/859c1f8c242932752bad3a3566917788027b6515))
+
+- **linter**: Solve linter warning
+  ([`e68fbf9`](https://github.com/anaticulae/indagator/commit/e68fbf9b04fb8934b8d0fabb31ad630d2ea1ff8e))
+
 
 ## v0.39.2 (2022-10-02)
 
-### Chore
+### Chores
 
-* adjust worker count (a07efec0b3a9)
+- **fix**: Adjust worker count
+  ([`a07efec`](https://github.com/anaticulae/indagator/commit/a07efec0b3a914641c5cb29b8b71158ec4d49886))
+
 
 ## v0.39.1 (2022-10-02)
 
-### Fix
+### Bug Fixes
 
-* skip step if ughost is not installed (8e6bcd8135ca)
+- **color**: Skip step if ghost is not installed
+  ([`8e6bcd8`](https://github.com/anaticulae/indagator/commit/8e6bcd8135caebb035d938f2d715e3247c3cc48d))
 
-### Chore
+### Chores
 
-* upgrade requirements.txt (f6fb70db0cbf)
+- **requirements**: Upgrade requirements.txt
+  ([`f6fb70d`](https://github.com/anaticulae/indagator/commit/f6fb70db0cbff71255ea5391d5a16d0c2f24d3f8))
+
 
 ## v0.39.0 (2022-09-28)
 
-### Feature
+### Chores
 
-* shrink year parser (c26f28749c3d)
+- **ci**: Add Jenkinsfile
+  ([`30f6b92`](https://github.com/anaticulae/indagator/commit/30f6b92d698cf4f3437c67cc4b806c98b791178f))
 
-### Documentation
+- **fix**: Do not use too many worker
+  ([`0ad4a4d`](https://github.com/anaticulae/indagator/commit/0ad4a4da55aaed96ab2a09823947dcf7339d502d))
 
-* extend interface documentation (b5042a7f3263)
+- **Jenkinsfile**: Add generator step
+  ([`6b98bc1`](https://github.com/anaticulae/indagator/commit/6b98bc1fe496d74d0c6637745fe518506fd0f04a))
 
-### Chore
+- **Jenkinsfile**: Use image with opengl
+  ([`a9e1d39`](https://github.com/anaticulae/indagator/commit/a9e1d3985907ac4acaaf6e0106d92aa354648d30))
 
-* use image with opengl (a9e1d3985907)
-* add generator step (6b98bc1fe496)
-* do not use too many worker (0ad4a4da55aa)
-* increase worker count on ci (a58ea2751907)
-* remove default value (0ed8ee4ccd14)
-* add missing test data generator (8b72d1333b1f)
-* add Jenkinsfile (30f6b92d698c)
-* upgrade requirements.txt (f071889cca20)
-* upgrade requirements.txt (c9d3e9eed695)
+- **requirements**: Upgrade requirements.txt
+  ([`f071889`](https://github.com/anaticulae/indagator/commit/f071889cca201f587b573624ec2f75832b1e4745))
 
-## v0.38.0
+- **requirements**: Upgrade requirements.txt
+  ([`c9d3e9e`](https://github.com/anaticulae/indagator/commit/c9d3e9eed695c098de8ab4de100fca036761dafd))
 
-### Feature
+- **resources**: Increase worker count on ci
+  ([`a58ea27`](https://github.com/anaticulae/indagator/commit/a58ea2751907923ed35927cb9f6d26f0c6b43fd2))
 
-* add another pattern (68883547cab9)
-* make parser more robust (21cd3608e811)
-* extend person after parser (cf73609386e8)
-* extend prof person parser (c8f1e7d71a37)
-* profile persons parser (6e43363b263a)
+- **resources**: Remove default value
+  ([`0ed8ee4`](https://github.com/anaticulae/indagator/commit/0ed8ee4ccd14191b05c96b4f2599611a24ccc66d))
 
-### Fix
+- **test**: Add missing test data generator
+  ([`8b72d13`](https://github.com/anaticulae/indagator/commit/8b72d1333b1f074429727b87ddc430a4f8794805))
 
-* fix raw replace (e27e603b1c06)
-* shrink regex runtime (abc4482de7dc)
-* reduce regex runtime (0215b026f2fe)
+### Code Style
+
+- **changelog**: Adjust to automation tool
+  ([`6426747`](https://github.com/anaticulae/indagator/commit/6426747113475784a03d6a156021c730e5f985e6))
 
 ### Documentation
 
-* add another format (f4b7bf7bef96)
+- **date**: Extend interface documentation
+  ([`b5042a7`](https://github.com/anaticulae/indagator/commit/b5042a7f3263cd8e15170020b6ef72ee461059a2))
 
-## v0.37.0
+### Features
 
-## v0.36.0
+- **date**: Shrink year parser
+  ([`c26f287`](https://github.com/anaticulae/indagator/commit/c26f28749c3d49c6f43ae37f1313ca0a442bf736))
 
-### Feature
+### Testing
 
-* extend bib parser (6ca9538b48b6)
-* add strategy name to bib result (e1912a9c124b)
-* extend person pattern (3dd06c68bf02)
+- **adjust**: Adjust interface
+  ([`7d5c6ec`](https://github.com/anaticulae/indagator/commit/7d5c6ecf2075dcad85d0a2af26dc5da4fce66279))
 
-### Fix
+- **cli**: Make test less strict
+  ([`71b991c`](https://github.com/anaticulae/indagator/commit/71b991c862fd1eca89d1d7a78edffc4f8b58f15b))
 
-* adjust page number for non zero page start (f623a1aef5dd)
+- **ghost**: Skip tests if ghost is not installed
+  ([`1a3584a`](https://github.com/anaticulae/indagator/commit/1a3584a3c2828061643e1245076321a3ec424f5b))
 
-## v0.35.1
+- **title**: Skip tests if resource is not generated
+  ([`5c6057f`](https://github.com/anaticulae/indagator/commit/5c6057f9e06a1da1ee10db186b65044dc1f7dc12))
 
-### Feature
 
-* increase colors to pass book173 example (580ab9dd6d5c)
+## v0.38.0 (2022-06-07)
 
-### Fix
+### Bug Fixes
 
-* do not fail on too few colors (c9e5e2c25432)
+- **date**: Shrink regex runtime
+  ([`abc4482`](https://github.com/anaticulae/indagator/commit/abc4482de7dc6db64d94c82abe2cdec18dc5a477))
 
-## v0.35.0
+- **institution**: Fix raw replace
+  ([`e27e603`](https://github.com/anaticulae/indagator/commit/e27e603b1c06c82bdf234e31fe43392ca6f422c9))
 
-### Feature
+- **person**: Reduce regex runtime
+  ([`0215b02`](https://github.com/anaticulae/indagator/commit/0215b026f2fe0e08a7c9dd07f96644c5332b27b7))
 
-* use real holy values (44dd22d6e9d6)
-* improve speed due using PIL native methods (74ed3932fb45)
-* use generator approach to reduce amount of memory (7e31f4ba7144)
+### Code Style
 
-### Fix
+- **docs**: Add sentence end sign
+  ([`79f061a`](https://github.com/anaticulae/indagator/commit/79f061a67035f8076bb774cb17f7b5d0168c44f4))
 
-* convert year to int (efacd378e47c)
-* convert empty string to none (fbed351868c6)
-
-## v0.34.1
-
-### Fix
-
-* rename cli to avoid conflict with windows color option (d3ccb5d5989e)
-
-## v0.34.0
-
-### Feature
-
-* add index detector (66b1c4d5d015)
-
-## v0.33.0
-
-### Feature
-
-* add method to load extracted colors (c56d8a98b014)
-* add statistics runner (f5f8c4f0c4bd)
-* add method to determine histogram (c58bcce5c896)
-* add method to detect colors of a pdf page (a6f8faaea23b)
-* add pdf color detector (6b4154cf2e7f)
-
-## v0.32.0
-
-### Feature
-
-* add headline and pages to BibliographyTable (76407fc49b2e)
-* use bib table (3abc311a8678)
-
-## v0.31.0
-
-### Feature
-
-* add optional white space to academic title patter (a908de8cb7ff)
-* make regex more robust (8773daa50aad)
-* add improved title detector (1874c1fb2125)
-* strip title (5e631fe4e29e)
-* use complex pattern to support more cases (3e7b2f9f6237)
-* use date as first split also (5fde58773027)
-* move strong http pattern to the front (39eb77424bc6)
-* detect year inside brackets at bib start (66c96e1b7b50)
-* use improved regex splitter (49ee68b70647)
-* shrink possible year (89dc2404b4a1)
-* do not create ughost pattern (dc1ae19db274)
-
-### Fix
-
-* ensure that person parser runs fast enough (f334eb28cdd8)
-* set min name length to 3 (c0c8c45f2339)
-* adjust image selector (bd8429c0f6ea)
-* improve magic parser (d832268778ae)
-* skip empty selection (451c6f21041d)
-
-## v0.30.0
-
-### Feature
-
-* use regex to improve institution parser (07d82331920e)
-* improve text preparation (206f652e4a5a)
-* use improved institution parser (c559f1901e73)
-* use picture to convert text in images to normal text (b3e6229cf153)
-* skip very long possible authors (b329bcc78325)
-* split quote before colon if possible (6fb8dcbab017)
-* add strategy with database lookup (c3b1627fca02)
-* allow space inside doc type def (cce66b2aa490)
-* do not skip bibs with detected reference (47e5787c8c73)
-* increase debugging information (990596e88949)
-
-### Fix
-
-* do not create ughost pattern (4617f57bd576)
-* allow more than one institution (61e3bdd73fcb)
-* avoid regex attack (1060ac95d248)
+- **test**: Format code
+  ([`bb3887b`](https://github.com/anaticulae/indagator/commit/bb3887b5a228e587f7c4ea62a9ba12cfca7d81eb))
 
 ### Documentation
 
-* adjust modules path (6aa86459cdd7)
-* Happy New Year! (f1780600dae6)
+- **matrikel**: Add another format
+  ([`f4b7bf7`](https://github.com/anaticulae/indagator/commit/f4b7bf7bef96546546bafc5639cc0852c3e411a4))
 
-## v0.29.3
+### Features
 
-### Feature
+- **matrikel**: Add another pattern
+  ([`6888354`](https://github.com/anaticulae/indagator/commit/68883547cab99df6ed8b0490b3613a56ba905653))
 
-* split optional number at the front of the line (dccc12079198)
-* allow splitting number-dot-pattern at front (041424b5d6af)
+- **matrikel**: Make parser more robust
+  ([`21cd360`](https://github.com/anaticulae/indagator/commit/21cd3608e811a5e48de3296c9f49165e90d98114))
 
-## v0.29.2
+- **person**: Extend person after parser
+  ([`cf73609`](https://github.com/anaticulae/indagator/commit/cf73609386e893f09b10a29056c2b0014ab2ac15))
 
-### Fix
+- **persons**: Extend prof person parser
+  ([`c8f1e7d`](https://github.com/anaticulae/indagator/commit/c8f1e7d71a3791d0b512e4f78e155fc606f9181f))
 
-* skip empty left column (1fe41c3792ce)
+- **persons**: Profile persons parser
+  ([`6e43363`](https://github.com/anaticulae/indagator/commit/6e43363b263a32f2c60b5f37fe43d0a28fbb6ab5))
 
-## v0.29.1
+### Refactoring
 
-### Feature
+- **matrikel**: Compile pattern
+  ([`68375cb`](https://github.com/anaticulae/indagator/commit/68375cb0028b79bfb0ee66a1d2277e03c070c045))
 
-* do not strip bracket angles (000178ff3be1)
+- **matrikel**: Simplify code
+  ([`e170387`](https://github.com/anaticulae/indagator/commit/e1703879aa49e49ac527ea79a6fd01cf0817a254))
 
-## v0.29.0
+- **matrikel**: Simplify regex
+  ([`2d7662c`](https://github.com/anaticulae/indagator/commit/2d7662c08ffb1145d4ecc6fddd0947eaa553be38))
 
-### Feature
+- **persons**: Compile regex
+  ([`b01d510`](https://github.com/anaticulae/indagator/commit/b01d510001c7d5300ebe94f3537dc9adafbb1def))
 
-* disable column verification after improving results (15017c6430a7)
-* improve column detector (87f3f26b5487)
-* extend bib evaluation (5c4c84c14546)
-* add improved bib detector (84858c318e5f)
-* add improved bib parser (deacdde753fd)
-* disable debugging (38a0a07eb225)
-* using caching to reduce execution time (862b5eabaa52)
+- **strategy**: Replace with utila code
+  ([`c15f4e2`](https://github.com/anaticulae/indagator/commit/c15f4e245216fa30640f60bed8a77d7cf0b36d69))
 
-### Fix
+### Testing
 
-* adjust after changing interface (d6d8dd679297)
+- **refactor**: Simplify code
+  ([`7cd9142`](https://github.com/anaticulae/indagator/commit/7cd9142ea6acb8156ee77a57df7fa6af5e8e6325))
 
-## v0.28.2
+- **remove**: Remove outdated test code
+  ([`d7dad2c`](https://github.com/anaticulae/indagator/commit/d7dad2c276033bf44012e61d69a0834e3374d41b))
 
-### Feature
+- **remove**: Remove outdated tests
+  ([`096d41c`](https://github.com/anaticulae/indagator/commit/096d41ccaa5e7a7d4bb6737e35efe72a7a83bda7))
 
-* replace with holy values (8b8859f2fca1)
+- **title**: Use modern validator approach
+  ([`c2b5ab3`](https://github.com/anaticulae/indagator/commit/c2b5ab38782612953695607da92f443198d1d11f))
 
-## v0.28.1
 
-### Fix
+## v0.37.0 (2022-06-06)
 
-* do not parse author if no quotation mark is collected (c7698cf61667)
+### Chores
 
-## v0.28.0
+- **requirements**: Upgrade requirements.txt
+  ([`af360ee`](https://github.com/anaticulae/indagator/commit/af360ee9b4314a5fc5cb94e8ec1e8fe090efe499))
 
-### Feature
+- **resources**: Shrink test data generator
+  ([`366ab97`](https://github.com/anaticulae/indagator/commit/366ab97268944e3f8b47ce92fab4633cc21933d5))
 
-* extend after pattern (34a4f5cd145f)
-* add title validator (d432fc4fe569)
-* add BSC as academic title (9ee2b0e8f7a8)
-* add brackets to title parser (7f15a676de38)
-* add persons title extractor (dc3adb305d6f)
+### Code Style
 
-### Fix
+- **format**: Format code
+  ([`6617997`](https://github.com/anaticulae/indagator/commit/66179976bedeed11038a7c6161c2a07554ba977e))
 
-* reduce number of false positive detection (a5742c7f91e0)
-* replace with stars (b69f068457b3)
-* fix after academic title determiner (e7dcecc900a6)
+### Testing
 
-## v0.27.1
+- **adjust**: Adjust unit test
+  ([`e8fde63`](https://github.com/anaticulae/indagator/commit/e8fde63d3052c393dd7e7e0458f89a86bd6d6e05))
 
-### Fix
+- **cli**: Simplify test
+  ([`7409e8a`](https://github.com/anaticulae/indagator/commit/7409e8a48c2bba106d69170cca22f1892221518b))
 
-* adjust data type (23dbf09d7a55)
+- **titlepage**: Enable unit test
+  ([`833a006`](https://github.com/anaticulae/indagator/commit/833a0069a05063efcc7a3ce08c5a6a75c38bba58))
 
-## v0.27.0
 
-### Feature
+## v0.36.0 (2022-05-19)
 
-* add ebd person parser (369994c88cfb)
+### Bug Fixes
 
-## v0.26.0
+- **color**: Adjust page number for non zero page start
+  ([`f623a1a`](https://github.com/anaticulae/indagator/commit/f623a1aef5dd392b3009c5a19c5f88886715a0c9))
 
-### Feature
+### Chores
 
-* improve title page parser (33cf7f5542a4)
-* add more potential person intros (c046d47a550b)
-* add option white space in academic title (d2ddef3bad37)
+- **requirements**: Upgrade requirements.txt
+  ([`163e30e`](https://github.com/anaticulae/indagator/commit/163e30ea0620056145cb3681a12c9a1397c13fcc))
 
-### Fix
+- **requirements**: Upgrade requirements.txt
+  ([`5494d33`](https://github.com/anaticulae/indagator/commit/5494d339c1007a33a3c8d21107add6526742a685))
 
-* improve person after parser (03ecdef2c5d8)
+- **resources**: Extend test data generator
+  ([`c1f17f1`](https://github.com/anaticulae/indagator/commit/c1f17f17ed096a6f943cbd794e895b3aa56307f4))
 
-## v0.25.0
+- **resources**: Remove default
+  ([`e4b0524`](https://github.com/anaticulae/indagator/commit/e4b0524bd6753232551f3a09bb00b8a7aa958f39))
 
-### Feature
+- **resources**: Sort resources alphabetically
+  ([`e2535a1`](https://github.com/anaticulae/indagator/commit/e2535a1a0473b429b5afb03dab1cc67c6139fd2b))
 
-* extend person start pattern (f2e4ec8191f6)
-* detect more than the first result (f30e053fcc2f)
-* add line start and end limit (0e1abdd4effe)
-* add student prefix (222d6de401af)
-* improve persons parser (20aeb20dfee2)
+### Features
 
-## v0.24.0
+- **bib**: Extend bib parser
+  ([`6ca9538`](https://github.com/anaticulae/indagator/commit/6ca9538b48b63a029382f84f97f49ac18254e3b5))
 
-### Feature
+- **person**: Extend person pattern
+  ([`3dd06c6`](https://github.com/anaticulae/indagator/commit/3dd06c68bf026711e940ab1a1cc9b9de90d1b3d2))
 
-* replace and/und with separator (60f7cbc5eb4a)
-* improve bib number parser (503626232939)
-* merge multiple NoPerson's (a5f563f33841)
-* add quotes extractor (b953d8f20967)
-* add strategy to search authors (afca0e44b67b)
-* reduce verbosity (2ed6f93b4c14)
+- **strategy**: Add strategy name to bib result
+  ([`e1912a9`](https://github.com/anaticulae/indagator/commit/e1912a9c124bd18c0faacea7d6035f7dec816a92))
 
-### Fix
+### Refactoring
 
-* do not hand `and` in authors as separator (190f423762c2)
+- **bib**: Reduce complexity
+  ([`4f50cc8`](https://github.com/anaticulae/indagator/commit/4f50cc83c8ce4004a6182948c8bb09cb07ff1e3c))
 
-## v0.23.0
+- **rename**: Adjust interface name
+  ([`62399d5`](https://github.com/anaticulae/indagator/commit/62399d556349e60da160eefdd9e4dc37cbb10fe1))
 
-### Feature
+### Testing
 
-* improve bib parser (d63423d5144e)
-* store more than one hyperlink (205002d55514)
+- **bib**: Add strategy name
+  ([`c74ef64`](https://github.com/anaticulae/indagator/commit/c74ef640a135050a6ba4fff978b7ca3d4720be52))
 
-### Fix
+- **bib**: Adjust expected diss148
+  ([`3c3130a`](https://github.com/anaticulae/indagator/commit/3c3130a24d8be1ec99961308852b05d25379b75b))
 
-* do not split inside links (93575c5a1b0e)
+- **bib**: Sort tests alphabetically
+  ([`1eb6d8b`](https://github.com/anaticulae/indagator/commit/1eb6d8b6006f6a0e43b01f315e1a165ca05ceb9b))
 
-## v0.22.0
+- **refactor**: Reduce complexity
+  ([`d050721`](https://github.com/anaticulae/indagator/commit/d050721f3587c43538afade3254686805c6bb185))
 
-### Feature
+- **style**: Format docs
+  ([`a6a1e9a`](https://github.com/anaticulae/indagator/commit/a6a1e9a378cdbda8a7c8e3b379fbe9e97a5df666))
 
-* make parser more optimistic (604327de2833)
-* skip results with too many year errors (cc78489746c0)
-* skip invalid results (dbecfb06f21a)
-* use global vspace strategy (a70f20f8bccc)
-* make parser less strict (dbb5b062f94f)
-* improve year and hyperlink selector (2c18b8ff4aab)
-* adjust freeand parser (a8590259fcd6)
-* improve freeand parser (2a2eb57345c0)
-* add referent as potential examiner (d55ea3cc441b)
-* extend person title after parser (0374a736a793)
-* make person decider more robust (cb4f8d69b159)
 
-### Fix
+## v0.35.1 (2022-04-28)
 
-* adjust freeand parser (fc2e805d2631)
-* include more sentence signs (d4dffdb24f4d)
-* add szett as valid character (21681f8dc062)
+### Bug Fixes
+
+- **color**: Do not fail on too few colors
+  ([`c9e5e2c`](https://github.com/anaticulae/indagator/commit/c9e5e2c25432271a257bd5dbebf05bfa510e7f39))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`d19465f`](https://github.com/anaticulae/indagator/commit/d19465f76792144aaff1d1478dd200ba0eb2558d))
+
+### Features
+
+- **color**: Increase colors to pass book173 example
+  ([`580ab9d`](https://github.com/anaticulae/indagator/commit/580ab9dd6d5cc6fe0b461f320429cdfb70bdbc30))
+
+
+## v0.35.0 (2022-03-31)
+
+### Bug Fixes
+
+- **bib**: Convert empty string to none
+  ([`fbed351`](https://github.com/anaticulae/indagator/commit/fbed351868c65ac2ed7f76c3013dafbc96418090))
+
+- **bib**: Convert year to int
+  ([`efacd37`](https://github.com/anaticulae/indagator/commit/efacd378e47c502732bb2d4c072e2c7a3cfd229a))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`12dcf88`](https://github.com/anaticulae/indagator/commit/12dcf88cd0a03d256827c044a655db4ff2199537))
+
+### Features
+
+- **pagecolor**: Improve speed due using PIL native methods
+  ([`74ed393`](https://github.com/anaticulae/indagator/commit/74ed3932fb459fc181b3ed302f0bc8de8e4a8d3a))
+
+- **pagecolor**: Use generator approach to reduce amount of memory
+  ([`7e31f4b`](https://github.com/anaticulae/indagator/commit/7e31f4ba7144c08c9cdb69a69fcf12c6e94067f8))
+
+- **pagecolor**: Use real holy values
+  ([`44dd22d`](https://github.com/anaticulae/indagator/commit/44dd22d6e9d6dee5c40ba9f7d8a0f5fe00a99039))
+
+### Refactoring
+
+- **remove**: Remove unused color
+  ([`fb5ee2e`](https://github.com/anaticulae/indagator/commit/fb5ee2ec5e7c14d59a08a74565f87e9fe5a0733b))
+
+- **statistics**: Replace with serialize code
+  ([`b397c0e`](https://github.com/anaticulae/indagator/commit/b397c0e65b6a8871c955f3c4d83d2940ee551054))
+
+### Testing
+
+- **color**: Do not fail on large pdf
+  ([`09dc85e`](https://github.com/anaticulae/indagator/commit/09dc85e348fb98d20aec4a2c399b468926858f5f))
+
+
+## v0.34.1 (2022-03-28)
+
+### Bug Fixes
+
+- **setup**: Rename cli to avoid conflict with windows color option
+  ([`d3ccb5d`](https://github.com/anaticulae/indagator/commit/d3ccb5d5989e41a26ae0bc53972cbbb5939910c2))
+
+
+## v0.34.0 (2022-03-28)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`34d09f8`](https://github.com/anaticulae/indagator/commit/34d09f8841c35b3830052dd756100c658c9f946f))
+
+- **resources**: Extend test data generator
+  ([`1d6534f`](https://github.com/anaticulae/indagator/commit/1d6534fe984882dece1389d5432920e53213044c))
+
+- **test**: Keep dev build fast
+  ([`e6e1104`](https://github.com/anaticulae/indagator/commit/e6e1104efb9bdea50d08014fbabb706038a38fe1))
+
+### Code Style
+
+- **cleanup**: Cleanup changelog
+  ([`f88b8f6`](https://github.com/anaticulae/indagator/commit/f88b8f6537ef17ff01f90168b33c69127983c62c))
+
+### Features
+
+- **detector**: Add index detector
+  ([`66b1c4d`](https://github.com/anaticulae/indagator/commit/66b1c4d5d015bf75acde7249de43e2caf1db1c06))
+
+
+## v0.33.0 (2022-03-09)
+
+### Chores
+
+- **project**: Remove default
+  ([`66c0d1f`](https://github.com/anaticulae/indagator/commit/66c0d1f620b9a895db80548645d0bfd57e5a1421))
+
+- **requirements**: Add ghost to render pdf
+  ([`3c73a5c`](https://github.com/anaticulae/indagator/commit/3c73a5ce8a4d7b27bdd59eee9989421d28b82e4e))
+
+- **requirements**: Upgrade requirements.txt
+  ([`ee1ce02`](https://github.com/anaticulae/indagator/commit/ee1ce02b892dd3c0bb7ad3b713eeef131d5f09b0))
+
+### Code Style
+
+- **setup**: Cleanup file
+  ([`4a4d5e3`](https://github.com/anaticulae/indagator/commit/4a4d5e310422bb4d7eede29a51a371c8a0499b7b))
+
+### Features
+
+- **color**: Add pdf color detector
+  ([`6b4154c`](https://github.com/anaticulae/indagator/commit/6b4154cf2e7fd3439ae3517e5f9fa1c6430d8b58))
+
+- **pagecolor**: Add method to detect colors of a pdf page
+  ([`a6f8faa`](https://github.com/anaticulae/indagator/commit/a6f8faaea23bf898414aff8eb74afb01f0d5b5b1))
+
+- **pagecolor**: Add method to determine histogram
+  ([`c58bcce`](https://github.com/anaticulae/indagator/commit/c58bcce5c8968984df63077cb74bf0729c705958))
+
+- **statistics**: Add method to load extracted colors
+  ([`c56d8a9`](https://github.com/anaticulae/indagator/commit/c56d8a98b014a6a94f59f16f6ddb12fd5e61c403))
+
+- **statistics**: Add statistics runner
+  ([`f5f8c4f`](https://github.com/anaticulae/indagator/commit/f5f8c4f0c4bd4934bfc19736695aab1b1c0e7e1c))
+
+### Refactoring
+
+- **pagecolor**: Fix naming
+  ([`c7cc0e7`](https://github.com/anaticulae/indagator/commit/c7cc0e744449b1921fdb8f262f8b918443c76fc9))
+
+- **statistics**: Clarify data types
+  ([`5cfe76a`](https://github.com/anaticulae/indagator/commit/5cfe76a5b31adbd1cca2c818cea3843fe1e4e760))
+
+- **test**: Move into separate folder
+  ([`054b9d4`](https://github.com/anaticulae/indagator/commit/054b9d4d1f6c1ac572dd9105c4382a4297c72a89))
+
+### Testing
+
+- **pagecolor**: Increase test coverage
+  ([`96fbb94`](https://github.com/anaticulae/indagator/commit/96fbb9497077a4d7171dc235893f737c3aadc90b))
+
+- **refactor**: Replace with utilatest code
+  ([`ca658cc`](https://github.com/anaticulae/indagator/commit/ca658cc9a94f49a71fa7fd4d1e274cf024e17f65))
+
+
+## v0.32.0 (2022-02-25)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`d008ca2`](https://github.com/anaticulae/indagator/commit/d008ca2d90d677bfa242a685122533b392af220e))
+
+### Code Style
+
+- **docs**: Adjust underline
+  ([`2d35bbd`](https://github.com/anaticulae/indagator/commit/2d35bbdb015f7aff5ca4b8a14ad41e99281f501c))
+
+### Features
+
+- **bib**: Add headline and pages to BibliographyTable
+  ([`76407fc`](https://github.com/anaticulae/indagator/commit/76407fc49b2e7e22b4f7a4e41a3ae9e91d0bc044))
+
+- **bib**: Use bib table
+  ([`3abc311`](https://github.com/anaticulae/indagator/commit/3abc311a8678a3b50ffa718968a722695676ca36))
+
+### Refactoring
+
+- **move**: Move bib extractor
+  ([`5a754f2`](https://github.com/anaticulae/indagator/commit/5a754f28bdf501876837cadd9fbb206997930310))
+
+- **rename**: Shorten naming
+  ([`d1cab5c`](https://github.com/anaticulae/indagator/commit/d1cab5ce12087f98ec013c6f6735ce62fa763372))
+
+### Testing
+
+- **bib**: Adjust unit test
+  ([`ec8ee39`](https://github.com/anaticulae/indagator/commit/ec8ee39d689c2b691e80d15adb26538245937f37))
+
+- **bib**: Ensure that pages and headline is extracted correctly
+  ([`38b48f9`](https://github.com/anaticulae/indagator/commit/38b48f9a39187a1ef875077eeca6577bef00d50e))
+
+- **refactor**: Improve code style
+  ([`b07adce`](https://github.com/anaticulae/indagator/commit/b07adced59048aa8878baabb9f4caa4cf4e62c41))
+
+
+## v0.31.0 (2022-02-20)
+
+### Bug Fixes
+
+- **magic**: Improve magic parser
+  ([`d832268`](https://github.com/anaticulae/indagator/commit/d832268778ae67edd012b91af0ccf6f45b31f5f5))
+
+- **magic**: Skip empty selection
+  ([`451c6f2`](https://github.com/anaticulae/indagator/commit/451c6f21041d2599feae8bc5b57c67407fa4015e))
+
+- **person**: Ensure that person parser runs fast enough
+  ([`f334eb2`](https://github.com/anaticulae/indagator/commit/f334eb28cdd8935815a804738e5e37e46109df71))
+
+- **person**: Set min name length to 3
+  ([`c0c8c45`](https://github.com/anaticulae/indagator/commit/c0c8c45f2339ec7d891266df97c752ddf97f61a4))
+
+- **title**: Adjust image selector
+  ([`bd8429c`](https://github.com/anaticulae/indagator/commit/bd8429c0f6eaabfce4df77bccde797124df8bfbd))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`027a063`](https://github.com/anaticulae/indagator/commit/027a063726b1f9570c278294d81c9ffcdc0b0cff))
+
+- **resources**: Extend test data generator
+  ([`b9fb29e`](https://github.com/anaticulae/indagator/commit/b9fb29ed37ba744811db3cffe548765a5d5b722e))
+
+### Code Style
+
+- **format**: Format code
+  ([`9d9a5d8`](https://github.com/anaticulae/indagator/commit/9d9a5d831f2442a724bf90d741e96293190fa662))
+
+- **test**: Adjust test names
+  ([`5046861`](https://github.com/anaticulae/indagator/commit/504686123397c9cfde25fdd1d634d748b4a8584a))
+
+### Features
+
+- **freeand**: Strip title
+  ([`5e631fe`](https://github.com/anaticulae/indagator/commit/5e631fe4e29e91c8154fd2834e8233b764f03766))
+
+- **person**: Add optional white space to academic title patter
+  ([`a908de8`](https://github.com/anaticulae/indagator/commit/a908de8cb7ff405c132aa4496d43dd752f9033a4))
+
+- **person**: Make regex more robust
+  ([`8773daa`](https://github.com/anaticulae/indagator/commit/8773daa50aad6c1f07a3b834f0a419e69bed7ab4))
+
+- **tech**: Detect year inside brackets at bib start
+  ([`66c96e1`](https://github.com/anaticulae/indagator/commit/66c96e1b7b5014936ba58089ec8212b1d5d97d23))
+
+- **tech**: Do not create ghost pattern
+  ([`dc1ae19`](https://github.com/anaticulae/indagator/commit/dc1ae19db27480fcefd4e5ba302db79360a37a3b))
+
+- **tech**: Move strong http pattern to the front
+  ([`39eb774`](https://github.com/anaticulae/indagator/commit/39eb77424bc66243939e63515afa62ee76af1035))
+
+- **tech**: Use complex pattern to support more cases
+  ([`3e7b2f9`](https://github.com/anaticulae/indagator/commit/3e7b2f9f6237b49ad758ee66023ae8f5763a73d0))
+
+- **tech**: Use date as first split also
+  ([`5fde587`](https://github.com/anaticulae/indagator/commit/5fde5877302785e7f9809a0677e76ea094729156))
+
+- **tech**: Use improved regex splitter
+  ([`49ee68b`](https://github.com/anaticulae/indagator/commit/49ee68b70647ce817b701f583abdfaa267be6d05))
+
+- **utils**: Add improved title detector
+  ([`1874c1f`](https://github.com/anaticulae/indagator/commit/1874c1fb21257cd8275f629a68073313f8eb96a0))
+
+- **year**: Shrink possible year
+  ([`89dc240`](https://github.com/anaticulae/indagator/commit/89dc2404b4a17387095f363c96b9cbe024195f67))
+
+### Refactoring
+
+- **person**: Align pattern
+  ([`c923354`](https://github.com/anaticulae/indagator/commit/c92335407db56f3c200cd58c262c03e3361c1e34))
+
+- **person**: Compile pattern
+  ([`595b514`](https://github.com/anaticulae/indagator/commit/595b51483c3e253a013c2ac8b33c09700faebb2b))
+
+- **person**: Reduce complexity
+  ([`6f3af6f`](https://github.com/anaticulae/indagator/commit/6f3af6fa8f5dc3152c58ea9a272e877fd32a61e5))
+
+- **person**: Simplify code
+  ([`416ff27`](https://github.com/anaticulae/indagator/commit/416ff2784d81f2979d09d67a42da1e724191ad20))
+
+- **person**: Use improve title pattern
+  ([`93cdf3f`](https://github.com/anaticulae/indagator/commit/93cdf3f74c224f4975025bd4bbce9f02a47cf223))
+
+- **utils**: Clarify naming
+  ([`9c38379`](https://github.com/anaticulae/indagator/commit/9c38379089fc977a3cacb2fe066c883b7caf53ee))
+
+- **utils**: Compile pattern
+  ([`00382c9`](https://github.com/anaticulae/indagator/commit/00382c99495c62fa15309d3d826df7f85c775ef9))
+
+### Testing
+
+- **adjust**: Adjust validation result
+  ([`cdbe6c1`](https://github.com/anaticulae/indagator/commit/cdbe6c16080ef74a8114ae92e405135c13882ffd))
+
+- **bib**: Add baseline
+  ([`0a0aeb7`](https://github.com/anaticulae/indagator/commit/0a0aeb7b1899f728c6bd70624f44bd474d82c7e1))
+
+- **bib**: Add titles to validation
+  ([`b5a8d2f`](https://github.com/anaticulae/indagator/commit/b5a8d2f4fbbf21d25f0e443cdc72828af67ee306))
+
+- **bib**: Adjust unit tests
+  ([`986f659`](https://github.com/anaticulae/indagator/commit/986f6598afdf84b50d15805c5fc7bcd5be8825ee))
+
+- **bib**: Validate master072
+  ([`6979f08`](https://github.com/anaticulae/indagator/commit/6979f08e926b011f0af822c1770772db753dfae8))
+
+- **format**: Format code
+  ([`84e2105`](https://github.com/anaticulae/indagator/commit/84e2105df58d4992be044f5b1c106626e885604d))
+
+- **person**: Add test to improve name pattern
+  ([`8fc9243`](https://github.com/anaticulae/indagator/commit/8fc92438c40c58daa6ac779a2468c385cd281d99))
+
+- **person**: Make doctest more robust
+  ([`defb169`](https://github.com/anaticulae/indagator/commit/defb169fa5f88fca637e3fecc7566427a631bd34))
+
+- **refactor**: Simplify validator
+  ([`12a42ab`](https://github.com/anaticulae/indagator/commit/12a42abd5d4fa4656ecd95f9cf599cd354fb031f))
+
+- **rename**: Shorten naming
+  ([`f09bb6d`](https://github.com/anaticulae/indagator/commit/f09bb6dbc4c6c708fc386c83b57c75f700aaf3b1))
+
+
+## v0.30.0 (2022-01-29)
+
+### Bug Fixes
+
+- **label**: Avoid regex attack
+  ([`1060ac9`](https://github.com/anaticulae/indagator/commit/1060ac95d2487ea578a795eea809b1af90db046a))
+
+- **title**: Allow more than one institution
+  ([`61e3bdd`](https://github.com/anaticulae/indagator/commit/61e3bdd73fcbfc3db1b01aa257c17152d9cc1b7b))
+
+- **titlepage**: Do not create ghost pattern
+  ([`4617f57`](https://github.com/anaticulae/indagator/commit/4617f57bd576e4a6c08577d093045fc516e07c28))
+
+### Chores
+
+- **requirements**: Add picture package
+  ([`c431057`](https://github.com/anaticulae/indagator/commit/c4310575eaba405b990fdb4e1aa07effe5339e22))
+
+- **requirements**: Add requirements
+  ([`48b7287`](https://github.com/anaticulae/indagator/commit/48b7287b60dfb1d3e8a62cb02eb1d2662e061f8c))
+
+- **requirements**: Extend test data generator
+  ([`9ba4f75`](https://github.com/anaticulae/indagator/commit/9ba4f7599cb97d5b24497c9ab4f13bc88679bd86))
+
+- **requirements**: Upgrade requirements.txt
+  ([`ad84ae2`](https://github.com/anaticulae/indagator/commit/ad84ae250625bacedebaf0596f186828c8f9abe4))
+
+- **resources**: Extend test data generator
+  ([`601698b`](https://github.com/anaticulae/indagator/commit/601698be662c41108369e13a56e5c85acd389d84))
+
+- **resources**: Extend test data generator
+  ([`511b53b`](https://github.com/anaticulae/indagator/commit/511b53b60291d9a0e18d12b89eb8d15f79c2935b))
+
+- **resources**: Extend test data generator
+  ([`ba98dec`](https://github.com/anaticulae/indagator/commit/ba98dec490c2f081230affd75a015c5d5aecfb88))
 
 ### Documentation
 
-* add information about very bad example (ae9e222f24f6)
-* add module documentation (2adbf32daec9)
+- **copyright**: Happy New Year!
+  ([`f178060`](https://github.com/anaticulae/indagator/commit/f1780600dae6c9245028c3b1d80e26cb1a203c89))
 
-## v0.21.1
+- **fix**: Adjust modules path
+  ([`6aa8645`](https://github.com/anaticulae/indagator/commit/6aa86459cdd7ec51d42c1c5cb36b2f838a22e15a))
 
-### Feature
+### Features
 
-* ignore cases and ease using regex (edd51d837fd3)
-* extend semester pattern (3e5ebb0d1082)
+- **bib**: Increase debugging information
+  ([`990596e`](https://github.com/anaticulae/indagator/commit/990596e889495fbaaaa78e66d2cad6d94e8c2526))
 
-## v0.21.0
+- **institution**: Improve text preparation
+  ([`206f652`](https://github.com/anaticulae/indagator/commit/206f652e4a5a010a4251059e6abb860183abacdd))
 
-### Feature
+- **institution**: Use improved institution parser
+  ([`c559f19`](https://github.com/anaticulae/indagator/commit/c559f1901e73f7eb439b15baefc02bc4b9bb3535))
 
-* use more specific parser first (07d9cadf2e76)
-* extend debugging information (8fde94d652a2)
-* use improved newline converter (493aa5e60392)
-* improve freeand parser (078e3e112a74)
-* normalize white spaces to ease regex (c336e846872b)
-* add optional extern flag (b6e9b7052355)
-* add master title to title after person pattern (ce983854fd1c)
-* add optional month part (fafe3d64057a)
-* add location of parsed bib to result (afc4bb841ad8)
+- **institution**: Use regex to improve institution parser
+  ([`07d8233`](https://github.com/anaticulae/indagator/commit/07d82331920e79081a66a30950b567773bece3a7))
 
-### Fix
+- **judge**: Do not skip bibs with detected reference
+  ([`47e5787`](https://github.com/anaticulae/indagator/commit/47e5787c8c73e612a287748788a9bfab9b507732))
 
-* support character simplification (a355a8dd66a4)
+- **persons**: Add strategy with database lookup
+  ([`c3b1627`](https://github.com/anaticulae/indagator/commit/c3b1627fca022731757aa0e795d8e37858da8f99))
 
-## v0.20.0
+- **tech**: Skip very long possible authors
+  ([`b329bcc`](https://github.com/anaticulae/indagator/commit/b329bcc7832516448a02717b876ac715ff56a095))
 
-### Feature
+- **tech**: Split quote before colon if possible
+  ([`6fb8dcb`](https://github.com/anaticulae/indagator/commit/6fb8dcbab017066ce39e8257ca635a020014cb84))
 
-* add rest parser to solve order107 (10f6972cce35)
-* change order in bib detection strategy (bfdb921f9e46)
-* return None to signal invalid input (9a47360f90ae)
-* use less strict bib pattern (327ac04ff8b3)
-* add option to parse multiple bib pattern (3e2a2a84682c)
-* add option change used regex (08e4af79d63b)
-* add noperson bib parser (c93e5ad672e3)
+- **thesis**: Allow space inside doc type def
+  ([`cce66b2`](https://github.com/anaticulae/indagator/commit/cce66b2aa490f6852d9a1fff6f863578856eda83))
 
-## v0.19.0
+- **titlepage**: Use picture to convert text in images to normal text
+  ([`b3e6229`](https://github.com/anaticulae/indagator/commit/b3e6229cf153fc985f277160a3e07948b4404a13))
 
-### Feature
+### Refactoring
 
-* decrease verbosity (2504fa00eaff)
+- **date**: Improve regex style
+  ([`0cba26f`](https://github.com/anaticulae/indagator/commit/0cba26f0cf8ad8d1fabb237a1f4f060299efb2a0))
 
-## v0.18.0
+- **date**: Shorten names
+  ([`9663ad6`](https://github.com/anaticulae/indagator/commit/9663ad6957280c16bb17948bffe34714663c5199))
 
-### Feature
+- **institution**: Clarify code
+  ([`e02d3ca`](https://github.com/anaticulae/indagator/commit/e02d3ca234c14f10461b018957154cd2655961d0))
 
-* decrease verbosity of logging (5fddb4ffaffe)
-* count valid bibs only (bd8199ad88ab)
-* extend bib pattern support (7754bb3a22ea)
-* increase vspace max variation range (99919476a5bc)
+- **setup**: Cleanup setup file
+  ([`bdd19be`](https://github.com/anaticulae/indagator/commit/bdd19be59f81f7e19bc9b276fe0141775cf1ce1f))
 
-## v0.17.0
+- **thesis**: Compile pattern
+  ([`647c63b`](https://github.com/anaticulae/indagator/commit/647c63ba0f119bf2a9dfda4d51f37b0000c50234))
 
-### Feature
+### Testing
 
-* skip none parsings in alternate layout (d9c1a50b3d30)
-* use magic parser in alternate layout (62d1e8657938)
-* add very less accurate `magic` parser (dc39c6b8efd1)
-* use layout optimize to gather better results (0ae30b3cfef0)
-* increase maximum label char width (b86fdb779417)
-* add method to skip invalid parsed academic titles (76af10785b41)
-* spread pattern over more than one line (090212b4b46f)
+- **bib**: Adjust unit test after improving detector diss172
+  ([`d34293e`](https://github.com/anaticulae/indagator/commit/d34293e38652bfd64663bf11ee4776db47c5ce18))
 
-## v0.16.1
+- **bib**: Validate diss172
+  ([`a89b688`](https://github.com/anaticulae/indagator/commit/a89b688b0eaa1cdf1c7b460c33252af00412acb6))
 
-### Fix
+- **bib**: Validate diss178
+  ([`93de182`](https://github.com/anaticulae/indagator/commit/93de18299120bd7096a81cb576dcd265539bf3e5))
 
-* add missing import (974ac3fb71f8)
+- **title**: Validate master099b title
+  ([`c79d783`](https://github.com/anaticulae/indagator/commit/c79d783ec42fd502036946b310c1addda718d96a))
 
-## v0.16.0
+- **titlepage**: Run titlepage with image extraction
+  ([`1ba3c03`](https://github.com/anaticulae/indagator/commit/1ba3c031665719f15810fb8059735a6d6991bcd7))
 
-### Feature
 
-* add new [1]-pattern parser to alternate parser (d3106301929a)
-* add numbered reference[1]-parser (ee7d4af13b6b)
+## v0.29.3 (2021-12-07)
 
-## v0.15.0
+### Chores
 
-### Feature
+- **requirements**: Upgrade requirements.txt
+  ([`97f149f`](https://github.com/anaticulae/indagator/commit/97f149fe5415b6924df9a255c69813192ca9e82d))
 
-* extend title page parser and judger (7730a9e84017)
-* extend person pattern (3b8d0f9beeae)
-* simplify titlepage extractor loader (9686d9cef10c)
+### Features
 
-## v0.14.0
+- **alternate**: Split optional number at the front of the line
+  ([`dccc120`](https://github.com/anaticulae/indagator/commit/dccc120791982c8bd2da47509632fb013329d06e))
 
-### Feature
+- **number**: Allow splitting number-dot-pattern at front
+  ([`041424b`](https://github.com/anaticulae/indagator/commit/041424b5d6afdc1c7eefbabab87780ee483bf067))
 
-* add double column optimizer (873a1fee2133)
-* enable second bib column detector strategy (490a0bfd6c44)
-* add special double column parser (4043d9776e0c)
+### Refactoring
 
-## v0.13.3
+- **alternate**: Use real holy value
+  ([`1ca2c22`](https://github.com/anaticulae/indagator/commit/1ca2c227f31101f793d2f666b612c7b50c3ef731))
 
-### Fix
+- **rename**: Clarify naming
+  ([`f2dd6f8`](https://github.com/anaticulae/indagator/commit/f2dd6f899891e514e83b70b85e86d45edddce44c))
 
-* adjust unit test to new Person data structure (1683395a5ca6)
+### Testing
 
-## v0.13.2
+- **bib**: Adjust bib diss167 unit test
+  ([`5413813`](https://github.com/anaticulae/indagator/commit/5413813d0aa7eebdeebdd2720a91d8e2fc9de1b0))
 
-### Feature
 
-* improve tech parser (01309da842f6)
+## v0.29.2 (2021-11-11)
 
-### Fix
+### Bug Fixes
 
-* remove year fragment (fe101ea42b8f)
+- **bib**: Skip empty left column
+  ([`1fe41c3`](https://github.com/anaticulae/indagator/commit/1fe41c3792ceafb852de5245682966ca360fe004))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`4c76cf9`](https://github.com/anaticulae/indagator/commit/4c76cf9110b250c4a3a6906698fbea00c1ea65f6))
+
+
+## v0.29.1 (2021-11-11)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`b941943`](https://github.com/anaticulae/indagator/commit/b9419436ca2dbffd345c3d62c6181e0feeb0b383))
+
+- **requirements**: Upgrade requirements.txt
+  ([`644aa45`](https://github.com/anaticulae/indagator/commit/644aa4518e3e5854f1db4f5249be57094519915c))
+
+- **resources**: Extend test data generator
+  ([`356e81b`](https://github.com/anaticulae/indagator/commit/356e81b4b1a874ff164cfd6f5417eedfac7c6ee2))
+
+### Features
+
+- **column**: Do not strip bracket angles
+  ([`000178f`](https://github.com/anaticulae/indagator/commit/000178ff3be124a3693ddd824d6785bb15ded939))
+
+### Testing
+
+- **bib**: Create baseline if test fails
+  ([`6e3c2eb`](https://github.com/anaticulae/indagator/commit/6e3c2ebb7065760506592afdb388876a80b1c00b))
+
+- **bib**: Validate diss167
+  ([`5205efd`](https://github.com/anaticulae/indagator/commit/5205efddb17c86f1c7516f3b4f48909804cb3b02))
+
+- **fix**: Remove wrong validation
+  ([`74fe6fa`](https://github.com/anaticulae/indagator/commit/74fe6fa1beabe9ad61a6428ef3b6fcaf69be9ca9))
+
+- **refactor**: Replace with BaseLiner
+  ([`fc654ae`](https://github.com/anaticulae/indagator/commit/fc654aef35929da9fb01eed090b1fb363c5fa0bf))
+
+
+## v0.29.0 (2021-10-24)
+
+### Bug Fixes
+
+- **freeand**: Adjust after changing interface
+  ([`d6d8dd6`](https://github.com/anaticulae/indagator/commit/d6d8dd679297a42556ef1d65fa79fa462fc671b3))
+
+### Chores
+
+- **requirements**: Add pattern package
+  ([`143b594`](https://github.com/anaticulae/indagator/commit/143b594bbf6365d4ad54e011b1487cefb3410f45))
+
+- **requirements**: Upgrade requirements.txt
+  ([`7d337b9`](https://github.com/anaticulae/indagator/commit/7d337b9546c3c77876a7d2a6ce9db35634018091))
+
+- **requirements**: Upgrade requirements.txt
+  ([`cc5ca2d`](https://github.com/anaticulae/indagator/commit/cc5ca2d51c4a1ac334cde4dbc81e9fb688516021))
+
+- **resources**: Extend test data generator
+  ([`3161196`](https://github.com/anaticulae/indagator/commit/31611960be5fa30d4d964e1228c20848540e3a22))
+
+### Code Style
+
+- **imports**: Organize imports
+  ([`4fbbb43`](https://github.com/anaticulae/indagator/commit/4fbbb4392d9670894cef6141012b472d22b2dcf5))
+
+### Features
+
+- **bib**: Using caching to reduce execution time
+  ([`862b5ea`](https://github.com/anaticulae/indagator/commit/862b5eabaa52d6ee16894db13a028ad666e95126))
+
+- **column**: Add improved bib detector
+  ([`84858c3`](https://github.com/anaticulae/indagator/commit/84858c318e5fc16ad8f57ef182f32c2d69ba4a94))
+
+- **column**: Improve column detector
+  ([`87f3f26`](https://github.com/anaticulae/indagator/commit/87f3f26b5487e67c0b010716c8547b52e0483aeb))
+
+- **machine**: Add improved bib parser
+  ([`deacdde`](https://github.com/anaticulae/indagator/commit/deacdde753fdcf25a6c5eae243bf9b8dd35dc91c))
+
+- **machine**: Extend bib evaluation
+  ([`5c4c84c`](https://github.com/anaticulae/indagator/commit/5c4c84c145461d34a39fd95265579900d62e94c7))
+
+- **strategy**: Disable column verification after improving results
+  ([`15017c6`](https://github.com/anaticulae/indagator/commit/15017c6430a73ebb7e16737b66b428fcfdc2a281))
+
+- **tech**: Disable debugging
+  ([`38a0a07`](https://github.com/anaticulae/indagator/commit/38a0a07eb225d60b84f1480f1574a4f2e9a062ee))
+
+### Testing
+
+- **adjust**: Disable accessed check
+  ([`74da684`](https://github.com/anaticulae/indagator/commit/74da684631c6d057673984dabd9beee4549b8221))
+
+- **bib**: Validate bachelor067
+  ([`3ef30e4`](https://github.com/anaticulae/indagator/commit/3ef30e4472d5747316de43649d6bdeedf380ba08))
+
+- **refactor**: Clarify test names
+  ([`16a8822`](https://github.com/anaticulae/indagator/commit/16a88227f823fb2f358fae84619efb983187c34b))
+
+
+## v0.28.2 (2021-10-17)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`f36816a`](https://github.com/anaticulae/indagator/commit/f36816a328f00d081caa8f1508739553a5bd7df6))
+
+- **test**: Cleanup resource generator
+  ([`f17a3f5`](https://github.com/anaticulae/indagator/commit/f17a3f58380c76a668a73f4ab7a85782cb42804b))
+
+- **test**: Optimize runtime
+  ([`139f838`](https://github.com/anaticulae/indagator/commit/139f83812273a65d1533156973baf5220e6525d8))
+
+### Features
+
+- **hv**: Replace with holy values
+  ([`8b8859f`](https://github.com/anaticulae/indagator/commit/8b8859f2fca15d2ce97250f2fbaed3f62fac5377))
+
+### Testing
+
+- **disable**: Disable falling test
+  ([`2022376`](https://github.com/anaticulae/indagator/commit/20223765909ca341757c70bf85032f3d31a7f419))
+
+
+## v0.28.1 (2021-10-04)
+
+### Bug Fixes
+
+- **number**: Do not parse author if no quotation mark is collected
+  ([`c7698cf`](https://github.com/anaticulae/indagator/commit/c7698cf616676ff9c77d32834bfbcd191ae98074))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`f534982`](https://github.com/anaticulae/indagator/commit/f534982a64c282179d6c5937177d59080f6456bb))
+
+- **resources**: Extend test data generator
+  ([`345eb89`](https://github.com/anaticulae/indagator/commit/345eb8984e78a1e858cc79654061e712d961fb4a))
+
+- **resources**: Shrink test data generator
+  ([`746f239`](https://github.com/anaticulae/indagator/commit/746f2395fe44e01ac69ae94de315017f3f8330b9))
+
+### Testing
+
+- **bib**: Validate diss143 bibs
+  ([`28464c8`](https://github.com/anaticulae/indagator/commit/28464c8634f00a5dc03ddda926f5262adf4668c3))
+
+
+## v0.28.0 (2021-09-29)
+
+### Bug Fixes
+
+- **after**: Fix after academic title determiner
+  ([`e7dcecc`](https://github.com/anaticulae/indagator/commit/e7dcecc900a656eac5b24006c3f37a17b8a7d48f))
+
+- **after**: Reduce number of false positive detection
+  ([`a5742c7`](https://github.com/anaticulae/indagator/commit/a5742c7f91e0eccb9dbb1cdab5caf58cdde7ae71))
+
+- **strategy**: Replace with stars
+  ([`b69f068`](https://github.com/anaticulae/indagator/commit/b69f068457b3bf62dc8537a1af7eedcfb24413c8))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`c3c2ef2`](https://github.com/anaticulae/indagator/commit/c3c2ef2980f028acba4866443009e716abf80832))
+
+- **resources**: Extend test data generator
+  ([`7a2b87f`](https://github.com/anaticulae/indagator/commit/7a2b87ffafc4eb612f608a3933836c18a1c5be7e))
+
+- **resources**: Shrink test data generator
+  ([`614c0ea`](https://github.com/anaticulae/indagator/commit/614c0ea045567e7504bb31cf81574c3ec44507a4))
+
+### Features
+
+- **after**: Add BSC as academic title
+  ([`9ee2b0e`](https://github.com/anaticulae/indagator/commit/9ee2b0e8f7a8990bed885082ab71e27122eb606c))
+
+- **after**: Extend after pattern
+  ([`34a4f5c`](https://github.com/anaticulae/indagator/commit/34a4f5cd145f5033bc405720ffb47529a688bffe))
+
+- **title**: Add title validator
+  ([`d432fc4`](https://github.com/anaticulae/indagator/commit/d432fc4fe569acdd6e56fdc8bceb40e8a41697b1))
+
+- **utils**: Add brackets to title parser
+  ([`7f15a67`](https://github.com/anaticulae/indagator/commit/7f15a676de386b500d1f011182459bf8dcc4a13f))
+
+- **utils**: Add persons title extractor
+  ([`dc3adb3`](https://github.com/anaticulae/indagator/commit/dc3adb305d6fad341ebd0fed5b05b6ba6f6bccce))
+
+### Refactoring
+
+- **after**: Ease improving pattern
+  ([`ce81b1d`](https://github.com/anaticulae/indagator/commit/ce81b1d43715684d94a92deb4a1e6b28897e2ef5))
+
+- **persons**: Simplify package structure
+  ([`4d86558`](https://github.com/anaticulae/indagator/commit/4d86558106f055f15bf3fbe8554475d090d3ddc8))
+
+### Testing
+
+- **bib**: Validate bachelor241
+  ([`a3ed72b`](https://github.com/anaticulae/indagator/commit/a3ed72b03dcd059f55066883f73f66f386b83031))
+
+- **title**: Verify master075 titlepage
+  ([`706e568`](https://github.com/anaticulae/indagator/commit/706e568b2d02ce577f50a0d2227ef9b98f307b17))
+
+
+## v0.27.1 (2021-09-11)
+
+### Bug Fixes
+
+- **label**: Adjust data type
+  ([`23dbf09`](https://github.com/anaticulae/indagator/commit/23dbf09d7a55645466950ed0eb3bfa587bb20b35))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`7a0c32f`](https://github.com/anaticulae/indagator/commit/7a0c32fe2ae2114688bb18541052f2f616930cd4))
+
+
+## v0.27.0 (2021-09-11)
+
+### Chores
+
+- **resources**: Extend test data generator
+  ([`55775d7`](https://github.com/anaticulae/indagator/commit/55775d7e74ddbecb0b999571707adfec0b63a766))
+
+### Code Style
+
+- **linter**: Improve code style
+  ([`8c8a0b8`](https://github.com/anaticulae/indagator/commit/8c8a0b86c3ab1de27bb6749184c82291251065ae))
+
+### Features
+
+- **free**: Add ebd person parser
+  ([`369994c`](https://github.com/anaticulae/indagator/commit/369994c88cfbd73666c60cb47d077403f19777f2))
+
+### Refactoring
+
+- **alternate**: Simplify code
+  ([`3a3925d`](https://github.com/anaticulae/indagator/commit/3a3925d56036c5d7f6a0c7da90fdfc111daa8984))
+
+- **replace**: Replace with utila code
+  ([`aac4452`](https://github.com/anaticulae/indagator/commit/aac44528c2aac9e9007e5529a7ff3f40ba114ca9))
+
+### Testing
+
+- **alternate**: Verify ebd flag
+  ([`1bc34cf`](https://github.com/anaticulae/indagator/commit/1bc34cf9338b8123422b48a6f91f5c330fffaa0e))
+
+- **refactor**: Improve test data config
+  ([`7b5641c`](https://github.com/anaticulae/indagator/commit/7b5641c14caa550663ed09db56cc0ec0e47a4838))
+
+- **refactor**: Simplify code
+  ([`8238fc4`](https://github.com/anaticulae/indagator/commit/8238fc4383ec5b655925e53abe426a15b747f273))
+
+
+## v0.26.0 (2021-09-09)
+
+### Bug Fixes
+
+- **person**: Improve person after parser
+  ([`03ecdef`](https://github.com/anaticulae/indagator/commit/03ecdef2c5d8b9577e8f8fbdf5fe5ae8ba1742ba))
+
+### Chores
+
+- **config**: Rename project config
+  ([`f73b69c`](https://github.com/anaticulae/indagator/commit/f73b69c38292da1fda0c4a3127952a312bce4e86))
+
+- **requirements**: Upgrade requirements.txt
+  ([`bc611d3`](https://github.com/anaticulae/indagator/commit/bc611d38fd497802e96a9711f5b88774487962c9))
+
+- **resources**: Extend test data generator
+  ([`04ce399`](https://github.com/anaticulae/indagator/commit/04ce399dc6305fe1edd1212167e683371f24655b))
+
+### Code Style
+
+- **format**: Format code
+  ([`6c43b4a`](https://github.com/anaticulae/indagator/commit/6c43b4acc04d336a259fef2f5466947c51b7cf29))
+
+### Features
+
+- **complete**: Improve title page parser
+  ([`33cf7f5`](https://github.com/anaticulae/indagator/commit/33cf7f5542a4e555ed2e9640cffaac37583ed76e))
+
+- **person**: Add more potential person intros
+  ([`c046d47`](https://github.com/anaticulae/indagator/commit/c046d47a550be646675209181d637336619641f0))
+
+- **person**: Add option white space in academic title
+  ([`d2ddef3`](https://github.com/anaticulae/indagator/commit/d2ddef3bad3736c8326b9017c4d9c311e72ad48f))
+
+### Refactoring
+
+- **person**: Split persons parser into different strategies
+  ([`c3fe208`](https://github.com/anaticulae/indagator/commit/c3fe208d556d18edb850e35b0a7da94b7bb95592))
+
+- **serialize**: Shorten code
+  ([`6367840`](https://github.com/anaticulae/indagator/commit/63678400056ca813f18f2ef7f557ff25b367dee7))
+
+### Testing
+
+- **titlepage**: Ensure that thesis type master078 is parsed
+  ([`0825ea0`](https://github.com/anaticulae/indagator/commit/0825ea01ee557fbe9dbf98cbb3527205cbd7e983))
+
+- **titlepage**: Validate diss205 title page
+  ([`659ab2d`](https://github.com/anaticulae/indagator/commit/659ab2df1ff6bb3f7dce38b4334c41cada1d5bd5))
+
+
+## v0.25.0 (2021-08-21)
+
+### Chores
+
+- **requirements**: Add all required generator references
+  ([`0fd001d`](https://github.com/anaticulae/indagator/commit/0fd001df52d9c100fa590195fb5c1fe2ef692c1f))
+
+- **requirements**: Upgrade requirements.txt
+  ([`b1520a5`](https://github.com/anaticulae/indagator/commit/b1520a5207a0acfa7c20cf53c6ef290a53dec905))
+
+- **requirements**: Upgrade requirements.txt
+  ([`237aba7`](https://github.com/anaticulae/indagator/commit/237aba79da4d278aa16b27033952d72116633610))
+
+- **resources**: Extend test data generator
+  ([`172af80`](https://github.com/anaticulae/indagator/commit/172af80fa87f19eab3e529bd497fd296595d343d))
+
+### Code Style
+
+- **spelling**: Fix spelling error
+  ([`4785990`](https://github.com/anaticulae/indagator/commit/4785990972968a94f3a4d8b8b7ee380d6344f083))
+
+### Features
+
+- **person**: Add line start and end limit
+  ([`0e1abdd`](https://github.com/anaticulae/indagator/commit/0e1abdd4effef73a2410e843b3d009e80a5d6093))
+
+- **person**: Add student prefix
+  ([`222d6de`](https://github.com/anaticulae/indagator/commit/222d6de401aff29a11500957e6baa6d0f0ce67a7))
+
+- **person**: Detect more than the first result
+  ([`f30e053`](https://github.com/anaticulae/indagator/commit/f30e053fcc2fd0f7c4dd49e8dc58dc20c60792f8))
+
+- **person**: Extend person start pattern
+  ([`f2e4ec8`](https://github.com/anaticulae/indagator/commit/f2e4ec8191f64b0aa36d9375be92f0c9eb1a147f))
+
+- **title**: Improve persons parser
+  ([`20aeb20`](https://github.com/anaticulae/indagator/commit/20aeb20dfee2ec45d295d39904bdcddefa8efead))
+
+### Refactoring
+
+- **person**: Improve code style
+  ([`ce359b9`](https://github.com/anaticulae/indagator/commit/ce359b965d43a7795c5260f12e017ed7d58fd15c))
+
+- **person**: Improve code style
+  ([`e4907ba`](https://github.com/anaticulae/indagator/commit/e4907bafac77687907c2d7da92a4f0727a073029))
+
+- **person**: Move holy value to constant
+  ([`f125423`](https://github.com/anaticulae/indagator/commit/f1254231990fb68bf97876569c792f83adcce667))
+
+- **person**: Replace with iamraw code
+  ([`e8f01ef`](https://github.com/anaticulae/indagator/commit/e8f01efde8f3f100b97c6c0c1f6f31bf3cbe19a8))
+
+- **rename**: Remove racism
+  ([`1e9fad1`](https://github.com/anaticulae/indagator/commit/1e9fad179782cba4ee607fdab463717727380a81))
+
+- **title**: Improve code style
+  ([`fc05cdc`](https://github.com/anaticulae/indagator/commit/fc05cdcd0d7d7610195901101b30eec16f381e9b))
+
+### Testing
+
+- **fix**: Add missing import
+  ([`6258c62`](https://github.com/anaticulae/indagator/commit/6258c62afbf728f76c8dba5f4006d7007a62d8f4))
+
+- **refactor**: Improve code style
+  ([`206e641`](https://github.com/anaticulae/indagator/commit/206e6417dc104e22ad0ad7546d80f3e6547c92b9))
+
+- **titlepage**: Validate master78 author extraction
+  ([`cdd0159`](https://github.com/anaticulae/indagator/commit/cdd01591f7b59e56a72bcfd108234adc781efd73))
+
+
+## v0.24.0 (2021-07-28)
+
+### Bug Fixes
+
+- **number**: Do not hand `and` in authors as separator
+  ([`190f423`](https://github.com/anaticulae/indagator/commit/190f423762c2091a4996a2c7cf7fcd2bcbded951))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`4939cf6`](https://github.com/anaticulae/indagator/commit/4939cf648790173e99a5fd8fb26503a3d5218692))
+
+- **resources**: Extend test data generator
+  ([`ac03f91`](https://github.com/anaticulae/indagator/commit/ac03f910ea5dadcc651a8ba34cbb3e49d06f0320))
+
+### Code Style
+
+- **format**: Format code
+  ([`153ec59`](https://github.com/anaticulae/indagator/commit/153ec5911974e4ad73f9b41153b33ed2cd39997a))
+
+- **format**: Format code
+  ([`381dee4`](https://github.com/anaticulae/indagator/commit/381dee4ad6bedc25b1a9ec605f9472327a433caa))
+
+### Features
+
+- **bib**: Add strategy to search authors
+  ([`afca0e4`](https://github.com/anaticulae/indagator/commit/afca0e44b67b3678d1b38f9819961b5ad58d5d1e))
+
+- **bib**: Improve bib number parser
+  ([`5036262`](https://github.com/anaticulae/indagator/commit/503626232939ae976ba7b2331d2c66cbfdccefbc))
+
+- **bib**: Reduce verbosity
+  ([`2ed6f93`](https://github.com/anaticulae/indagator/commit/2ed6f93b4c14316681d46ff2ae81483dd413d0dd))
+
+- **free**: Merge multiple NoPerson's
+  ([`a5f563f`](https://github.com/anaticulae/indagator/commit/a5f563f33841ca2113ed5b63315b3c1d32faddbf))
+
+- **number**: Replace and/und with separator
+  ([`60f7cbc`](https://github.com/anaticulae/indagator/commit/60f7cbc5eb4a0b307b45bc3d7f229b6e2f951982))
+
+- **quotes**: Add quotes extractor
+  ([`b953d8f`](https://github.com/anaticulae/indagator/commit/b953d8f20967ac2408a8a5c3d42569476c88449e))
+
+### Testing
+
+- **bib**: Adjust bib tests
+  ([`0097264`](https://github.com/anaticulae/indagator/commit/0097264c9c5bacc995949a2830212cff7595cfbe))
+
+- **bib**: Validate bachelor075
+  ([`28824de`](https://github.com/anaticulae/indagator/commit/28824ded1d2a5610082b009e5fb2d57acf353257))
+
+
+## v0.23.0 (2021-06-28)
+
+### Bug Fixes
+
+- **tech**: Do not split inside links
+  ([`93575c5`](https://github.com/anaticulae/indagator/commit/93575c5a1b0e892e5521ba5229a4e3ca24b01136))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`4665639`](https://github.com/anaticulae/indagator/commit/466563988eb97a9ff28c107f9974530eb4ce8719))
+
+- **resources**: Extend test data generator
+  ([`585f92d`](https://github.com/anaticulae/indagator/commit/585f92dd4cf7941bc154019656e2d85a4a351a61))
+
+### Features
+
+- **freeand**: Store more than one hyperlink
+  ([`205002d`](https://github.com/anaticulae/indagator/commit/205002d55514b5fe63fefbbb773a67b88f0bf15d))
+
+- **tech**: Improve bib parser
+  ([`d63423d`](https://github.com/anaticulae/indagator/commit/d63423d5144e6168cfaf6ae3d358f514e53dc82a))
+
+### Testing
+
+- **bib**: Validate master083
+  ([`2a370f9`](https://github.com/anaticulae/indagator/commit/2a370f92fa451797ea99cb02a874ea69fb670397))
+
+- **refactor**: Improve naming
+  ([`1d84d49`](https://github.com/anaticulae/indagator/commit/1d84d49ef98ac9cdc0877df1fb30be6a2e73115c))
+
+- **refactor**: Simplify test code
+  ([`fd5610f`](https://github.com/anaticulae/indagator/commit/fd5610f50313f60820f2321e8ec1196668e705aa))
+
+- **skip**: Skip test if data is not generated
+  ([`89252d1`](https://github.com/anaticulae/indagator/commit/89252d15ad9de55eef36e01f818171707495e008))
+
+- **style**: Improve code style
+  ([`f6d516b`](https://github.com/anaticulae/indagator/commit/f6d516b754271d704ccf609a0004a85d9e69aa32))
+
+
+## v0.22.0 (2021-06-02)
+
+### Bug Fixes
+
+- **bib**: Add szett as valid character
+  ([`21681f8`](https://github.com/anaticulae/indagator/commit/21681f8dc0625477240b075e2def28db34b0b124))
+
+- **freeand**: Adjust freeand parser
+  ([`fc2e805`](https://github.com/anaticulae/indagator/commit/fc2e805d26316a1054f9932790d3dce0ae613a56))
+
+- **freeand**: Include more sentence signs
+  ([`d4dffdb`](https://github.com/anaticulae/indagator/commit/d4dffdb24f4d770a2f1d8bf5af384d8e2835cdb5))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`77608fc`](https://github.com/anaticulae/indagator/commit/77608fc333df18b1cddd74914dbcf334d2915a1e))
+
+- **requirements**: Upgrade requirements.txt
+  ([`5af3c84`](https://github.com/anaticulae/indagator/commit/5af3c84233b24f81e61236970aa6b4185aab472f))
+
+- **requirements**: Upgrade requirements.txt
+  ([`cc254ec`](https://github.com/anaticulae/indagator/commit/cc254eca12b0ffeb649f398f1c1dab776864c0ce))
+
+- **requirements**: Upgrade requirements.txt
+  ([`a505945`](https://github.com/anaticulae/indagator/commit/a5059450ab52b50a7e4cc16ab5b078764aa61b49))
+
+- **requirements**: Upgrade requirements.txt
+  ([`1b9f387`](https://github.com/anaticulae/indagator/commit/1b9f387b14b95254a6800cb9424fa3be1138ea04))
+
+- **resources**: Extend test data generator
+  ([`517ec3e`](https://github.com/anaticulae/indagator/commit/517ec3e1cb4ed0615099aef88b3d048f08709c91))
+
+- **resources**: Extend test data generator
+  ([`517a1c0`](https://github.com/anaticulae/indagator/commit/517a1c09424db8e32fffa84dff07e3a74c8a5d61))
+
+- **resources**: Extend test data generator
+  ([`71b1db1`](https://github.com/anaticulae/indagator/commit/71b1db191ff66fa687a2c66b1c2d6c21921a333f))
+
+- **resources**: Use new notitle generator
+  ([`977695f`](https://github.com/anaticulae/indagator/commit/977695fba300e2942520178dd70f7dbb7ac4a4a0))
+
+### Code Style
+
+- **format**: Format code
+  ([`eceb607`](https://github.com/anaticulae/indagator/commit/eceb607c9a75efb34c962208ded7982214315a64))
+
+- **format**: Format code
+  ([`28b527b`](https://github.com/anaticulae/indagator/commit/28b527b4e42b1382b1fc6a44b61981cc4ce635e8))
+
+- **format**: Use improved yapf formatter
+  ([`a5a11d9`](https://github.com/anaticulae/indagator/commit/a5a11d9497b2bf02ed3d28035fbfeff5028f0a1e))
 
 ### Documentation
 
-* extend interface documentation (7a48fd533472)
+- **bib**: Add information about very bad example
+  ([`ae9e222`](https://github.com/anaticulae/indagator/commit/ae9e222f24f628662accd5a95c4579242072da2a))
 
-## v0.13.0
+- **vspace**: Add module documentation
+  ([`2adbf32`](https://github.com/anaticulae/indagator/commit/2adbf32daec9698fc75a2a67c5954ef280ef1809))
 
-### Feature
+### Features
 
-* add numbers pattern to tech parser (e62c6d34acaf)
-* add number label detection pattern (77e5782ffb36)
+- **bib**: Adjust freeand parser
+  ([`a859025`](https://github.com/anaticulae/indagator/commit/a8590259fcd65ee785eca1d62f1c429a8ec2edd3))
 
-### Fix
+- **bib**: Improve freeand parser
+  ([`2a2eb57`](https://github.com/anaticulae/indagator/commit/2a2eb57345c05e31dc297f847b7f76a0a417420c))
 
-* add simple year to extend more bib pattern (4227a1a8c715)
+- **bib**: Skip invalid results
+  ([`dbecfb0`](https://github.com/anaticulae/indagator/commit/dbecfb06f21ae5d1c09757dbd5d3f3b9f29e06dc))
+
+- **freeand**: Improve year and hyperlink selector
+  ([`2c18b8f`](https://github.com/anaticulae/indagator/commit/2c18b8ff4aabe221db3b23349b734ea40a2e9000))
+
+- **freeand**: Make parser less strict
+  ([`dbb5b06`](https://github.com/anaticulae/indagator/commit/dbb5b062f94fc9bfd2a52ee2ee01196f9c2c761e))
+
+- **freeand**: Make parser more optimistic
+  ([`604327d`](https://github.com/anaticulae/indagator/commit/604327de28330d4a9f7152cb988bf89cad153be7))
+
+- **person**: Add referent as potential examiner
+  ([`d55ea3c`](https://github.com/anaticulae/indagator/commit/d55ea3cc441bc26b62a3b2d1db028ed11eaeccb7))
+
+- **person**: Extend person title after parser
+  ([`0374a73`](https://github.com/anaticulae/indagator/commit/0374a736a7936179ac74c5a7f5005b5399a32a32))
+
+- **person**: Make person decider more robust
+  ([`cb4f8d6`](https://github.com/anaticulae/indagator/commit/cb4f8d69b159b9a79d9c67a038b3f206e85d7de1))
+
+- **vspace**: Skip results with too many year errors
+  ([`cc78489`](https://github.com/anaticulae/indagator/commit/cc78489746c02566d2a9f148bc6f8cde2c0585ee))
+
+- **vspace**: Use global vspace strategy
+  ([`a70f20f`](https://github.com/anaticulae/indagator/commit/a70f20f8bccc1f6602b98b25c720ab33a7c9f4ea))
+
+### Refactoring
+
+- **freeand**: Improve code order
+  ([`c003e6f`](https://github.com/anaticulae/indagator/commit/c003e6f4abdae05995d031c5342544210d75fd65))
+
+- **freeand**: Move parser to separate method
+  ([`15c80f6`](https://github.com/anaticulae/indagator/commit/15c80f6c148309f58487cda696b2a38b1c0d9b20))
+
+- **freeand**: Simplify code
+  ([`f97e572`](https://github.com/anaticulae/indagator/commit/f97e572204e8183278406f7d15d0951ce2c2c91b))
+
+- **replace**: Replace with improved text normalizer
+  ([`08479dd`](https://github.com/anaticulae/indagator/commit/08479dd1c8a1e7c6cb8060f6a2b3754ef603d946))
+
+- **test**: Sort tests
+  ([`8977d7d`](https://github.com/anaticulae/indagator/commit/8977d7d8f8cafba78f6bf0073402d6d5cb28a99a))
+
+- **vspace**: Make pdf page earlier
+  ([`5b4a94e`](https://github.com/anaticulae/indagator/commit/5b4a94ec2fec26078f39449a949429a5755f204c))
+
+### Testing
+
+- **bib**: Adjust master155 bib test
+  ([`4d2c786`](https://github.com/anaticulae/indagator/commit/4d2c78633c4ec0f02bd5b09c429e6c27419e63c0))
+
+- **bib**: Improve bachelor63 author validation
+  ([`ae90974`](https://github.com/anaticulae/indagator/commit/ae909742bf63965801cae3854ee1845dfb9da86a))
+
+- **bib**: Validate bachelor109 bibs
+  ([`d6cb12d`](https://github.com/anaticulae/indagator/commit/d6cb12dfca09a0656a36ef77e285c56899c047db))
+
+- **bib**: Validate bachelor56 authors
+  ([`62be263`](https://github.com/anaticulae/indagator/commit/62be263c5781a90216c9618d6b5051cc5e639e2b))
+
+- **bib**: Validate master148
+  ([`1503c49`](https://github.com/anaticulae/indagator/commit/1503c49525ed1fab25f03645f022da6f093cccbd))
+
+- **bib**: Validate master155 bib
+  ([`107ca76`](https://github.com/anaticulae/indagator/commit/107ca76df0afd8de62283dd22a04b53623f14529))
+
+- **bib**: Validate master89 bib authors
+  ([`405dd1c`](https://github.com/anaticulae/indagator/commit/405dd1cfdc9a9c04c8cbced1c65532f3be774abb))
+
+- **person**: Verify short author names
+  ([`e68f5ae`](https://github.com/anaticulae/indagator/commit/e68f5ae665f619b8d05cc1b1f056e007615ce0b0))
+
+- **refactor**: Replace with new utilatest naming
+  ([`58f37f8`](https://github.com/anaticulae/indagator/commit/58f37f83984ea57fbd65b91c383fb62d982c31fe))
+
+- **refactor**: Simplify code
+  ([`37f2f74`](https://github.com/anaticulae/indagator/commit/37f2f74cc047d785d36ffadb372e60bf330ad9ee))
+
+- **refactor**: Simplify code
+  ([`230c76e`](https://github.com/anaticulae/indagator/commit/230c76e13397d7af180f3d2a8b68c26dd772e7ad))
+
+- **refactor**: Simplify test
+  ([`cc38048`](https://github.com/anaticulae/indagator/commit/cc380486e610be2c8aa5c0e3fa0e71dd66a84b25))
+
+- **refactor**: Simplify test code
+  ([`7bdd08b`](https://github.com/anaticulae/indagator/commit/7bdd08ba97f1dd9b6a60ce3f53e9a85376d70b80))
+
+- **resources**: Improve generator speed
+  ([`e7fa2ea`](https://github.com/anaticulae/indagator/commit/e7fa2ea59dabcdae4fa1367129a0db6f99d0a1cf))
+
+- **style**: Sort tests
+  ([`e75777a`](https://github.com/anaticulae/indagator/commit/e75777ad82a16feec0fac47259e9ae4bcb0a208f))
+
+
+## v0.21.1 (2021-05-14)
+
+### Chores
+
+- **requirements**: Add elements package
+  ([`9eec8ad`](https://github.com/anaticulae/indagator/commit/9eec8adc3e2adee15b70a5a81998bd9f5f872a86))
+
+- **requirements**: Upgrade requirements.txt
+  ([`e15fa59`](https://github.com/anaticulae/indagator/commit/e15fa59b66a5a34005fa3bdab3107db7f1daa11f))
+
+### Code Style
+
+- **date**: Improve code style
+  ([`17413ec`](https://github.com/anaticulae/indagator/commit/17413eceec94996b3bf3922b44e6353be9531cc0))
+
+### Features
+
+- **date**: Extend semester pattern
+  ([`3e5ebb0`](https://github.com/anaticulae/indagator/commit/3e5ebb0d10827116239f13a6e5f2945a0e17cb96))
+
+- **date**: Ignore cases and ease using regex
+  ([`edd51d8`](https://github.com/anaticulae/indagator/commit/edd51d837fd36ad801e34a437e8d299ffd208e7d))
+
+### Refactoring
+
+- **date**: Clarify code
+  ([`b494540`](https://github.com/anaticulae/indagator/commit/b494540ffa34c3653f7b5a63339478b279da2cfd))
+
+- **date**: Replace with german code
+  ([`180d315`](https://github.com/anaticulae/indagator/commit/180d315ed5b2882e10aca81d3cf888d02e126034))
+
+- **date**: Used simplified code style
+  ([`0cd9bd1`](https://github.com/anaticulae/indagator/commit/0cd9bd1ac38b33ce1e3406697ee3456787afd431))
+
+- **replace**: Replace with german code
+  ([`f0099ef`](https://github.com/anaticulae/indagator/commit/f0099ef7ef2397c0c1acb854b14ab95ca446c5a5))
+
+- **titlepage**: Replace with elements code
+  ([`716cc2f`](https://github.com/anaticulae/indagator/commit/716cc2fa8d5232adec27a2c962f4f10c1d005e82))
+
+### Testing
+
+- **refactor**: Move to doctest
+  ([`4ecee8a`](https://github.com/anaticulae/indagator/commit/4ecee8a044a0dc89d2c7621b0724eb5dd8b4b292))
+
+
+## v0.21.0 (2021-05-12)
+
+### Bug Fixes
+
+- **parser**: Support character simplification
+  ([`a355a8d`](https://github.com/anaticulae/indagator/commit/a355a8dd66a48284c73d4d7a94b4297741bbccb6))
+
+### Chores
+
+- **requirements**: Add configo package
+  ([`5c32710`](https://github.com/anaticulae/indagator/commit/5c32710d25697658b4c18eee5fd8214a81cac878))
+
+- **requirements**: Extend test data generator
+  ([`287b333`](https://github.com/anaticulae/indagator/commit/287b333b852f4027b5b138e0693a17704ea9a5ce))
+
+- **requirements**: Upgrade requirements.txt
+  ([`46e4e7b`](https://github.com/anaticulae/indagator/commit/46e4e7b0dc50defebf24da62507555d14be9566b))
+
+- **requirements**: Upgrade requirements.txt
+  ([`00b162a`](https://github.com/anaticulae/indagator/commit/00b162a80be71dc4b4d610e6bbaa50590e70e5f7))
+
+- **requirements**: Upgrade requirements.txt
+  ([`b42ff9d`](https://github.com/anaticulae/indagator/commit/b42ff9de71d877225268e6af6b376dd9ca63fca0))
+
+- **resources**: Extend test data generator
+  ([`2cb9c59`](https://github.com/anaticulae/indagator/commit/2cb9c59eee81fbd6e7740e5a92c2d361decb17e4))
+
+- **resources**: Extend test data generator
+  ([`ff7f422`](https://github.com/anaticulae/indagator/commit/ff7f422561268e2559e6f481f7dc2078a928fe0d))
+
+- **resources**: Extend test data generator
+  ([`15de254`](https://github.com/anaticulae/indagator/commit/15de254df27dde1bab2f6cf2db8e6898ac904df4))
+
+### Code Style
+
+- **format**: Format code
+  ([`21ea1b1`](https://github.com/anaticulae/indagator/commit/21ea1b1fd58a6f657d5381eac932959b3d05e8b4))
+
+- **linter**: Add linter white list
+  ([`28fb053`](https://github.com/anaticulae/indagator/commit/28fb0538affa233bc7d134dca38657fd515d9660))
+
+### Features
+
+- **alternate**: Use more specific parser first
+  ([`07d9cad`](https://github.com/anaticulae/indagator/commit/07d9cadf2e763898f1aac41d341d364544cdfe15))
+
+- **bib**: Add location of parsed bib to result
+  ([`afc4bb8`](https://github.com/anaticulae/indagator/commit/afc4bb841ad8daa622d0ba99d24af8308419802d))
+
+- **bib**: Extend debugging information
+  ([`8fde94d`](https://github.com/anaticulae/indagator/commit/8fde94d652a28b87514779e3a7abbe61974c76b2))
+
+- **bib**: Improve freeand parser
+  ([`078e3e1`](https://github.com/anaticulae/indagator/commit/078e3e112a741f62c807f98a7ba8d773e676077a))
+
+- **freeand**: Use improved newline converter
+  ([`493aa5e`](https://github.com/anaticulae/indagator/commit/493aa5e60392c5204c286863884876f472633035))
+
+- **parser**: Add optional month part
+  ([`fafe3d6`](https://github.com/anaticulae/indagator/commit/fafe3d64057ac390fb9fdaec30d1ab6ef2feaa61))
+
+- **person**: Add master title to title after person pattern
+  ([`ce98385`](https://github.com/anaticulae/indagator/commit/ce983854fd1cb08f58772ac8238858110d654660))
+
+- **person**: Add optional extern flag
+  ([`b6e9b70`](https://github.com/anaticulae/indagator/commit/b6e9b7052355bbfec8806889c663d628dff8ad07))
+
+- **person**: Normalize white spaces to ease regex
+  ([`c336e84`](https://github.com/anaticulae/indagator/commit/c336e846872b7826413a004354d1f14b7c1a7465))
+
+### Refactoring
+
+- **person**: Clarify code
+  ([`f0de885`](https://github.com/anaticulae/indagator/commit/f0de885dc8c25347dda1f2d06de65221ffac43fb))
+
+- **rename**: Fix document name
+  ([`326270c`](https://github.com/anaticulae/indagator/commit/326270c065a1c747b7760539a7b7fa93fa7276b9))
+
+- **rename**: Fix typo
+  ([`1b4ae6f`](https://github.com/anaticulae/indagator/commit/1b4ae6f0994d787bff1ed6b0c2f443f66eb2b981))
+
+- **vspace**: Replace with configo table
+  ([`80724b6`](https://github.com/anaticulae/indagator/commit/80724b6edfb574371ebd7eb36f3fb7db8b3fb0ec))
+
+- **vspace**: Replace with HolyList
+  ([`f0118c1`](https://github.com/anaticulae/indagator/commit/f0118c1eff431c8072a5be6c57b9455d59371dfd))
+
+### Testing
+
+- **bib**: Adjust diss266 validation
+  ([`d037cbf`](https://github.com/anaticulae/indagator/commit/d037cbf26f61a2a3b082b7039976b5aa773fb09a))
+
+- **bib**: Validate bachelor111 bibs
+  ([`78f9874`](https://github.com/anaticulae/indagator/commit/78f98747a6e3f4882f4b77cc4847e8a97b8eacbd))
+
+- **bib**: Validate bachelor51 bib
+  ([`d05b394`](https://github.com/anaticulae/indagator/commit/d05b3942c8c62e38df5c3e1a3a73f8f179e9dfc3))
+
+- **bib**: Validate master155 bib
+  ([`8b325f7`](https://github.com/anaticulae/indagator/commit/8b325f7fe6d98f180bf111593de31f9c2abd1f8d))
+
+- **person**: Verify title after person pattern
+  ([`8aab8f9`](https://github.com/anaticulae/indagator/commit/8aab8f92ae810542095d23181f4d8dc61904320e))
+
+- **titlepage**: Validate master91a
+  ([`7b2a73f`](https://github.com/anaticulae/indagator/commit/7b2a73f9a77d5369a066082146ba951ef1274cdd))
+
+
+## v0.20.0 (2021-04-27)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`436d98a`](https://github.com/anaticulae/indagator/commit/436d98a83ab293e458d744c999e210875f516a68))
+
+- **resources**: Extend test data generator
+  ([`d121627`](https://github.com/anaticulae/indagator/commit/d121627311ba0c7c2a072228f1968f4dd77e9c13))
+
+### Code Style
+
+- **format**: Format code
+  ([`edeefb2`](https://github.com/anaticulae/indagator/commit/edeefb27045f07a90a9d8e0b6c0f5a3f2e926ec9))
+
+### Features
+
+- **bib**: Add noperson bib parser
+  ([`c93e5ad`](https://github.com/anaticulae/indagator/commit/c93e5ad672e37da5ff7a8eb5be971c2b19580c5c))
+
+- **bib**: Add option change used regex
+  ([`08e4af7`](https://github.com/anaticulae/indagator/commit/08e4af79d63bccfe6296cba5acb71bfb922f5f40))
+
+- **bib**: Add option to parse multiple bib pattern
+  ([`3e2a2a8`](https://github.com/anaticulae/indagator/commit/3e2a2a84682c69f5b43a52d06d74bfc07ea19e71))
+
+- **bib**: Add rest parser to solve order107
+  ([`10f6972`](https://github.com/anaticulae/indagator/commit/10f6972cce35219782ed53b6a4ab71fad8266b22))
+
+- **bib**: Change order in bib detection strategy
+  ([`bfdb921`](https://github.com/anaticulae/indagator/commit/bfdb921f9e4634046dc424053a31b6441c1c4aa9))
+
+- **bib**: Return None to signal invalid input
+  ([`9a47360`](https://github.com/anaticulae/indagator/commit/9a47360f90aebf3884065a0b0767eed8207e3631))
+
+- **bib**: Use less strict bib pattern
+  ([`327ac04`](https://github.com/anaticulae/indagator/commit/327ac04ff8b36002e3c785422d677362798090bc))
+
+### Refactoring
+
+- **bib**: Ignore case to simplify regex
+  ([`e148ea1`](https://github.com/anaticulae/indagator/commit/e148ea175428f8fbe8b7db00fc0f0a15bf59327c))
+
+- **bib**: Move constant to interface
+  ([`291dea8`](https://github.com/anaticulae/indagator/commit/291dea8db206efd7812616fb7739bebbbe07968e))
+
+- **bib**: Simplify freeand long bib parser
+  ([`6df20ef`](https://github.com/anaticulae/indagator/commit/6df20ef73d2a65ba48be352f704a8e7ef4c36e64))
+
+- **replace**: Replace with german code
+  ([`5777e8a`](https://github.com/anaticulae/indagator/commit/5777e8a15f2e808537cd1904ebaa68c52c00a956))
+
+- **replace**: Replace with iamraw code
+  ([`a264077`](https://github.com/anaticulae/indagator/commit/a2640774ed7ca9e4228d597d860a0935c964eca0))
+
+### Testing
+
+- **bib**: Add no-person long test example
+  ([`615b0db`](https://github.com/anaticulae/indagator/commit/615b0db3e39a8719a35a95355b7111c24afdd591))
+
+- **bib**: Validate order107 bibs
+  ([`e107fd7`](https://github.com/anaticulae/indagator/commit/e107fd7e61870e3e553cf30784cc5dc76a6f20ef))
+
+
+## v0.19.0 (2021-04-23)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`5f1f481`](https://github.com/anaticulae/indagator/commit/5f1f4815b1872eebd681c4a2d3dca74283a12a74))
+
+- **resources**: Extend test data generator
+  ([`9bc2b8a`](https://github.com/anaticulae/indagator/commit/9bc2b8aff3e764273d16b92bcbd90fa721772359))
+
+### Code Style
+
+- **format**: Format regex
+  ([`340f7cb`](https://github.com/anaticulae/indagator/commit/340f7cbd37733202c31d0bce004fc9064cb3a075))
+
+### Features
+
+- **logging**: Decrease verbosity
+  ([`2504fa0`](https://github.com/anaticulae/indagator/commit/2504fa00eaff600eaaca368416225cdb71569d65))
+
+### Refactoring
+
+- **judge**: Externalize holy value
+  ([`48d748b`](https://github.com/anaticulae/indagator/commit/48d748ba11f4af973307d7e7aa05ffaf3f6942d1))
+
+- **merge**: Move duplicated code
+  ([`11d99c4`](https://github.com/anaticulae/indagator/commit/11d99c423e040066dbd59641e7ccb53b0ad6d084))
+
+### Testing
+
+- **bib**: Validate master91b bibliography
+  ([`5d14c80`](https://github.com/anaticulae/indagator/commit/5d14c80f1a60d5c596f540d023b5013857aa86c1))
+
+- **tech**: Add more tech pattern
+  ([`3d86098`](https://github.com/anaticulae/indagator/commit/3d86098d06454b45bd9dd18da3af0b3319a3a355))
+
+- **tech**: Make test more specific
+  ([`1851814`](https://github.com/anaticulae/indagator/commit/18518144e106c7b963edebebbc893da122b54f8d))
+
+
+## v0.18.0 (2021-03-09)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`eff5ca3`](https://github.com/anaticulae/indagator/commit/eff5ca3e9499eba96187a6cd823b61d0e9713fa8))
+
+- **resources**: Extend test data generator
+  ([`b597c47`](https://github.com/anaticulae/indagator/commit/b597c4786b0bb039f49ca0f123f048bbe5451079))
+
+### Features
+
+- **alternate**: Extend bib pattern support
+  ([`7754bb3`](https://github.com/anaticulae/indagator/commit/7754bb3a22ea5773cdc2b9b96efb348a363f7683))
+
+- **bib**: Increase vspace max variation range
+  ([`9991947`](https://github.com/anaticulae/indagator/commit/99919476a5bcb8da395b64a37c43c0a920ede9dd))
+
+- **logging**: Decrease verbosity of logging
+  ([`5fddb4f`](https://github.com/anaticulae/indagator/commit/5fddb4ffaffe5074de7230161551c91ca1ca6b71))
+
+- **vspace**: Count valid bibs only
+  ([`bd8199a`](https://github.com/anaticulae/indagator/commit/bd8199ad88ab0e5f4acb9412edb5493e16c4b875))
+
+### Refactoring
+
+- **bib**: Move judging to separate module
+  ([`b1f8ab0`](https://github.com/anaticulae/indagator/commit/b1f8ab012fec1fcf63210db4367561c173702972))
+
+### Testing
+
+- **adjust**: Adjust unit tests to new behavior
+  ([`1b9e481`](https://github.com/anaticulae/indagator/commit/1b9e481361fc59241da0213f3ad42d033779c9a7))
+
+- **bib**: Validate bachelor128 bibliography
+  ([`2a04ec1`](https://github.com/anaticulae/indagator/commit/2a04ec1df2acca5291e862088686225296180d50))
+
+- **disable**: Disable falling test
+  ([`8613cf9`](https://github.com/anaticulae/indagator/commit/8613cf9e7309095bc2917965e7e76ee46690af30))
+
+
+## v0.17.0 (2021-02-05)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`2f79772`](https://github.com/anaticulae/indagator/commit/2f79772d3bba031f9e32b2041898944a9231c7e9))
+
+- **requirements**: Upgrade requirements.txt
+  ([`f6ee1c4`](https://github.com/anaticulae/indagator/commit/f6ee1c4f5ae7fb6f8679f390d7b0b1be817c9fc4))
+
+- **resources**: Extend test data generator
+  ([`5192fc5`](https://github.com/anaticulae/indagator/commit/5192fc5eb51880a8fec48b280c85342ca4a1c297))
+
+- **resources**: Extend test data generator
+  ([`115781a`](https://github.com/anaticulae/indagator/commit/115781ae0b2fc9c59a85363f1e512d40ac291eb2))
+
+- **resources**: Extend test data generator
+  ([`dea810f`](https://github.com/anaticulae/indagator/commit/dea810f7422a58772b2efc7621f755e85925ed33))
+
+### Features
+
+- **bib**: Add very less accurate `magic` parser
+  ([`dc39c6b`](https://github.com/anaticulae/indagator/commit/dc39c6b8efd1068f75e2084452782cc000c7549b))
+
+- **bib**: Skip none parsings in alternate layout
+  ([`d9c1a50`](https://github.com/anaticulae/indagator/commit/d9c1a50b3d302df5859e37138cbf12413b3151e3))
+
+- **bib**: Use magic parser in alternate layout
+  ([`62d1e86`](https://github.com/anaticulae/indagator/commit/62d1e8657938afe91cd7476fec71447c46df7fba))
+
+- **label**: Increase maximum label char width
+  ([`b86fdb7`](https://github.com/anaticulae/indagator/commit/b86fdb7794171f488ce4f9082bb1f681678a689a))
+
+- **person**: Add method to skip invalid parsed academic titles
+  ([`76af107`](https://github.com/anaticulae/indagator/commit/76af10785b41a9a66e929de4de8e08f8bc0d260a))
+
+- **person**: Spread pattern over more than one line
+  ([`090212b`](https://github.com/anaticulae/indagator/commit/090212b4b46fe3936e232c32b425ec70c911b7e8))
+
+- **vspace**: Use layout optimize to gather better results
+  ([`0ae30b3`](https://github.com/anaticulae/indagator/commit/0ae30b3cfef064a2e8cac1d892fa0eac5a0dce86))
+
+### Refactoring
+
+- **person**: Introduce strategy pattern
+  ([`9bcc5c9`](https://github.com/anaticulae/indagator/commit/9bcc5c9100a7d046eb142f5bbd75231fc151cc6f))
+
+- **replace**: Replace with utila code
+  ([`4b29efe`](https://github.com/anaticulae/indagator/commit/4b29efeb613f5d76ff244515af0c7353a8425b75))
+
+- **test**: Simplify unit test
+  ([`2b91468`](https://github.com/anaticulae/indagator/commit/2b9146830a680d8658db65318604afcd5c54a252))
+
+- **titlepage**: Externalize holy value
+  ([`cdd48c8`](https://github.com/anaticulae/indagator/commit/cdd48c8797e96e774a91fd2febaa0b9b4d4850bc))
+
+- **titlepage**: Restructure titlepage extractor
+  ([`15b28bb`](https://github.com/anaticulae/indagator/commit/15b28bb889429f27de216601d5967a72c2a20a68))
+
+### Testing
+
+- **bib**: Validate diss170 bibliography
+  ([`d7ae46c`](https://github.com/anaticulae/indagator/commit/d7ae46c6333394dc96a523c0f9624ae7b7361ef9))
+
+- **bib**: Validate diss272 example
+  ([`16e43d7`](https://github.com/anaticulae/indagator/commit/16e43d7eb691d264b1d6b0289038364d4e011135))
+
+- **fix**: Adjust unit test
+  ([`52138f1`](https://github.com/anaticulae/indagator/commit/52138f176ee85fb631c9e0269330cd0fc5b6ac36))
+
+- **person**: Ad multiline person parser test
+  ([`541ef0b`](https://github.com/anaticulae/indagator/commit/541ef0b0ce22134830c3f7fccb9a8f30471a258c))
+
+- **title**: Validate diss170 example
+  ([`0adc4dc`](https://github.com/anaticulae/indagator/commit/0adc4dcfccae0a604af7c811f0c3e7bd575f516d))
+
+- **validate**: Enable disabling bib count check
+  ([`ac8b751`](https://github.com/anaticulae/indagator/commit/ac8b7517a7358e861000e7f8afa7681ff5ee8607))
+
+
+## v0.16.1 (2021-01-31)
+
+### Bug Fixes
+
+- **import**: Add missing import
+  ([`974ac3f`](https://github.com/anaticulae/indagator/commit/974ac3fb71f8001b150998f9e2d67e22d20cbd9c))
+
+
+## v0.16.0 (2021-01-31)
+
+### Chores
+
+- **fix**: Fix test resource generator
+  ([`6f2a431`](https://github.com/anaticulae/indagator/commit/6f2a43107c6ef04c8391d32c21c6b2a1a9eefd34))
+
+- **requirements**: Upgrade requirements.txt
+  ([`e0466e8`](https://github.com/anaticulae/indagator/commit/e0466e84e4a2c33c324d8fa53fec1545d8bd3d32))
+
+### Code Style
+
+- **imports**: Organize imports
+  ([`4464333`](https://github.com/anaticulae/indagator/commit/4464333424e036a723229abd52573296cc062100))
+
+### Features
+
+- **bib**: Add new [1]-pattern parser to alternate parser
+  ([`d310630`](https://github.com/anaticulae/indagator/commit/d3106301929afa0d68fa1ef9c8a3b8735e5c3289))
+
+- **bib**: Add numbered reference[1]-parser
+  ([`ee7d4af`](https://github.com/anaticulae/indagator/commit/ee7d4af13b6bd5edad4e5a7b962d90945c026166))
+
+### Refactoring
+
+- **test**: Use default validate structure
+  ([`2914165`](https://github.com/anaticulae/indagator/commit/2914165a159e6abcd592aa5bfe187af60436d2fe))
+
+### Testing
+
+- **bib**: Validate master110 bib extraction
+  ([`d3dad81`](https://github.com/anaticulae/indagator/commit/d3dad812cfee7a132e7bcdeb8cac08b2f3aaa03c))
+
+
+## v0.15.0 (2021-01-31)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`f311b65`](https://github.com/anaticulae/indagator/commit/f311b65e526856c19e6f926ff0eb3530daafd399))
+
+- **resources**: Extend test data generator
+  ([`e64c1ed`](https://github.com/anaticulae/indagator/commit/e64c1edb19718ee3244cb7375577f0fead4f43e0))
+
+### Features
+
+- **person**: Extend person pattern
+  ([`3b8d0f9`](https://github.com/anaticulae/indagator/commit/3b8d0f9beeaee0ea7a77abaa02e2283ec6a63ee9))
+
+- **titlepage**: Extend title page parser and judger
+  ([`7730a9e`](https://github.com/anaticulae/indagator/commit/7730a9e84017a5766688b2bbedf29c32c4938ebf))
+
+- **titlepage**: Simplify titlepage extractor loader
+  ([`9686d9c`](https://github.com/anaticulae/indagator/commit/9686d9cef10cb91d61cd164cc5ecdc5a931fa626))
+
+### Refactoring
+
+- **test**: Simplify unit test
+  ([`70c3472`](https://github.com/anaticulae/indagator/commit/70c3472dcab631aa15ff28639e5217309a24ff58))
+
+- **titlepage**: Move profiling command
+  ([`67a669c`](https://github.com/anaticulae/indagator/commit/67a669cf7f4928269f5aeafcaa8911eea205f087))
+
+- **titlepage**: Reduce complexity
+  ([`79e6e8f`](https://github.com/anaticulae/indagator/commit/79e6e8f7de7bd23ceb90fb68d0dac5cb64669d7f))
+
+### Testing
+
+- **person**: Extend range of valid persons
+  ([`845eeed`](https://github.com/anaticulae/indagator/commit/845eeedd12ded30dddf3ba3ac25f503580d96ede))
+
+- **titlepage**: Validate bachelor37 title page
+  ([`939864c`](https://github.com/anaticulae/indagator/commit/939864c6bd38c45cbd362dbd202de7a0d6a07a92))
+
+
+## v0.14.0 (2021-01-31)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`9b0ea31`](https://github.com/anaticulae/indagator/commit/9b0ea31ca9890fdbd2744e4f09f9c7bdd7f6bda6))
+
+- **requirements**: Upgrade requirements.txt
+  ([`3e60a92`](https://github.com/anaticulae/indagator/commit/3e60a9261ddd817d0ce26ca47e2d1bd559e09b8a))
+
+- **resources**: Extend test data generator
+  ([`41ef69a`](https://github.com/anaticulae/indagator/commit/41ef69a3a06ea47856dd7df954d94946bfd7fb76))
+
+### Features
+
+- **bib**: Add double column optimizer
+  ([`873a1fe`](https://github.com/anaticulae/indagator/commit/873a1fee21336ed020f8f0c1bf03cc0b912986c4))
+
+- **bib**: Add special double column parser
+  ([`4043d97`](https://github.com/anaticulae/indagator/commit/4043d9776e0c9fff770ce2291edbacfa3758819b))
+
+- **bib**: Enable second bib column detector strategy
+  ([`490a0bf`](https://github.com/anaticulae/indagator/commit/490a0bfd6c44a8d89903c0d5bb9c70881ec46069))
+
+### Testing
+
+- **refactor**: Simplify unit test
+  ([`e18eae0`](https://github.com/anaticulae/indagator/commit/e18eae00ca2bfe292247df20f1e5df9c5143b62d))
+
+
+## v0.13.3 (2021-01-20)
+
+### Bug Fixes
+
+- **bib**: Adjust unit test to new Person data structure
+  ([`1683395`](https://github.com/anaticulae/indagator/commit/1683395a5ca6a3988f9a98d118d9a523ff582f61))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`323d4a4`](https://github.com/anaticulae/indagator/commit/323d4a4e4f7038af3d4a3f0ed58beb62645b646b))
+
+
+## v0.13.2 (2021-01-20)
+
+### Bug Fixes
+
+- **tech**: Remove year fragment
+  ([`fe101ea`](https://github.com/anaticulae/indagator/commit/fe101ea42b8f105289a4cb7dcb42ffe0a0ffc728))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`c4055d6`](https://github.com/anaticulae/indagator/commit/c4055d6c6e0bc4ad4ef9d68dc84b832e9af18234))
+
+- **resources**: Extend test data generator
+  ([`2a7bb48`](https://github.com/anaticulae/indagator/commit/2a7bb48e8f72e10c739334cec09f320102e1460a))
+
+### Code Style
+
+- **format**: Format code
+  ([`b996542`](https://github.com/anaticulae/indagator/commit/b9965428869c48d6101accced1169ae2a9e2fd24))
 
 ### Documentation
 
-* Happy New Year! (99053cd20e90)
+- **bib**: Extend interface documentation
+  ([`7a48fd5`](https://github.com/anaticulae/indagator/commit/7a48fd5334726fd15bf1e1274c4af2af2c23e39c))
 
-## v0.12.2
+### Features
 
-### Feature
+- **tech**: Improve tech parser
+  ([`01309da`](https://github.com/anaticulae/indagator/commit/01309da842f6e70d25aa92c0ff0d386d3c2b494b))
 
-* add page follows to tech label parser (bfb9bedd5e6e)
-* add page shortcut to tech label parser (e4e8b79bec48)
+### Refactoring
 
-## v0.12.0
+- **rename**: Use new method name
+  ([`64c30c2`](https://github.com/anaticulae/indagator/commit/64c30c2f48206cc450e4d69f30178c099d3122bf))
 
-### Feature
+### Testing
 
-* convert parsed author to higher abstraction (510cc69a9802)
+- **bib**: Verify bachelor63 bibliography
+  ([`7092a40`](https://github.com/anaticulae/indagator/commit/7092a4065bd759a4350ecbb73a9f45af6f8e5090))
 
-## v0.11.3
+- **tech**: Extend no person parser
+  ([`e24f9d0`](https://github.com/anaticulae/indagator/commit/e24f9d0f66bd765f6fd84dc12d2bf5aa2238d638))
 
-### Feature
 
-* extend tech label parser (c79d03740926)
-* use improved authors parser (c1a7ab591114)
-* remove more than one link out of rest content (fa9ac97d70e9)
-* convert short year to ac (0a6a893a599d)
+## v0.13.1 (2021-01-04)
 
-### Fix
+### Chores
 
-* skip empty publisher (0b6ba927a902)
+- **requirements**: Do not release so often
+  ([`991d769`](https://github.com/anaticulae/indagator/commit/991d7694ab1b5a5c952dc8937b1ddc1b24522d0f))
 
-### Documentation
+- **requirements**: Upgrade requirements.txt
+  ([`651a506`](https://github.com/anaticulae/indagator/commit/651a506026e61e0b06f166e89711c364f4452253))
 
-* extend documentation (b3dfcdb85505)
-* extend documentation (f91733f566d0)
 
-## v0.11.2
+## v0.13.0 (2021-01-03)
 
-### Feature
+### Bug Fixes
 
-* add author comma pattern (f287b2441bcf)
-* use number of parser authors to tie equal successful pattern (f8ffe6f8510e)
-* disable too much negative bib results (97cea61e1c29)
+- **bib**: Add simple year to extend more bib pattern
+  ([`4227a1a`](https://github.com/anaticulae/indagator/commit/4227a1a8c7155ae44e131f4a1278d595a7aeb364))
 
-### Fix
+### Chores
 
-* handle border of invalid parsing correctly (c7cf60c620d3)
-* do not handle empty title as invalid title (fb4c05819e9a)
-* reduce min length of valid author (187823023706)
-* detect fewer false positive freeand bib (51b17cfb6796)
+- **requirements**: Upgrade requirements.txt
+  ([`b45acc8`](https://github.com/anaticulae/indagator/commit/b45acc8820312afd3a5a72f68e662a8e9c5479b2))
 
-## v0.11.0
+- **resources**: Extend test data generator
+  ([`fe3290d`](https://github.com/anaticulae/indagator/commit/fe3290d4fd31fd4b361daebfbed726ab7f0e2052))
 
-### Feature
+- **resources**: Extend test data generator
+  ([`98b7184`](https://github.com/anaticulae/indagator/commit/98b7184fe1331863e538235c3af40bd60fa79ee8))
 
-* extend reference parser (4eb3cbbf2992)
-* extend link pattern parser (6a1978527e62)
-* extend bib decider strategy (b28b477560b3)
-* add vspace strategy (7b19870b811f)
-* improve parser due using page text content (00d837112533)
+- **test**: Extract master110 numbered bib
+  ([`3b5d6a7`](https://github.com/anaticulae/indagator/commit/3b5d6a76422fde39ac855c0882ab020767a0985c))
 
-## v0.10.0
+### Code Style
 
-### Feature
-
-* extend person parser (10b6eab19ca5)
-* extend examiner parser (672b95e61306)
-* extend institution parser (2d7b79a3c40f)
-* extend matrikel parser (e653e29a882b)
-* convert raw formula to formula (92f81a76bcd7)
-* add method to determine path to extracted formula (829e5da6e0a6)
-
-## v0.9.0
-
-### Feature
-
-* extend person parser (ea0d2a04d5bd)
-
-## v0.8.3
-
-### Fix
-
-* fix link to package description (2427db197684)
-
-## v0.8.0
-
-### Feature
-
-* add extracted title pdf page to titlepage (bfa0b0d00b89)
+- **format**: Format regex
+  ([`9846d18`](https://github.com/anaticulae/indagator/commit/9846d18143ea3be71a38169f9bab64b2651998ac))
 
 ### Documentation
 
-* fix outdated interface documentation (98b97e29e4a6)
+- **copyright**: Happy New Year!
+  ([`99053cd`](https://github.com/anaticulae/indagator/commit/99053cd20e9017eb17634f3285ad09265d5cf43e))
 
-## v0.7.0
+### Features
 
-### Feature
+- **bib**: Add number label detection pattern
+  ([`77e5782`](https://github.com/anaticulae/indagator/commit/77e5782ffb362f97e753711ec3a8e3966a92023d))
 
-* add error level checker to skip male extractions (ea72e4cc3c07)
+- **bib**: Add numbers pattern to tech parser
+  ([`e62c6d3`](https://github.com/anaticulae/indagator/commit/e62c6d34acaf14d04cb5d99806c2cb21ee75be5e))
 
-### Fix
+### Refactoring
 
-* disable default parser cause of to many fault parsing (5254d84e6921)
+- **imports**: Organize imports
+  ([`193d3e5`](https://github.com/anaticulae/indagator/commit/193d3e5ed1e7f00d9490e7fedf84d933673a0fd5))
 
-## v0.6.0
+### Testing
 
-### Feature
+- **bib**: Test diss266 bib entry
+  ([`39ba2a3`](https://github.com/anaticulae/indagator/commit/39ba2a3d48d77c462fe765cccbea6afc9a5046c8))
 
-* extend university list (bc33db0e90b0)
 
-## v0.5.1
+## v0.12.2 (2020-12-12)
 
-### Fix
+### Chores
 
-* add missing import (28f100496a73)
+- **requirements**: Upgrade requirements.txt
+  ([`c1db532`](https://github.com/anaticulae/indagator/commit/c1db532dddafb5399dffd02a1157258dd9dd8663))
 
-## v0.5.0
+### Features
 
-### Feature
+- **bib**: Add page follows to tech label parser
+  ([`bfb9bed`](https://github.com/anaticulae/indagator/commit/bfb9bedd5e6e31665268bb8f643dfe94c5104a50))
 
-* add formula extraction step (f35628da7c73)
+- **bib**: Add page shortcut to tech label parser
+  ([`e4e8b79`](https://github.com/anaticulae/indagator/commit/e4e8b79bec483765590653a7fed545f0791d7098))
 
-## v0.4.1
 
-### Fix
+## v0.12.1 (2020-12-09)
 
-* fix selecting required resources (80ca66136674)
+### Chores
 
-## v0.4.0
+- **requirements**: Upgrade requirements.txt
+  ([`bf36167`](https://github.com/anaticulae/indagator/commit/bf36167b72c40382e1b564b00933ab34d27ce8b9))
 
-### Feature
 
-* change default behavior for bib grouping (5a58ded93a5b)
+## v0.12.0 (2020-12-08)
 
-## v0.3.0
+### Chores
 
-### Feature
+- **requirements**: Use german to parse authors
+  ([`4234398`](https://github.com/anaticulae/indagator/commit/42343981791f40a3aa2ec5dc35127cefbba7dde9))
 
-* ensure to have connected pages input for bib parsing (ae427807c7be)
+### Features
 
-### Fix
+- **tech**: Convert parsed author to higher abstraction
+  ([`510cc69`](https://github.com/anaticulae/indagator/commit/510cc69a980210f486ed7617ec737dde80ad3b81))
 
-* fix theissen sort - support `no year` sorting (2265a88b1fa5)
+### Refactoring
 
-## v0.2.1
+- **move**: Move test to german package
+  ([`be89ced`](https://github.com/anaticulae/indagator/commit/be89cede53ae048a059ee1a3352bfb182206ccc3))
 
-### Fix
+- **move**: Move theissen sort to decider package
+  ([`db366b1`](https://github.com/anaticulae/indagator/commit/db366b1917dd0079a70ba3e964f9f0a33f943c34))
 
-* add missing import (c7da366db6f6)
+- **remove**: Remove after moving to german package
+  ([`83c4bed`](https://github.com/anaticulae/indagator/commit/83c4bed966aca8ff7159e1f577521e4eaf6fdc51))
 
-## v0.2.0
+- **replace**: Use german author parser
+  ([`25ae4e2`](https://github.com/anaticulae/indagator/commit/25ae4e29c0979a54aca2ece78b11a94d9b8398f3))
 
-### Feature
 
-* add further accessed pattern (4b1f22d7dfeb)
-* add zero day pattern to accessed parser (e9e5e0c0f367)
-* extend accessed parser (95b54cd3643b)
-* parse obvious items first (a1de6c379ae8)
-* add without date pattern (30d86ae4d992)
-* add accessed time parser (2bcc164a326f)
-* add hyperlink parser (19aa9c28f9f6)
-* extend pages parser (1fa4463ef546)
+## v0.11.3 (2020-12-07)
 
-### Fix
+### Bug Fixes
 
-* store correct raw content (fa9c34c177eb)
+- **tech**: Skip empty publisher
+  ([`0b6ba92`](https://github.com/anaticulae/indagator/commit/0b6ba927a90213dd943d62759235a1d0f9be9e3b))
 
-## v0.1.0
+### Documentation
 
-### Feature
+- **alternate**: Extend documentation
+  ([`b3dfcdb`](https://github.com/anaticulae/indagator/commit/b3dfcdb85505afadb7a4698849375b4ffd6f2a62))
 
-* move code from hey project v2.9.0 (65b006884343)
+- **freeand**: Extend documentation
+  ([`f91733f`](https://github.com/anaticulae/indagator/commit/f91733f566d0924e4abd9ef05c6b81af1cd71387))
 
-## v0.0.0 Initial release
+### Features
+
+- **freeand**: Remove more than one link out of rest content
+  ([`fa9ac97`](https://github.com/anaticulae/indagator/commit/fa9ac97d70e94bbb3d441c4147d6e350125c80c4))
+
+- **reference**: Convert short year to ac
+  ([`0a6a893`](https://github.com/anaticulae/indagator/commit/0a6a893a599dfd00fd5b471f97c8fabeed9010d3))
+
+- **tech**: Extend tech label parser
+  ([`c79d037`](https://github.com/anaticulae/indagator/commit/c79d0374092652e3dd43be50c3551e91c2e6b114))
+
+- **tech**: Use improved authors parser
+  ([`c1a7ab5`](https://github.com/anaticulae/indagator/commit/c1a7ab59111403fdaac18cda09d4ce139122d569))
+
+### Refactoring
+
+- **remove**: Remove outdated code
+  ([`998ab25`](https://github.com/anaticulae/indagator/commit/998ab25f91c8902257a486ccb9d92fe447741ae5))
+
+- **structure**: Improve project structure
+  ([`f341e26`](https://github.com/anaticulae/indagator/commit/f341e26ef84f0c5a520506286c73ca2dff92d74c))
+
+### Testing
+
+- **imports**: Organize imports
+  ([`13790a9`](https://github.com/anaticulae/indagator/commit/13790a9ed1fe4b96cfe9d52112a5d718882044ad))
+
+
+## v0.11.2 (2020-12-07)
+
+### Bug Fixes
+
+- **author**: Reduce min length of valid author
+  ([`1878230`](https://github.com/anaticulae/indagator/commit/1878230237060b3ac693aac5b46785b62c46e89b))
+
+- **bib**: Detect fewer false positive freeand bib
+  ([`51b17cf`](https://github.com/anaticulae/indagator/commit/51b17cfb67960fc5078e0b31087f33f75164fe1d))
+
+- **bib**: Do not handle empty title as invalid title
+  ([`fb4c058`](https://github.com/anaticulae/indagator/commit/fb4c05819e9accfc8770a90605aa03a5e8530aab))
+
+- **judge**: Handle border of invalid parsing correctly
+  ([`c7cf60c`](https://github.com/anaticulae/indagator/commit/c7cf60c620d3a8ae9b4636fcc68baf6a954ef518))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`aef296c`](https://github.com/anaticulae/indagator/commit/aef296c455ae6c2d63e4bd5835d7a0accd6be430))
+
+### Features
+
+- **author**: Use number of parser authors to tie equal successful pattern
+  ([`f8ffe6f`](https://github.com/anaticulae/indagator/commit/f8ffe6f8510e2d7ecb417779ffb721b6cd055cc5))
+
+- **authors**: Add author comma pattern
+  ([`f287b24`](https://github.com/anaticulae/indagator/commit/f287b2441bcfe798178ca6a2c40c50a061bc8e8c))
+
+- **bib**: Disable too much negative bib results
+  ([`97cea61`](https://github.com/anaticulae/indagator/commit/97cea61e1c2929dc4597c16b256f85807aa96c50))
+
+### Refactoring
+
+- **bib**: Improve code style
+  ([`6387d68`](https://github.com/anaticulae/indagator/commit/6387d688219af4184f31d3830e54e9afaa69db2e))
+
+- **test**: Simplify test code
+  ([`a7378a4`](https://github.com/anaticulae/indagator/commit/a7378a4bc30369ae05ab5fc1169764408aba1a15))
+
+### Testing
+
+- **bib**: Validate master116 example
+  ([`e7154f3`](https://github.com/anaticulae/indagator/commit/e7154f3c86bbebe93fef20d879c8994582083366))
+
+- **disable**: Enable later
+  ([`219507a`](https://github.com/anaticulae/indagator/commit/219507a61c4cd445803a048525183583da292cd7))
+
+
+## v0.11.1 (2020-12-04)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`50141fd`](https://github.com/anaticulae/indagator/commit/50141fde24b7119f76e0c1b878d5de53243cdf46))
+
+
+## v0.11.0 (2020-12-04)
+
+### Chores
+
+- **test**: Extend test data generator
+  ([`f8e3120`](https://github.com/anaticulae/indagator/commit/f8e312074cdc3a3f43083aa02c79369f498168fb))
+
+### Code Style
+
+- **imports**: Organize imports
+  ([`602a46a`](https://github.com/anaticulae/indagator/commit/602a46a704b70ec555d0c28b2c179b5253e065ff))
+
+### Features
+
+- **bib**: Add vspace strategy
+  ([`7b19870`](https://github.com/anaticulae/indagator/commit/7b19870b811faa5a6ff8c7b75eb498814db961a6))
+
+- **bib**: Extend bib decider strategy
+  ([`b28b477`](https://github.com/anaticulae/indagator/commit/b28b477560b3d0aea62191e8a170bad6eae78393))
+
+- **bib**: Extend reference parser
+  ([`4eb3cbb`](https://github.com/anaticulae/indagator/commit/4eb3cbbf2992334b8d0c641a98bd5b521156d727))
+
+- **bib**: Improve parser due using page text content
+  ([`00d8371`](https://github.com/anaticulae/indagator/commit/00d837112533b0ad7581336ef0b696e39397b69a))
+
+- **link**: Extend link pattern parser
+  ([`6a19785`](https://github.com/anaticulae/indagator/commit/6a1978527e6294616915806952d30ea648fad895))
+
+### Refactoring
+
+- **replace**: Replace with utila code
+  ([`da65e6b`](https://github.com/anaticulae/indagator/commit/da65e6bd29f40492df79d1ba54804412ab0e416e))
+
+### Testing
+
+- **bib**: Add test to validate master75 bibs
+  ([`09a784d`](https://github.com/anaticulae/indagator/commit/09a784d5af15e21fd71f2893cf589b98b56e8d7c))
+
+- **bib**: Extend and-parser tests
+  ([`6128c16`](https://github.com/anaticulae/indagator/commit/6128c16526f974163628edd2e0792ef2e14100d1))
+
+- **bib**: Verify bib extraction result
+  ([`294508c`](https://github.com/anaticulae/indagator/commit/294508c1c66d067a5e66679cbba4676c626eb687))
+
+
+## v0.10.1 (2020-11-19)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`773c47e`](https://github.com/anaticulae/indagator/commit/773c47e1927592e555c3e3e3381c609657c1e325))
+
+
+## v0.10.0 (2020-11-02)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`c33cb38`](https://github.com/anaticulae/indagator/commit/c33cb3844c90d7e2d860baa0dc7741bfda9ce8b7))
+
+- **test**: Fix test resource
+  ([`f05772e`](https://github.com/anaticulae/indagator/commit/f05772e583da1b89dcb2d3fba1188e1e36c43160))
+
+### Features
+
+- **cli**: Convert raw formula to formula
+  ([`92f81a7`](https://github.com/anaticulae/indagator/commit/92f81a76bcd79de579ef4e977515870b6a1338d3))
+
+- **path**: Add method to determine path to extracted formula
+  ([`829e5da`](https://github.com/anaticulae/indagator/commit/829e5da6e0a604e1a73b95e472a7f7cfaa207f22))
+
+- **titlepage**: Extend examiner parser
+  ([`672b95e`](https://github.com/anaticulae/indagator/commit/672b95e613067ed2d44b9f2833c161d6a9d5c25c))
+
+- **titlepage**: Extend institution parser
+  ([`2d7b79a`](https://github.com/anaticulae/indagator/commit/2d7b79a3c40f8190dc05744329d0b36b1287f4bd))
+
+- **titlepage**: Extend matrikel parser
+  ([`e653e29`](https://github.com/anaticulae/indagator/commit/e653e29a882ba8a9436b268e97d87d755d9ffa61))
+
+- **titlepage**: Extend person parser
+  ([`10b6eab`](https://github.com/anaticulae/indagator/commit/10b6eab19ca510629ba71552b20c288929e292bf))
+
+### Refactoring
+
+- **detector**: Simplify code and test
+  ([`d8117ee`](https://github.com/anaticulae/indagator/commit/d8117eea5b0b94a7ed3dd4be6ae92351ea1ce679))
+
+- **rename**: Improve naming
+  ([`090afd2`](https://github.com/anaticulae/indagator/commit/090afd231bdb44e30f1e8b337880ae4c3e38a108))
+
+- **test**: Remove outdated test code
+  ([`00fc942`](https://github.com/anaticulae/indagator/commit/00fc942782a90f5488d01f6bc026f9bcec522efa))
+
+### Testing
+
+- **titlepage**: Add test to verify title page parser
+  ([`dcfd8ba`](https://github.com/anaticulae/indagator/commit/dcfd8bae2c2956ca25220ded1f8202f670227afb))
+
+
+## v0.9.1 (2020-10-28)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`a90148b`](https://github.com/anaticulae/indagator/commit/a90148be8cdc294ee1322850418e6a016111b890))
+
+
+## v0.9.0 (2020-10-14)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`d22ba13`](https://github.com/anaticulae/indagator/commit/d22ba1367245133040a909367fe238f9e1811477))
+
+- **test**: Extend test data generator
+  ([`5761ede`](https://github.com/anaticulae/indagator/commit/5761ede2f645d70350a8b799599a9b2c2079748d))
+
+### Features
+
+- **person**: Extend person parser
+  ([`ea0d2a0`](https://github.com/anaticulae/indagator/commit/ea0d2a04d5bdb5dc09773ee15b858b9e3552e924))
+
+### Refactoring
+
+- **replace**: Use genex test data generator
+  ([`3d71f0c`](https://github.com/anaticulae/indagator/commit/3d71f0c15372eee731dcbfdf200e2b486c17720d))
+
+
+## v0.8.5 (2020-10-08)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`0c666ca`](https://github.com/anaticulae/indagator/commit/0c666cac46ae179447d4df35fb13e2ded2330d87))
+
+
+## v0.8.4 (2020-09-26)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`4d2decc`](https://github.com/anaticulae/indagator/commit/4d2decc3d8485b2cfb849bda501cc79f2f5da94e))
+
+
+## v0.8.3 (2020-09-14)
+
+### Bug Fixes
+
+- **setup**: Fix link to package description
+  ([`2427db1`](https://github.com/anaticulae/indagator/commit/2427db19768431e61c5b8b359f28dacf2a819df0))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`6cf047d`](https://github.com/anaticulae/indagator/commit/6cf047d0988b66f8dfc31cc3a0af396aab9a5d33))
+
+
+## v0.8.2 (2020-09-09)
+
+### Chores
+
+- **requirements**: Add example data generator
+  ([`f481253`](https://github.com/anaticulae/indagator/commit/f4812533c0d55e371fab7a1a65b134271d10abf6))
+
+- **requirements**: Add geostrat package
+  ([`e6d31c2`](https://github.com/anaticulae/indagator/commit/e6d31c28e17fb3b9e43b8f3735b6f48e72a23907))
+
+- **requirements**: Remove hey dependency and update requirements
+  ([`d790bad`](https://github.com/anaticulae/indagator/commit/d790badc8ba8399db95df88b7927eab9823a6a1c))
+
+- **requirements**: Upgrade requirements.txt
+  ([`bd3aa9c`](https://github.com/anaticulae/indagator/commit/bd3aa9c675d29704713359cdec5ace5217d1b1ab))
+
+- **resources**: Use external example data generator
+  ([`438cbbe`](https://github.com/anaticulae/indagator/commit/438cbbed9641e52a90326411e7fc2a8b6a7eb01e))
+
+### Refactoring
+
+- **replace**: Replace with geostrat package code
+  ([`df5813d`](https://github.com/anaticulae/indagator/commit/df5813dd570ab170442147418f1ca5a3a0d972ca))
+
+
+## v0.8.1 (2020-09-01)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`51ea470`](https://github.com/anaticulae/indagator/commit/51ea470a2d482fc5a2dd6629d64a9b680323d37a))
+
+
+## v0.8.0 (2020-08-28)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`c54ba33`](https://github.com/anaticulae/indagator/commit/c54ba3343bb7a8836b51b495a88ec7a4e15aab31))
+
+### Code Style
+
+- **imports**: Organize imports
+  ([`6544c84`](https://github.com/anaticulae/indagator/commit/6544c84e770c864cf4593a122f9f1975a7ce07b2))
+
+### Documentation
+
+- **interface**: Fix outdated interface documentation
+  ([`98b97e2`](https://github.com/anaticulae/indagator/commit/98b97e29e4a6a8b5d0b778625453f82b40f58aa8))
+
+### Features
+
+- **titlepage**: Add extracted title pdf page to titlepage
+  ([`bfa0b0d`](https://github.com/anaticulae/indagator/commit/bfa0b0d00b89b59e2678c9b2428b2597d4b08b82))
+
+
+## v0.7.3 (2020-08-10)
+
+### Chores
+
+- **remove**: Remove non required logging
+  ([`9284af9`](https://github.com/anaticulae/indagator/commit/9284af92fa1ac71c92076f2fa10422dd643967a7))
+
+- **requirements**: Upgrade requirements.txt
+  ([`89afd01`](https://github.com/anaticulae/indagator/commit/89afd01a980203ebb020568437be3398579d4bde))
+
+
+## v0.7.2 (2020-07-29)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`944a1c8`](https://github.com/anaticulae/indagator/commit/944a1c8fff9dd7dfa131a2cb3ecacee2e335f45b))
+
+
+## v0.7.1 (2020-07-27)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`1d52b9e`](https://github.com/anaticulae/indagator/commit/1d52b9e342860027163961d4d5f742595ebfe704))
+
+
+## v0.7.0 (2020-07-22)
+
+### Bug Fixes
+
+- **bib**: Disable default parser cause of to many fault parsing
+  ([`5254d84`](https://github.com/anaticulae/indagator/commit/5254d84e69214b9dccd8155de3fca6355814d942))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`81bd9f0`](https://github.com/anaticulae/indagator/commit/81bd9f0f164b379aa1ae079a404a1a4a37afb3f6))
+
+### Features
+
+- **bib**: Add error level checker to skip male extractions
+  ([`ea72e4c`](https://github.com/anaticulae/indagator/commit/ea72e4cc3c07b6aadf98f5487c8e41fa8514fc2d))
+
+### Testing
+
+- **bib**: Ensure that master89 bib is parsed correctly
+  ([`736020c`](https://github.com/anaticulae/indagator/commit/736020cc58ccb727cc016bbec78f4d6cc63bda56))
+
+
+## v0.6.0 (2020-07-16)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`67e0729`](https://github.com/anaticulae/indagator/commit/67e0729bad3c302cc9a22b3f124333243f1cc731))
+
+- **resources**: Simplify test data generator
+  ([`8b61e3a`](https://github.com/anaticulae/indagator/commit/8b61e3a4216c33dfd3d2f6e10c2fdcdf086b144f))
+
+### Features
+
+- **titlepage**: Extend university list
+  ([`bc33db0`](https://github.com/anaticulae/indagator/commit/bc33db0e90b0ff5fedd3fd8549cc899734588dab))
+
+
+## v0.5.6 (2020-07-02)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`a507502`](https://github.com/anaticulae/indagator/commit/a5075024d281c71f43d27802a37130cb9519aa0b))
+
+
+## v0.5.5 (2020-07-01)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`6d96240`](https://github.com/anaticulae/indagator/commit/6d96240ed07e949c915130e313ef24c2dd1a9865))
+
+
+## v0.5.4 (2020-06-30)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`cfaa503`](https://github.com/anaticulae/indagator/commit/cfaa5033154c290c6847264735590e694694a2e9))
+
+
+## v0.5.3 (2020-06-29)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`0834a86`](https://github.com/anaticulae/indagator/commit/0834a862bf0f5de6785ce0d05612f6b7ce5035b2))
+
+
+## v0.5.2 (2020-06-22)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`5edf7fc`](https://github.com/anaticulae/indagator/commit/5edf7fc95865b250b188ae1eda529dca910e7c0d))
+
+
+## v0.5.1 (2020-06-22)
+
+### Bug Fixes
+
+- **import**: Add missing import
+  ([`28f1004`](https://github.com/anaticulae/indagator/commit/28f100496a73d97113678599616c997be1e56b83))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`e32e1d0`](https://github.com/anaticulae/indagator/commit/e32e1d0608b4c26c5e506478661a282047742afa))
+
+### Refactoring
+
+- **remove**: Remove unnecessary pdf copy and install step
+  ([`381c17c`](https://github.com/anaticulae/indagator/commit/381c17cb937942e2391795c7222eaeb7dc172618))
+
+- **replace**: Replace with iamraw code
+  ([`93fe3e1`](https://github.com/anaticulae/indagator/commit/93fe3e11eb3127213687722a174f5d0c80ee4a13))
+
+
+## v0.5.0 (2020-06-22)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`c0a4fac`](https://github.com/anaticulae/indagator/commit/c0a4fac5fe4529a5bf817f19301c52f77450518b))
+
+- **test**: Extend test data generator
+  ([`643523a`](https://github.com/anaticulae/indagator/commit/643523a9bd5c22d0450f74f5aca81662399670ff))
+
+### Features
+
+- **formula**: Add formula extraction step
+  ([`f35628d`](https://github.com/anaticulae/indagator/commit/f35628da7c73a6abec27d3d380be3628b117445b))
+
+### Refactoring
+
+- **move**: Move title page extractor to separate package
+  ([`1065796`](https://github.com/anaticulae/indagator/commit/1065796097bbc2eb712bdb305d8751dfc6d5074d))
+
+- **remove**: Remove after fixing utila
+  ([`f38e26f`](https://github.com/anaticulae/indagator/commit/f38e26fc19ecbe21c7d8098161ef78fd4e51172e))
+
+- **replace**: Replace with iamraw code
+  ([`9d6c897`](https://github.com/anaticulae/indagator/commit/9d6c897c8791254a24c273e425acbc3da52fdcd9))
+
+- **replace**: Replace with utila and utilatest code
+  ([`b98588d`](https://github.com/anaticulae/indagator/commit/b98588d51bf71e8bff5360244f2f6c33c00e8b6a))
+
+- **resources**: Use new power resource provider
+  ([`6e02483`](https://github.com/anaticulae/indagator/commit/6e024831cfa48e290882c11f51d6eaa15b81232b))
+
+- **test**: Move to titlepage test package
+  ([`8ceee08`](https://github.com/anaticulae/indagator/commit/8ceee08247530980c88a2373eef85c0a7f6fc459))
+
+
+## v0.4.2 (2020-06-21)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`e1521f6`](https://github.com/anaticulae/indagator/commit/e1521f6d0b273ec4101ac3f6123acf3ce6d7a305))
+
+
+## v0.4.1 (2020-06-18)
+
+### Bug Fixes
+
+- **bib**: Fix selecting required resources
+  ([`80ca661`](https://github.com/anaticulae/indagator/commit/80ca66136674c0bffd139ed791c03e85139c3c21))
+
+
+## v0.4.0 (2020-06-18)
+
+### Features
+
+- **bib**: Change default behavior for bib grouping
+  ([`5a58ded`](https://github.com/anaticulae/indagator/commit/5a58ded93a5b03ce12ebbaa3a399b9a8a6fa35dc))
+
+
+## v0.3.1 (2020-06-17)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`945a195`](https://github.com/anaticulae/indagator/commit/945a195e77c27dec71d1ed70b299b9c3c628fa22))
+
+
+## v0.3.0 (2020-06-17)
+
+### Bug Fixes
+
+- **bib**: Fix theissen sort - support `no year` sorting
+  ([`2265a88`](https://github.com/anaticulae/indagator/commit/2265a88b1fa566dd36e0792e7166a779095d9d81))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`df655bf`](https://github.com/anaticulae/indagator/commit/df655bf6b34b57a6a12afc08360255b210e1fe98))
+
+### Features
+
+- **bib**: Ensure to have connected pages input for bib parsing
+  ([`ae42780`](https://github.com/anaticulae/indagator/commit/ae427807c7be6d951ee46d6652b04d90293ac322))
+
+### Testing
+
+- **link**: Verify that link pattern works when text has no space between
+  ([`bca949a`](https://github.com/anaticulae/indagator/commit/bca949abf8f535c1a68c97e9a2db5f230e0d1b89))
+
+
+## v0.2.1 (2020-06-11)
+
+### Bug Fixes
+
+- **import**: Add missing import
+  ([`c7da366`](https://github.com/anaticulae/indagator/commit/c7da366db6f622b682630642da3134bf6cc03275))
+
+
+## v0.2.0 (2020-06-11)
+
+### Bug Fixes
+
+- **bib**: Store correct raw content
+  ([`fa9c34c`](https://github.com/anaticulae/indagator/commit/fa9c34c177eb3e11b0c6d1a75f3ed022ef312fef))
+
+### Chores
+
+- **data**: Use new test data generator
+  ([`3b4800a`](https://github.com/anaticulae/indagator/commit/3b4800a65e7fdb6c26996662d885937c9b57e872))
+
+- **requirements**: Upgrade requirements.txt
+  ([`d2ac86f`](https://github.com/anaticulae/indagator/commit/d2ac86f09e45d8b8703f8160023b34f62b594ce4))
+
+### Features
+
+- **bib**: Add accessed time parser
+  ([`2bcc164`](https://github.com/anaticulae/indagator/commit/2bcc164a326f5a33bcf2d35fa5d1fd5f713861a8))
+
+- **bib**: Add further accessed pattern
+  ([`4b1f22d`](https://github.com/anaticulae/indagator/commit/4b1f22d7dfeb8d4a15f3d9eed9fce82ce4319c49))
+
+- **bib**: Add hyperlink parser
+  ([`19aa9c2`](https://github.com/anaticulae/indagator/commit/19aa9c28f9f6896fd4cc7334047d10fa96f14e0a))
+
+- **bib**: Add without date pattern
+  ([`30d86ae`](https://github.com/anaticulae/indagator/commit/30d86ae4d9921ccb78ed0405c1dc4f2f0405f542))
+
+- **bib**: Add zero day pattern to accessed parser
+  ([`e9e5e0c`](https://github.com/anaticulae/indagator/commit/e9e5e0c0f367d4a0900dae6a91699cd08f45e6ce))
+
+- **bib**: Extend accessed parser
+  ([`95b54cd`](https://github.com/anaticulae/indagator/commit/95b54cd3643b9d1d422862e8b50b33cd3088ab43))
+
+- **bib**: Extend pages parser
+  ([`1fa4463`](https://github.com/anaticulae/indagator/commit/1fa4463ef5460ab9771dd79d7fb5fe2c23107bf3))
+
+- **bib**: Parse obvious items first
+  ([`a1de6c3`](https://github.com/anaticulae/indagator/commit/a1de6c379ae89084b396e8eee246674ed27a0c8b))
+
+### Refactoring
+
+- **bib**: Simplify bib ref parsing
+  ([`7ca4f34`](https://github.com/anaticulae/indagator/commit/7ca4f348a164812cc9996c94d05d5e3e28de667f))
+
+- **fix**: Fix spelling errror
+  ([`b002f62`](https://github.com/anaticulae/indagator/commit/b002f62dd1cb3017780e8f5a2e783117fa15e697))
+
+- **remove**: Remove outdated code and fix style issues
+  ([`98a9233`](https://github.com/anaticulae/indagator/commit/98a9233015442bea01cd5d809b660bccc1bd4dc8))
+
+- **remove**: Remove unused code
+  ([`9207a4d`](https://github.com/anaticulae/indagator/commit/9207a4dbaaebf6600db09b8141ebd9df97f6b38b))
+
+- **replace**: Replace paths with new approach
+  ([`f4e8ef3`](https://github.com/anaticulae/indagator/commit/f4e8ef300f2be819211d39afa735139f2f6e1b97))
+
+### Testing
+
+- **authors**: Extend test coverage to cover more cases
+  ([`e9b28ee`](https://github.com/anaticulae/indagator/commit/e9b28ee017bf410a1268b0cb90c3c66d539b3ed8))
+
+- **bib**: Start verifying master89 bib
+  ([`8b4d792`](https://github.com/anaticulae/indagator/commit/8b4d7920c2d5acdedc17543764cbb21504a7543a))
+
+
+## v0.1.1 (2020-06-06)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`768d100`](https://github.com/anaticulae/indagator/commit/768d100b8a229289d829ee6f3239e69ea17f171a))
+
+### Testing
+
+- **move**: Move missing test
+  ([`0d195b4`](https://github.com/anaticulae/indagator/commit/0d195b4a03c49fadae26a194b9aa01cef7fe9a58))
+
+
+## v0.1.0 (2020-06-06)
+
+- Initial Release
