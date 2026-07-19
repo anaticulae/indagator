@@ -82,14 +82,14 @@ def rawtitle(value) -> str:
         for item in value.examiner
     ]
     examiner: str = '\n                    '.join(examiner)
-    data = dict(
-        author=author,
-        title=value.title,
-        thesis=thesis,
-        date=value.date.raw if value.date else None,
-        matrikel=value.matrikel.number if value.matrikel else None,
-        examiner=examiner,
-    )
+    data = {
+        'author': author,
+        'title': value.title,
+        'thesis': thesis,
+        'date': value.date.raw if value.date else None,
+        'matrikel': value.matrikel.number if value.matrikel else None,
+        'examiner': examiner,
+    }
     result = utilo.dict_dump(data)
     # remove trailing white spaces
     result: str = '\n'.join(item.rstrip() for item in result.splitlines())

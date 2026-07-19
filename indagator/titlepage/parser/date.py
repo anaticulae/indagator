@@ -99,11 +99,11 @@ def simple_date(raw):
         valid=len(parsed['day']) == len(parsed['month']) == 2,
         **extract_data(
             parsed,
-            values=dict(
-                day=int,
-                month=int,
-                year=int,
-            ),
+            values={
+                'day': int,
+                'month': int,
+                'year': int,
+            },
         ),
     )
     return result
@@ -139,11 +139,11 @@ def simple_alpha_date(  # pylint:disable=R0914
         valid=len(parsed['day']) == 2,
         **extract_data(
             parsed,
-            values=dict(
-                day=int,
-                month=germania.month,
-                year=int,
-            ),
+            values={
+                'day': int,
+                'month': germania.month,
+                'year': int,
+            },
         ),
     )
     return result
@@ -161,10 +161,10 @@ def simple_month_year_date(raw):
         valid=True,
         **extract_data(
             parsed,
-            values=dict(
-                month=germania.month,
-                year=int,
-            ),
+            values={
+                'month': germania.month,
+                'year': int,
+            },
         ),
     )
     return result
@@ -180,12 +180,12 @@ def location_comma_day_month_year(raw: str) -> iamraw.TitleDate:
         return None
     result = iamraw.TitleDate(**extract_data(
         parsed,
-        values=dict(
-            location=str,
-            day=int,
-            month=germania.month,
-            year=int,
-        ),
+        values={
+            'location': str,
+            'day': int,
+            'month': germania.month,
+            'year': int,
+        },
     ))
     result.valid = validate_date(result.year, result.month, result.day)
     return result
@@ -211,7 +211,7 @@ def semester_year(raw: str) -> iamraw.TitleDate:
         valid=True,
         **extract_data(
             parsed,
-            values=dict(year=int,),
+            values={'year': int},
         ),
     )
     return result

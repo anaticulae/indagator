@@ -24,7 +24,7 @@ def parse(raw: str) -> iamraw.Institution:
     if university:
         university, raw = university
     results = []
-    for item in [DEPARTMENT, INSTITUTE, FIELD, COURSES]:
+    for item in (DEPARTMENT, INSTITUTE, FIELD, COURSES):
         parsed, raw = detection(raw, item)
         if parsed:  # pylint:disable=W0160
             # TODO: Investigate here
