@@ -48,7 +48,7 @@ dev = [
     "ibidem==1.0.2",
     "pagenumber==1.0.0",
     "groupmes==1.1.0",
-    "capita_ref==1.0.1"
+    "capita_ref==1.0.1",
 ]
 
 [project.urls]
