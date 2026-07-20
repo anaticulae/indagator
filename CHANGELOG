@@ -1,6 +1,17 @@
 # CHANGELOG
 
 
+## v1.0.1 (2026-07-20)
+
+### Chores
+
+- **make**: Generate resources
+  ([`68d1925`](https://github.com/anaticulae/indagator/commit/68d19257a13a6db034ae1b084076910711d4de39))
+
+- **test**: Add missing secret
+  ([`a149992`](https://github.com/anaticulae/indagator/commit/a14999277bbbcb6766ac41b907d5f78b8c1f0e3f))
+
+
 ## v1.0.0 (2026-07-19)
 
 ### Bug Fixes
