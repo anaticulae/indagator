@@ -9,8 +9,10 @@
 
 import hoverpower
 import pytest
+import utilo
 import utilotest
 
+import indagator
 import tests.detector_
 
 
@@ -23,6 +25,10 @@ def test_misc(cmd, mp, capsys):
     """Run help and version command to reach basic test coverage"""
     tests.detector_.run(cmd, mp=mp)
     utilotest.write_capsys(capsys)
+
+
+def test_cli():
+    utilo.run(f'{indagator.PROCESS} -h')
 
 
 @pytest.mark.parametrize('source', [
