@@ -1,6 +1,24 @@
 # CHANGELOG
 
 
+## v1.0.2 (2026-08-04)
+
+### Bug Fixes
+
+- **pyproject**: Adjust cli invoke
+  ([`4ddd94c`](https://github.com/anaticulae/indagator/commit/4ddd94cb8f489ff5ab6796dc150fad6e61bc72bb))
+
+### Chores
+
+- **requirements**: Upgrade pyproject.toml
+  ([`7939733`](https://github.com/anaticulae/indagator/commit/793973342f1456e9786d4e4bf1a9bbd5d77a8acd))
+
+### Testing
+
+- **cli**: Ensure that cli is invoked correctly
+  ([`ac5d0c2`](https://github.com/anaticulae/indagator/commit/ac5d0c26d763903fa467e87e092d56feb099f13d))
+
+
 ## v1.0.1 (2026-07-20)
 
 ### Chores
