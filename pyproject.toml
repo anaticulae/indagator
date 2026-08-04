@@ -57,7 +57,7 @@ Repository = "https://github.com/anaticulae/capita_ref"
 
 [project.scripts]
 colors = "color.cli:main"
-detector = "detector.cli:main"
+detector = "indagator.cli:main"
 
 [tool.semantic_release]
 version_toml = [
